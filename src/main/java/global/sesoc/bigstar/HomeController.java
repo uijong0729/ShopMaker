@@ -36,5 +36,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "loginPage", method = RequestMethod.GET)
+	public String loginPage() {
+		
+		return "Amember/AloginPage";
+	}
+	
 	
 }

@@ -15,6 +15,8 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
+<!-- 임시 링크입니다 지우셔도 OK -->
+<a href="loginPage">로그인 페이지 연결</a>
 
 </body>
 </html>
