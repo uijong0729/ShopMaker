@@ -13,16 +13,29 @@ String registrationdate;
 String lastpaymentdate;
 String paymentexpirationdate;
 String templatecode;
+String memberlevel;
+public Amember(String membercode, String id, String name, String pw, String hpnumber, String biznumber, String address,
+		String mailaddress, String registrationdate, String lastpaymentdate, String paymentexpirationdate,
+		String templatecode, String memberlevel) {
+	super();
+	this.membercode = membercode;
+	this.id = id;
+	this.name = name;
+	this.pw = pw;
+	this.hpnumber = hpnumber;
+	this.biznumber = biznumber;
+	this.address = address;
+	this.mailaddress = mailaddress;
+	this.registrationdate = registrationdate;
+	this.lastpaymentdate = lastpaymentdate;
+	this.paymentexpirationdate = paymentexpirationdate;
+	this.templatecode = templatecode;
+	this.memberlevel = memberlevel;
+}
 public Amember() {
 	super();
 }
-@Override
-public String toString() {
-	return "Amember [membercode=" + membercode + ", id=" + id + ", name=" + name + ", pw=" + pw + ", hpnumber="
-			+ hpnumber + ", biznumber=" + biznumber + ", address=" + address + ", mailaddress=" + mailaddress
-			+ ", registrationdate=" + registrationdate + ", lastpaymentdate=" + lastpaymentdate
-			+ ", paymentexpirationdate=" + paymentexpirationdate + ", templatecode=" + templatecode + "]";
-}
+
 public String getMembercode() {
 	return membercode;
 }
@@ -95,21 +108,19 @@ public String getTemplatecode() {
 public void setTemplatecode(String templatecode) {
 	this.templatecode = templatecode;
 }
-public Amember(String membercode, String id, String name, String pw, String hpnumber, String biznumber, String address,
-		String mailaddress, String registrationdate, String lastpaymentdate, String paymentexpirationdate,
-		String templatecode) {
-	super();
-	this.membercode = membercode;
-	this.id = id;
-	this.name = name;
-	this.pw = pw;
-	this.hpnumber = hpnumber;
-	this.biznumber = biznumber;
-	this.address = address;
-	this.mailaddress = mailaddress;
-	this.registrationdate = registrationdate;
-	this.lastpaymentdate = lastpaymentdate;
-	this.paymentexpirationdate = paymentexpirationdate;
-	this.templatecode = templatecode;
+@Override
+public String toString() {
+	return "Amember [membercode=" + membercode + ", id=" + id + ", name=" + name + ", pw=" + pw + ", hpnumber="
+			+ hpnumber + ", biznumber=" + biznumber + ", address=" + address + ", mailaddress=" + mailaddress
+			+ ", registrationdate=" + registrationdate + ", lastpaymentdate=" + lastpaymentdate
+			+ ", paymentexpirationdate=" + paymentexpirationdate + ", templatecode=" + templatecode + ", memberlevel="
+			+ memberlevel + "]";
 }
+public String getMemberlevel() {
+	return memberlevel;
+}
+public void setMemberlevel(String memberlevel) {
+	this.memberlevel = memberlevel;
+}
+
 }

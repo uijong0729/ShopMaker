@@ -3,14 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	
+
 	<typeAliases>
 		<typeAlias type="global.sesoc.bigstar.vo.Amember" alias="Amember" />
 		<typeAlias type="global.sesoc.bigstar.vo.Aquestion" alias="Aquestion" />
+		<typeAlias type="global.sesoc.bigstar.vo.Anotice" alias="Anotice" />
 	</typeAliases>
-	
+
 	<mappers>
-		<mapper resource="mapper/AmemberMapper.xml"/>
-		<mapper resource="mapper/AquestionMapper.xml"/>
+		<mapper resource="mapper/AmemberMapper.xml" />
+		<mapper resource="mapper/AquestionMapper.xml" />
+		<mapper resource="mapper/AnoticeMapper.xml" />
 	</mappers>
 </configuration>
