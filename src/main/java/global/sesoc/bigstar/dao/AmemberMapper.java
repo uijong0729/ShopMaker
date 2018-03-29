@@ -6,4 +6,5 @@ import global.sesoc.bigstar.vo.Amember;
 
 public interface AmemberMapper {
 	public ArrayList<Amember> selectamember(int templatecode);
+	public String AfindCustomer(String getId);
 }

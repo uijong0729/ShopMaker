@@ -19,8 +19,17 @@ public class AmemberDAO implements AmemberMapper {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(AmemberMapper.class).selectamember(templatecode);
-	
 
 	}
+	
+	@Override
+	public String AfindCustomer(String id) {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(AmemberMapper.class).AfindCustomer(id);
+
+	}
+	
+	
 
 }

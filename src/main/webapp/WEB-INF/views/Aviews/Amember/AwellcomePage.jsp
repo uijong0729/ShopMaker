@@ -52,7 +52,7 @@ margin: 4px;
 <body>
 
 	<header>
-		<%@ include file="header.jsp" %>
+		<%@ include file="../header.jsp" %>
 	</header>
 	
 		<article class="borderI" style="margin: 8px;">
@@ -64,7 +64,7 @@ margin: 4px;
 		</article>
 		
 	<footer>
-		<%@ include file="footer.jsp" %>
+		<%@ include file="../footer.jsp" %>
 	</footer>
 
 

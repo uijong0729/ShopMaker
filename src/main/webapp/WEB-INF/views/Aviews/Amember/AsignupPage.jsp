@@ -26,7 +26,39 @@ $(document).ready(function(){
 		location.href="/bigstar/";
 	});
 	
+	//아이디 중복체크
+	$('#inputId').on('input', checkId);
+	
 });
+
+function checkId(){
+	var getId = $('#inputId').val();
+	
+	if(getId.length < 2)
+	{
+		$('#AIdCheckMsg').html('2글자 이상 입력해주세요');
+	}
+	else
+	{
+		$.ajax({
+			url: 'isThereId',
+			type: 'post',
+			data:{id: getId},
+			dataType: 'text',
+			success: function(checkid){
+				if(checkid != '')
+				{
+					$('#AIdCheckMsg').html('이미 존재하는 id입니다.');
+				}
+				else{
+					$('#AIdCheckMsg').html(getId + '는 사용가능합니다');
+				}
+			},
+		
+		});
+	}
+	
+}
 
 //회원가입양식 순차검사합니다. 차후 바뀔 수 있는 부분이라 일단 가볍게 작성.
 function checkForm(){
@@ -36,6 +68,11 @@ function checkForm(){
 	var inputPasswordConfirm = document.getElementById('inputPasswordConfirm').value;
 	var emailA = document.getElementById('emailA').value;
 	var emailB = document.getElementById('emailB').value;
+	var name = document.getElementById('name').value;
+	var phone = document.getElementById('tel').value;
+	var addressA = document.getElementById('addressA').value;
+	var addressB = document.getElementById('addressB').value;
+	var bisNumber = document.getElementById('bisNumber').value;
 	
 	//아이디 체크
 	if(inputId.length >= 7)
@@ -52,7 +89,29 @@ function checkForm(){
 					//이메일2체크
 					if(emailB.length >= 4 && emailB.indexOf('.') != -1)
 					{
-						location.href="AsignupReq";
+						//이름체크
+						if(name.length >= 1)
+						{
+							//주소체크
+							if(addressA.length >= 1 && addressB.length >=1)
+							{
+								if(bisNumber.length >= 1)
+								{
+									location.href="AsignupReq";
+								}
+								else
+								{
+									alert('사업자 등록번호를 입력하세요');	
+								}
+							}//주소체크
+							else
+							{
+								alert('주소를 입력하세요');	
+							}
+						}//이름체크
+						else{
+						alert('이름을 입력하세요');
+						}
 					}
 					else{
 						alert('이메일 형식을 확인하세요');
@@ -144,15 +203,16 @@ margin: 4px;
 <body>
 
 	<header>
-		<%@ include file="header.jsp" %>
+		<%@ include file="../header.jsp" %>
 	</header>
 	
 		<article class="borderI" style="margin: 8px;">
 			<form action="AsignupReq">
-				<table>
+				<table border="1" style="border-collapse: collapse;">
 					<tr>
 					  <th>아이디</th>
 					  <td><input type="text" id="inputId" name="id" placeholder="아이디를 입력하세요" required="required" autofocus="autofocus" /></td>
+					  <td id="AIdCheckMsg" style="color: red;"></td>
 					</tr>
 					<tr>
 					  <th>비밀번호</th>
@@ -160,7 +220,7 @@ margin: 4px;
 					</tr>
 					<tr>
 					  <th>비밀번호 확인</th>
-					  <td><input type="password" id="inputPasswordConfirm" name="password" placeholder="비밀번호를 다시 입력하세요" required="required"/></td>
+					  <td><input type="password" id="inputPasswordConfirm" placeholder="비밀번호를 다시 입력하세요" required="required"/></td>
 					  <td id="checkpw" style="color: red;"></td>    
 					</tr>
 					<tr>
@@ -177,6 +237,26 @@ margin: 4px;
 					  	</select>
 					  </td>    
 					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input name="name" id="name" placeholder="이름을 입력해주세요"></td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td><input name="hpnumber" id="tel" type="tel" placeholder="전화번호를 입력해주세요"></td>
+					</tr>
+					<tr>
+						<th rowspan="2">주소</th>
+						<td><input name="addressA" id="addressA" style="width: 90%;" placeholder="주소를 입력해주세요"></td>
+					</tr>
+					<tr>
+						<td><input name="addressB" id="addressB" style="width: 50%;" placeholder="상세주소를 입력해주세요"></td>
+					</tr>
+					<tr>
+						<th>사업자 등록번호</th>
+						<td><input name="biznumber" placeholder="사업자 등록번호를 입력해주세요" id="bisNumber" style="width: 80%;"></td>
+					</tr>					
+					
 					
 				</table>
 				
@@ -189,7 +269,7 @@ margin: 4px;
 		</article>
 		
 	<footer>
-		<%@ include file="footer.jsp" %>
+		<%@ include file="../footer.jsp" %>
 	</footer>
 
 

@@ -8,7 +8,11 @@
  		select * from amembertable where TEMPLATECODE =#{templatecode}
  	</select>
  	
- 	
+ 	<select id="AfindCustomer" parameterType="string" resultType="string">
+ 		select id 
+ 		from amembertable
+ 		where id = #{id} 
+ 	</select>
  	
  	
  </mapper>
