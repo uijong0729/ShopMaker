@@ -5,12 +5,12 @@
 
 <html>
 <head>
-	<title>Home</title>
+	<title>Home.jsp</title>
 	
 </head>
 <body>
 <h1>
-	Hello world!  
+	Bigstar Test Page! 
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
