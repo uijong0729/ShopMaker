@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import global.sesoc.bigstar.dao.AmemberDAO;
+import global.sesoc.bigstar.dao.AquestionDAO;
 
 /**
  * Handles requests for the application home page.
@@ -22,7 +22,8 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
-	AmemberDAO dao;
+	AquestionDAO dao;
+	//AmemberDAO dao;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -38,7 +39,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		
-		System.out.println(dao.selectamember(0).toString());
+		System.out.println(dao.selectaquestion(1).toString());
 		
 		return "home";
 	}

@@ -6,10 +6,11 @@
 	
 	<typeAliases>
 		<typeAlias type="global.sesoc.bigstar.vo.Amember" alias="Amember" />
+		<typeAlias type="global.sesoc.bigstar.vo.Aquestion" alias="Aquestion" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/AmemberMapper.xml"/>
-		
+		<mapper resource="mapper/AquestionMapper.xml"/>
 	</mappers>
 </configuration>
