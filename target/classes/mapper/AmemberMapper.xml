@@ -8,11 +8,51 @@
  		select * from amembertable where TEMPLATECODE =#{templatecode}
  	</select>
  	
+ 	<select id="selectAcustomerName">
+ 		select name
+ 		from amembertable
+ 		where membercode = #{membercode}
+ 	</select>
+ 	
  	<select id="AfindCustomer" parameterType="string" resultType="string">
  		select id 
  		from amembertable
  		where id = #{id} 
  	</select>
+ 	
+ 	<select id="loginAcustomer" resultType="Amember" parameterType="map">
+	
+	select *
+	from amembertable
+	where id = #{id} and pw = #{pw}
+	
+	</select>
+ 	
+ 	<insert id="AsignupCustomer" parameterType="Amember">
+ 		insert into AMEMBERTABLE(
+ 			MEMBERCODE, 
+	 		ID, 
+	 		NAME, 
+	 		PW, 
+	 		HPNUMBER, 
+	 		BIZNUMBER, 
+	 		ADDRESS, 
+	 		MAILADDRESS, 
+	 		REGISTRATIONDATE, 
+	 		TEMPLATECODE)
+ 		values 
+ 			(Amember_seq.NEXTVAL
+ 			, #{id}
+ 			, #{name}
+ 			, #{pw}
+ 			, #{hpnumber}
+ 			, #{biznumber}
+ 			, #{address}
+ 			, #{mailaddress}
+ 			, sysdate
+ 			, '0')
+ 	
+ 	</insert>
  	
  	
  </mapper>
