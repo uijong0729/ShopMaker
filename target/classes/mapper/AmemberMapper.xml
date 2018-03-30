@@ -8,11 +8,7 @@
  		select * from amembertable where TEMPLATECODE =#{templatecode}
  	</select>
  	
-<<<<<<< HEAD
  	<select id="selectAcustomerName" parameterType="string" resultType="string">
-=======
- 	<select id="selectAcustomerName">
->>>>>>> master
  		select name
  		from amembertable
  		where membercode = #{membercode}
