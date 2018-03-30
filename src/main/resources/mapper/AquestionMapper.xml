@@ -11,7 +11,20 @@
 
 	</select>
 
+	<insert id="insertAQuestion" parameterType="Aquestion">
+	
+	insert into AQUESTIONTABLE 
+	(qtablecode, qcontent, qtitle, qvisible, qpushdate, membercode)
+	values
+	(Aquestion_seq.NEXTVAL, #{qcontent}, #{qtitle}, #{qvisible}, sysdate, #{membercode})
+	
+	</insert>
 
-
+	<select id="selectAllQuestion" resultType="Aquestion">
+	
+	select * 
+	from AQUESTIONTABLE
+	
+	</select>
 
 </mapper>

@@ -38,9 +38,9 @@ public class AQnAController {
 				String membercode = aquestion.getMembercode();
 				String name = AMdao.selectAcustomerName(membercode);
 				HashMap<String, Object> map = new HashMap<String, Object>(); 
-				
 				map.put("aquestion", aquestion);
-				//map.put("name");
+				map.put("name", name);
+				
 			}
 			
 			model.addAttribute("qnaList", qnaList);

@@ -8,7 +8,7 @@
  		select * from amembertable where TEMPLATECODE =#{templatecode}
  	</select>
  	
- 	<select id="selectAcustomerName">
+ 	<select id="selectAcustomerName" parameterType="string" resultType="string">
  		select name
  		from amembertable
  		where membercode = #{membercode}
