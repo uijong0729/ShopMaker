@@ -1,0 +1,27 @@
+@charset "UTF-8"; 
+ 
+      .button{ 
+       
+      cursor: pointer; 
+      text-align: center; 
+      margin: 3px; 
+       
+      } 
+       
+      .borderIb{ 
+       
+      display: inline-block; 
+      border: 1px dotted black; 
+      margin: 4px; 
+       
+      } 
+       
+      .borderI{ 
+       
+      display: inline-block; 
+      border: 1px dotted black; 
+      width: 100%; 
+      margin: 4px; 
+       
+      } 
+File contents are unchanged.

@@ -27,7 +27,7 @@ public class AQnAController {
 	AmemberDAO AMdao;
 	
 	
-		@RequestMapping(value = "AqnaPage", method = RequestMethod.GET)
+		@RequestMapping(value = "AqnaPage", method = {RequestMethod.GET, RequestMethod.POST})
 		public String AqnaPage(Model model) {
 			
 			List<Aquestion> qnaList;
@@ -50,7 +50,7 @@ public class AQnAController {
 			return "Aviews/Aboard/AqnaBoard";
 		}
 		
-		@RequestMapping(value = "AquestionForm", method = RequestMethod.GET)
+		@RequestMapping(value = "AquestionForm", method = {RequestMethod.GET, RequestMethod.POST})
 		public String AquestionForm() {
 			
 			//System.out.println(AQdao.selectaquestion(0));
@@ -59,7 +59,7 @@ public class AQnAController {
 		}
 		
 		@ResponseBody
-		@RequestMapping(value = "writeQna", method = RequestMethod.POST)
+		@RequestMapping(value = "writeQna", method = {RequestMethod.GET, RequestMethod.POST})
 		public String writeQna(String membercode, String qtitle, String qcontent, String qvisible) {
 			
 			/*System.out.println("writeQna출력사항");
