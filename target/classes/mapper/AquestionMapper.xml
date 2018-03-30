@@ -5,7 +5,9 @@
 
 <mapper namespace="global.sesoc.bigstar.dao.AquestionMapper">
 	<select id="selectaquestion" resultType="Aquestion">
-		select * from AQUESTIONTABLE where qtablecode =#{qtablecode}
+		select * 
+		from AQUESTIONTABLE 
+		where qtablecode =#{qtablecode}
 
 	</select>
 
