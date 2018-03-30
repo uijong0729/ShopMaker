@@ -13,7 +13,7 @@ public class AnoticeController {
 	@Autowired
 	AnoticeDAO ANdao;
 	
-	@RequestMapping(value = "ApurchasePage", method = RequestMethod.POST)
+	@RequestMapping(value = "ApurchasePage", method = RequestMethod.GET)
 	public String purchasePage() {
 		
 		return "Aviews/Apurchase/ApurchasePage";

@@ -283,7 +283,7 @@
 		<p>Bigstar (Home.jsp)</p>
 		<a href="loginPage">로그인 페이지 연결</a>
 		<a href="AqnaPage">QnA페이지 연결</a>
-		<a href="">구매페이지 연결 </a>
+		<a href="ApurchasePage">구매페이지 연결 </a>
 		<a href="">공지사항페이지 연결 </a>
 		</div>
 		
