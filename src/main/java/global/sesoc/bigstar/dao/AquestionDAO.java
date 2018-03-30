@@ -22,4 +22,16 @@ public class AquestionDAO implements AquestionMapper {
 
 	}
 
+	@Override
+	public int insertAQuestion(Aquestion qna) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).insertAQuestion(qna);
+	}
+
+	@Override
+	public ArrayList<Aquestion> selectAllQuestion() {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).selectAllQuestion();
+	}
+
 }

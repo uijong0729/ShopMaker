@@ -26,6 +26,11 @@
 
 $(document).ready(function(){
 	
+	$('#writeQna').on('click', function(){
+		var child = window.open("AquestionForm","newwin","width=600px, height=450px");
+	});
+
+	//불러오기	
 	loadList();
 	
 });
@@ -94,7 +99,7 @@ function loadList(){
 		<%@ include file="../header.jsp" %>
 	</header>
 
-		<article>
+		<article class="borderIb">
 			<table class="borderIb">
 				<tr>
 					<th>글 번호</th>
@@ -105,25 +110,22 @@ function loadList(){
 				</tr>
 				
 				<!-- 반복출력 -->
-				<tr id="AQnAcontent" style="text-align: center;">
-										
-
-				</tr>
-					
+				<c:forEach items="${qnaList }" var="ql">
+					<tr id="AQnAcontent" style="text-align: center;">
+						<td>${ql.qtablecode }</td>
+						<td class="button" style="width: 50%; text-align: center;">${ql.qtitle }</td>
+						<td>${ql.membercode }</td>
+						<td style="width: 30%; text-align: center;">${ql.qpushdate }</td>									
+					</tr>
+				</c:forEach>	
 			
 			</table>
+		
+		<div></div>
 			
-			<table class="borderIb">
-				<tr>
-					<th>제목</th>
-					<td><input readonly="readonly"></td>
-				</tr>
-				<tr>
-					<th>작성일자</th>
-					<td><input readonly="readonly"></td>
-				</tr>
+		<div id="writeQna" class="button borderIb">글쓰기</div>
 			
-			</table>
+			
 			
 		</article>
 		
