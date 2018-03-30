@@ -8,11 +8,15 @@
 		<typeAlias type="global.sesoc.bigstar.vo.Amember" alias="Amember" />
 		<typeAlias type="global.sesoc.bigstar.vo.Aquestion" alias="Aquestion" />
 		<typeAlias type="global.sesoc.bigstar.vo.Anotice" alias="Anotice" />
+		<typeAlias type="global.sesoc.bigstar.vo.Atemplate" alias="Atemplate" />
+		<typeAlias type="global.sesoc.bigstar.vo.Acomponent" alias="Acomponent" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mapper/AmemberMapper.xml" />
 		<mapper resource="mapper/AquestionMapper.xml" />
 		<mapper resource="mapper/AnoticeMapper.xml" />
+		<mapper resource="mapper/AtemplateMapper.xml" />
+		<mapper resource="mapper/AcomponentMapper.xml" />
 	</mappers>
 </configuration>

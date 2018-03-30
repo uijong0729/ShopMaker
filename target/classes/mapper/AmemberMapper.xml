@@ -21,7 +21,7 @@
  	<select id="AfindCustomer" parameterType="string" resultType="string">
  		select id 
  		from amembertable
- 		where id = #{id} 
+ 		where id = #{id}
  	</select>
  	
  	<select id="loginAcustomer" resultType="Amember" parameterType="map">
