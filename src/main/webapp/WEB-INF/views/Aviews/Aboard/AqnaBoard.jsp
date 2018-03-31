@@ -52,9 +52,74 @@ function openContent(){
         	str.append('<th style="width: 20%;">글 제목</th>');
         	str.append('<td style="width: 78%;">' + result.qtitle +'</td>');
         str.append('</tr><tr>');
-	    	str.append('<td colspan="2"><textarea cols="70" rows="10">' + result.qcontent +'</textarea></td>');
-
+	    	str.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+	    
+	    if(result.qreply == null || result.qreply == '')
+	    {
+	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply"></textarea></td></tr>');
+	    	str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
+	    }
+	    else
+	    {
+	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
+	    	str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');	    	
+	    }
+	
         $('#readQna').html(str.toString());
+        
+	    $('#AqnaReplySubmit').on('click', function(){
+	    	var msg = $('#AqnaReply').val();
+	    	var qtablecode = result.qtablecode;
+	    	//alert(msg);
+	    	$.ajax({
+	    		url: 'AqnaReply',
+	    		type: 'post',
+	    		data: {msg: msg, qtablecode: qtablecode, req: 1},
+	    		dataType: 'json',
+	    		success: function(result){
+	    			//alert(result);
+	    			var sb = new StringBuffer();
+	    			
+	    			sb.append('<table border="1"><tr>');
+			        	sb.append('<th style="width: 20%;">글 제목</th>');
+			        	sb.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+			        sb.append('</tr><tr>');
+			        sb.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
+	    			
+				  $('#readQna').html(sb.toString());
+				  alert('작성되었습니다.');
+	    		}
+	    		
+	    	});
+		});
+ 		$('#AqnaReplyDelete').on('click', function(){
+ 			var msg = '';
+	    	var qtablecode = result.qtablecode;
+ 			$.ajax({
+	    		url: 'AqnaReply',
+	    		type: 'post',
+	    		data: {msg: msg, qtablecode: qtablecode, req: 2},
+	    		dataType: 'json',
+	    		success: function(result){
+	    			//alert(result);
+					var sb = new StringBuffer();
+	    			
+	    			sb.append('<table border="1"><tr>');
+	    			sb.append('<th style="width: 20%;">글 제목</th>');
+	    			sb.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+			        sb.append('</tr><tr>');
+			        sb.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply"></textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
+	    			
+				  $('#readQna').html(sb.toString());
+				  alert('삭제되었습니다.');
+	    		}
+	    		
+	    	});
+		});
         
      }
 	});
@@ -108,14 +173,38 @@ function qnaPage(page){
 					<th style="width: 30%;">문의날짜</th>
 					<!-- 내용, 감추기/보이기, 답글, 답변날짜-->
 				</tr>
-				
+			
+			
+			<!-- //0 : 공개글
+			//1 : 비밀글		 -->	
 				
 				<!-- 반복출력 -->
 				
 				<c:forEach items="${qnaList }" var="ql">
 					<tr id="AQnAcontent" style="text-align: center;">
 						<td style="width: 10%; text-align: center;">${ql.qtablecode }</td>
-						<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle }</td>
+						
+						<c:if test="${ql.qvisible == 1 }">
+							<!-- 로그인 당사자일 경우 비밀글 접근-->
+							<c:if test="${ql.membercode == Amember.membercode}">
+								<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle } 
+									<span style="color: red;">(비밀글)</span>
+								</td>
+							</c:if>
+							
+							<!-- 로그인 당사자가 아닌 경우의 비밀글 접근 -->
+							<c:if test="${ql.membercode != Amember.membercode}">
+								<td value="${ql.qtablecode}" style="width: 50%; text-align: center;">${ql.qtitle } 
+									<span style="color: red;">(비밀글)</span>
+								</td>
+							</c:if>
+						</c:if>
+						
+						<!-- 일반글 접근 -->
+						<c:if test="${ql.qvisible == 0 }">
+							<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle } </td>
+						</c:if>	
+						
 						<td style="width: 10%; text-align: center;">${ql.membercode }</td>
 						<td style="width: 10%; text-align: center;">${ql.qpushdate }</td>									
 					
@@ -167,7 +256,6 @@ function qnaPage(page){
 	<footer>
 		<%@ include file="../footer.jsp" %>
 	</footer>
-
 
 </body>
 

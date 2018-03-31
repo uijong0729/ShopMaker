@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -12,4 +13,5 @@ public interface AquestionMapper {
 	public int insertAQuestion(Aquestion qna);
 	public ArrayList<Aquestion> selectAllQuestion(RowBounds rb);
 	public int getQnaCount();
+	public int insertAreply(HashMap<String, String> map);
 }

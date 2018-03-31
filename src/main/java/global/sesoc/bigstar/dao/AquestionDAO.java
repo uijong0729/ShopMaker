@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -46,5 +47,13 @@ public class AquestionDAO implements AquestionMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(AquestionMapper.class).getQnaCount();
 	}
+
+	@Override
+	public int insertAreply(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).insertAreply(map);
+	}
+
+	
 
 }

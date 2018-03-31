@@ -31,5 +31,15 @@
 	from AQUESTIONTABLE
 	order by qpushdate desc
 	</select>
+	
+	<update id="insertAreply" parameterType="string">
+	
+	update AQUESTIONTABLE
+	set qreply = #{qreply}
+	where qtablecode = #{qtablecode}
+	
+	</update>
+	
+
 
 </mapper>

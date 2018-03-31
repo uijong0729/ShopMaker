@@ -74,6 +74,9 @@ public class AQnAController {
 			aq.setQtitle(qtitle);
 			aq.setQcontent(qcontent);
 			aq.setQvisible(qvisible);
+			System.out.println(qvisible);
+			//0 : 공개글
+			//1 : 비밀글
 			
 			System.out.println("추가 된 문의 : " + AQdao.insertAQuestion(aq));
 			
@@ -89,6 +92,31 @@ public class AQnAController {
 			
 			return aq;
 		}
+		
+		@ResponseBody
+		@RequestMapping(value = "AqnaReply", method = {RequestMethod.GET, RequestMethod.POST})
+		public Aquestion AqnaReply(String msg, String qtablecode, String req) {
+			
+			if(req.equals("1")) //추가
+			{
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("qtablecode", qtablecode);
+				map.put("qreply", msg);
+				System.out.println("덧글추가 : " + AQdao.insertAreply(map));
+				return AQdao.selectaquestion(Integer.parseInt(qtablecode));
+			}
+			else if(req.equals("2")) //삭제
+			{
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("qtablecode", qtablecode);
+				map.put("qreply", "");
+				System.out.println("덧글삭제 : " + AQdao.insertAreply(map));
+				return AQdao.selectaquestion(Integer.parseInt(qtablecode));
+			}
+			return null;
+			
+		}
+		
 		
 	
 

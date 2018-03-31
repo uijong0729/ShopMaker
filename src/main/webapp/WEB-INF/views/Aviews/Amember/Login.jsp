@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="./resources/css/login.css">
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
+
 $(document).ready(function(){
+	
 	//셀렉트박스에서 이메일 선택시 해당 이메일이 문자열로 input에 삽입됩니다.
 	$('#mailBox').on('change', selectEmail);
 	
@@ -55,7 +57,7 @@ $(document).ready(function(){
 	$('#Asignup').on('click', function(){
 		//회원가입
 		location.href = "AsignupPage";
-	});
+	}); 
 	
 });
 
@@ -68,6 +70,7 @@ function enterkey() {
 			   { 
 			      if(logininputPassword.length >= 1) 
 			      { 
+			    	  
 			    	 document.getElementById('AgoLogin').submit();
 			      } 
 			      else 
@@ -101,9 +104,11 @@ function checkId(){
 				if(checkid != '')
 				{
 					$('#AIdCheckMsg').html('이미 존재하는 id입니다.');
+					$('#AsignupReq').hide();
 				}
 				else{
 					$('#AIdCheckMsg').html(getId + '는 사용가능합니다');
+					$('#AsignupReq').show();
 				}
 			},
 		
@@ -149,9 +154,7 @@ function checkForm(){
 							{
 								if(bisNumber.length >= 1)
 								{
-									if(idOk == true){
 									document.getElementById('AsignupForm').submit();
-									}
 								}
 								else
 								{
@@ -197,10 +200,14 @@ function checkPw(){
 		if(pw1 == pw2)
 		{
 			$('#checkpw').html('');
+			$('#AsignupReq').show();
+			
 		}
 		else
 		{
 			$('#checkpw').html('위와 동일해야합니다');
+			$('#AsignupReq').hide();
+			
 		}
 
 }
