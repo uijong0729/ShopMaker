@@ -12,10 +12,30 @@
 <script>
 
 $(document).ready(function(){
+	
+	 
 	//alert('jq체크');
 	$('#Alogin').on('click', function(){
 		//alert('로그인');
-		document.getElementById('AsubmitLoginForm').submit();
+		 var inputId = document.getElementById('inputId').value; 
+	  var inputPassword = document.getElementById('inputPassword').value; 
+	    
+	   if(inputId.length >= 1) 
+	   { 
+	      if(inputPassword.length >= 1) 
+	      { 
+	    	 document.getElementById('AgoLogin').submit();
+	      } 
+	      else 
+	      { 
+	         alert('비밀번호를 입력하세요');          
+	      } 
+	   } 
+	   else 
+	   { 
+	      alert('아이디를 입력하세요');    
+	   } 
+
 	});
 	
 	$('#Asignup').on('click', function(){
@@ -68,7 +88,7 @@ margin: 4px;
 		
 			<div style="margin-left: 29%;">
 			  <div class="borderIb">
-			    <form action="/bigstar/" method="post" id="AsubmitLoginForm">       
+			    <form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm">       
 			      	  <h2 class="form-signin-heading">LOGIN</h2>
 				      
 				    	<table>
@@ -78,7 +98,7 @@ margin: 4px;
 					      	</tr>
 					      	<tr>
 					      		<th>비밀번호</th>
-					      		<td colspan="3"><input type="password" id="inputPassword" name="password" placeholder="비밀번호를 입력하세요" required="required"/></td>    
+					      		<td colspan="3"><input type="password" id="inputPassword" name="pw" placeholder="비밀번호를 입력하세요" required="required"/></td>    
 						 	</tr>
 					 	</table>
 			      	<div class="button borderI" id="Alogin">로그인</div>  

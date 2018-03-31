@@ -1,15 +1,23 @@
 package global.sesoc.bigstar.Amember;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.dao.AmemberDAO;
+import global.sesoc.bigstar.vo.Amember;
 
 @Controller
 public class AmemberController {
@@ -31,13 +39,29 @@ public class AmemberController {
 	}
 	
 	@RequestMapping(value = "AsignupReq", method = RequestMethod.GET)
-	public String AsignupReq(String id, String password, String emailA
-			, String emailB, String name, String hpnumber, String addressA
-			, String buznumber) {
-		
-		
-		
-		
+	 public String AsignupReq(String id, String password, String emailA
+	         , String emailB, String name, String hpnumber, String addressA
+	         , String addressB, String biznumber)  {
+	         
+		Amember member = new Amember();
+		 
+	      member.setId(id);
+	 
+	      member.setPw(password);
+	 
+	         String mailaddress = emailA + "@" + emailB;
+	 
+	      member.setMailaddress(mailaddress);
+	      member.setName(name);
+	      member.setHpnumber(hpnumber);
+	 
+	         String address = addressA + " " + addressB;
+	 
+	      member.setAddress(address);
+	      member.setBiznumber(biznumber);
+	 
+	      System.out.println(member);
+	      System.out.println(AMdao.AsignupCustomer(member));
 		
 		return "Aviews/Amember/AwellcomePage";
 	}
@@ -57,6 +81,50 @@ public class AmemberController {
 			return "";
 		}
 	}
+	
+	 @RequestMapping(value = "AgoLogin", method = RequestMethod.POST)
+	 
+	   public String AgoLogin(String id, String pw, HttpServletResponse response, Model model, HttpSession session) {
+	      HashMap<String, String> map = new HashMap<String, String>();
+	 
+	      map.put("id", id);
+	      map.put("pw", pw);
+	      Amember am = AMdao.loginAcustomer(map);
+	      if(am == null)
+	      {
+	 
+	         //model.addAttribute("AloginResult", 1);
+	 
+	         response.setContentType("text/html; charset=UTF-8");
+	 
+	           PrintWriter out;
+	 
+	         try {
+	 
+	            out = response.getWriter();
+	 
+	            out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+	 
+	              out.flush();
+	 
+	         } catch (IOException e) {
+
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }
+	         return "Aviews/Amember/AloginPage";
+	 
+	      }
+	 
+	      else
+	 
+	      {
+	         session.setAttribute("Amember", am);
+	         //model.addAttribute("AloginResult", 2)
+	         return "home";
+	      } 
+	   }
+	 
 	
 
 }

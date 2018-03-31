@@ -10,6 +10,7 @@
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js">
 </script>
 <script>
+var idOk = false;
 
 $(document).ready(function(){
 	//셀렉트박스에서 이메일 선택시 해당 이메일이 문자열로 input에 삽입됩니다.
@@ -34,6 +35,7 @@ $(document).ready(function(){
 function checkId(){
 	var getId = $('#inputId').val();
 	
+	
 	if(getId.length < 2)
 	{
 		$('#AIdCheckMsg').html('2글자 이상 입력해주세요');
@@ -49,9 +51,11 @@ function checkId(){
 				if(checkid != '')
 				{
 					$('#AIdCheckMsg').html('이미 존재하는 id입니다.');
+					idOk = false;
 				}
 				else{
 					$('#AIdCheckMsg').html(getId + '는 사용가능합니다');
+					idOk = true;
 				}
 			},
 		
@@ -75,10 +79,10 @@ function checkForm(){
 	var bisNumber = document.getElementById('bisNumber').value;
 	
 	//아이디 체크
-	if(inputId.length >= 7)
+	if(inputId.length >= 1)
 	{
 		//비밀번호체크
-		if(inputPassword.length >= 8)
+		if(inputPassword.length >= 1)
 		{
 			//비밀번호확인체크
 			if(inputPasswordConfirm == inputPassword)
@@ -97,7 +101,9 @@ function checkForm(){
 							{
 								if(bisNumber.length >= 1)
 								{
-									location.href="AsignupReq";
+									if(idOk == true){
+									document.getElementById('AsignupForm').submit();
+									}
 								}
 								else
 								{
@@ -126,11 +132,11 @@ function checkForm(){
 			}
 		}//비밀번호 체크
 		else{
-			alert('비밀번호 8자 이상');
+			alert('비밀번호 입력하세요');
 		}
 	}//아이디체크
 	else{
-		alert('아이디7자이상');
+		alert('아이디 입력하세요');
 	}
 }
 
@@ -207,7 +213,7 @@ margin: 4px;
 	</header>
 	
 		<article class="borderI" style="margin: 8px;">
-			<form action="AsignupReq">
+			<form id="AsignupForm" action="AsignupReq">
 				<table border="1" style="border-collapse: collapse;">
 					<tr>
 					  <th>아이디</th>
