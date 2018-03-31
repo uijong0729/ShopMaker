@@ -5,11 +5,31 @@
 
 <mapper namespace="global.sesoc.bigstar.dao.AquestionMapper">
 	<select id="selectaquestion" resultType="Aquestion">
-		select * from AQUESTIONTABLE where qtablecode =#{qtablecode}
+		select * 
+		from AQUESTIONTABLE 
+		where qtablecode =#{qtablecode}
 
 	</select>
+	
+	 <select id="getQnaCount" resultType="int">
+     select count(*)
+     from AQUESTIONTABLE   
+     </select>   
 
+	<insert id="insertAQuestion" parameterType="Aquestion">
+	
+	insert into AQUESTIONTABLE 
+	(qtablecode, qcontent, qtitle, qvisible, qpushdate, membercode)
+	values
+	(Aquestion_seq.NEXTVAL, #{qcontent}, #{qtitle}, #{qvisible}, sysdate, #{membercode})
+	
+	</insert>
 
-
+	<select id="selectAllQuestion" resultType="Aquestion">
+	
+	select QTABLECODE, QCONTENT, QTITLE, QREPLY, QVisible, qpushdate, QANSWERDATE, MEMBERCODE 
+	from AQUESTIONTABLE
+	order by qpushdate desc
+	</select>
 
 </mapper>

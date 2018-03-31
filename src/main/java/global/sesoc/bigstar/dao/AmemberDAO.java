@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -29,6 +30,26 @@ public class AmemberDAO implements AmemberMapper {
 		return session.getMapper(AmemberMapper.class).AfindCustomer(id);
 
 	}
+
+	@Override
+	public int AsignupCustomer(Amember member) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AmemberMapper.class).AsignupCustomer(member);
+	}
+
+	@Override
+	public Amember loginAcustomer(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AmemberMapper.class).loginAcustomer(map);
+	}
+
+	@Override
+	public String selectAcustomerName(String membercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AmemberMapper.class).selectAcustomerName(membercode);
+	}
+	
+	
 	
 	
 

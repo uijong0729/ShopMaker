@@ -2,6 +2,7 @@ package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,12 +15,36 @@ public class AquestionDAO implements AquestionMapper {
 	SqlSession session;
 	
 	@Override
-	public ArrayList<Aquestion> selectaquestion(int qtablecode) {
+	public Aquestion selectaquestion(int qtablecode) {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(AquestionMapper.class).selectaquestion(qtablecode);
 	
 
+	}
+
+	@Override
+	public int insertAQuestion(Aquestion qna) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).insertAQuestion(qna);
+	}
+
+	/*@Override
+	public ArrayList<Aquestion> selectAllQuestion() {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).selectAllQuestion();
+	}*/
+
+	@Override
+	public ArrayList<Aquestion> selectAllQuestion(RowBounds rb) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).selectAllQuestion(rb);
+	}
+
+	@Override
+	public int getQnaCount() {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).getQnaCount();
 	}
 
 }
