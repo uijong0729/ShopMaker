@@ -36,9 +36,9 @@ function checkId(){
 	var getId = $('#inputId').val();
 	
 	
-	if(getId.length < 2)
+	if(getId.length < 1)
 	{
-		$('#AIdCheckMsg').html('2글자 이상 입력해주세요');
+		$('#AIdCheckMsg').html('1글자 이상 입력해주세요');
 	}
 	else
 	{

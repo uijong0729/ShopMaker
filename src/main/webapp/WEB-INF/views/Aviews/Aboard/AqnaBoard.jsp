@@ -29,38 +29,40 @@ $(document).ready(function(){
 	$('#writeQna').on('click', function(){
 		var child = window.open("AquestionForm","newwin","width=600px, height=450px");
 	});
+	
+	$('.clickQna').on('click', openContent);
 
-	//불러오기	
-	loadList();
 	
 });
 
-function loadList(){
-	var sb = new StringBuffer();
-	
-	//글번호
-	sb.append('<td>');
-	sb.append('1');
-	sb.append('</td>');
-	
-	//제목
-	sb.append('<td class="button">');
-	sb.append('55555');
-	sb.append('</td>');
-	
-	//작성자
-	sb.append('<td>');
-	sb.append('3333');
-	sb.append('</td>');
-	
-	//문의날짜
-	sb.append('<td>');
-	sb.append('2222');
-	sb.append('</td>');
-	
-	$('#AQnAcontent').html(sb.toString());
+function openContent(){
+	var what = $(this).attr('value');
+	//alert(what);
+	$.ajax({ 
+     url: 'openQna', 
+     type: 'get', 
+     data:{what: what}, 
+     dataType: 'json', 
+     success: function(result) 
+     { 
+        //alert(result);
+        var str = new StringBuffer();
+        
+        str.append('<table border="1"><tr>');
+        	str.append('<th style="width: 20%;">글 제목</th>');
+        	str.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+        str.append('</tr><tr>');
+	    	str.append('<td colspan="2"><textarea cols="70" rows="10">' + result.qcontent +'</textarea></td>');
+
+        $('#readQna').html(str.toString());
+        
+     }
+	});
 }
 
+function qnaPage(page){
+	location.href="AqnaPage?page=" + page;
+}
 </script>
 
 	<style type="text/css">
@@ -91,15 +93,13 @@ function loadList(){
 		}
 		
 	</style>
-
 </head>
 <body>
 	
 	<header>
 		<%@ include file="../header.jsp" %>
 	</header>
-
-		<article class="borderIb">
+		<article class="borderIb" style="width: 55%;">
 			<table class="borderIb">
 				<tr>
 					<th>글 번호</th>
@@ -109,25 +109,60 @@ function loadList(){
 					<!-- 내용, 감추기/보이기, 답글, 답변날짜-->
 				</tr>
 				
+				
 				<!-- 반복출력 -->
+				
 				<c:forEach items="${qnaList }" var="ql">
 					<tr id="AQnAcontent" style="text-align: center;">
-						<td>${ql.qtablecode }</td>
-						<td class="button" style="width: 50%; text-align: center;">${ql.qtitle }</td>
-						<td>${ql.membercode }</td>
-						<td style="width: 30%; text-align: center;">${ql.qpushdate }</td>									
-					</tr>
-				</c:forEach>	
-			
+						<td style="width: 10%; text-align: center;">${ql.qtablecode }</td>
+						<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle }</td>
+						<td style="width: 10%; text-align: center;">${ql.membercode }</td>
+						<td style="width: 10%; text-align: center;">${ql.qpushdate }</td>									
+					
+				</c:forEach>
 			</table>
 		
 		<div></div>
+		
+		<c:if test="${Amember != null }">	
+			<div id="writeQna" class="button borderIb">글쓰기</div>
+		</c:if>	
+
 			
-		<div id="writeQna" class="button borderIb">글쓰기</div>
+				<div style="text-align: center;" class="borderI">
+		
+					<c:forEach varStatus="s" begin="1" end="${countQnaList }" step="10">
+						<!-- 해당 페이지의 링크 -->
+						<c:if test="${s.count != currentpage }">
+							<a href="#" onclick="javascript:qnaPage(${s.count });">[${s.count }]</a>
+						</c:if>
+						
+						<!-- 해당페이지이면 링크 없애기 -->
+						<c:if test="${s.count == currentpage }">
+							<b>[${s.count }]</b>
+						</c:if>	
+					</c:forEach>
+		
+				</div>	
+					
+			<c:if test="${currentpage > 1 }">
+				<div style="text-align: center;" class="borderIb">
+					<a href="AqnaPage?page=${currentpage - 1 }"><div>이전</div></a>	
+				</div>
+			</c:if>
 			
-			
-			
+			<c:if test="${currentpage < lastPage }">
+			<div style="margin-left: 90%;" class="borderIb">
+				<a href="AqnaPage?page=${currentpage + 1 }"><div>다음</div></a>
+			</div>
+			</c:if>	
+				
 		</article>
+		
+		<div id="readQna" class="borderIb" style="width: 40%;">
+		 
+		
+		</div>
 		
 	<footer>
 		<%@ include file="../footer.jsp" %>

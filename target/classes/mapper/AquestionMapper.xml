@@ -10,6 +10,11 @@
 		where qtablecode =#{qtablecode}
 
 	</select>
+	
+	 <select id="getQnaCount" resultType="int">
+     select count(*)
+     from AQUESTIONTABLE   
+     </select>   
 
 	<insert id="insertAQuestion" parameterType="Aquestion">
 	
@@ -22,9 +27,9 @@
 
 	<select id="selectAllQuestion" resultType="Aquestion">
 	
-	select * 
+	select QTABLECODE, QCONTENT, QTITLE, QREPLY, QVisible, qpushdate, QANSWERDATE, MEMBERCODE 
 	from AQUESTIONTABLE
-	
+	order by qpushdate desc
 	</select>
 
 </mapper>

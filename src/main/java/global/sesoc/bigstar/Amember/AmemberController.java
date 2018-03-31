@@ -93,7 +93,7 @@ public class AmemberController {
 	      if(am == null)
 	      {
 	 
-	         //model.addAttribute("AloginResult", 1);
+	         //model.addAttribute("AloginResult", 1); 
 	 
 	         response.setContentType("text/html; charset=UTF-8");
 	 

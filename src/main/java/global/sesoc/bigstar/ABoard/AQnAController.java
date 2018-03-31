@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,25 +29,30 @@ public class AQnAController {
 	
 	
 		@RequestMapping(value = "AqnaPage", method = {RequestMethod.GET, RequestMethod.POST})
-		public String AqnaPage(Model model) {
+		public String AqnaPage(Model model, String page) {
 			
-			List<Aquestion> qnaList;
-			qnaList = AQdao.selectAllQuestion();
-			System.out.println(qnaList);
+			//페이지
+			int currentPage = 1;
+			int pagePerList = 10;
+			int offset = 0;
+			int countQnaList = AQdao.getQnaCount();
+			int lastPage = (int)Math.ceil(((double)countQnaList / 10.0));
 			
-			for (Aquestion aquestion : qnaList) {
-				String membercode = aquestion.getMembercode();
-				String name = AMdao.selectAcustomerName(membercode);
-				HashMap<String, Object> map = new HashMap<String, Object>(); 
-				map.put("aquestion", aquestion);
-				map.put("name", name);
-				
+			if(page != null)
+			{
+				currentPage = Integer.parseInt(page);
 			}
 			
+			offset = (pagePerList * currentPage) - pagePerList;
+			RowBounds rb = new RowBounds(offset, pagePerList);
+			
+			List<Aquestion> qnaList= AQdao.selectAllQuestion(rb);
+			
 			model.addAttribute("qnaList", qnaList);
-			
-			
-			
+			model.addAttribute("currentpage", currentPage);
+			model.addAttribute("countQnaList", countQnaList);
+			model.addAttribute("lastPage", lastPage);
+
 			return "Aviews/Aboard/AqnaBoard";
 		}
 		
@@ -62,12 +68,6 @@ public class AQnAController {
 		@RequestMapping(value = "writeQna", method = {RequestMethod.GET, RequestMethod.POST})
 		public String writeQna(String membercode, String qtitle, String qcontent, String qvisible) {
 			
-			/*System.out.println("writeQna출력사항");
-			System.out.println(membercode);
-			System.out.println(qtitle);
-			System.out.println(qcontent);
-			System.out.println(qvisible);*/
-			
 			Aquestion aq = new Aquestion();
 			
 			aq.setMembercode(membercode);
@@ -78,6 +78,16 @@ public class AQnAController {
 			System.out.println("추가 된 문의 : " + AQdao.insertAQuestion(aq));
 			
 			return "confirm";
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "openQna", method = {RequestMethod.GET, RequestMethod.POST})
+		public Aquestion writeQna(String what) {
+			
+			Aquestion aq = AQdao.selectaquestion(Integer.parseInt(what));
+			
+			
+			return aq;
 		}
 		
 	
