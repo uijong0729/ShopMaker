@@ -55,7 +55,7 @@ public class HomeController {
 	@RequestMapping(value = "loginPage", method = RequestMethod.GET)
 	public String loginPage() {
 		
-		return "Aviews/Amember/AloginPage";
+		return "Aviews/Amember/Login";
 	}
 	
 	

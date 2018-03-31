@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+article {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	border: 0;
+	margin: 0;
+	background-color: #608bbc;
+	color: white;
+	height: 50px;
+	width: 150px;
+	border-radius: 0;
+	font-size: 15px;
+}
+
+button:disabled {
+	background-color: rgb(73, 90, 99)
+}
+
+button:enabled:hover {
+	background-color: #193a60;
+	cursor: pointer;
+}
+
+.main {
+	width: 80vw - 40px;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(40, 50, 56);
+	padding: 40px;
+	margin: 10px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#logInForm {
+	display: none;
+}
+
+#signUpForm {
+	display: flex;
+}
+
+.text {
+	padding: 25px;
+	font-size: 25px;
+	color: white;
+}
+
+.text1 {
+	color: white;
+}
+
+.fields {
+	display: flex;
+	flex-direction: column;
+	width: 310px;
+	background-;
+}
+
+.field {
+	height: 25px;
+	padding: 5px;
+	margin: 0 5px 20px 5px;
+	background-color: rgb(40, 50, 56);
+	border: solid 1px lightgrey;
+	font-size: 11px;
+	color: lightgrey;
+}
+
+.name {
+	display: flex;
+}
+
+.name > .field {
+	width: 100%;
+}
+
+#forgot {
+	width: 300px;
+	text-align: right;
+	font-size: 11px;
+	color: rgb(42, 120, 106);
+	margin: -10px 0 10px 0;
+}
+
+#forgot:hover {
+	color: rgb(71, 189, 164);
+	cursor: pointer;
+}
+
+

@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0; padding:0;}
+.main{ position:relative;width:1500px; height:800px; overflow:hidden }
+.gallery{position:relative;overflow:hidden; width:4500px;
+          height:800px;left:0; top:0;}
+.gallery ul li{ float:left; list-style:none; }
+.dock{width:500px; position:absolute; left:450px; top:350px;}
+
+.dock span.mbutton{ margin-right:15px; cursor:pointer; display:block;
+           float:left; width:15px; height:15px;background:url(../images/bnt.png)}
+
+
+
+img{border:0; vertical-align:top;}
