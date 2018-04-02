@@ -125,8 +125,6 @@
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
 
-					console.log($(this.activeElement));
-					console.log(e.pageX + "." + e.pageY);
 					
 					if ($(this.activeElement).attr("id").startsWith("button")) {
 						showmap(popup, $(this.activeElement).attr("id"));
@@ -142,7 +140,6 @@
 			$(function(){
 			    $('html').keydown(function(e){
 			    	var obj = $("#" + $(document.activeElement).attr("id"));
-			    	console.log($(document.activeElement).attr("id"));
 					var divVer = obj.offset().top;
 	                var divHor = obj.offset().left;
 			        var key = e.which;
@@ -286,8 +283,9 @@
 			}
 			
 			function showmap(popup, id) {
-				var parent = $("#" + id).parent().attr("id");
+				var parent = $("#" + id).attr("id");
 				document.getElementById("btnName").value = parent;
+				
 				if($('#popup').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "visible");
 					return false;
@@ -299,7 +297,7 @@
 			}
 			
 			function showmap_text(popup, id) {
-				var parent = $("#" + id).parent().attr("id");
+				var parent = $("#" + id).attr("id");
 				document.getElementById("textName").value = parent;
 				if($('#popup_text').css('visibility') == "hidden") {
 					$('#popup_text').css('visibility', "visible");
@@ -334,11 +332,12 @@
 				var color = "#" + $("#foo").val();
 				var btnText = $("#btnText").val();
 				var btnName = $("#btnName").val();
-				$("#" + btnName).children().css("background", color);
-				$("#" + btnName).children().text(btnText);
+				console.log(btnName);
+				$("#" + btnName).css("background", color);
+				$("#" + btnName).text(btnText);
 				
 				if (fontsize != '' && fontsize != null) {
-					$("#" + btnName).children("div").css("font-size", fontsize + "px");
+					$("#" + btnName).css("font-size", fontsize + "px");
 				}
 				
 				closemap();
