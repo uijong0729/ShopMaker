@@ -50,6 +50,13 @@
 				resize: both;
 				overflow: auto;
 			}
+			.image {
+				width: 60px; 
+				height: 60px; 
+				position: absolute;
+				resize: both;
+				overflow: hidden;
+			}
 			.textalign {
 				text-align: center;
 				
@@ -78,6 +85,18 @@
 				text-align: center;
 				z-index: 1000;
 			}
+			#popup_image {
+				position:absolute;
+				left:40%;
+				top:35%;
+				visibility:hidden;
+				width: 20%;
+				height: 32%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
 			
 			.editText {
 				width: 70px;
@@ -87,6 +106,13 @@
 				border-radius: 7px;
 			}
 			.editBtn {
+				width: 70px;
+				height: auto;
+				background: #ffffff;
+				border: 1px solid #000000;
+				border-radius: 7px;
+			}
+			.editImage {
 				width: 70px;
 				height: auto;
 				background: #ffffff;
@@ -121,6 +147,7 @@
 			$(document).ready(function () {
 				document.getElementById('btnCount').value = 0;
 				document.getElementById('textCount').value = 0;
+				document.getElementById('imageCount').value = 0;
 			});
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
@@ -131,6 +158,9 @@
 					}
 					if($(this.activeElement).attr("id").startsWith("text")) {
 						showmap_text(popup, $(this.activeElement).attr("id"));
+					}
+					if ($(this.activeElement).attr("id").startsWith("image")) {
+						showmap_image(popup, $(this.activeElement).attr("id"));
 					}
 					$("#delItem").val($(this.activeElement).attr("id"));
 				}
@@ -178,10 +208,11 @@
 			function allowDrop(ev) {
 				ev.preventDefault();
 			}
-			function drag(divid, ev) {
-				var obj = $("#" + divid.id).offset();
+			function drag(compId, ev) {
+				var obj = $("#" + compId.id).offset();
 				var divX = obj.left;
 				divX = Math.round(divX);
+				console.log(divX);
 				var divY = obj.top;
 				divY = Math.round(divY);
 				
@@ -191,7 +222,7 @@
               	var posY = ev.clientY;
               	document.getElementById('diffX').value = posX - divX;
 				document.getElementById('diffY').value = posY - divY;
-				document.getElementById('latestComponent').value = divid.id;
+				document.getElementById('latestComponent').value = compId.id;
 				
 				
 			}
@@ -252,10 +283,39 @@
 				
 				$("#" + document.getElementById("latestComponent").value).css("margin-left", finalX);
 				$("#" + document.getElementById("latestComponent").value).css("margin-top", finalY);
-				
-				
-				
 			}
+			
+			
+			function moveDrag(e){
+				var e_obj = window.event? window.event : e;
+				var dmvx = parseInt(e_obj.clientX + img_L);
+				var dmvy = parseInt(e_obj.clientY + img_T);
+				targetObj.style.left = dmvx +"px";
+				targetObj.style.top = dmvy +"px";
+				return false;
+			}
+
+			function startDrag(e, obj){
+				targetObj = obj;
+				var e_obj = window.event? window.event : e;
+				img_L = getLeft(obj) - e_obj.clientX;
+				img_T = getTop(obj) - e_obj.clientY;
+	
+				document.onmousemove = moveDrag;
+				document.onmouseup = stopDrag;
+				if(e_obj.preventDefault) {
+					e_obj.preventDefault();
+				}
+			}
+
+			function stopDrag(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+
+
+			
+			
 			function newBtn() {
 				var count = document.getElementById('btnCount').value;
 				count *= 1;
@@ -278,6 +338,19 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					var str = '<div id="text' + count + '" class="text" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					document.getElementById('right').innerHTML = document.getElementById('right').innerHTML + str;
+				}
+			}
+			
+			function newImage() {
+				var count = document.getElementById('imageCount').value;
+				count *= 1;
+				if ( $("#image" + count).parent().attr('id') == $('#right').attr('id') ) {
+					document.getElementById('imageCount').value = count + 1;
+					return;
+				} else {
+					count = document.getElementById('imageCount').value;
+					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" draggable="true" ondragstart="drag(this, event)" tabindex="0"></img>';
 					document.getElementById('right').innerHTML = document.getElementById('right').innerHTML + str;
 				}
 			}
@@ -308,6 +381,20 @@
 					return false;
 				}
 			}
+			
+			function showmap_image(popup, id) {
+				var parent = $("#" + id).attr("id");
+				document.getElementById("imageName").value = parent;
+				if($('#popup_image').css('visibility') == "hidden") {
+					$('#popup_image').css('visibility', "visible");
+					return false;
+				}
+				if($('#popup_image').css('visibility') == "visible") {
+					$('#popup_image').css('visibility', "hidden");
+					return false;
+				}
+			}
+			
 			function closemap(popup) {
 				$('#popup').css('visibility', "hidden");
 				return false;
@@ -317,6 +404,10 @@
 				$('#popup_text').css('visibility', "hidden");
 				return false;
 			}
+			function closemap_image(popup) {
+				$('#popup_image').css('visibility', "hidden");
+				return false;
+			}
 			
 			function editBtn(btn) {
 				var fontsize = $("#fontsize").val();
@@ -324,6 +415,10 @@
 				var regNumber = /^[0-9]*$/;
 				if(!regNumber.test(fontsize)) {
 				    alert('글자크기는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				if(!regNumber.test(btnBorder)) {
+				    alert('테두리 두께는 숫자만 입력할 수 있습니다');
 				    return false;
 				}
 				
@@ -377,12 +472,55 @@
 				
 				closemap_text();
 			}
+			
+			function editImage(btn) {
+				var width = $("#image_width").val();
+				var height = $("#image_height").val();
+				var url = $("#image_url").val();
+				var opacity = $("#image_opacity").val();
+				
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(width)) {
+				    alert('이미지 가로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(height)) {
+				    alert('이미지 세로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(width)) {
+				    alert('이미지 투명도는 0~9 사이의 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				
+				fontsize *= 1;
+				
+				var imageName = $("#imageName").val();
+				
+				if (width != '' && width != null) {
+					$("#" + imageName).css("width", width + "px");
+				}
+				if (height != '' && height != null) {
+					$("#" + imageName).css("height", height + "px");
+				}
+				if (opacity != '' && opacity != null) {
+					$("#" + imageName).css("opacity", "0." + opacity)
+				}
+				if (url != '' && url != null) {
+					$("#" + imageName).attr("src", url);
+				}
+				
+				closemap_image();
+			}
 			function deleteComp(comp) {
 				var del = $("#delItem").val();
 				$("#" + del).remove();
 				
 				closemap();
 				closemap_text();
+				closemap_image();
 				
 			}
 			
@@ -402,8 +540,9 @@
 		</div>
 		
 		<div id="left" class="left">
-			<a href="javascript:newBtn()">버튼 생성</a><br><br>
-			<a href="javascript:newText()">텍스트 생성</a>
+			<a href="javascript:newBtn()">버튼 추가</a><br><br>
+			<a href="javascript:newText()">텍스트 추가</a><br><br>
+			<a href="javascript:newImage()">이미지 추가</a>
 		</div>
 		<div id="right" class="right" ondrop="drop(event)" ondragover="allowDrop(event)">
 			<input type="hidden" id="diffX">
@@ -411,6 +550,7 @@
 			<input type="hidden" id="latestComponent">
 			<input type="hidden" id="btnCount">
 			<input type="hidden" id="textCount">
+			<input type="hidden" id="imageCount">
 			<input type="hidden" id="delItem">
 		</div>
 		
@@ -445,6 +585,15 @@
 			<button class="editText" onclick="editText(this)">수정완료</button>&emsp;<button class="editText" id="delText" onclick="deleteComp()">삭제</button>&emsp;<button class="editText" onclick="closemap_text(popup)">닫기</button>
 			<input type="hidden" id="textName">
 			<input type="hidden" id="editTextName">
+		</div>
+		<div id="popup_image">
+			<br>
+			가로 크기 &emsp;: <input type="text" id="image_width"><br><br>
+			세로 크기 &emsp;: <input type="text" id="image_height"><br><br>
+			투명도 &nbsp;&emsp;&emsp;: <input type="text" id="image_opacity"><br><br>
+			이미지 주소 : <input type="text" id="image_url"><br><br>
+			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
+			<input type="hidden" id="imageName">
 		</div>
 		
 		
