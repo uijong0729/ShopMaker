@@ -16,6 +16,7 @@
      from AQUESTIONTABLE   
      </select>   
 
+	<!-- 게시글 등록 -->
 	<insert id="insertAQuestion" parameterType="Aquestion">
 	
 	insert into AQUESTIONTABLE 
@@ -25,6 +26,7 @@
 	
 	</insert>
 
+	<!-- 게시글 리스트 쫙 뽑기 -->
 	<select id="selectAllQuestion" resultType="Aquestion">
 	
 	select QTABLECODE, QCONTENT, QTITLE, QREPLY, QVisible, qpushdate, QANSWERDATE, MEMBERCODE 
@@ -32,6 +34,7 @@
 	order by qpushdate desc
 	</select>
 	
+	<!-- 답글 삽입 (별도의 답글 테이블이 없으므로 update해서 문자열만 삽입) -->
 	<update id="insertAreply" parameterType="string">
 	
 	update AQUESTIONTABLE
@@ -40,6 +43,15 @@
 	
 	</update>
 	
-
+	<!-- 검색 -->
+	<select id="searchQuestion" parameterType="map" resultType="Aquestion">
+	   	select * 
+	   	from AQUESTIONTABLE
+	   	where 
+	   	<if test="qcontent == null">qtitle like '%' || #{qtitle} || '%'</if>
+	   	<if test="qtitle == null">qcontent like '%' || #{qcontent} || '%'</if>
+	    order by qpushdate desc
+   </select>
+	
 
 </mapper>

@@ -54,6 +54,12 @@ public class AquestionDAO implements AquestionMapper {
 		return session.getMapper(AquestionMapper.class).insertAreply(map);
 	}
 
+	@Override
+	public ArrayList<Aquestion> searchQuestion(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AquestionMapper.class).searchQuestion(map);
+	}
+
 	
 
 }
