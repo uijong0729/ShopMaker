@@ -18,8 +18,23 @@ public class AnoticeDAO implements AnoticeMapper {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(AnoticeMapper.class).selectanotice(noticecode);
-	
+	}
 
+	public ArrayList<Anotice> selectAllanotice() {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(AnoticeMapper.class).selectAllanotice();
+	}
+
+	public int writeAnotice(Anotice anotice) {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(AnoticeMapper.class).writeAnotice(anotice);
+	}
+
+	public Anotice readAnotice(String noticecode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AnoticeMapper.class).readAnotice(noticecode);
 	}
 
 }

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -536,7 +537,7 @@
 		<a href="loginPage">로그인 페이지 연결</a>
 		<a href="AqnaPage">QnA페이지 연결</a>
 		<a href="ApurchasePage">구매페이지 연결 </a>
-		<a href="">공지사항페이지 연결 </a>
+		<a href="AnoticeList">공지사항 게시판 연결 </a>
 		</div>
 		
 		<div id="left" class="left">
@@ -596,8 +597,14 @@
 			<input type="hidden" id="imageName">
 		</div>
 		
-		
-		
-		
-	</body>
+
+
+ 
+    
+    
+    
+    
+  </body>
+
 </html>
+ 

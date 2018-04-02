@@ -14,4 +14,5 @@ public interface AquestionMapper {
 	public ArrayList<Aquestion> selectAllQuestion(RowBounds rb);
 	public int getQnaCount();
 	public int insertAreply(HashMap<String, String> map);
+	public ArrayList<Aquestion> searchQuestion(HashMap<String, String> map);
 }
