@@ -21,10 +21,12 @@
 			noticecode
 			,ntitle
 			,ncontent
+			,npopup
 		)values(
 			Anotice_seq.nextval
 			,#{ntitle}
 			,#{ncontent}
+			,#{npopup}
 		)
 		
 	</insert>

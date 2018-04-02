@@ -18,7 +18,7 @@
 	
 	<h2>[공지사항 작성]</h2>
 	<br>
-	<form action="writeAnotice" method="post">
+	<form action="writeAnotice" method="post" onsubmit="javascript:check()">
 		<%-- <input type="hidden" name="id" value="${sessionScope.Amember.id}"> --%>
 		<table>
 			<tr>
@@ -31,13 +31,9 @@
 			</tr>
 			<tr>
 				<!-- TODO: 팝업공지 여부 선택기능 구현 필요 / DB에 npopu -->
-				<td>팝업여부</td>
-				<td></td>
+				<td>팝업여부  :</td>
+				<td><input type="radio" name="npopup" value="1">O&emsp;&emsp;<input type="radio" name="npopup" value="0">X</td>
 			</tr>
-			<!-- <tr>
-				<td>파일 첨부</td>
-				<td><input type="file" name="nimage" value="파일 선택"></td>
-			</tr> -->
 		</table>
 		<input type="submit" value="저장하기">
 	</form>

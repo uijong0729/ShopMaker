@@ -58,7 +58,7 @@ public class AnoticeController {
 	
 	//공지사항 작성하기
 	@RequestMapping(value="writeAnotice", method=RequestMethod.POST)
-	public String writeAnotice(Anotice anotice, HttpSession session){
+	public String writeAnotice(Anotice anotice, HttpSession session, String npopup){
 		
 		logger.info("게시글 작성 시작");
 		
@@ -74,6 +74,7 @@ public class AnoticeController {
 		}
 		
 		logger.info("게시글 작성 끝");
+		System.out.println(npopup);
 		
 		return "Aviews/Anotice/AnoticeList";
 		
