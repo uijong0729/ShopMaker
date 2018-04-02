@@ -52,7 +52,7 @@
 <c:forEach var="notice" items="${noticelist}">
 	<tr>
 		<td>${notice.noticecode}</td>
-		<td><a href="readForm?noticecode=${board.noticecode}">${notice.ntitle}</a></td>
+		<td><a href="AnoticeReadForm?noticecode=${notice.noticecode}">${notice.ntitle}</a></td>
 		<td>${notice.nhitup}</td>
 		<td>${notice.ndate}</td>
 	</tr>	

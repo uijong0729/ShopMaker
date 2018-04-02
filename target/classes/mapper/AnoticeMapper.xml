@@ -6,12 +6,17 @@
 <mapper namespace="global.sesoc.bigstar.dao.AnoticeMapper">
 	<select id="selectanotice" resultType="Anotice">
 		select * from ANOTICETABLE where noticecode =#{noticecode}
-
+		
 	</select>
 	
 	<select id="selectAllanotice" resultType="Anotice">
 		select * from ANOTICETABLE order by noticecode desc
-
+		
+	</select>
+	
+	<select id="readAnotice" parameterType="string" resultType="Anotice">
+		select * from ANOTICETABLE where noticecode = #{noticecode}
+		
 	</select>
 	
 	<insert id="writeAnotice" parameterType="Anotice">
@@ -28,7 +33,8 @@
 			,#{ncontent}
 			,#{npopup}
 		)
-		
 	</insert>
+	
+	
 	
 </mapper>

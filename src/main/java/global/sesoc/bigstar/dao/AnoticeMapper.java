@@ -11,6 +11,8 @@ public interface AnoticeMapper {
 	public ArrayList<Anotice> selectAllanotice();
 
 	public int writeAnotice(Anotice anotice);
+
+	public Anotice readAnotice(String noticecode);
 	
 	
 }

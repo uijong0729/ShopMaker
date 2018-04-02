@@ -32,4 +32,9 @@ public class AnoticeDAO implements AnoticeMapper {
 		return session.getMapper(AnoticeMapper.class).writeAnotice(anotice);
 	}
 
+	public Anotice readAnotice(String noticecode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AnoticeMapper.class).readAnotice(noticecode);
+	}
+
 }

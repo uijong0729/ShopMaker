@@ -22,6 +22,10 @@
 		<%-- <input type="hidden" name="id" value="${sessionScope.Amember.id}"> --%>
 		<table>
 			<tr>
+				<td>작성일자</td>
+				<td>${sysdate}</td>
+			</tr>
+			<tr>
 				<td>제목</td>
 				<td><input type="text" name="ntitle" id="ntitle" size="99"></td>
 			</tr>
