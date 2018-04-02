@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -33,10 +34,11 @@
 			.footer {
 				margin-left: 10%;
 				margin-right: 10%;
-				margin-top: 44%;
+				margin-top: 45%;
+				margin-bottom: 3%;
 				position: absolute;
 				width: 80%;
-				height: 10%;
+				height: auto;
 				background: fuchsia;
 			}
 			.button {
@@ -103,7 +105,6 @@
 				position: absolute;
 			}
 			.text {
-				margin-top: 80px;
 				position: absolute;
 				width: 200px;
 				height: 60px;
@@ -125,8 +126,6 @@
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
 
-					console.log($(this.activeElement));
-					console.log(e.pageX + "." + e.pageY);
 					
 					if ($(this.activeElement).attr("id").startsWith("button")) {
 						showmap(popup, $(this.activeElement).attr("id"));
@@ -142,7 +141,6 @@
 			$(function(){
 			    $('html').keydown(function(e){
 			    	var obj = $("#" + $(document.activeElement).attr("id"));
-			    	console.log($(document.activeElement).attr("id"));
 					var divVer = obj.offset().top;
 	                var divHor = obj.offset().left;
 			        var key = e.which;
@@ -286,8 +284,9 @@
 			}
 			
 			function showmap(popup, id) {
-				var parent = $("#" + id).parent().attr("id");
+				var parent = $("#" + id).attr("id");
 				document.getElementById("btnName").value = parent;
+				
 				if($('#popup').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "visible");
 					return false;
@@ -299,7 +298,7 @@
 			}
 			
 			function showmap_text(popup, id) {
-				var parent = $("#" + id).parent().attr("id");
+				var parent = $("#" + id).attr("id");
 				document.getElementById("textName").value = parent;
 				if($('#popup_text').css('visibility') == "hidden") {
 					$('#popup_text').css('visibility', "visible");
@@ -334,11 +333,21 @@
 				var color = "#" + $("#foo").val();
 				var btnText = $("#btnText").val();
 				var btnName = $("#btnName").val();
-				$("#" + btnName).children().css("background", color);
-				$("#" + btnName).children().text(btnText);
+				var btnBorder = $("#btnBorder").val();
+				var btnBorderColor = $("#btnBorderColor").val();
+				var btnTextColor = $("#btnTextColor").val();
+				
+				$("#" + btnName).css("background", color);
+				$("#" + btnName).css("color", "#" + btnTextColor);
+				if (btnText != '' && fontsize != null) {
+					$("#" + btnName).text(btnText);
+				}
+				if (btnBorder != '' && btnBorder != null) {
+					$("#" + btnName).css("border", btnBorder + "px solid #" + btnBorderColor);
+				}
 				
 				if (fontsize != '' && fontsize != null) {
-					$("#" + btnName).children("div").css("font-size", fontsize + "px");
+					$("#" + btnName).css("font-size", fontsize + "px");
 				}
 				
 				closemap();
@@ -407,16 +416,22 @@
 		</div>
 		
 		
-		<!-- <div class="footer">
-		</div> -->
+		<div class="footer">
+			<jsp:include page="Aviews/footer.jsp">
+        		<jsp:param name="serverTime" value="${serverTime}"></jsp:param>
+        	</jsp:include>
+		</div>
 		
 		
 		
 		<div id="popup">
 			<br>
-			버튼 텍스트 : <input type="text" id="btnText"><br><br>
-			버튼 색상 &emsp;: <input id="foo" class="jscolor jscolor-active" value="cc4499" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			글자 크기 &emsp;: <input type="text" id="fontsize"><br><br>
+			버튼 텍스트 : <input type="text" id="btnText"><br>
+			버튼 색상 &emsp;: <input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			테두리 두께 : <input type="text" id="btnBorder"><br>
+			테두리 색상 : <input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			글자 크기 &emsp;: <input type="text" id="fontsize"><br>
+			글자 색상 &emsp;: <input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
 			URL 　　　 : <input type="text" id="btnUrl"><br><br>
 			<button class="editBtn" onclick="editBtn(this)">수정완료</button>&emsp;<button class="editBtn" id="delBtn" onclick="deleteComp()">삭제</button>&emsp;<button class="editBtn" onclick="closemap(popup)">닫기</button>
 			<input type="hidden" id="btnName">
@@ -425,16 +440,22 @@
 		<div id="popup_text">
 			<br>
 			글자 크기 &emsp;: <input type="text" id="text_fontsize"><br><br>
-			글자 색상 &emsp;: <input id="text_textColor" class="jscolor jscolor-active" value="cc4499" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			배경 색상 &emsp;: <input id="text_bgColor" class="jscolor jscolor-active" value="cc4499" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			테두리 색상 : <input id="text_bdColor" class="jscolor jscolor-active" value="cc4499" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+			글자 색상 &emsp;: <input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+			배경 색상 &emsp;: <input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+			테두리 색상 : <input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
 			<button class="editText" onclick="editText(this)">수정완료</button>&emsp;<button class="editText" id="delText" onclick="deleteComp()">삭제</button>&emsp;<button class="editText" onclick="closemap_text(popup)">닫기</button>
 			<input type="hidden" id="textName">
 			<input type="hidden" id="editTextName">
 		</div>
 		
-		
-		
-		
-	</body>
+
+
+ 
+    
+    
+    
+    
+  </body>
+
 </html>
+ 

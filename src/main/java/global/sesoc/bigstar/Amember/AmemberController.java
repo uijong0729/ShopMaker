@@ -112,7 +112,7 @@ public class AmemberController {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	         }
-	         return "Aviews/Amember/AloginPage";
+	         return "Aviews/Amember/Login";
 	 
 	      }
 	 
@@ -121,7 +121,7 @@ public class AmemberController {
 	      {
 	         session.setAttribute("Amember", am);
 	         //model.addAttribute("AloginResult", 2)
-	         return "home";
+	         return "Aviews/Amember/AwellcomePage";
 	      } 
 	   }
 	 

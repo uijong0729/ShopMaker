@@ -45,11 +45,11 @@ button:enabled:hover {
 }
 
 #logInForm {
-	display: none;
+	display: flex;
 }
 
 #signUpForm {
-	display: flex;
+	display: none;
 }
 
 .text {

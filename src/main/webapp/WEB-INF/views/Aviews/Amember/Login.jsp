@@ -6,8 +6,8 @@
 <title>Login</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./resources/css/headerfooter.css">
-<link rel="stylesheet" href="./resources/css/login.css">
+<link rel="stylesheet" href="./resources/css/headerfooter.css?ver=5">
+<link rel="stylesheet" href="./resources/css/login.css?ver=5">
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
@@ -18,6 +18,7 @@ $(document).ready(function(){
 	
 	//비밀번호 재입력이 유효한지 체크합니다.
 	$('#inputPasswordConfirm').on('input', checkPw);
+	
 	
 	//회원가입 양식을 올바르게 입력했는지 유효성을 검사합니다.
 	$('#AsignupReq').on('click', checkForm);
@@ -247,12 +248,15 @@ function selectEmail(){
   </div>
 </header>
 
+
+<br><br>
+
 <article>
 
 <div class="main">
 	<div class="switchButtons">
-		<button id="signUp" onclick="switchSignUp()" disabled>Sign Up</button>
-		<button id="logIn" onclick="switchLogIn()">Log In</button>
+		<button id="signUp" onclick="switchSignUp()" >Sign Up</button>
+		<button id="logIn" onclick="switchLogIn()" disabled>Log In</button>
 	</div>
 
 	<form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm"> 

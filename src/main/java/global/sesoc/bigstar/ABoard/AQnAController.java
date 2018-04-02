@@ -117,6 +117,23 @@ public class AQnAController {
 			
 		}
 		
+		@RequestMapping(value="searchQuestion", method=RequestMethod.GET)
+		public String searchQuestion(String keyword, String option, Model model)
+		{
+			HashMap<String, String> map = new HashMap<String, String>();
+			System.out.println("keyword" + keyword);
+			System.out.println("option" + option);
+			map.put(option, keyword);
+			
+			ArrayList<Aquestion> searchQuestion = AQdao.searchQuestion(map);
+			
+			model.addAttribute("qnaList", searchQuestion);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("option", option);
+			
+			return "Aviews/Aboard/AqnaBoard";
+		}
+		
 		
 	
 
