@@ -18,6 +18,14 @@ public Anotice(String noticecode, String ntitle, String ncontent, String ndate, 
 	this.npopup = npopup;
 	this.nhitup = nhitup;
 }
+
+public Anotice(String noticecode, String ntitle, String ncontent) {
+	super();
+	this.noticecode = noticecode;
+	this.ntitle = ntitle;
+	this.ncontent = ncontent;
+}
+
 public Anotice() {
 	super();
 }

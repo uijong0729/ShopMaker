@@ -8,8 +8,25 @@
 		select * from ANOTICETABLE where noticecode =#{noticecode}
 
 	</select>
+	
+	<select id="selectAllanotice" resultType="Anotice">
+		select * from ANOTICETABLE order by noticecode desc
 
-
-
-
+	</select>
+	
+	<insert id="writeAnotice" parameterType="Anotice">
+		insert into
+			ANOTICETABLE
+		(
+			noticecode
+			,ntitle
+			,ncontent
+		)values(
+			Anotice_seq.nextval
+			,#{ntitle}
+			,#{ncontent}
+		)
+		
+	</insert>
+	
 </mapper>
