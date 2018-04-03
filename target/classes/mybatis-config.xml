@@ -13,7 +13,15 @@
 
 		<typeAlias type="global.sesoc.bigstar.vo.Bcarttable" alias="Bcarttable" />
 		<typeAlias type="global.sesoc.bigstar.vo.Bcustomer" alias="Bcustomer" />
-		<typeAlias type="global.sesoc.bigstar.vo.Bproducttable" alias="Bproducttable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bproducttable"
+			alias="Bproducttable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bnoticetable"
+			alias="Bnoticetable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bordertable" alias="Bordertable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bquestiontable"
+			alias="Bquestiontable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Breviewtable"
+			alias="Breviewtable" />
 	</typeAliases>
 
 	<mappers>
@@ -26,5 +34,10 @@
 		<mapper resource="mapper/BcarttableMapper.xml" />
 		<mapper resource="mapper/BcustomerMapper.xml" />
 		<mapper resource="mapper/BproducttableMapper.xml" />
+		<mapper resource="mapper/BnoticetableMapper.xml" />
+		<mapper resource="mapper/BordertableMapper.xml" />
+		<mapper resource="mapper/BquestiontableMapper.xml" />
+		<mapper resource="mapper/BreviewtableMapper.xml" />
+
 	</mappers>
 </configuration>

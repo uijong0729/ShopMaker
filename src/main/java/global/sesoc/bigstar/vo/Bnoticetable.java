@@ -2,7 +2,7 @@ package global.sesoc.bigstar.vo;
 
 public class Bnoticetable {
 
-	int orderpaymentstatus;
+	String noticecode;
 	String noticetitle;
 	String noticecontent;
 	String noticedate;
@@ -10,26 +10,11 @@ public class Bnoticetable {
 	String neventend;
 	int nsale;
 	String membercode;
-	public Bnoticetable(int orderpaymentstatus, String noticetitle, String noticecontent, String noticedate,
-			String neventstart, String neventend, int nsale, String membercode) {
-		super();
-		this.orderpaymentstatus = orderpaymentstatus;
-		this.noticetitle = noticetitle;
-		this.noticecontent = noticecontent;
-		this.noticedate = noticedate;
-		this.neventstart = neventstart;
-		this.neventend = neventend;
-		this.nsale = nsale;
-		this.membercode = membercode;
+	public String getNoticecode() {
+		return noticecode;
 	}
-	public Bnoticetable() {
-		super();
-	}
-	public int getOrderpaymentstatus() {
-		return orderpaymentstatus;
-	}
-	public void setOrderpaymentstatus(int orderpaymentstatus) {
-		this.orderpaymentstatus = orderpaymentstatus;
+	public void setNoticecode(String noticecode) {
+		this.noticecode = noticecode;
 	}
 	public String getNoticetitle() {
 		return noticetitle;
@@ -73,11 +58,26 @@ public class Bnoticetable {
 	public void setMembercode(String membercode) {
 		this.membercode = membercode;
 	}
+	public Bnoticetable(String noticecode, String noticetitle, String noticecontent, String noticedate,
+			String neventstart, String neventend, int nsale, String membercode) {
+		super();
+		this.noticecode = noticecode;
+		this.noticetitle = noticetitle;
+		this.noticecontent = noticecontent;
+		this.noticedate = noticedate;
+		this.neventstart = neventstart;
+		this.neventend = neventend;
+		this.nsale = nsale;
+		this.membercode = membercode;
+	}
+	public Bnoticetable() {
+		super();
+	}
 	@Override
 	public String toString() {
-		return "Bnoticetable [orderpaymentstatus=" + orderpaymentstatus + ", noticetitle=" + noticetitle
-				+ ", noticecontent=" + noticecontent + ", noticedate=" + noticedate + ", neventstart=" + neventstart
-				+ ", neventend=" + neventend + ", nsale=" + nsale + ", membercode=" + membercode + "]";
+		return "Bnoticetable [noticecode=" + noticecode + ", noticetitle=" + noticetitle + ", noticecontent="
+				+ noticecontent + ", noticedate=" + noticedate + ", neventstart=" + neventstart + ", neventend="
+				+ neventend + ", nsale=" + nsale + ", membercode=" + membercode + "]";
 	}
 	
 	
