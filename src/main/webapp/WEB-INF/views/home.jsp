@@ -30,6 +30,7 @@
 				width: 55%;
 				height: 70%;
 				background: red;
+				overflow: auto;
 			}
 			.footer {
 				margin-left: 10%;
@@ -48,6 +49,7 @@
 				border-radius: 7px; 
 				text-align: center; 
 				position: absolute;
+				float: none;
 				resize: both;
 				overflow: auto;
 			}
@@ -143,6 +145,54 @@
 		</style>
 		<script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
 		<script src='<c:url value="resources/js/jscolor.js" />'></script>
+		<script src='<c:url value="resources/js/jquery.form.min.js" />'>
+		// target elements with the "draggable" class
+		interact('.draggable')
+		  .draggable({
+		    // enable inertial throwing
+		    inertia: true,
+		    // keep the element within the area of it's parent
+		    restrict: {
+		      restriction: "parent",
+		      endOnly: true,
+		      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+		    },
+		    // enable autoScroll
+		    autoScroll: true,
+
+		    // call this function on every dragmove event
+		    onmove: dragMoveListener,
+		    // call this function on every dragend event
+		    onend: function (event) {
+		      var textEl = event.target.querySelector('p');
+
+		      textEl && (textEl.textContent =
+		        'moved a distance of '
+		        + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+		                     Math.pow(event.pageY - event.y0, 2) | 0))
+		            .toFixed(2) + 'px');
+		    }
+		  });
+
+		  function dragMoveListener (event) {
+		    var target = event.target,
+		        // keep the dragged position in the data-x/data-y attributes
+		        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+		        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+		    // translate the element
+		    target.style.webkitTransform =
+		    target.style.transform =
+		      'translate(' + x + 'px, ' + y + 'px)';
+
+		    // update the posiion attributes
+		    target.setAttribute('data-x', x);
+		    target.setAttribute('data-y', y);
+		  }
+
+		  // this is used later in the resizing and gesture demos
+		  window.dragMoveListener = dragMoveListener;
+		</script>
  		
 		<script type="text/javascript">
 			$(document).ready(function () {
@@ -166,7 +216,6 @@
 					$("#delItem").val($(this.activeElement).attr("id"));
 				}
 			});
-			
 
 			$(function(){
 			    $('html').keydown(function(e){
@@ -226,6 +275,8 @@
 				document.getElementById('latestComponent').value = compId.id;
 				
 				
+				
+				
 			}
 			function drop(ev) {
 				ev.preventDefault();
@@ -264,7 +315,6 @@
               	
               	
               	
-				ev.target.appendChild(document.getElementById(data));
 				
 				
 				
@@ -286,37 +336,6 @@
 				$("#" + document.getElementById("latestComponent").value).css("margin-top", finalY);
 			}
 			
-			
-			function moveDrag(e){
-				var e_obj = window.event? window.event : e;
-				var dmvx = parseInt(e_obj.clientX + img_L);
-				var dmvy = parseInt(e_obj.clientY + img_T);
-				targetObj.style.left = dmvx +"px";
-				targetObj.style.top = dmvy +"px";
-				return false;
-			}
-
-			function startDrag(e, obj){
-				targetObj = obj;
-				var e_obj = window.event? window.event : e;
-				img_L = getLeft(obj) - e_obj.clientX;
-				img_T = getTop(obj) - e_obj.clientY;
-	
-				document.onmousemove = moveDrag;
-				document.onmouseup = stopDrag;
-				if(e_obj.preventDefault) {
-					e_obj.preventDefault();
-				}
-			}
-
-			function stopDrag(){
-				document.onmousemove = null;
-				document.onmouseup = null;
-			}
-
-
-			
-			
 			function newBtn() {
 				var count = document.getElementById('btnCount').value;
 				count *= 1;
@@ -325,7 +344,7 @@
 					return;
 				} else {
 					count = document.getElementById('btnCount').value;
-					var str = '<button id="button' + count + '" class="button" draggable="true" ondragstart="drag(this, event)" user-select="none" tabindex="0">버튼' + count + '</button>';
+					var str = '<button id="button' + count + '" class="button" class="draggable" draggable="true" ondragstart="drag(this, event)" user-select="none" tabindex="0">버튼' + count + '</button>';
 					document.getElementById('right').innerHTML = document.getElementById('right').innerHTML + str;
 				}
 			}
@@ -338,7 +357,7 @@
 					return;
 				} else {
 					count = document.getElementById('textCount').value;
-					var str = '<div id="text' + count + '" class="text" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text" class="draggable" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('right').innerHTML = document.getElementById('right').innerHTML + str;
 				}
 			}
@@ -351,7 +370,7 @@
 					return;
 				} else {
 					count = document.getElementById('imageCount').value;
-					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" draggable="true" ondragstart="drag(this, event)" tabindex="0"></img>';
+					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" class="draggable" draggable="true" ondragstart="drag(this, event)" tabindex="0"></img>';
 					document.getElementById('right').innerHTML = document.getElementById('right').innerHTML + str;
 				}
 			}
@@ -546,6 +565,9 @@
 			<a href="javascript:newImage()">이미지 추가</a>
 		</div>
 		<div id="right" class="right" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<%-- <jsp:include page="Aviews/Anotice/AnoticeList.jsp">
+        		<jsp:param name="serverTime" value="${serverTime}"></jsp:param>
+        	</jsp:include> --%>
 			<input type="hidden" id="diffX">
 			<input type="hidden" id="diffY">
 			<input type="hidden" id="latestComponent">
@@ -556,11 +578,11 @@
 		</div>
 		
 		
-		<div class="footer">
+		<%-- <div class="footer">
 			<jsp:include page="Aviews/footer.jsp">
         		<jsp:param name="serverTime" value="${serverTime}"></jsp:param>
         	</jsp:include>
-		</div>
+		</div> --%>
 		
 		
 		
