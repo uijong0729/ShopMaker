@@ -61,12 +61,13 @@
     <a href="/main1" class="w3-bar-item w3-button"><b>Shop</b> maker</a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-    <a href="login" class="w3-bar-item w3-button">Login</a>
+    <a href="loginPage" class="w3-bar-item w3-button">Login</a>
       <a href="#projects" class="w3-bar-item w3-button">Template</a>
       <a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-      <a href="board" class="w3-bar-item w3-button">Q&A</a>
-      <a href="board" class="w3-bar-item w3-button">Notice</a>
+      <a href="AqnaPage" class="w3-bar-item w3-button">Q&A</a>
+      <a href="AnoticeList" class="w3-bar-item w3-button">Notice</a>
+      <a href="ApurchasePage" class="w3-bar-item w3-button">Notice</a>
     </div>
   </div>
 </header>
