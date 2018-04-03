@@ -10,6 +10,10 @@
 		<typeAlias type="global.sesoc.bigstar.vo.Anotice" alias="Anotice" />
 		<typeAlias type="global.sesoc.bigstar.vo.Atemplate" alias="Atemplate" />
 		<typeAlias type="global.sesoc.bigstar.vo.Acomponent" alias="Acomponent" />
+
+		<typeAlias type="global.sesoc.bigstar.vo.Bcarttable" alias="Bcarttable" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bcustomer" alias="Bcustomer" />
+		<typeAlias type="global.sesoc.bigstar.vo.Bproducttable" alias="Bproducttable" />
 	</typeAliases>
 
 	<mappers>
@@ -18,5 +22,9 @@
 		<mapper resource="mapper/AnoticeMapper.xml" />
 		<mapper resource="mapper/AtemplateMapper.xml" />
 		<mapper resource="mapper/AcomponentMapper.xml" />
+
+		<mapper resource="mapper/BcarttableMapper.xml" />
+		<mapper resource="mapper/BcustomerMapper.xml" />
+		<mapper resource="mapper/BproducttableMapper.xml" />
 	</mappers>
 </configuration>
