@@ -5,59 +5,141 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./resources/css/headerfooter.css">
+<link rel="stylesheet" href="./resources/css/templatepay.css?ver=1">
+<script src="./resources/js/jquery-3.2.1.min.js"></script>
+<script>
+function template1() {
+	document.getElementById("template1").innerHTML="template1";
+}
+function template2() {
+	document.getElementById("template1").innerHTML="template2";
+}
+function template3() {
+	document.getElementById("template1").innerHTML="template3";
+}
+
+function payment1() {
+	document.getElementById("payment").innerHTML="15,000";
+}
+function payment2() {
+	document.getElementById("payment").innerHTML="30,000";
+}
+function payment3() {
+	document.getElementById("payment").innerHTML="45,000";
+}
+function payment4() {
+	document.getElementById("payment").innerHTML="60,000";
+}
+
+</script>
 <title>빅스타 서비스 구매 페이지</title>
 </head>
 <body>
 
-	<header>
-		<%@ include file="../header.jsp"%>
-	</header>
-	
-	
+<header class="w3-top">
 
-	<h2 style="text-align: center;">빅스타 서비스 구매 페이지</h2>
-	
-	<br>
-	
-	<div style="text-align: center;">
-		
-		<h3>템플릿을 선택하세요</h3>
-		<br>
-		<label><input type="radio" name="template" value="1">템플릿1</label>
-		<label><input type="radio" name="template" value="2">템플릿2</label>
-		<label><input type="radio" name="template" value="3">템플릿3</label>
-		
-		<br><br>
-		
-		<h3>구매기간(금액)을 선택하세요</h3>
-		<br>
-		<label><input type="radio" name="days" value="30">30일 (15,000원)</label>
-		<label><input type="radio" name="days" value="60">60일 (30,000원)</label>
-		<label><input type="radio" name="days" value="90">90일 (45,000원)</label>
-		<label><input type="radio" name="days" value="180">180일 (90,000원)</label>
-		<label><input type="radio" name="days" value="365">365일 (180,000원)</label>
-		
-		<br><br>
-		
-		<h3> ***님의 빅스타 서비스 만료 예정일</h3>
-		<mark><strong> 만료 예정일 : 2018.06.23 (예시) </strong></mark>
-		<br>
-		<sub>*DB에서 ***님의 서비스 만료 예정일 select 후 표시</sub>
-		<br>
-		<sub>*if 최종결제일이 Null이면 : 현재 sysdate (update) DB 넣기. </sub>
-		<br>
-		<sub>*if 최종결제일이 Not Null이면 : 만료 예정일 + 추가 결제일(ex +60일) => 해당 변경 사항 Amember Table에 update </sub>
-		<br>
-		<br>
-		<button>구매하기</button>
-		<br>
-		<sub>*카카오페이 결제 API 기능 구현 필요</sub>
-		
-	</div>
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/main1" class="w3-bar-item w3-button"><b>Shop</b> Maker</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#" class="w3-bar-item w3-button">Projects</a>
+      <a href="#" class="w3-bar-item w3-button">About</a>
+      <a href="#" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</header>
+<br><br><br><br>
+<div class="services">
+<section class="pricecol">
+<div class="icon">
+<i class="icon-magic"></i>
+<img src="./resources/image/shirt2.png">
+</div>
+<h3><Span>Template1</span></h3>
+<p>
+<a class="button" onclick="template1()"><span>Pick</span></a>
+</p>
+</section>
 
-	<footer>
-		<%@ include file="../footer.jsp"%>
-	</footer>
+<section class="pricecol">
+<div class="icon">
+<i class="icon-leaf"></i>
+<img src="./resources/image/shoes.png">
+</div>
+<h3><Span>Template2</span></h3>
+<p>
+<a class="button" onclick="template2()"><span>Pick</span></a>
+</p>
+</section>
+
+<section class="pricecol">
+<div class="icon">
+<i class="icon-link"></i>
+<img src="./resources/image/hat.png">
+</div>
+<h3><Span>Template3</span></h3>
+<p>
+<a class="button" onclick="template3()"><span>Pick</span></a>
+</p>
+</section>
+</div>
+
+<br><br>
+
+<div class="services">
+<section class="pricecol1">
+<h3><Span>30days</span></h3>
+<ul>
+<li>15,000</li>
+</ul>
+<p>
+<a class="button" onclick="payment1()"><span>Start now</span></a>
+</p>
+</section>
+
+<section class="pricecol1">
+<h3><Span>60days</span></h3>
+<ul>
+<li>30,000</li>
+</ul>
+<p>
+<a class="button" onclick="payment2()"><span>Start now</span></a>
+</p>
+</section>
+
+<section class="pricecol1">
+<h3><Span>90days</span></h3>
+<ul>
+<li>45,000</li>
+</ul>
+<p>
+<a class="button" onclick="payment3()"><span>Start now</span></a>
+</p>
+</section>
+
+<section class="pricecol1">
+<h3><Span>180days</span></h3>
+<ul>
+<li>60,000</li>
+</ul>
+<p>
+<a class="button" onclick="payment4()"><span>Start now</span></a>
+</p>
+</section>
+</div>
+
+<br><br><br><br>
+
+<div>Type: <p id="template1"></p></div>
+
+<div>Payment: <p id="payment"></p></div>
+
+<br><br><br>
+
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Footer</p>
+</footer>
 
 </body>
 </html>
