@@ -236,83 +236,76 @@ function selectEmail(){
 
 
 <!-- header Navbar (sit on top) -->
-<header class="w3-top">
-
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="/bigstar" class="w3-bar-item w3-button"><b>Shop</b> Maker</a>
-    <!--추가 페이지 업로드시 바뀔 부분-->
-    <div class="w3-right w3-hide-small">
-      <a href="#" class="w3-bar-item w3-button">Projects</a>
-      <a href="#" class="w3-bar-item w3-button">About</a>
-      <a href="#" class="w3-bar-item w3-button">Contact</a>
-    </div>
-  </div>
-</header>
+	<header>
+		<%@ include file="../header.jsp" %>
+	</header>
 
 
 <br><br>
 
-<article>
+<article style="text-align: center;">
 
-<div class="main">
-	<div class="switchButtons">
-		<button id="signUp" onclick="switchSignUp()" >Sign Up</button>
-		<button id="logIn" onclick="switchLogIn()" disabled>Log In</button>
+<div class="main" style="text-align: center; display: inline-block;">
+	<div style="display: inline-block;">
+			<div class="switchButtons">
+				<button id="signUp" onclick="switchSignUp()" >Sign Up</button>
+				<button id="logIn" onclick="switchLogIn()" disabled>Log In</button>
+			</div>
+		
+			<form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm"> 
+			<div class="form" id="logInForm">
+			<div class="text">Welcome Back!</div>
+			<div class="fields">
+				<input type="text" name="id" id="logininputId" placeholder="아이디를 입력하세요" class="field">
+				<input type="password" name="pw" id="logininputPassword" placeholder="비밀번호를 입력하세요" class="field">
+			</div>
+			<button id="Alogin" onkeyup="enterkey()">Log In!</button>
+			</div>
+			</form>
+			
+			<form id="AsignupForm" action="AsignupReq">
+				<div class="form" id="signUpForm">
+				<div class="text">Sign Up For Free!</div>
+				<div class="fields">
+					<input type="text" name="id" id="inputId" placeholder="아이디를 입력하세요" required="required" autofocus="autofocus" class="field">
+					<div id="AIdCheckMsg" style="color:white"></div>
+					<input type="password" id="inputPassword" name="password" placeholder="비밀번호를 입력하세요" required="required" class="field"/>
+					<input type="password" id="inputPasswordConfirm" placeholder="비밀번호를 다시 입력하세요" required="required" class="field"/>
+					<div id="checkpw"  style="color: white;"></div>		
+					<div class="name">
+						<input id="emailA" name="emailA" required="required" class="field"/>
+						<div class="text1">@</div>
+						<input id="emailB" name="emailB" required="required" class="field"/>
+						<select id="mailBox" class="field">
+								  		<option selected="selected">직접입력</option>
+								  		<option>naver.com</option>
+								  		<option>daum.net</option>
+								  		<option>gmail.com</option>
+						</select>		
+					</div>
+					<input name="name" id="name" placeholder="이름을 입력해주세요" class="field">
+					<input name="hpnumber" id="tel" type="tel" placeholder="전화번호를 입력해주세요" class="field">
+					<input name="addressA" id="addressA" placeholder="주소를 입력해주세요" class="field">
+					<input name="addressB" id="addressB" placeholder="상세주소를 입력해주세요" class="field">
+					<input name="biznumber" placeholder="사업자 등록번호를 입력해주세요" id="bisNumber" class="field">
+				</div>
+				
+				<div>
+					<button id="AsignupReq">Sign Up</button>
+					<button id="goHome">Cancel</button>
+				</div>
+			
+				</div>
+			</form>
 	</div>
-
-	<form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm"> 
-	<div class="form" id="logInForm">
-	<div class="text">Welcome Back!</div>
-	<div class="fields">
-		<input type="text" name="id" id="logininputId" placeholder="아이디를 입력하세요" class="field">
-		<input type="password" name="pw" id="logininputPassword" placeholder="비밀번호를 입력하세요" class="field">
-	</div>
-	<button id="Alogin" onkeyup="enterkey()">Log In!</button>
-	</div>
-	</form>
-	
-	<form id="AsignupForm" action="AsignupReq">
-	<div class="form" id="signUpForm">
-	<div class="text">Sign Up For Free!</div>
-	<div class="fields">
-		<input type="text" name="id" id="inputId" placeholder="아이디를 입력하세요" required="required" autofocus="autofocus" class="field">
-		<div id="AIdCheckMsg" style="color:white"></div>
-		<input type="password" id="inputPassword" name="password" placeholder="비밀번호를 입력하세요" required="required" class="field"/>
-		<input type="password" id="inputPasswordConfirm" placeholder="비밀번호를 다시 입력하세요" required="required" class="field"/>
-		<div id="checkpw"  style="color: white;"></div>		
-		<div class="name">
-			<input id="emailA" name="emailA" required="required" class="field"/>
-			<div class="text1">@</div>
-			<input id="emailB" name="emailB" required="required" class="field"/>
-			<select id="mailBox" class="field">
-					  		<option selected="selected">직접입력</option>
-					  		<option>naver.com</option>
-					  		<option>daum.net</option>
-					  		<option>gmail.com</option>
-			</select>		
-		</div>
-		<input name="name" id="name" placeholder="이름을 입력해주세요" class="field">
-		<input name="hpnumber" id="tel" type="tel" placeholder="전화번호를 입력해주세요" class="field">
-		<input name="addressA" id="addressA" placeholder="주소를 입력해주세요" class="field">
-		<input name="addressB" id="addressB" placeholder="상세주소를 입력해주세요" class="field">
-		<input name="biznumber" placeholder="사업자 등록번호를 입력해주세요" id="bisNumber" class="field">
-	</div>
-	
-	<div>
-		<button id="AsignupReq">Sign Up</button>
-		<button id="goHome">Cancel</button>
-	</div>
-
-	</div>
-	</form>
 </div>
 
 
 </article>
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Footer</p>
-</footer>
+	<footer>
+		<%@ include file="../footer.jsp" %>
+	</footer>
 
 <script>
 function switchLogIn() {

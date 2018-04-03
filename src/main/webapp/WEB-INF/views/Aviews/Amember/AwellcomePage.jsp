@@ -21,33 +21,6 @@ $(document).ready(function(){
 
 </script>
 
-<!-- 작업상 편의를 위해 잠깐 넣은 CSS 삭제하셔도 OK -->
-<style type="text/css">
-.button{
-
-cursor: pointer;
-text-align: center;
-margin: 3px;
-
-}
-.borderIb{
-
-display: inline-block;
-border: 1px dotted black;
-margin: 4px;
-
-}
-.borderI{
-
-display: inline-block;
-border: 1px dotted black;
-width: 100%;
-margin: 4px;
-
-}
-
-</style>
-
 </head>
 <body>
 
@@ -55,11 +28,12 @@ margin: 4px;
 		<%@ include file="../header.jsp" %>
 	</header>
 	
-		<article class="borderI" style="margin: 8px;">
+		<article>
 			
-			<h1>가입환영 안내</h1>
 			
-			<div id="goHome" class="borderIb button"> 홈으로 </div>
+			
+			
+			
 			
 		</article>
 		

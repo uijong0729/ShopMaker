@@ -43,13 +43,8 @@
 			<td>${notice.ncontent}</td>
 		</tr>
 	</table>
-	<%-- <c:if test="${sessionScope.loginId == board.id}">
-		<a href="deleteBoard?noticecode=${notice.noticecode }">삭제</a>
-		<!-- a href = "javascript:deleteBoard('${board.boardnum}')" : function -->
-		<a href="updateBoard?noticecode=${notice.noticecode }">수정</a>
-		<a href="list">공지사항 게시판</a>
-		<a href="../">메인페이지</a>
-	</c:if> --%>
+
+
 	<br>
 	<br>
 <br><br><br>

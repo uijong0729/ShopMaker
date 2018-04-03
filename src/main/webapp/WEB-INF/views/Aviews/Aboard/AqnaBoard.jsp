@@ -54,19 +54,19 @@ function openContent(){
         
         str.append('<table border="1"><tr>');
         	str.append('<th style="width: 20%;">글 제목</th>');
-        	str.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+        	str.append('<td style="width: 48%;">' + result.qtitle +'</td>');
         str.append('</tr><tr>');
-	    	str.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+	    	str.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 	    
 	    if(result.qreply == null || result.qreply == '')
 	    {
-	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply"></textarea></td></tr>');
+	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply"></textarea></td></tr>');
 	    	//str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
 	    	sbAns.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
 	    }
 	    else
 	    {
-	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
+	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
 	    	//str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
 	    	sbAns.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
 	    }
@@ -89,10 +89,10 @@ function openContent(){
 	    			
 	    			sb.append('<table border="1"><tr>');
 			        	sb.append('<th style="width: 20%;">글 제목</th>');
-			        	sb.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+			        	sb.append('<td style="width: 48%;">' + result.qtitle +'</td>');
 			        sb.append('</tr><tr>');
-			        sb.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
-			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
+			        sb.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
 			        //sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
 	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
 	    			
@@ -119,9 +119,9 @@ function openContent(){
 					
 	    			sb.append('<table border="1"><tr>');
 	    			sb.append('<th style="width: 20%;">글 제목</th>');
-	    			sb.append('<td style="width: 78%;">' + result.qtitle +'</td>');
+	    			sb.append('<td style="width: 48%;">' + result.qtitle +'</td>');
 			        sb.append('</tr><tr>');
-			        sb.append('<td colspan="2"><textarea cols="70" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply"></textarea></td></tr>');
 			        //sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
 	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
@@ -269,17 +269,6 @@ function qnaPage(page){
 		
 				</div>	
 					
-			<c:if test="${currentpage > 1 }">
-				<div style="text-align: center;" class="borderIb">
-					<a href="AqnaPage?page=${currentpage - 1 }"><div>이전</div></a>	
-				</div>
-			</c:if>
-			
-			<c:if test="${currentpage < lastPage }">
-				<div style="margin-left: 90%;" class="borderIb">
-					<a href="AqnaPage?page=${currentpage + 1 }"><div>다음</div></a>
-				</div>
-			</c:if>	
 				
 		</article>
 		

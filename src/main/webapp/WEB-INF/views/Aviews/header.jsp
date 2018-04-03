@@ -40,27 +40,26 @@ margin: 4px;
 <header style="margin-bottom: 100px;">
 
   <div class="w3-bar w3-white w3-wide w3-padding w3-card w3-top">
-    <a href="/bigstar" class="w3-bar-item w3-button"><b>Shop</b> Maker</a>
+    <a href="/bigstar" class="w3-bar-item"><img alt="logo" src="/bigstar/resources/img/logo.jpg"></a>
     <!--추가 페이지 업로드시 바뀔 부분-->
     <div class="w3-right w3-hide-small">
-      <a href="#" class="w3-bar-item w3-button">Projects</a>
-      <a href="#" class="w3-bar-item w3-button">About</a>
-      <a href="#" class="w3-bar-item w3-button">Contact</a>
-    </div>
-    <c:if test="${Amember == null }">
-				<a href="loginPage">로그인하기</a>
-			</c:if>
+      <a href="#" class="w3-bar-item w3-button">BigStar</a>
+      <a href="AqnaPage" class="w3-bar-item w3-button">문의하기</a>
+      <a href="AnoticeList" class="w3-bar-item w3-button">공지사항</a>
+      <a href="ApurchasePage" class="w3-bar-item w3-button">상품결제</a>
+      <c:if test="${Amember == null }"><a href="loginPage" class="w3-bar-item w3-button">로그인하기</a></c:if>
 	
-			<c:if test="${Amember != null }">
-				<a>${Amember.id }로그인 중</a><br>
-				<a href="Logout">로그아웃</a>
-			</c:if>
+	  <c:if test="${Amember != null }">
+		<a class="w3-bar-item w3-button" href="Logout">로그아웃</a>
+	  </c:if>
+      
+    </div>
+
 			
 			
 			
 			<br>
-			<a href="/bigstar/">홈으로</a>
-  </div>
+  	</div>
   
   
 </header>
