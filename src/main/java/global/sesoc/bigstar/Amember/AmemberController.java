@@ -38,6 +38,14 @@ public class AmemberController {
 		return "Aviews/Amember/AsignupPage";
 	}
 	
+	@RequestMapping(value = "Logout", method = RequestMethod.GET)
+	public String Logout(HttpSession session) {
+		
+		session.removeAttribute("Amember");
+		
+		return "home";
+	}
+	
 	@RequestMapping(value = "AsignupReq", method = RequestMethod.GET)
 	 public String AsignupReq(String id, String password, String emailA
 	         , String emailB, String name, String hpnumber, String addressA

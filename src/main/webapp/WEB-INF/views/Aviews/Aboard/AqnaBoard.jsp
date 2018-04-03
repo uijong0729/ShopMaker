@@ -4,9 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/main.css?ver=2"/> 
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/eui_board.css?ver=2"/> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>빅스타 QnA</title>
+
+
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js">
 </script>
 <script>
@@ -154,7 +157,6 @@ function qnaPage(page){
 		.borderIb{
 		
 		display: inline-block;
-		border: 1px dotted black;
 		margin: 4px;
 		
 		}
@@ -162,7 +164,6 @@ function qnaPage(page){
 		.borderI{
 		
 		display: inline-block;
-		border: 1px dotted black;
 		width: 100%;
 		margin: 4px;
 		
@@ -175,13 +176,15 @@ function qnaPage(page){
 	<header>
 		<%@ include file="../header.jsp" %>
 	</header>
-		<article class="borderIb" style="width: 55%;">
+	
+	
+		<article class="main borderIb" style="width: 55%;">
 			<table class="borderIb">
 				<tr>
-					<th>글 번호</th>
-					<th style="width: 50%;">제목</th>
-					<th>작성자</th>
-					<th style="width: 30%;">문의날짜</th>
+					<th class="th10">글 번호</th>
+					<th class="title th40">제목</th>
+					<th class="th10">작성자</th>
+					<th class="th20">문의날짜</th>
 					<!-- 내용, 감추기/보이기, 답글, 답변날짜-->
 				</tr>
 			

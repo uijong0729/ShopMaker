@@ -48,13 +48,16 @@ margin: 4px;
       <a href="#" class="w3-bar-item w3-button">Contact</a>
     </div>
     <c:if test="${Amember == null }">
-				<a href="loginPage">로그인페이지</a>
+				<a href="loginPage">로그인하기</a>
 			</c:if>
 	
 			<c:if test="${Amember != null }">
 				<a>${Amember.id }로그인 중</a><br>
-				<a href="loginPage">다시 로그인페이지로</a>
+				<a href="Logout">로그아웃</a>
 			</c:if>
+			
+			
+			
 			<br>
 			<a href="/bigstar/">홈으로</a>
   </div>
