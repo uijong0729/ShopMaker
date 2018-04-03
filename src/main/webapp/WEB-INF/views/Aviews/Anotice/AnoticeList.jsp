@@ -23,18 +23,14 @@
 	}
 
 </script>
-<style type="text/css">
-	.borderI {
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/main.css?ver=2"/> 
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/eui_board.css?ver=2"/> 
 </head>
 <body>
 
-	<header>
+	<%-- <header>
 		<%@ include file="../header.jsp" %>
-	</header>
+	</header> --%>
 	
  <br><br><br>
 <h2>[ 공지사항 게시판 ]</h2>
@@ -110,9 +106,9 @@
 
 <br><br><br>
 
- 	<footer>
+ 	<%-- <footer>
 		<%@ include file="../footer.jsp" %>
-	</footer>
+	</footer> --%>
 	
 </body>
 </html>
