@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+table
+{
+	border-right: 1px solid #99f;
+    border-bottom: 1px solid #99f;
+    border-top: 1px solid #55a;
+    border-left: 1px solid #55a;
+}
+
+th
+{
+	border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    background: #eee;
+}
+
+td
+{
+    background: #f2f2ff;
+}
+
+.th10
+{
+	width: 10%;
+}
+
+.th20
+{
+	width: 20%;
+}
+
+.th30
+{
+	width: 30%;
+}
+
+
+.th40
+{
+	width: 40%;
+}
+
+.th60
+{
+	width: 60%;
+}
+
+.title:hover
+{
+	color:#000;
+    background-color:#ccc
+}
