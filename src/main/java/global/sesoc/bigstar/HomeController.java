@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import global.sesoc.bigstar.dao.AcomponentDAO;
+import global.sesoc.bigstar.dao.BproducttableDAO;
 
 /**
  * Handles requests for the application home page.
@@ -29,8 +29,14 @@ public class HomeController {
 	AnoticeDAO dao;*/
 /*	@Autowired
 	AtemplateDAO dao;*/
+/*	@Autowired
+	AcomponentDAO dao;*/
+	/*@Autowired
+	BcarttableDAO dao;*/
+	/*@Autowired
+	BcustomerDAO dao;*/
 	@Autowired
-	AcomponentDAO dao;
+	BproducttableDAO dao;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -48,7 +54,9 @@ public class HomeController {
 		//System.out.println(dao.selectamember(0).toString());
 		//System.out.println(dao.selectaquestion(3).toString());
 		//System.out.println(dao.selectanotice(4).toString());
-		System.out.println(dao.selectacomponent(1).toString());
+		//System.out.println(dao.selectacomponent(1).toString());
+		//System.out.println(dao.selectbcustomer(1).toString());
+		System.out.println(dao.selectbproducttable(1).toString());
 		return "home";
 	}
 	
