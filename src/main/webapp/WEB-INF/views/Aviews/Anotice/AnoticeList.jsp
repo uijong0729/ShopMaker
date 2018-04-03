@@ -23,6 +23,12 @@
 	}
 
 </script>
+<style type="text/css">
+	.borderI {
+		width: 100%;
+		height: 100%;
+	}
+</style>
 </head>
 <body>
 
@@ -61,17 +67,33 @@
 
 <br>
 
-<%-- <div>
-	<a href="javascript:pagingFormSubmit(${navi.currentPage - 5})">◁◁</a>
-	<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a>
-		<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
-		<c:if test="${counter == navi.currentPage}"><b></c:if>
-		<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>
-		<c:if test="${counter == navi.currentPage}"></b></c:if>
+<div>
+	<div style="text-align: center;" class="borderI">
+		<c:if test="${currentpage > 1 }">
+			<div style="text-align: center;" class="borderIb">
+				<a href="AnoticeList?page=${currentpage - 1 }"><div>이전</div></a>	
+			</div>
+		</c:if>
+		
+		<c:forEach varStatus="s" begin="1" end="${countNoticeList }" step="10">
+			<!-- 해당 페이지의 링크 -->
+			<c:if test="${s.count != currentpage }">
+				<a href="AnoticeList?page=${s.count}">${s.count}</a>
+		</c:if>
+		
+		<!-- 해당페이지이면 링크 없애기 -->
+		<c:if test="${s.count == currentpage }">
+			<b>[${s.count }]</b>
+		</c:if>	
 		</c:forEach>
-	<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">▶</a>
-	<a href="javascript:pagingFormSubmit(${navi.currentPage - 5})">▷▷</a>
-</div> --%>
+		
+		<c:if test="${currentpage < lastPage }">
+		<div style="margin-left: 90%;" class="borderIb">
+		<a href="AnoticeList?page=${currentpage + 1 }"><div>다음</div></a>
+		</div>
+		</c:if>	
+	</div>	
+</div>
 
 <br>
 	<%-- <form action="list" method="GET" id="pagingForm"><!-- 똑같은 함수 컨트롤러에 있는 list을 같이 이용하려면 이곳도 GET방식으로 만들어야 한답 -->

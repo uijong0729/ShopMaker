@@ -4,9 +4,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.bigstar.dao.AnoticeDAO;
 import global.sesoc.bigstar.vo.Anotice;
+import global.sesoc.bigstar.vo.Aquestion;
 
 @Controller
 public class AnoticeController {
@@ -35,16 +38,32 @@ public class AnoticeController {
 	
 	//공지사항 게시판 페이지 이동 및 리스트 불러오기
 	@RequestMapping(value = "AnoticeList", method = RequestMethod.GET)
-	public String AnoticeList(Model model, HttpSession session) {
+	public String AnoticeList(Model model, HttpSession session, String page) {
+		//페이지
+		int currentPage = 1;
+		int pagePerList = 10;
+		int offset = 0;
+		int countNoticeList = ANdao.getNoticeCount().size();
+		
+		int lastPage = (int)Math.ceil(((double)countNoticeList / 10.0));
+		
+		if(page != null)
+		{
+			currentPage = Integer.parseInt(page);
+		}
+		
+		offset = (pagePerList * currentPage) - pagePerList;
+		RowBounds rb = new RowBounds(offset, pagePerList);
+		
+		ArrayList<Anotice> noticeList= ANdao.selectAllNotice(rb);
 		
 		logger.info("공지사항 게시판 이동");
-		ArrayList<Anotice> noticelist = ANdao.selectAllanotice();
-		session.setAttribute("noticelist", noticelist);
-		model.addAttribute("noticelist", noticelist);
+		session.setAttribute("noticelist", noticeList);
+		model.addAttribute("noticelist", noticeList);
+		model.addAttribute("currentpage", currentPage);
+		model.addAttribute("countNoticeList", countNoticeList);
+		model.addAttribute("lastPage", lastPage);
 		
-		for (Anotice anotice : noticelist) {
-			System.out.println(anotice);
-		}
 		
 		return "Aviews/Anotice/AnoticeList";
 	}
@@ -97,5 +116,7 @@ public class AnoticeController {
 		
 		return "Aviews/Anotice/AnoticeReadForm";
 	}
+	
+	
 	
 }

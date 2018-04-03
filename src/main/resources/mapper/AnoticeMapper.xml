@@ -35,6 +35,14 @@
 		)
 	</insert>
 	
+	<select id="getNoticeCount" resultType="Anotice">
+		select * from ANOTICETABLE
+	</select>
+	
+	<select id="selectAllNotice" resultType="Anotice">
+		select * from ANOTICETABLE order by ndate desc
+	</select>
+	
 	
 	
 </mapper>
