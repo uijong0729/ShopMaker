@@ -38,16 +38,7 @@ function payment4() {
 <body>
 
 <header class="w3-top">
-
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="/main1" class="w3-bar-item w3-button"><b>Shop</b> Maker</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="#" class="w3-bar-item w3-button">Projects</a>
-      <a href="#" class="w3-bar-item w3-button">About</a>
-      <a href="#" class="w3-bar-item w3-button">Contact</a>
-    </div>
-  </div>
+	<%@ include file="../header.jsp" %>
 </header>
 <br><br><br><br>
 <div class="services">
@@ -137,9 +128,8 @@ function payment4() {
 
 <br><br><br>
 
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Footer</p>
-</footer>
-
+	<footer>
+		<%@ include file="../footer.jsp" %>
+	</footer>
 </body>
 </html>

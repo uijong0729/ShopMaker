@@ -77,9 +77,9 @@
   <!-- <img class="w3-image" src="dog.jpg" alt="Architecture" width="1500" height="800"> -->
   <div class="gallery">
                      <ul>
-                          <li><a href="#"><img class="w3-image" src="./resources/image/c1.jpg" alt='' width="1500" height="800"/></a></li>
-                          <li><a href="#"><img class="w3-image" src="./resources/image/c2.jpg" alt='' width="1500" height="800" /></a></li>
-                          <li><a href="#"><img class="w3-image" src="./resources/image/c3.jpg" alt='' width="1500" height="800"/></a></li>
+                          <li><a href="#"><img class="w3-image" src="./resources/img/c1.jpg" alt='' width="1500" height="800"/></a></li>
+                          <li><a href="#"><img class="w3-image" src="./resources/img/c2.jpg" alt='' width="1500" height="800" /></a></li>
+                          <li><a href="#"><img class="w3-image" src="./resources/img/c3.jpg" alt='' width="1500" height="800"/></a></li>
                     </ul>
              </div>
   <div class="w3-display-middle w3-margin-top w3-center">
@@ -100,7 +100,7 @@
       <div class="w3-display-container">
         <div class="container">
         <div class="w3-display-topleft w3-black w3-padding">Woman Clothes</div>
-        <img src="./resources/image/c2.jpg" alt="House" style="width:100%" class="image">
+        <img src="./resources/img/c2.jpg" alt="House" style="width:100%" class="image">
         <div class="middle">
     		<div class="text" onclick="template1()">Start now</div>
   		</div>
@@ -110,19 +110,19 @@
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Man clothes</div>
-        <img src="./resources/image/c2.jpg" alt="House" style="width:100%">
+        <img src="./resources/img/c2.jpg" alt="House" style="width:100%">
       </div>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Accessory</div>
-        <img src="./resources/image/c2.jpg" alt="House" style="width:100%">
+        <img src="./resources/img/c2.jpg" alt="House" style="width:100%">
       </div>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Hat</div>
-        <img src="./resources/image/c2.jpg" alt="House" style="width:100%">
+        <img src="./resources/img/c2.jpg" alt="House" style="width:100%">
       </div>
     </div>
   </div>
@@ -137,28 +137,28 @@
 
   <div class="w3-row-padding w3-grayscale">
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="./resources/image/c2.jpg" alt="John" style="width:100%">
+      <img src="./resources/img/c2.jpg" alt="John" style="width:100%">
       <h3>1</h3>
       <p class="w3-opacity">hh & 1</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="./resources/image/c2.jpg" alt="Jane" style="width:100%">
+      <img src="./resources/img/c2.jpg" alt="Jane" style="width:100%">
       <h3>2</h3>
       <p class="w3-opacity">2</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="./resources/image/c2.jpg" alt="Mike" style="width:100%">
+      <img src="./resources/img/c2.jpg" alt="Mike" style="width:100%">
       <h3>3</h3>
       <p class="w3-opacity">3</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
       <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="./resources/image/c2.jpg" alt="Dan" style="width:100%">
+      <img src="./resources/img/c2.jpg" alt="Dan" style="width:100%">
       <h3>4</h3>
       <p class="w3-opacity">4</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
