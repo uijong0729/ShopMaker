@@ -16,6 +16,7 @@
     width: 100%;
 }
 
+
 .image {
   opacity: 1;
   display: block;
