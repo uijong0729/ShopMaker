@@ -85,9 +85,9 @@
 </div>
 <div style="text-align: center;">
 	<div style="display: inline-block;">
-	<c:if test="${Amember.id eq 'bigstar'}">
-		<input type="button" value="공지사항 작성" onclick="writeForm()">
-	</c:if>
+		<c:if test="${Amember.id eq 'bigstar'}">
+			<input type="button" value="공지사항 작성" onclick="writeForm()">
+		</c:if>
 	</div>
 </div>
 <br>
