@@ -6,6 +6,65 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title> list </title>
+<style type="text/css">
+
+		.borderIb{
+		
+		display: inline-block;
+		margin: 4px;
+		background: rgb(38, 48, 52);
+ 		border-radius: 0.25em;
+  		border-collapse: collapse;
+  		margin: 1em;		
+		
+		}
+		
+		th {
+  		border-bottom: 1px solid #364043;
+  		color: #fff;
+  		font-size: 0.85em;
+  		font-weight: 600;
+  		padding: 0.5em 1em;
+  		text-align: left;
+  		text-align: center;		
+		}
+		
+		td {
+		color: #fff;
+    	text-align: center;
+		}
+		
+		.th10
+		{
+		width: 10%;
+		}
+
+		.th20
+		{
+		width: 20%;
+		}
+
+		.th30
+		{
+		width: 30%;
+		}
+
+
+		.th40
+		{
+		width: 40%;
+		}
+		
+		tr:hover {
+  		background: #014055;
+		}
+		
+		tr {
+  		transition: background 0.25s ease;
+		}
+		
+		
+</style>
 <script type="text/javascript">
 	function writeForm(){
 		location.href = "AnoticeWriteForm";
@@ -22,26 +81,18 @@
 		location.href = "../";
 	}
 
-</script>
-<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/main.css?ver=3"/> 
-<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/eui_board.css?ver=3"/> 
+</script> 
 </head>
 <body>
 
 	<header>
 		<%@ include file="../header.jsp" %>
 	</header>
-	
- <br><br><br>
+
 <h2 style="text-align: center;">[ ShopMaker 공지사항 ]</h2>
-<br>
 
-
-
-<br>
-<br>
 <div style="text-align: center;">
-	<table style="display: inline-block;">
+	<table class="borderIb">
 		<tr>
 			<th class="th10">번호</th>
 			<th class="th30">제목</th>
@@ -59,7 +110,7 @@
 	</c:forEach>
 	</table>
 	
-	<br>
+
 	
 	<div style="display: inline-block;  margin-left: 20%; margin-right: 20%; width: 50%;">
 		<div style="text-align: center; display: block;">
@@ -68,7 +119,7 @@
 			
 			<c:forEach varStatus="s" begin="1" end="${countNoticeList }" step="10">
 				<!-- 해당 페이지의 링크 -->
-				<c:if test="${s.count != currentpage }">
+			<c:if test="${s.count != currentpage }">
 					<a href="AnoticeList?page=${s.count}">${s.count}</a>
 			</c:if>
 			
@@ -83,6 +134,7 @@
 	
 	
 </div>
+
 <div style="text-align: center;">
 	<div style="display: inline-block;">
 	<c:if test="${Amember.id eq 'bigstar'}">
@@ -91,7 +143,7 @@
 	</div>
 </div>
 <br>
-<br><br><br>
+
 
     <footer>
 		<%@ include file="../footer.jsp" %>

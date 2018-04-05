@@ -41,7 +41,7 @@ margin: 4px;
 <body>
 <br>
 <br>
-<footer class="w3-center w3-black w3-padding-16" style="bottom: 0; margin-top: 150px;">
+<footer class="w3-center w3-black w3-padding-16" style="bottom: 0; margin-top: 110px;">
   <p>Footer</p>
 </footer>
 
