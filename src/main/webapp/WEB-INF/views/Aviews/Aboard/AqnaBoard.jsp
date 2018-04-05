@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/main.css?ver=2"/> 
-<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/eui_board.css?ver=2"/> 
+<!-- <link rel="stylesheet" type="text/css" href="/bigstar/resources/css/main.css?ver=2"/>  -->
+<!-- <link rel="stylesheet" type="text/css" href="/bigstar/resources/css/eui_board.css?ver=2"/>  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>빅스타 QnA</title>
 
@@ -56,19 +56,19 @@ function openContent(){
         	str.append('<th style="width: 20%;">글 제목</th>');
         	str.append('<td style="width: 48%;">' + result.qtitle +'</td>');
         str.append('</tr><tr>');
-	    	str.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+	    	str.append('<td colspan="2"><textarea cols="50" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 	    
 	    if(result.qreply == null || result.qreply == '')
 	    {
 	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply"></textarea></td></tr>');
 	    	//str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
-	    	sbAns.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
+	    	sbAns.append('<input id="AqnaReplySubmit" type="button" class="button" value="확인"> <input id="AqnaReplyDelete" class="button" type="button" value="삭제">');
 	    }
 	    else
 	    {
 	    	str.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
 	    	//str.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
-	    	sbAns.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
+	    	sbAns.append('<input id="AqnaReplySubmit" type="button" class="button" value="확인"> <input id="AqnaReplyDelete" class="button" type="button" value="삭제">');
 	    }
 	
         $('#readQna').html(str.toString());
@@ -91,10 +91,10 @@ function openContent(){
 			        	sb.append('<th style="width: 20%;">글 제목</th>');
 			        	sb.append('<td style="width: 48%;">' + result.qtitle +'</td>');
 			        sb.append('</tr><tr>');
-			        sb.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<td colspan="2"><textarea cols="50" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply">'+ result.qreply +'</textarea></td></tr>');
 			        //sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
-	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
+	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" class="button" value="확인"> <input id="AqnaReplyDelete" type="button"  class="button" value="삭제">');
 	    			
 				  $('#readQna').html(sb.toString());
 				  $('#answerQna').html(sbAnswer.toString());
@@ -121,10 +121,10 @@ function openContent(){
 	    			sb.append('<th style="width: 20%;">글 제목</th>');
 	    			sb.append('<td style="width: 48%;">' + result.qtitle +'</td>');
 			        sb.append('</tr><tr>');
-			        sb.append('<td colspan="2"><textarea cols="50" rows="20" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
-			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="70" id="AqnaReply"></textarea></td></tr>');
+			        sb.append('<td colspan="2"><textarea cols="50" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply"></textarea></td></tr>');
 			        //sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
-	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" value="확인"> <input id="AqnaReplyDelete" type="button" value="삭제">');
+	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" class="button" value="확인"> <input id="AqnaReplyDelete" class="button" type="button" value="삭제">');
 				  
 	    			$('#readQna').html(sb.toString());
 				    $('#answerQna').html(sbAnswer.toString());
@@ -146,7 +146,7 @@ function qnaPage(page){
 
 	<style type="text/css">
 		
-		.button{
+		.clcik{
 		
 		cursor: pointer;
 		text-align: center;
@@ -155,10 +155,39 @@ function qnaPage(page){
 		}
 		
 		.borderIb{
+		display: inline-block;
+		margin: 4px;
+		background: rgb(38, 48, 52);
+ 		border-radius: 1em;
+  		border-collapse: collapse;
+  		margin: 1em;		
+		}
+		
+		textarea {
 		
 		display: inline-block;
 		margin: 4px;
+		background: rgb(38, 48, 52);
+ 		border-radius: 0.25em;
+  		border-collapse: collapse;
+  		margin: 1em;	
+  		color: #fff;  
+  		
+		}
 		
+		th {
+  		border-bottom: 1px solid #364043;
+  		color: #fff;
+  		font-size: 0.85em;
+  		font-weight: 600;
+  		padding: 0.5em 1em;
+  		text-align: left;
+  		text-align: center;		
+		}
+		
+		td {
+		color: #fff;    
+    	text-align: center;
 		}
 		
 		.borderI{
@@ -169,6 +198,58 @@ function qnaPage(page){
 		
 		}
 		
+		.th10
+		{
+		width: 10%;
+		}
+
+		.th20
+		{
+		width: 20%;
+		}
+
+		.th30
+		{
+		width: 30%;
+		}
+
+
+		.th40
+		{
+		width: 40%;
+		}
+
+		.th60
+		{
+		width: 60%;
+		}
+		
+		tr:hover {
+  		background: #014055;
+		}
+		
+		tr {
+  		transition: background 0.25s ease;
+		}
+		
+		.button
+		{
+		border-radius:34px;
+		border:5px solid rgba(255, 255, 255, 0.07);
+		color:#ffffff ;
+		font-size:10px;
+		margin-top:15px;
+		text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.15);
+		cursor:pointer;
+		display:inline-block;
+		display:inline-block;
+		padding:5px 10px;
+		background: none repeat scroll 0% 0% ;
+		border-radius:20px;
+		box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.3) inset, 0px 2px 0px rgba(255, 255, 255,0.1) inset;
+		}
+
+		
 	</style>
 </head>
 <body>
@@ -178,7 +259,7 @@ function qnaPage(page){
 	</header>
 	
 	
-		<article class="main borderIb" style="width: 55%;">
+		<article class="borderIb" style="width: 55%;">
 			<table class="borderIb">
 				<tr>
 					<th class="th10">글 번호</th>
@@ -201,7 +282,7 @@ function qnaPage(page){
 						<c:if test="${ql.qvisible == 1 }">
 							<!-- 로그인 당사자일 경우 비밀글 접근-->
 							<c:if test="${ql.membercode == Amember.membercode}">
-								<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle } 
+								<td value="${ql.qtablecode}" class="click clickQna" style="width: 50%; text-align: center;">${ql.qtitle } 
 									<span style="color: red;">(비밀글)</span>
 								</td>
 							</c:if>
@@ -216,7 +297,7 @@ function qnaPage(page){
 						
 						<!-- 일반글 접근 -->
 						<c:if test="${ql.qvisible == 0 }">
-							<td value="${ql.qtablecode}" class="button clickQna" style="width: 50%; text-align: center;">${ql.qtitle } </td>
+							<td value="${ql.qtablecode}" class="click clickQna" style="width: 50%; text-align: center;">${ql.qtitle } </td>
 						</c:if>	
 						
 						<td style="width: 10%; text-align: center;">${ql.membercode }</td>
@@ -244,13 +325,15 @@ function qnaPage(page){
 				
 				<input name="keyword" id="keyword" value="${keyword }">
 				
-				<input type="submit" id="search" value="검색"> 
+				<input type="submit" id="search" value="검색" class="button"> 
+				
+				<c:if test="${Amember != null }">	
+			<div id="writeQna" class="button borderIb">글쓰기</div>
+		</c:if>	
 			</form>
 		</div>
 		
-		<c:if test="${Amember != null }">	
-			<div id="writeQna" class="button borderIb">글쓰기</div>
-		</c:if>	
+		
 
 			
 				<div style="text-align: center;" class="borderI">
@@ -258,28 +341,27 @@ function qnaPage(page){
 					<c:forEach varStatus="s" begin="1" end="${countQnaList }" step="10">
 						<!-- 해당 페이지의 링크 -->
 						<c:if test="${s.count != currentpage }">
-							<a href="#" onclick="javascript:qnaPage(${s.count });">[${s.count }]</a>
+							<a href="#" onclick="javascript:qnaPage(${s.count });" style="color: #fff">[${s.count }]</a>
 						</c:if>
 						
 						<!-- 해당페이지이면 링크 없애기 -->
 						<c:if test="${s.count == currentpage }">
-							<b>[${s.count }]</b>
+							<b style="color: #fff">[${s.count }]</b>
 						</c:if>	
-					</c:forEach>
-		
+					</c:forEach>		
 				</div>	
 					
 				
 		</article>
 		
 		<div class="borderIb" style="width: 40%;">
-			<div id="readQna" class="borderIb" style="width: 40%;">
+			<div id="readQna" class="borderIb">
 			 
 			
 			</div>
 			
 			<c:if test="${Amember.id eq 'bigstar' }">
-				<div id="answerQna" class="borderIb" style="width: 40%;">
+				<div id="answerQna" class="borderIb">
 					
 					
 				</div>
