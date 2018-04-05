@@ -1,6 +1,7 @@
 package global.sesoc.bigstar;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
+import global.sesoc.bigstar.vo.Bproducttable;
 
 /**
  * Handles requests for the application home page.
@@ -36,16 +39,13 @@ public class HomeController {
 	/*@Autowired
 	BcustomerDAO dao;*/
 	/*@Autowired
-	BproducttableDAO dao;*/
+	BproducttableDAO Bpdao;*/
 	/*@Autowired
 	BnoticetableDAO dao;*/
 	/*@Autowired
 	BordertableDAO dao;*/
 	/*@Autowired
 	BquestiontableDAO dao;*/
-	
-	/*Merge Commits*/
-	
 	@Autowired
 	BreviewtableDAO dao;
 	/**
@@ -85,12 +85,6 @@ public class HomeController {
 	public String goBmain() {
 		
 		return "Bviews/Bmain/Bmain";
-	}
-	
-	@RequestMapping(value="goBproductdetail", method=RequestMethod.GET)
-	public String goBprductdetail() {
-		
-		return "Bviews/Bproduct/Bproductdetail";
 	}
 	
 	
