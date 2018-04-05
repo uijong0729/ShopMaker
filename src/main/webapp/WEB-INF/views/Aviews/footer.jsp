@@ -45,6 +45,7 @@ margin: 4px;
   <p>Footer</p>
   
   <a href="goBmain">[임시] Bmain페이지</a>
+  <a href="goBproductdetail">[임시] Bproductdetail페이지</a>
 </footer>
 
 
