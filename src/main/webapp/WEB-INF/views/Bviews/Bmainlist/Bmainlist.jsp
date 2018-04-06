@@ -43,7 +43,7 @@
 			});
 			function check() {
 				var rows = document.getElementById('rows').value;
-				location.href="Bmainlist?rows=" + rows;
+				$('#Bcenter').load("Bmainlist?rows=" + rows);
 			}
 		</script>
 	</head>
@@ -53,8 +53,6 @@
 			<div id="div${vars.index + 1}" class="div">
 				<img src="http://post.phinf.naver.net/20150916_230/2051426_1442355159623nuW9g_JPEG/mug_obj_201509160712418552.jpg" style="width: 200px; height: 200px;"><br>
 				상품번호 : ${b.productcode}<br>상품명 : ${b.productname}<br>가격 : ${b.productprice}
-				<c:if test="${(vars.index + 1) % param.rows == '0'}">
-				</c:if> 
 			</div>
 		</c:forEach>
 		

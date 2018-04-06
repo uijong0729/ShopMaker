@@ -37,8 +37,11 @@ function Bmm(){
 function Bsm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li style="cursor: pointer;"><a href="Bmainlist">상품리스트 관리</a></li></ul>');
+		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li></ul>');
 		onOff = 1;
+		$('#Bmainlist').on('click', function() {
+			$('#Bcenter').load('Bmainlist?rows=4');
+		});
 	}
 	else
 	{
