@@ -31,6 +31,7 @@ public class AnoticeController {
 	@Autowired
 	AnoticeDAO ANdao;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Autowired
 	AmemberDAO AMdao;
 
@@ -167,6 +168,8 @@ public class AnoticeController {
 
 	// 공지사항 게시판 페이지 이동 및 리스트 불러오기
 =======
+=======
+>>>>>>> master
 	
 	//공지사항 게시판 페이지 이동 및 리스트 불러오기
 >>>>>>> master

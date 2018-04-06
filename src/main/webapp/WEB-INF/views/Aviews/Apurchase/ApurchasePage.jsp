@@ -104,6 +104,9 @@ function payment4() {
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 }
 
