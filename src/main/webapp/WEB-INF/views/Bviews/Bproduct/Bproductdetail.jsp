@@ -8,15 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- A헤더 -->
-	<header>
-		<%@ include file="../../Aviews/header.jsp" %>
-	</header>
 	
-	<!-- 편집메뉴 -->
-	<aside style="display: inline;">
-		<%@ include file="../Bsidebar.jsp" %>
-	</aside>
+	<h1>여기여기</h1>
 	
 	
 	

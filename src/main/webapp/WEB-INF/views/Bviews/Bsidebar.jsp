@@ -19,7 +19,7 @@ $(document).ready(function(){
 function Bmm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Blogin" style="cursor: pointer;">마이페이지 양식</li></ul>');
+		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Bmypage" style="cursor: pointer;">마이페이지 양식</li></ul>');
 		onOff = 1;
 			$('#Bregist').on('click', function(){
 				$('#Bcenter').load('Bregist');
@@ -27,6 +27,9 @@ function Bmm(){
 			$('#Blogin').on('click', function(){
 				$('#Bcenter').load('Blogin');
 			});
+			$('#Bmypage').on('click', function(){
+				$('#Bcenter').load('Bmypage');
+			}); 
 	}
 	else
 	{
@@ -37,8 +40,14 @@ function Bmm(){
 function Bsm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li style="cursor: pointer;"><a href="Bmainlist">상품리스트 관리</a></li></ul>');
+		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li><li id="goBproductdetail" style="cursor: pointer;">상품상페이지 관리</li></ul>');
 		onOff = 1;
+		$('#Bmainlist').on('click', function() {
+			$('#Bcenter').load('Bmainlist?rows=4');
+		});
+		$('#goBproductdetail').on('click', function() {
+			$('#Bcenter').load('goBproductdetail');
+		});
 	}
 	else
 	{
