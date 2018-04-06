@@ -68,7 +68,7 @@
       <a href="#contact" class="w3-bar-item w3-button">Contact</a>
       <a href="AqnaPage" class="w3-bar-item w3-button">Q&A</a>
       <a href="AnoticeList" class="w3-bar-item w3-button">Notice</a>
-      <a href="ApurchasePage" class="w3-bar-item w3-button">Notice</a>
+      <a href="ApurchasePage" class="w3-bar-item w3-button">Purchase</a>
     </div>
   </div>
 </header>
@@ -187,8 +187,8 @@
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Footer</p>
+<footer>
+	<%@ include file="./Aviews/footer.jsp" %>
 </footer>
 
 <script type="text/javascript">

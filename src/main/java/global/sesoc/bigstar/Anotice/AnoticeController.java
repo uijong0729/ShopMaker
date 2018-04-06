@@ -30,6 +30,7 @@ public class AnoticeController {
 
 	@Autowired
 	AnoticeDAO ANdao;
+<<<<<<< HEAD
 	@Autowired
 	AmemberDAO AMdao;
 
@@ -165,6 +166,10 @@ public class AnoticeController {
 	}
 
 	// 공지사항 게시판 페이지 이동 및 리스트 불러오기
+=======
+	
+	//공지사항 게시판 페이지 이동 및 리스트 불러오기
+>>>>>>> master
 	@RequestMapping(value = "AnoticeList", method = RequestMethod.GET)
 	public String AnoticeList(Model model, HttpSession session, String page) {
 		// 페이지
