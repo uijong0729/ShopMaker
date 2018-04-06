@@ -28,7 +28,7 @@ public Amember(String membercode, String id, String name, String pw, String hpnu
 	this.mailaddress = mailaddress;
 	this.registrationdate = registrationdate;
 	this.lastpaymentdate = lastpaymentdate;
-	this.paymentexpirationdate = paymentexpirationdate;
+	this.paymentexpirationdate = paymentexpirationdate.substring(0, 10);
 	this.templatecode = templatecode;
 	this.memberlevel = memberlevel;
 }

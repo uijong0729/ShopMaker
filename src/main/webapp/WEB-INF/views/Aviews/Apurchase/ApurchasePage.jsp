@@ -19,17 +19,58 @@ function template3() {
 	document.getElementById("template1").innerHTML="template3";
 }
 
-function payment1() {
-	document.getElementById("payment").innerHTML="15,000";
+function payment1(date) {
+	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	$.ajax({
+		url: 'caldate',
+		type: 'post',
+		data:{date: date},
+		dataType: 'text',
+		success: function(value){
+			document.getElementById("payment").innerHTML+=value;
+		},
+	
+	});
+	
 }
-function payment2() {
-	document.getElementById("payment").innerHTML="30,000";
+function payment2(date) {
+	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	$.ajax({
+		url: 'caldate2',
+		type: 'post',
+		data:{date: date},
+		dataType: 'text',
+		success: function(value){
+			document.getElementById("payment").innerHTML+=value;
+		},
+	
+	});
 }
-function payment3() {
-	document.getElementById("payment").innerHTML="45,000";
+function payment3(date) {
+	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	$.ajax({
+		url: 'caldate3',
+		type: 'post',
+		data:{date: date},
+		dataType: 'text',
+		success: function(value){
+			document.getElementById("payment").innerHTML+=value;
+		},
+	
+	});
 }
-function payment4() {
-	document.getElementById("payment").innerHTML="60,000";
+function payment4(date) {
+	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	$.ajax({
+		url: 'caldate4',
+		type: 'post',
+		data:{date: date},
+		dataType: 'text',
+		success: function(value){
+			document.getElementById("payment").innerHTML+=value;
+		},
+	
+	});
 }
 
 </script>
@@ -47,6 +88,9 @@ function payment4() {
 <i class="icon-magic"></i>
 <img src="./resources/image/shirt2.png">
 </div>
+
+
+
 <h3><Span>Template1</span></h3>
 <p>
 <a class="button" onclick="template1()"><span>Pick</span></a>
@@ -85,7 +129,7 @@ function payment4() {
 <li>15,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment1()"><span>Start now</span></a>
+<a class="button" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 </p>
 </section>
 
@@ -95,7 +139,7 @@ function payment4() {
 <li>30,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment2()"><span>Start now</span></a>
+<a class="button" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 </p>
 </section>
 
@@ -105,7 +149,7 @@ function payment4() {
 <li>45,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment3()"><span>Start now</span></a>
+<a class="button" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 </p>
 </section>
 
@@ -115,7 +159,7 @@ function payment4() {
 <li>60,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment4()"><span>Start now</span></a>
+<a class="button" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 </p>
 </section>
 </div>
