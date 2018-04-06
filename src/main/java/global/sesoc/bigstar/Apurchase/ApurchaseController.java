@@ -30,6 +30,6 @@ public class ApurchaseController {
 		purchaseInfo.put("daysforValue", daysforValue);
 		
 		session.setAttribute("purchaseInfo", purchaseInfo);
-		return "Aviews/Apurchase/ApurchasePage";
+		return "Aviews/Apurchase/AkakaopayIndex";
 	}
 }

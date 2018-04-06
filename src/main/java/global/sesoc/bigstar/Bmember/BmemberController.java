@@ -28,14 +28,9 @@ public class BmemberController {
 		return "Bviews/Bmain/Blogin";
 	}
 	
-<<<<<<< HEAD:src/main/java/global/sesoc/bigstar/Bmember/Bmember.java
-
-=======
 	@RequestMapping(value="Bmypage", method = RequestMethod.GET)
 	public String Bmypage() {
 		return "Bviews/Bmain/Bmypage";
 	}
->>>>>>> master:src/main/java/global/sesoc/bigstar/Bmember/BmemberController.java
-	
 	
 }
