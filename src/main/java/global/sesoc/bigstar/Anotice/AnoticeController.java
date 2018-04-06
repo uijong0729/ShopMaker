@@ -33,13 +33,6 @@ public class AnoticeController {
 	@Autowired
 	AmemberDAO AMdao;
 
-	// 구매페이지 이동
-	@RequestMapping(value = "ApurchasePage", method = RequestMethod.GET)
-	public String purchasePage(Model model, HttpSession session) {
-
-		return "Aviews/Apurchase/ApurchasePage";
-	}
-
 	@ResponseBody
 	@RequestMapping(value = "caldate", method = RequestMethod.POST)
 	public String caldate(String date) {
