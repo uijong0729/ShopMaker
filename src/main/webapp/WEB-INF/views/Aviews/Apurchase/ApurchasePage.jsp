@@ -9,44 +9,50 @@
 <link rel="stylesheet" href="./resources/css/templatepay.css?ver=1">
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
+
+var template;
+var payment;
+var days;
+
 function template1() {
-	document.getElementById("template").innerHTML="template1";
+	template = document.getElementById("template").innerHTML="template1";
 	$('#templateforValue').val($('#template').text());
 	
 }
 function template2() {
-	document.getElementById("template").innerHTML="template2";
+	template = document.getElementById("template").innerHTML="template2";
 	$('#templateforValue').val($('#template').text());
 }
 function template3() {
-	document.getElementById("template").innerHTML="template3";
+	template = document.getElementById("template").innerHTML="template3";
 	$('#templateforValue').val($('#template').text());
 }
 
 function payment1() {
-	document.getElementById("payment").innerHTML="15,000";
-	document.getElementById("days").innerHTML="30";
+	payment = document.getElementById("payment").innerHTML="15,000";
+	days = document.getElementById("days").innerHTML="30";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
 }
 function payment2() {
-	document.getElementById("payment").innerHTML="30,000";
-	document.getElementById("days").innerHTML="60";
+	payment = document.getElementById("payment").innerHTML="30,000";
+	days = document.getElementById("days").innerHTML="60";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
+	confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	document.getElementById('purchaseInfo').submit();
 }
 function payment3() {
-	document.getElementById("payment").innerHTML="45,000";
-	document.getElementById("days").innerHTML="90";
+	payment = document.getElementById("payment").innerHTML="45,000";
+	days = document.getElementById("days").innerHTML="90";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
 }
 function payment4() {
-	document.getElementById("payment").innerHTML="60,000";
-	document.getElementById("days").innerHTML="180";
+	payment = document.getElementById("payment").innerHTML="60,000";
+	days = document.getElementById("days").innerHTML="180";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
