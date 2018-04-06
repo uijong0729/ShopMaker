@@ -87,7 +87,12 @@ public class HomeController {
 		return "Bviews/Bmain/Bmain";
 	}
 	
-
+	@RequestMapping(value="goBproductdetail", method=RequestMethod.GET)
+	public String productdetail() {
+		
+		return "Bviews/Bproduct/Bproductdetail";
+	}
+	
 	
 	
 }

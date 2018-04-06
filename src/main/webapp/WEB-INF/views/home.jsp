@@ -187,8 +187,8 @@
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Footer</p>
+<footer>
+	<%@ include file="./Aviews/footer.jsp" %>
 </footer>
 
 <script type="text/javascript">

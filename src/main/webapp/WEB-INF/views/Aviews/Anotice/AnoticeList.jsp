@@ -104,7 +104,6 @@
 		<tr>
 			<td>${notice.noticecode}</td>
 			<td><a href="AnoticeReadForm?noticecode=${notice.noticecode}">${notice.ntitle}</a></td>
-			<td>${notice.nhitup}</td>
 			<td>${notice.ndate}</td>
 		</tr>	
 	</c:forEach>

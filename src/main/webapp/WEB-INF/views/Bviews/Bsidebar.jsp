@@ -19,8 +19,14 @@ $(document).ready(function(){
 function Bmm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li style="cursor: pointer;">회원가입 양식</li><li style="cursor: pointer;">로그인 양식</li><li style="cursor: pointer;">마이페이지 양식</li></ul>');
+		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Blogin" style="cursor: pointer;">마이페이지 양식</li></ul>');
 		onOff = 1;
+			$('#Bregist').on('click', function(){
+				$('#Bcenter').load('Bregist');
+			});
+			$('#Blogin').on('click', function(){
+				$('#Bcenter').load('Blogin');
+			});
 	}
 	else
 	{
@@ -59,6 +65,7 @@ function Bsm(){
 			</ul>
 
 		</aside>
+		
 				
 			<div style="display: inline-block;" >
 				<div id="subMenu" ></div>
