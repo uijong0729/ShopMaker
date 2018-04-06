@@ -20,8 +20,16 @@ public class BproductController {
 	@RequestMapping(value = "Bmainlist", method = RequestMethod.GET)
 	public String goBmainlilst(Model model) {
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
-//		Bproducttable = Bpdao.selectAllBproducttable();
+		
+		for (int i = 1; i <= 40; i++) {
+			Bproducttable bp = new Bproducttable();
+			bp.setProductcode(Integer.toString(i));
+			bp.setProductname("product" + i);
+			bp.setProductprice(i * 1000);
+			Bproducttable.add(bp);
+		}
 		model.addAttribute("Bproducttable", Bproducttable);
+		model.addAttribute("rows", 4);
 		return "Bviews/Bmainlist/Bmainlist";
 	}
 }
