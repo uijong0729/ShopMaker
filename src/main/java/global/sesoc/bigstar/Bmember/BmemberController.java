@@ -16,7 +16,7 @@ import global.sesoc.bigstar.HomeController;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
 
 @Controller
-public class Bmember {
+public class BmemberController {
 	
 	@RequestMapping(value="Bregist", method = RequestMethod.GET)
 	public String Bregist() {
@@ -26,6 +26,11 @@ public class Bmember {
 	@RequestMapping(value="Blogin", method = RequestMethod.GET)
 	public String Blogin() {
 		return "Bviews/Bmain/Blogin";
+	}
+	
+	@RequestMapping(value="Bmypage", method = RequestMethod.GET)
+	public String Bmypage() {
+		return "Bviews/Bmain/Bmypage";
 	}
 	
 	
