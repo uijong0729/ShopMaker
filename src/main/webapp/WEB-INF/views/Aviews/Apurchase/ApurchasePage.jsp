@@ -29,7 +29,7 @@ function payment1() {
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
-	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate',
 		type: 'post',
@@ -39,7 +39,7 @@ function payment1() {
 	
 		},
 			document.getElementById("payment").innerHTML+=value;
-	});
+	}); */
 }
 function payment2() {
 	document.getElementById("payment").innerHTML="30,000";
@@ -47,7 +47,7 @@ function payment2() {
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
-	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate2',
 		type: 'post',
@@ -57,7 +57,7 @@ function payment2() {
 			document.getElementById("payment").innerHTML+=value;
 		},
 	
-	});
+	}); */
 }
 function payment3() {
 	document.getElementById("payment").innerHTML="45,000";
@@ -65,7 +65,7 @@ function payment3() {
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
-	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate3',
 		type: 'post',
@@ -75,7 +75,7 @@ function payment3() {
 			document.getElementById("payment").innerHTML+=value;
 		},
 	
-	});
+	}); */
 }
 function payment4() {
 	document.getElementById("payment").innerHTML="60,000";
@@ -83,7 +83,7 @@ function payment4() {
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	document.getElementById('purchaseInfo').submit();
-	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
+	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate4',
 		type: 'post',
@@ -93,7 +93,7 @@ function payment4() {
 			document.getElementById("payment").innerHTML+=value;
 		},
 	
-	});
+	}); */
 }
 
 </script>
