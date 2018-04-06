@@ -10,16 +10,25 @@
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
 function template1() {
-	document.getElementById("template1").innerHTML="template1";
+	document.getElementById("template").innerHTML="template1";
+	$('#templateforValue').val($('#template').text());
+	
 }
 function template2() {
-	document.getElementById("template1").innerHTML="template2";
+	document.getElementById("template").innerHTML="template2";
+	$('#templateforValue').val($('#template').text());
 }
 function template3() {
-	document.getElementById("template1").innerHTML="template3";
+	document.getElementById("template").innerHTML="template3";
+	$('#templateforValue').val($('#template').text());
 }
 
-function payment1(date) {
+function payment1() {
+	document.getElementById("payment").innerHTML="15,000";
+	document.getElementById("days").innerHTML="30";
+	$('#paymentforValue').val($('#payment').text());
+	$('#daysforValue').val($('#days').text());
+	document.getElementById('purchaseInfo').submit();
 	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate',
@@ -27,13 +36,17 @@ function payment1(date) {
 		data:{date: date},
 		dataType: 'text',
 		success: function(value){
-			document.getElementById("payment").innerHTML+=value;
+	
 		},
-	
+			document.getElementById("payment").innerHTML+=value;
 	});
-	
 }
-function payment2(date) {
+function payment2() {
+	document.getElementById("payment").innerHTML="30,000";
+	document.getElementById("days").innerHTML="60";
+	$('#paymentforValue').val($('#payment').text());
+	$('#daysforValue').val($('#days').text());
+	document.getElementById('purchaseInfo').submit();
 	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate2',
@@ -46,7 +59,12 @@ function payment2(date) {
 	
 	});
 }
-function payment3(date) {
+function payment3() {
+	document.getElementById("payment").innerHTML="45,000";
+	document.getElementById("days").innerHTML="90";
+	$('#paymentforValue').val($('#payment').text());
+	$('#daysforValue').val($('#days').text());
+	document.getElementById('purchaseInfo').submit();
 	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate3',
@@ -59,7 +77,12 @@ function payment3(date) {
 	
 	});
 }
-function payment4(date) {
+function payment4() {
+	document.getElementById("payment").innerHTML="60,000";
+	document.getElementById("days").innerHTML="180";
+	$('#paymentforValue').val($('#payment').text());
+	$('#daysforValue').val($('#days').text());
+	document.getElementById('purchaseInfo').submit();
 	document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate4',
@@ -166,14 +189,24 @@ function payment4(date) {
 
 <br><br><br><br>
 
-<div>Type: <p id="template1"></p></div>
-
-<div>Payment: <p id="payment"></p></div>
+<div>
+Type: <p id="template"></p>
+<br>
+Payment: <p id="payment"></p>
+<br>
+Days: <p id="days"></p>
+<br>
+</div>
 
 <br><br><br>
 
 	<footer>
 		<%@ include file="../footer.jsp" %>
 	</footer>
+	<form action="purchaseInfo" method="post" id="purchaseInfo">  <!-- id="tem1" -->
+		<input type="hidden" name="templateforValue" id="templateforValue">
+		<input type="hidden" name="paymentforValue" id="paymentforValue">
+		<input type="hidden" name="daysforValue" id="daysforValue">
+	</form>
 </body>
 </html>
