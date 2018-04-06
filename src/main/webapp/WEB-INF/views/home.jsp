@@ -68,7 +68,7 @@
       <a href="#contact" class="w3-bar-item w3-button">Contact</a>
       <a href="AqnaPage" class="w3-bar-item w3-button">Q&A</a>
       <a href="AnoticeList" class="w3-bar-item w3-button">Notice</a>
-      <a href="ApurchasePage" class="w3-bar-item w3-button">Notice</a>
+      <a href="ApurchasePage" class="w3-bar-item w3-button">Purchase</a>
     </div>
   </div>
 </header>
