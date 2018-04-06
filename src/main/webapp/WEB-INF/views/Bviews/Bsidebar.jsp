@@ -37,10 +37,13 @@ function Bmm(){
 function Bsm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li></ul>');
+		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li><li id="goBproductdetail" style="cursor: pointer;">상품상페이지 관리</li></ul>');
 		onOff = 1;
 		$('#Bmainlist').on('click', function() {
 			$('#Bcenter').load('Bmainlist?rows=4');
+		});
+		$('#goBproductdetail').on('click', function() {
+			$('#Bcenter').load('goBproductdetail');
 		});
 	}
 	else

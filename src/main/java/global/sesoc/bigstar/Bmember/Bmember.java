@@ -28,5 +28,7 @@ public class Bmember {
 		return "Bviews/Bmain/Blogin";
 	}
 	
+
+	
 	
 }
