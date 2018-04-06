@@ -220,8 +220,8 @@
 <h2 id="kakaoBody" class="tit_demo">
 Payment Demo
 </h2>
-<p class="txt_demo">
-API를 활용한 카카오페이 결제를 체험해보세요.
+<!-- <p class="txt_demo">
+API를 활용한 카카오페이 결제를 체험해보세요. -->
 <br/>
 (실제 결제는 일어나지 않습니다)
 </p>

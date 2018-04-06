@@ -29,13 +29,6 @@ public class AnoticeController {
 	@Autowired
 	AnoticeDAO ANdao;
 	
-	//구매페이지 이동
-	@RequestMapping(value = "ApurchasePage", method = RequestMethod.GET) 
-	public String purchasePage() {
-	 
-		return "Aviews/Apurchase/ApurchasePage";
-	}
-	
 	//공지사항 게시판 페이지 이동 및 리스트 불러오기
 	@RequestMapping(value = "AnoticeList", method = RequestMethod.GET)
 	public String AnoticeList(Model model, HttpSession session, String page) {
