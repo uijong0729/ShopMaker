@@ -25,6 +25,7 @@ public class AmemberController {
 	@Inject
 	AmemberDAO AMdao;
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String loginPage() {
 		
@@ -36,6 +37,7 @@ public class AmemberController {
 	public String signupPage() {
 		
 		return "Aviews/Amember/AsignupPage";
+		
 	}
 	
 	@RequestMapping(value = "Logout", method = RequestMethod.GET)
@@ -97,7 +99,11 @@ public class AmemberController {
 	 
 	      map.put("id", id);
 	      map.put("pw", pw);
+	      
 	      Amember am = AMdao.loginAcustomer(map);
+	      String a= am.getPaymentexpirationdate();
+	      a=a.substring(0, 10);
+	      am.setPaymentexpirationdate(a);
 	      if(am == null)
 	      {
 	 
@@ -130,6 +136,7 @@ public class AmemberController {
 	         session.setAttribute("Amember", am);
 	         //model.addAttribute("AloginResult", 2)
 	         return "Aviews/Amember/AwellcomePage";
+	        
 	      } 
 	   }
 	 
