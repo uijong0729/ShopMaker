@@ -34,7 +34,6 @@ function payment1() {
 	days = document.getElementById("days").innerHTML="30";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
-	/* TODO: confirm 취소 시 결제 페이지로 이동하는 문제 해결 필요 */
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	if(payConfirm == true){
 		document.getElementById('purchaseInfo').submit();
