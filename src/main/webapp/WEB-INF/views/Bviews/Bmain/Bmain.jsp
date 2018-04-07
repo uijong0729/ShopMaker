@@ -8,6 +8,8 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
+				$('#BmemberManagement').on('click', Bmm);
+				$('#BsiteManagement').on('click', Bsm);
 			});
 			function component() {
 				$('#selected').val('component');
@@ -26,6 +28,8 @@
 				$('#page_tool').css('visibility', 'visible');
 				$('#component_tool').css('visibility', 'hidden');
 			}
+			
+			
 		</script>
 		<style type="text/css">
 			#sidebar {
@@ -36,25 +40,13 @@
 				border: 1px solid black;
 				position: fixed;
 				background: white;
+				transition: 0.5s;
 			}
 			#sidebar:HOVER {
 				width: 150px;
 				left: 0px;
 				background: white;
 				border: 1px solid black;
-				animation-duration: 0.1s;
-  				animation-name: slidein;
-			}
-			@keyframes slidein {
-				from {
-					margin-left: -149px;
-					width: 150px;
-				}
-			
-				to {
-					margin-left: 0px;
-					width: 150px;
-				}
 			}
 			#component {
 				width: 75px;
@@ -124,7 +116,15 @@
 			<div id="component" onclick="javascript:component()">컴포넌트</div>
 			<div id="page" onclick="javascript:page()">페이지</div>
 			<div id="component_tool">컴포넌트</div>
-			<div id="page_tool">페이지</div>
+			<div id="page_tool">
+				<ul>
+				<li style="cursor: pointer;" id="BmemberManagement">회원관리</li>
+				<li style="cursor: pointer;" id="BsiteManagement">사이트 관리</li>
+				<li>매장관리</li>
+				<li>배송 및 세금</li>
+				<li>주문관리 및 결제관리</li>
+			</ul>
+			</div>
 			<input type="hidden" id="selected">
 		</div>
 	</body>
