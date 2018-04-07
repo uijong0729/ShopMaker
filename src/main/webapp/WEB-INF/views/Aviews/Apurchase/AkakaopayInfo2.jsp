@@ -1,34 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>카카오페이</title>
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-<!--     <link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/css/common.min.css">
-    <script src="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/js/lib/jquery.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/css/common.min.css">
+    <script src="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/js/lib/jquery.min.js"></script>
 
     
     
 
 <script>
-		var hash = "c21fca7515f567eadf803dad2b7ae2c190343686d5c8e9d746b819dc96aad502";
-		var failUrl = "https://developers.kakao.com/payment/web/fail/e1bab21c-accf-4481-8b93-be08627a1142";
+		var hash = "61b11a795616fc712413db6e2447a2a90db1d79d51e00cca043493fa1198771e";
+		var failUrl = "https://developers.kakao.com/payment/web/fail/2a8aadc7-c914-4d5b-b0c5-0a3fdf4ba3d8";
 		var remainingSec = 899;
-		var cancelUrl = "https://developers.kakao.com/payment/web/cancel/e1bab21c-accf-4481-8b93-be08627a1142";
+		var cancelUrl = "https://developers.kakao.com/payment/web/cancel/2a8aadc7-c914-4d5b-b0c5-0a3fdf4ba3d8";
 		var isCancelPost = false;
 		var isFailPost = false;
 		var isApprovalPost = false;
 	</script>
 
-<!-- <script src="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/js/lib/spin.min.js"></script>
+<script src="//t1.daumcdn.net/kakaopay/tesla/20180108/pg_web/js/lib/spin.min.js"></script>
 
 <script src="/js/v2/common_payment.js?v=version"></script>
 
-<script src="/js/v2/web_waiting.js?v=version"></script> -->
+<script src="/js/v2/web_waiting.js?v=version"></script>
 
 </head>
 <body>
@@ -77,6 +76,10 @@
 </div>
 
 <script>
+
+	function finish(){
+		location.href="AkakaopaySuccess";
+	}
 
     <!-- /* ---------------------------------- 곧 제거 될 것 임 ------------------------------------------ */ -->
     function closeTalkPgWebview() {
@@ -216,7 +219,7 @@
 							<li><em class="emph_num">2</em><em class="emph_info">하단의 결제 완료 버튼</em>을 눌러주세요.</li>
 						</ol>
 						<div class="area_btn">
-							<button type="submit" class="btn_submit">결제 완료</button>
+							<button type="button" class="btn_submit" onclick="finish()">결제 완료</button>
 						</div>
 					</fieldset>
 				</form>

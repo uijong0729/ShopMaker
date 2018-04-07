@@ -198,7 +198,7 @@
 
     @media only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
         .wrap_demo .tit_kakaopay {
-            background-image: url(/assets/img/docs/ico_pay_640.png);
+            background-image: url(resources/image/payment_icon_medium.png);
             background-size: 67px 22px
         }
     }
@@ -211,6 +211,7 @@
 </div>
 <div id="kakaoWrap" class="wrap_demo">
 <header id="kakaoHead">
+
 <h1 class="tit_kakaopay">
 카카오페이
 </h1>
@@ -218,13 +219,15 @@
 <main id="kakaoContent">
 <article id="mArticle">
 <h2 id="kakaoBody" class="tit_demo">
-Payment Demo
+<img src="resources/image/payment_icon_medium.png">
+<br>
+<img src="resources/image/payment_text_large.png">
+<!-- Payment Demo -->
 </h2>
 <!-- <p class="txt_demo">
 API를 활용한 카카오페이 결제를 체험해보세요. -->
 <br/>
 (실제 결제는 일어나지 않습니다)
-</p>
 <div class="pay_btn">
 <button type="button" class="btn_pay btn_pay_hover" id="web" onclick="payment('web');">
 PC 결제
@@ -242,36 +245,39 @@ PC 결제
 </div>
 <script type='text/javascript'>
   //<![CDATA[
-    $(document).ready(function() {
+   /*  $(document).ready(function() {
         if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             $('#mobile').attr('disabled', 'disabled');
             $('#mobile').removeClass('btn_pay_hover');
             $('#mobile').css('cursor','no-drop');
         }
-    });
+    }); */
 
     function payment(agent){
         //var windowReference = window.open('', 'payment_popup', 'width=426,height=510,toolbar=no,location=no');
 
-        var request = $.ajax({
+        /* var request = $.ajax({
             url: '/payment/'+agent+'/ready',
             method: 'GET',
             dataType: 'json'
         });
-
-        request.done(function( data ) {
+        
+ */		location.href = "AkakaopayInfo";
+ 
+        /* request.done(function( data ) {
             if(agent === 'web'){
                 //windowReference.location = data.next_redirect_pc_url;
                 location.href = data.next_redirect_pc_url;
+                
             } else {
                 //windowReference.location = data.next_redirect_mobile_url;
                 location.href = data.next_redirect_mobile_url;
             }
-        });
-
+        }); */
+/* 
         request.fail(function( jqXHR, textStatus ) {
             console.log( "Request failed: " + textStatus );
-        });
+        }); */
     }
   //]]>
 </script>

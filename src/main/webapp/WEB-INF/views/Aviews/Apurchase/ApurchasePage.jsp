@@ -36,7 +36,7 @@ function payment1() {
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	if(payConfirm == true){
-		document.getElementById('purchaseInfo').submit();
+		document.getElementById('ApurchaseInfo').submit();
 	}else{
 		location.href="ApurchasePage"
 	}
@@ -59,7 +59,7 @@ function payment2() {
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	if(payConfirm == true){
-		document.getElementById('purchaseInfo').submit();
+		document.getElementById('ApurchaseInfo').submit();
 	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
@@ -80,7 +80,7 @@ function payment3() {
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	if(payConfirm == true){
-		document.getElementById('purchaseInfo').submit();
+		document.getElementById('ApurchaseInfo').submit();
 	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
@@ -101,7 +101,7 @@ function payment4() {
 	$('#daysforValue').val($('#days').text());
 	confirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
 	if(confirm == true){
-		document.getElementById('purchaseInfo').submit();
+		document.getElementById('ApurchaseInfo').submit();
 	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
@@ -227,7 +227,7 @@ Days: <p id="days"></p>
 	<footer>
 		<%@ include file="../footer.jsp" %>
 	</footer>
-	<form action="purchaseInfo" method="post" id="purchaseInfo">  <!-- id="tem1" -->
+	<form action="ApurchaseIndex" method="post" id="ApurchaseInfo">  <!-- id="tem1" -->
 		<input type="hidden" name="templateforValue" id="templateforValue">
 		<input type="hidden" name="paymentforValue" id="paymentforValue">
 		<input type="hidden" name="daysforValue" id="daysforValue">

