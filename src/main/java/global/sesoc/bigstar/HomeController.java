@@ -87,6 +87,12 @@ public class HomeController {
 		return "Bviews/Bmain/Bmain";
 	}
 	
+	@RequestMapping(value="preview", method=RequestMethod.GET)
+	public String preview() {
+		
+		return "Bviews/Bmain/Bpreview";
+	}
+	
 	
 	
 }

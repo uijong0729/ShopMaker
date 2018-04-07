@@ -19,7 +19,7 @@ $(document).ready(function(){
 function Bmm(){
 	if(onOff == 0)
 	{
-		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Bmypage" style="cursor: pointer;">마이페이지 양식</li></ul>');
+		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Bmypage" style="cursor: pointer;">마이페이지 양식</li><li id="Bcart" style="cursor: pointer;">장바구니 양식</li></ul>');
 		onOff = 1;
 			$('#Bregist').on('click', function(){
 				$('#Bcenter').load('Bregist');
@@ -29,6 +29,9 @@ function Bmm(){
 			});
 			$('#Bmypage').on('click', function(){
 				$('#Bcenter').load('Bmypage');
+			}); 
+			$('#Bcart').on('click', function(){
+				$('#Bcenter').load('Bcart');
 			}); 
 	}
 	else

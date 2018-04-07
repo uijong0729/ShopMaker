@@ -6,8 +6,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-	<script src="/bigstar/resources/js/jquery-3.2.1.min.js">
-		</script>
+	<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
 </script>
@@ -32,6 +31,7 @@
 		<a>로그인</a> &nbsp <a>회원가입</a> &nbsp <a>ID/PW 찾기</a>
 	</div>		
 </div>	
+
 		
 </body>
 </html>
