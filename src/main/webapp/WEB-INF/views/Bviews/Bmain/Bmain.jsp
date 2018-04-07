@@ -18,7 +18,7 @@
 		<!-- 헤더 -->
 		<header>
 			
-		<%@ include file="../../Aviews/header.jsp" %>
+		<%@ include file="../Bheader.jsp" %>
 
 		</header>
 

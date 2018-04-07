@@ -235,7 +235,6 @@ function selectEmail(){
 <body>
 
 
-<!-- header Navbar (sit on top) -->
 	<header>
 		<%@ include file="../header.jsp" %>
 	</header>

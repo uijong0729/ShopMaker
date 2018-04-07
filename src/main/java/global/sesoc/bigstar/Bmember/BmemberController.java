@@ -33,4 +33,10 @@ public class BmemberController {
 		return "Bviews/Bmain/Bmypage";
 	}
 	
+	@RequestMapping(value="Bcart", method = RequestMethod.GET)
+	public String Bcart() {
+		return "Bviews/Bmain/Bcart";
+	}
+	
+	
 }
