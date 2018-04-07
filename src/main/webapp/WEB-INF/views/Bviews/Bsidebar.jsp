@@ -14,10 +14,11 @@ var onOff = 0;
 $(document).ready(function(){
 	$('#BmemberManagement').on('click', Bmm);
 	$('#BsiteManagement').on('click', Bsm);
+	$('#BpageManagement').on('click', Bpm);
 });
 
 function Bmm(){
-	if(onOff == 0)
+	if(onOff != 1)
 	{
 		$('#subMenu').html('<ul><li id="Bregist" style="cursor: pointer;">회원가입 양식</li><li id="Blogin" style="cursor: pointer;">로그인 양식</li><li id="Bmypage" style="cursor: pointer;">마이페이지 양식</li><li id="Bcart" style="cursor: pointer;">장바구니 양식</li></ul>');
 		onOff = 1;
@@ -41,15 +42,34 @@ function Bmm(){
 	}
 }
 function Bsm(){
-	if(onOff == 0)
+	if(onOff != 2)
 	{
 		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li><li id="goBproductdetail" style="cursor: pointer;">상품상페이지 관리</li></ul>');
-		onOff = 1;
+		onOff = 2;
 		$('#Bmainlist').on('click', function() {
 			$('#Bcenter').load('Bmainlist?rows=4');
 		});
 		$('#goBproductdetail').on('click', function() {
 			$('#Bcenter').load('goBproductdetail');
+		});
+	}
+	else
+	{
+		$('#subMenu').html('');
+		onOff = 0;
+	}
+}
+
+function Bpm(){
+	if(onOff != 3)
+	{
+		$('#subMenu').html('<ul><li id="BpageHeader" style="cursor: pointer;">Header편집</li><li id="BpageFooter" style="cursor: pointer;">Footer편집</li></ul>');
+		onOff = 3;
+		$('#BpageHeader').on('click', function() {
+			$('#Bcenter').load('BpageHeader');
+		});
+		$('#BpageFooter').on('click', function() {
+			$('#Bcenter').load('BpageFooter');
 		});
 	}
 	else
@@ -74,6 +94,7 @@ function Bsm(){
 				<li>매장관리</li>
 				<li>배송 및 세금</li>
 				<li>주문관리 및 결제관리</li>
+				<li style="cursor: pointer;" id="BpageManagement">페이지 관리</li>
 			</ul>
 
 		</aside>
