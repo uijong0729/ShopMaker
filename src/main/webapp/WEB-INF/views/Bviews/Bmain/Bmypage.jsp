@@ -11,15 +11,17 @@
 
 $(document).ready(function(){
 	$('#addComponentMp').on('click', addRowMp);
-	
+	$('.rowsButton').on("click", removeRow);
 });
 
 function addRowMp(){
 	$('#addrowMp').append('<ul style="list-style: none;"><li><span>텍스트</span></li><li><input> <input class="rowsButton" type="button" value="삭제"></li></ul>');
-	$('.rowsButton').on("click", function() {
-		 $(this).parent().parent().remove();
-	});
+	$('.rowsButton').on("click", removeRow);
 	
+}
+
+function removeRow(){
+	 $(this).parent().parent().remove();
 }
 </script>
 
@@ -32,19 +34,19 @@ function addRowMp(){
 		
 		<ul style="list-style: none;">
 			<li>이름</li>
-			<li><input readonly="readonly"></li>
+			<li><input readonly="readonly"><input class="rowsButton" type="button" value="삭제"></li>
 		</ul>
 		<ul style="list-style: none;">	
 			<li>이메일</li>
-			<li><input readonly="readonly"></li>
+			<li><input readonly="readonly"><input class="rowsButton" type="button" value="삭제"></li>
 		</ul>
 		<ul style="list-style: none;">	
 			<li>전화번호</li>
-			<li><input readonly="readonly"></li>
+			<li><input readonly="readonly"><input class="rowsButton" type="button" value="삭제"></li>
 		</ul>
 		<ul style="list-style: none;">	
 			<li>주소</li>
-			<li><input readonly="readonly"></li>
+			<li><input readonly="readonly"><input class="rowsButton" type="button" value="삭제"></li>
 		</ul>
 			
 		
