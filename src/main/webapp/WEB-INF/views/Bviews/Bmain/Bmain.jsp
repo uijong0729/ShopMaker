@@ -8,8 +8,6 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
-				$('#BmemberManagement').on('click', Bmm);
-				$('#BsiteManagement').on('click', Bsm);
 			});
 			function component() {
 				$('#selected').val('component');
@@ -29,6 +27,49 @@
 				$('#component_tool').css('visibility', 'hidden');
 			}
 			
+			function Bmm() {
+				var str = '<ul>';
+				str += '<li onclick="javascript:Bregist()" style="cursor: pointer;">회원가입 양식</li>';
+				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer;">로그인 양식</li>';
+				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer;">마이페이지 양식</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str += '</ul>';
+				$('#page_tool').html(str);
+			}
+			function Bregist() {
+				$('#Bcenter').load('Bregist');
+			}
+			function Blogin() {
+				$('#Bcenter').load('Blogin');
+			}
+			function Bmypage() {
+				$('#Bcenter').load('Bmypage');
+			}
+			function Bmmback() {
+				var str = '<ul>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>';
+				str += '<li style="cursor: pointer;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li>매장관리</li>';
+				str += '<li>배송 및 세금</li>';
+				str += '<li>주문관리 및 결제관리</li>';
+				str += '</ul>';
+				$('#page_tool').html(str);
+			}
+			
+			function Bsm() {
+				var str = '<ul>';
+				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer;">상품리스트 관리</li>';
+				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer;">상품상페이지 관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str +='</ul>';
+				$('#page_tool').html(str);
+			}
+			function Bmainlist() {
+				$('#Bcenter').load('Bmainlist?rows=4');
+			}
+			function goBproductdetail() {
+				$('#Bcenter').load('goBproductdetail');
+			}
 			
 		</script>
 		<style type="text/css">
@@ -41,6 +82,7 @@
 				position: fixed;
 				background: white;
 				transition: 0.5s;
+				transition-timing-function: linear;
 			}
 			#sidebar:HOVER {
 				width: 150px;
@@ -97,10 +139,10 @@
 
 		</header>
 
-		<!-- 편집메뉴 -->
+		<%-- <!-- 편집메뉴 -->
 		<aside style="display: inline;">
 			<%@ include file="../Bsidebar.jsp" %>
-		</aside>
+		</aside> --%>
 		
 	
 		
@@ -118,12 +160,12 @@
 			<div id="component_tool">컴포넌트</div>
 			<div id="page_tool">
 				<ul>
-				<li style="cursor: pointer;" id="BmemberManagement">회원관리</li>
-				<li style="cursor: pointer;" id="BsiteManagement">사이트 관리</li>
-				<li>매장관리</li>
-				<li>배송 및 세금</li>
-				<li>주문관리 및 결제관리</li>
-			</ul>
+					<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>
+					<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li>매장관리</li>
+					<li>배송 및 세금</li>
+					<li>주문관리 및 결제관리</li>
+				</ul>
 			</div>
 			<input type="hidden" id="selected">
 		</div>

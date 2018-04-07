@@ -11,20 +11,7 @@
 				position: absolute;
 				text-align: center;
 			}
-			#sidebar {
-				width: 50px;
-				height: 40%;
-				left: -10px;
-				top: 30%;
-				position: fixed;
-				background: black;
-				z-index: 1001;
-				border-radius: 5px;
-				opacity: 0;
-			}
-			#sidebar:hover {
-				opacity: 1;
-			}
+			
 			
 		</style>
 		<script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
@@ -55,9 +42,5 @@
 				상품번호 : ${b.productcode}<br>상품명 : ${b.productname}<br>가격 : ${b.productprice}
 			</div>
 		</c:forEach>
-		
-		<div id="sidebar">
-		
-		</div>
 	</body>
 </html>
