@@ -121,21 +121,6 @@
 				
               	var finalX = posX - diffX - 2;
               	var finalY = posY - diffY - 3;
-              /*var finalX = ev.clientX - 2.5;
-              	var finalY = ev.clientY - 2.5; */
-				
-				/* if (finalX < 0) {
-					finalX = 0;
-				}
-				if (finalY < 0) {
-					finalY = 0;
-				}
-				if (finalX + btnX > divWidth) {
-					finalX = divWidth - btnX;
-				}
-				if (finalY + btnY > divHeight) {
-					finalY = divHeight - btnY;
-				} */
 				
 				
 				$("#" + document.getElementById("latestComponent").value).css("left", finalX);
@@ -282,11 +267,10 @@
 				$("#url").val($("#" + parent).attr("onclick"));
 				
 				if($('#popup').css('visibility') == "hidden") {
+					$('#popup_text').css('visibility', "hidden");
+					$('#popup_image').css('visibility', "hidden");
 					$('#popup').css('visibility', "visible");
-					return false;
-				}
-				if($('#popup').css('visibility') == "visible") {
-					$('#popup').css('visibility', "hidden");
+					$('#mask').css('visibility', 'visible');
 					return false;
 				}
 			}
@@ -377,14 +361,12 @@
 				
 				
 				if($('#popup_text').css('visibility') == "hidden") {
+					$('#popup').css('visibility', "hidden");
+					$('#popup_image').css('visibility', "hidden");
 					$('#popup_text').css('visibility', "visible");
+					$('#mask').css('visibility', 'visible');
 					return false;
 				}
-				if($('#popup_text').css('visibility') == "visible") {
-					$('#popup_text').css('visibility', "hidden");
-					return false;
-				}
-				
 			}
 			
 			function showmap_image(popup, id) {
@@ -397,27 +379,27 @@
 				
 				
 				if($('#popup_image').css('visibility') == "hidden") {
+					$('#popup').css('visibility', "hidden");
+					$('#popup_text').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "visible");
+					$('#mask').css('visibility', 'visible');
 					return false;
 				}
-				if($('#popup_image').css('visibility') == "visible") {
-					$('#popup_image').css('visibility', "hidden");
-					return false;
-				}
-				
-				
 			}
 			
 			function closemap(popup) {
+				$('#mask').css('visibility', "hidden");
 				$('#popup').css('visibility', "hidden");
 				return false;
 			}
 			
 			function closemap_text(popup) {
+				$('#mask').css('visibility', "hidden");
 				$('#popup_text').css('visibility', "hidden");
 				return false;
 			}
 			function closemap_image(popup) {
+				$('#mask').css('visibility', "hidden");
 				$('#popup_image').css('visibility', "hidden");
 				return false;
 			}
@@ -609,6 +591,7 @@
 				$('#Bcenter').load('goBproductdetail');
 			}
 			
+			
 		</script>
 		<style type="text/css">
 			#sidebar {
@@ -771,6 +754,17 @@
 				width: 100%;
 				height: 100%;
 			}
+			#mask {
+            position:absolute;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            z-index:999;
+            background-color:#000000;
+			visibility: hidden;
+			transition: 0.3s;
+			opacity: 0.7;
 		</style>
 		<title>Shop Maker</title>
 	
@@ -835,7 +829,7 @@
 		
 		
 		
-		
+		<div id="mask"></div>
 		<div id="popup">
 			<br>
 			버튼 텍스트 : <input type="text" id="btnText"><br>
@@ -869,5 +863,6 @@
 			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
 			<input type="hidden" id="imageName">
 		</div>
+		
 	</body>
 </html>
