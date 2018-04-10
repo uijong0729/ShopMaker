@@ -835,7 +835,6 @@
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
-					<li style="cursor: pointer"; onclick="javascript:Bpm();">페이지관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">

@@ -20,7 +20,7 @@ public class ApurchaseController {
 	 
 		return "Aviews/Apurchase/ApurchasePage";
 	}
-		
+	
 	@RequestMapping(value = "ApurchaseIndex", method = RequestMethod.POST)
 	public String ApurchaseIndex(Model model, HttpSession session, String templateforValue, String paymentforValue, String daysforValue) {
 //		System.out.println(templateforValue);
@@ -64,9 +64,9 @@ public class ApurchaseController {
 		String paymentforValue = ApurchaseInfo.get("paymentforValue");
 		String daysforValue = ApurchaseInfo.get("daysforValue");
 		
-		System.out.println(templateforValue);
-		System.out.println(paymentforValue);
-		System.out.println(daysforValue);
+//		System.out.println(templateforValue);
+//		System.out.println(paymentforValue);
+//		System.out.println(daysforValue);
 		
 		model.addAttribute("templateforValue", templateforValue);
 		model.addAttribute("paymentforValue", paymentforValue);
