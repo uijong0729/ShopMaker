@@ -568,7 +568,7 @@
 			function Bmmback() {
 				var str = '<ul>';
 				str += '<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>';
 				str += '<li>매장관리</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
