@@ -16,7 +16,6 @@ $(document).ready(function(){
 
 function goSave(){
 	var getTag = document.getElementById("Bcenter").innerHTML;
-	//alert(getTag);
 	var preview = window.open('preview', 'newwin', 'width=1024px, height=440px');
 	
 }

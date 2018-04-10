@@ -568,10 +568,11 @@
 			function Bmmback() {
 				var str = '<ul>';
 				str += '<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>';
 				str += '<li>매장관리</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
@@ -584,9 +585,29 @@
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
+			
+			function Bpm() {
+				var str = '<ul>';
+				str += '<li onclick="javascript:Bheader()" style="cursor: pointer;">Header관리</li>';
+				str += '<li onclick="javascript:Bfooter()" style="cursor: pointer;">Footer관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str +='</ul>';
+				$('#page_tool').html(str);
+			}
+			
+			function Bheader(){
+				$('#Bcenter').load('BpageHeader');
+			}
+			
+			function Bfooter(){
+				$('#Bcenter').load('BpageFooter');
+			}
+			
+			
 			function Bmainlist() {
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
+			
 			function goBproductdetail() {
 				$('#Bcenter').load('goBproductdetail');
 			}
@@ -814,6 +835,7 @@
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
+					<li style="cursor: pointer"; onclick="javascript:Bpm();">페이지관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">

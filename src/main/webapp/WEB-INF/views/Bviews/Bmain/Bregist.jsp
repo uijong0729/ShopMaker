@@ -6,8 +6,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-		<script src="/bigstar/resources/js/jquery-3.2.1.min.js">
-		</script>
+		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <script>
 
 var counter = 0;
@@ -27,11 +27,40 @@ function addRow(){
 	
 }
 
+//
 
+ $( function() 
+{
+    var dialog, form,
+ 
+      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      name = $( "#name" ),
+      email = $( "#email" ),
+      password = $( "#password" ),
+      allFields = $( [] ).add( name ).add( email ).add( password ),
+      tips = $( ".validateTips" );
+ } );
+ 
 </script>
 
 </head>
 <body>
+
+
+<div id="dialog-form" title="로그인 타이틀 수정">
+  <p class="validateTips">타이틀을 수정 하실 수 있습니다.</p>
+ 
+  <form>
+    <fieldset>
+      <label for="name">Name</label>
+      <input type="text" name="title" id="title">
+ 
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+
 		<div style="display: inline-block; position: static;">
 					<h1>회원가입 화면 편집</h1>
 					<h4>필수 항목</h4>

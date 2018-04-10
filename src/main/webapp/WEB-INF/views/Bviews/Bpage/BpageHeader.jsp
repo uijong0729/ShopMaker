@@ -12,7 +12,18 @@
 </script>
 
 </head>
-<body>
-거기거기
-</body>
+	<body>
+	
+	<div id="header">
+	
+		<div style="display: inline-block; margin: 0; width: 100%; bottom: 0; height: 150px; border: 1px solid black;">
+		
+		
+		
+		</div>
+	
+	
+	</div>
+
+	</body>
 </html>
