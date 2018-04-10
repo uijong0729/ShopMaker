@@ -44,20 +44,15 @@ function payment1(date) {
 		success: function(value){
 			endday=value;
 			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			if(payConfirm == true){
+				document.getElementById('ApurchaseInfo').submit();
+			}else{
+				location.href="ApurchasePage"
+			}
 		}
 			
 	});
 	
-
-	
-	
-	
-	
-	if(payConfirm == true){
-		document.getElementById('ApurchaseInfo').submit();
-	}else{
-		location.href="ApurchasePage"
-	}
 	
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
@@ -86,12 +81,15 @@ function payment2(date) {
 		success: function(value){
 			endday=value;
 			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			if(payConfirm == true){
+				document.getElementById('ApurchaseInfo').submit();
+			}else{
+				location.href="ApurchasePage"
+			}
 		}
 			
 	});
-	if(payConfirm == true){
-		document.getElementById('ApurchaseInfo').submit();
-	}
+	
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate2',
@@ -117,12 +115,15 @@ function payment3(date) {
 		success: function(value){
 			endday=value;
 			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			if(payConfirm == true){
+				document.getElementById('ApurchaseInfo').submit();
+			}else{
+				location.href="ApurchasePage"
+			}
 		}
 			
 	});
-	if(payConfirm == true){
-		document.getElementById('ApurchaseInfo').submit();
-	}
+	
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate3',
@@ -148,12 +149,15 @@ function payment4(date) {
 		success: function(value){
 			endday=value;
 			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			if(payConfirm == true){
+				document.getElementById('ApurchaseInfo').submit();
+			}else{
+				location.href="ApurchasePage"
+			}
 		}
 			
 	});
-	if(confirm == true){
-		document.getElementById('ApurchaseInfo').submit();
-	}
+	
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate4',
