@@ -584,6 +584,19 @@
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
+			
+			function Bom() {
+				var str = '<ul>';
+				str += '<li onclick="javascript:BpurchaseOrder()" style="cursor: pointer;">주문 관리</li>';
+				str += '<li onclick="javascript:" style="cursor: pointer;">결제 관리</li>';
+				str +='</ul>';
+				$('#page_tool').html(str);
+			}
+			
+			function BpurchasePage(){
+				$('#Bcenter').load('BpurchasePage');
+			}
+			
 			function Bmainlist() {
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
@@ -813,7 +826,7 @@
 					<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
-					<li>주문관리 및 결제관리</li>
+					<li style="cursor: pointer;" onclick="javascript:Bom()">주문관리 및 결제관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">
