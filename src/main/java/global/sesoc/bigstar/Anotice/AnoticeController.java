@@ -32,130 +32,8 @@ public class AnoticeController {
 	AnoticeDAO ANdao;
 	@Autowired
 	AmemberDAO AMdao;
-
-	@ResponseBody
-	@RequestMapping(value = "caldate", method = RequestMethod.POST)
-	public String caldate(String date) {
-		System.out.println(1);
-		System.out.println(date);
-		String value = null;
-		String a = null;
-		try {
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date beginDate = formatter.parse(date);
-
-			System.out.println(beginDate);
-
-			long diff = beginDate.getTime();
-			long diffDays = diff / (24 * 60 * 60 * 1000);
-			diffDays = diffDays + 30;
-			diffDays = diffDays*(24 * 60 * 60 * 1000);
-			System.out.println(diffDays);
-			Date today = new Date(diffDays);
-			a = formatter.format(today);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(a);
-
-		return a;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "caldate2", method = RequestMethod.POST)
-	public String caldate2(String date) {
-		System.out.println(2);
-		System.out.println(date);
-		String value = null;
-		String a = null;
-		try {
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date beginDate = formatter.parse(date);
-
-			System.out.println(beginDate);
-
-			long diff = beginDate.getTime();
-			long diffDays = diff / (24 * 60 * 60 * 1000);
-			diffDays = diffDays + 60;
-			diffDays = diffDays*(24 * 60 * 60 * 1000);
-			System.out.println(diffDays);
-			Date today = new Date(diffDays);
-			a = formatter.format(today);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(a);
-
-		return a;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "caldate3", method = RequestMethod.POST)
-	public String caldate3(String date) {
-		System.out.println(3);
-		System.out.println(date);
-		String value = null;
-		String a = null;
-		try {
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date beginDate = formatter.parse(date);
-
-			System.out.println(beginDate);
-
-			long diff = beginDate.getTime();
-			long diffDays = diff / (24 * 60 * 60 * 1000);
-			diffDays = diffDays + 90;
-			diffDays = diffDays*(24 * 60 * 60 * 1000);
-			System.out.println(diffDays);
-			Date today = new Date(diffDays);
-			a = formatter.format(today);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(a);
-
-		return a;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "caldate4", method = RequestMethod.POST)
-	public String caldate4(String date) {
-		System.out.println(4);
-		System.out.println(date);
-		String value = null;
-		String a = null;
-		try {
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date beginDate = formatter.parse(date);
-
-			System.out.println(beginDate);
-
-			long diff = beginDate.getTime();
-			long diffDays = diff / (24 * 60 * 60 * 1000);
-			diffDays = diffDays + 180;
-			diffDays = diffDays*(24 * 60 * 60 * 1000);
-			System.out.println(diffDays);
-			Date today = new Date(diffDays);
-			a = formatter.format(today);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(a);
-
-		return a;
-	}
+	
+	
 
 	// 공지사항 게시판 페이지 이동 및 리스트 불러오기
 	@RequestMapping(value = "AnoticeList", method = RequestMethod.GET)
@@ -236,4 +114,188 @@ public class AnoticeController {
 		return "Aviews/Anotice/AnoticeReadForm";
 	}
 
+	
+	
+	/*
+	구매페이지 결제 후 만료일자 변경 관련 알고리즘 
+	=> TODO: 추후 ApurchaseController로 옮기기.
+	*/
+	
+	@ResponseBody
+	@RequestMapping(value = "caldate", method = RequestMethod.POST)
+	public String caldate(HttpSession session, String date) {
+		System.out.println(1);
+		System.out.println(date);
+		String value = null;
+		String a = null;
+		try {
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date beginDate = formatter.parse(date);
+			Date today2 = new Date();
+			System.out.println(beginDate);
+
+			long diff = beginDate.getTime();
+			long diff2 = today2.getTime();
+			if(diff>diff2){
+
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 30;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}else{
+
+				long diffDays = diff2 / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 30;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(a);
+		session.setAttribute("paymentexpirationdate", a);
+
+		return a;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "caldate2", method = RequestMethod.POST)
+	public String caldate2(HttpSession session, String date) {
+		System.out.println(2);
+		System.out.println(date);
+		String value = null;
+		String a = null;
+		try {
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date beginDate = formatter.parse(date);
+
+			Date today2 = new Date();
+			System.out.println(beginDate);
+
+			long diff = beginDate.getTime();
+			long diff2 = today2.getTime();
+			if(diff>diff2){
+
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 60;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}else{
+
+				long diffDays = diff2 / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 60;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(a);
+		session.setAttribute("paymentexpirationdate", a);
+
+		return a;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "caldate3", method = RequestMethod.POST)
+	public String caldate3(HttpSession session, String date) {
+		System.out.println(3);
+		System.out.println(date);
+		String value = null;
+		String a = null;
+		try {
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date beginDate = formatter.parse(date);
+
+			Date today2 = new Date();
+			System.out.println(beginDate);
+
+			long diff = beginDate.getTime();
+			long diff2 = today2.getTime();
+			if(diff>diff2){
+
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 90;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}else{
+
+				long diffDays = diff2 / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 90;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(a);
+		session.setAttribute("paymentexpirationdate", a);
+
+		return a;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "caldate4", method = RequestMethod.POST)
+	public String caldate4(HttpSession session, String date) {
+		System.out.println(4);
+		System.out.println(date);
+		String value = null;
+		String a = null;
+		try {
+
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date beginDate = formatter.parse(date);
+
+			Date today2 = new Date();
+			System.out.println(beginDate);
+
+			long diff = beginDate.getTime();
+			long diff2 = today2.getTime();
+			if(diff>diff2){
+
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 180;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}else{
+
+				long diffDays = diff2 / (24 * 60 * 60 * 1000);
+				diffDays = diffDays + 180;
+				diffDays = diffDays*(24 * 60 * 60 * 1000);
+				System.out.println(diffDays);
+				Date today = new Date(diffDays);
+				a = formatter.format(today);
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(a);
+		session.setAttribute("paymentexpirationdate", a);
+
+		return a;
+	}
+	
+	
 }

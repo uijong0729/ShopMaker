@@ -54,5 +54,11 @@
  	
  	</insert>
  	
+ 	<update id="updateAmemberpaymentexpirationdate" parameterType="string">
+ 		update AMEMBERTABLE
+ 		set	paymentexpirationdate=#{0}
+ 		where MEMBERCODE = #{1}
+ 	</update>
+ 	
  	
  </mapper>

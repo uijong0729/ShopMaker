@@ -47,6 +47,8 @@ margin: 4px;
   <a href="goBmain">[임시] Bmain 페이지</a>
   <a href="goBproductdetail">[임시] Bproductdetail 페이지</a>
   <a href="BpurchasePage">[임시] BpurchasePage 페이지</a>
+  <a href="basket">[임시] Bbasket 페이지</a>
+  <a href="goBproductdetail">[임시] Bproductdetail 페이지</a>
 </footer>
 
 
