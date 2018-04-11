@@ -11,4 +11,5 @@ public interface AmemberMapper {
 	public int AsignupCustomer(Amember member);
 	public Amember loginAcustomer(HashMap<String, String> map);
 	public String selectAcustomerName(String membercode);
+	public int updateAmemberpaymentexpirationdate(String paymentexpirationdate, String membercode);
 }
