@@ -48,9 +48,10 @@ public class AmemberDAO implements AmemberMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(AmemberMapper.class).selectAcustomerName(membercode);
 	}
-	
-	
-	
-	
+
+	public int updateAmemberpaymentexpirationdate(String paymentexpirationdate, String membercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AmemberMapper.class).updateAmemberpaymentexpirationdate(paymentexpirationdate, membercode);
+	}
 
 }

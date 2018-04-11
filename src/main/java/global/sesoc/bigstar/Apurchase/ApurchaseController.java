@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.dao.AmemberDAO;
+import global.sesoc.bigstar.vo.Amember;
 
 @Controller
 public class ApurchaseController {
+	
+	@Autowired
+	AmemberDAO AMdao;
 
 	//구매페이지 이동
 	@RequestMapping(value = "ApurchasePage", method = RequestMethod.GET) 
@@ -75,11 +79,23 @@ public class ApurchaseController {
 //		System.out.println(paymentforValue);
 //		System.out.println(daysforValue);
 		
+		String paymentexpirationdate = (String) session.getAttribute("paymentexpirationdate");
+		Amember amember = (Amember) session.getAttribute("Amember");
+		String membercode = amember.getMembercode();
+		System.out.println(paymentexpirationdate);
+		System.out.println(membercode);
+		
+		int result = 0;
+		result = AMdao.updateAmemberpaymentexpirationdate(paymentexpirationdate, membercode);
+		
 		model.addAttribute("templateforValue", templateforValue);
 		model.addAttribute("paymentforValue", paymentforValue);
 		model.addAttribute("daysforValue", daysforValue);
+		model.addAttribute("paymentexpirationdate", paymentexpirationdate);
 		
-		return "Aviews/Apurchase/AkakaopaySuccess"; 
+		session.removeAttribute("paymentexpirationdate");
+		
+		return "Aviews/Apurchase/AkakaopaySuccess";
 	}
 	
 }
