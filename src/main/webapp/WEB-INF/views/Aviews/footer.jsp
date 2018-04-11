@@ -44,8 +44,11 @@ margin: 4px;
 <footer class="w3-center w3-black w3-padding-16" style="bottom: 0; margin-top: 110px;">
   <p>Footer</p>
   
-  <a href="goBmain">[임시] Bmain페이지</a>
-  <a href="goBproductdetail">[임시] Bproductdetail페이지</a>
+  <a href="goBmain">[임시] Bmain 페이지</a>
+  <a href="goBproductdetail">[임시] Bproductdetail 페이지</a>
+  <a href="BpurchasePage">[임시] BpurchasePage 페이지</a>
+  <a href="basket">[임시] Bbasket 페이지</a>
+  <a href="goBproductdetail">[임시] Bproductdetail 페이지</a>
 </footer>
 
 

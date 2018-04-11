@@ -56,7 +56,7 @@ function openContent(){
         	str.append('<th style="width: 20%;">글 제목</th>');
         	str.append('<td style="width: 48%;">' + result.qtitle +'</td>');
         str.append('</tr><tr>');
-	    	str.append('<td colspan="2"><textarea cols="50" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
+	    	str.append('<td colspan="2"><textarea cols="50" rows="9" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 	    
 	    if(result.qreply == null || result.qreply == '')
 	    {
@@ -161,7 +161,7 @@ function qnaPage(page){
  		border-radius: 1em;
   		border-collapse: collapse;
   		margin: 1em;		
-		}
+		} 
 		
 		textarea {
 		
@@ -354,8 +354,7 @@ function qnaPage(page){
 				
 		</article>
 		
-		<div class="borderIb" style="width: 40%;">
-			<div id="readQna" class="borderIb">
+			<div id="readQna" class="borderIb" style="width: 40%">
 			 
 			
 			</div>
@@ -366,7 +365,6 @@ function qnaPage(page){
 					
 				</div>
 			</c:if>
-		</div>
 		
 	<footer>
 		<%@ include file="../footer.jsp" %>

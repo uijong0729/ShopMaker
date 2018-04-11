@@ -10,75 +10,36 @@
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
-/* TODO:버튼 클릭 시 선택 된 항목 버튼 색 변경하기 
-$(document).ready(function(){
-	
-	$('.button span').on('click',changeColor);
-	
-})
-
-function changeColor(){
-	var color = $(this).attr('check');
-	
-	if(check=="checked"){
-		$(this).attr('check',"");
-		$(this).css('background',"#608bbc");
-	}else(check==""){
-		$(this).attr('check',"checked");
-		$(this).css('background',"#DB7093");
-	}
-	
-}
-*/
-
 var template;
 var payment;
 var days;
 var payConfirm;
-var endday="";
-
+ 
 function template1() {
 	template = document.getElementById("template").innerHTML="template1";
 	$('#templateforValue').val($('#template').text());
 	
-	
 }
-
 function template2() {
 	template = document.getElementById("template").innerHTML="template2";
 	$('#templateforValue').val($('#template').text());
 }
-
 function template3() {
 	template = document.getElementById("template").innerHTML="template3";
 	$('#templateforValue').val($('#template').text());
 }
 
-function payment1(date) {
-	
+function payment1() {
 	payment = document.getElementById("payment").innerHTML="15,000";
 	days = document.getElementById("days").innerHTML="30";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
-	
-	$.ajax({
-		url: 'caldate',
-		type: 'post',
-		data:{date: date},
-		dataType: 'text',
-		success: function(value){
-			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
-			if(payConfirm == true){
-				document.getElementById('ApurchaseInfo').submit();
-			}else{
-				location.href="ApurchasePage"
-			}
-		}
-			
-	});
-	
-	
+	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
+	if(payConfirm == true){
+		document.getElementById('BpurchaseInfo').submit();
+	}else{
+		location.href="ApurchasePage"
+	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate',
@@ -91,31 +52,15 @@ function payment1(date) {
 			document.getElementById("payment").innerHTML+=value;
 	}); */
 }
-
-function payment2(date) {
+function payment2() {
 	payment = document.getElementById("payment").innerHTML="30,000";
 	days = document.getElementById("days").innerHTML="60";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
-	
-	
-	$.ajax({
-		url: 'caldate2',
-		type: 'post',
-		data:{date: date},
-		dataType: 'text',
-		success: function(value){
-			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
-			if(payConfirm == true){
-				document.getElementById('ApurchaseInfo').submit();
-			}else{
-				location.href="ApurchasePage"
-			}
-		}
-			
-	});
-	
+	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
+	if(payConfirm == true){
+		document.getElementById('BpurchaseInfo').submit();
+	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate2',
@@ -128,29 +73,15 @@ function payment2(date) {
 	
 	}); */
 }
-
-function payment3(date) {
+function payment3() {
 	payment = document.getElementById("payment").innerHTML="45,000";
 	days = document.getElementById("days").innerHTML="90";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
-	$.ajax({
-		url: 'caldate3',
-		type: 'post',
-		data:{date: date},
-		dataType: 'text',
-		success: function(value){
-			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
-			if(payConfirm == true){
-				document.getElementById('ApurchaseInfo').submit();
-			}else{
-				location.href="ApurchasePage"
-			}
-		}
-			
-	});
-	
+	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
+	if(payConfirm == true){
+		document.getElementById('BpurchaseInfo').submit();
+	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate3',
@@ -164,28 +95,15 @@ function payment3(date) {
 	}); */
 }
 
-function payment4(date) {
+function payment4() {
 	payment = document.getElementById("payment").innerHTML="60,000";
 	days = document.getElementById("days").innerHTML="180";
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
-	$.ajax({
-		url: 'caldate4',
-		type: 'post',
-		data:{date: date},
-		dataType: 'text',
-		success: function(value){
-			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
-			if(payConfirm == true){
-				document.getElementById('ApurchaseInfo').submit();
-			}else{
-				location.href="ApurchasePage"
-			}
-		}
-			
-	});
-	
+	confirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
+	if(confirm == true){
+		document.getElementById('BpurchaseInfo').submit();
+	}
 	/* document.getElementById("payment").innerHTML="변경 전 : "+date + "==> 변경 후 : ";
 	$.ajax({
 		url: 'caldate4',
@@ -204,9 +122,9 @@ function payment4(date) {
 </head>
 <body>
 
-<header class="w3-top">
+<%-- <header class="w3-top">
 	<%@ include file="../header.jsp" %>
-</header>
+</header> --%>
 <br><br><br><br>
 <div class="services">
 <section class="pricecol">
@@ -215,9 +133,11 @@ function payment4(date) {
 <img src="./resources/image/shirt2.png">
 </div>
 
+
+
 <h3><Span>Template1</span></h3>
 <p>
-<a class="button" check="" id="template1" onclick="template1()"><span>Pick</span></a>
+<a class="button" onclick="template1()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -228,7 +148,7 @@ function payment4(date) {
 </div>
 <h3><Span>Template2</span></h3>
 <p>
-<a class="button" check="" id="template2" onclick="template2()"><span>Pick</span></a>
+<a class="button" onclick="template2()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -239,11 +159,10 @@ function payment4(date) {
 </div>
 <h3><Span>Template3</span></h3>
 <p>
-<a class="button" check="" id="template1" onclick="template3()"><span>Pick</span></a>
+<a class="button" onclick="template3()"><span>Pick</span></a>
 </p>
 </section>
 </div>
-
 
 <br><br>
 
@@ -254,8 +173,8 @@ function payment4(date) {
 <li>15,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
-<%-- payment1('${Amember.paymentexpirationdate}') --%>
+<a class="button" onclick="payment1()"><span>Start now</span></a>
+<%-- payment1('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
 
@@ -265,8 +184,8 @@ function payment4(date) {
 <li>30,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
-<%-- payment2('${Amember.paymentexpirationdate}') --%>
+<a class="button" onclick="payment2()"><span>Start now</span></a>
+<%-- payment2('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
 
@@ -276,8 +195,8 @@ function payment4(date) {
 <li>45,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
-<%-- payment3('${Amember.paymentexpirationdate}') --%>
+<a class="button" onclick="payment3()"><span>Start now</span></a>
+<%-- payment3('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
 
@@ -287,7 +206,7 @@ function payment4(date) {
 <li>60,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" onclick="payment4()"><span>Start now</span></a>
 <%-- payment4('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -306,10 +225,10 @@ Days: <p id="days"></p>
 
 <br><br><br>
 
-	<footer>
+	<%-- <footer>
 		<%@ include file="../footer.jsp" %>
-	</footer>
-	<form action="ApurchaseIndex" method="post" id="ApurchaseInfo">  <!-- id="tem1" -->
+	</footer> --%>
+	<form action="BpurchaseIndex" method="post" id="BpurchaseInfo">  <!-- id="tem1" -->
 		<input type="hidden" name="templateforValue" id="templateforValue">
 		<input type="hidden" name="paymentforValue" id="paymentforValue">
 		<input type="hidden" name="daysforValue" id="daysforValue">

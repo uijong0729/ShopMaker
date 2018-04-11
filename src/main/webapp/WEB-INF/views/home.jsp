@@ -59,7 +59,7 @@
 <!-- header Navbar (sit on top) -->
 <header class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="/main1" class="w3-bar-item w3-button"><b>Shop</b> maker</a>
+    <a href="/bigstar" class="w3-bar-item w3-button"><b>Shop</b> maker</a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
     <a href="loginPage" class="w3-bar-item w3-button">Login</a>
