@@ -10,6 +10,27 @@
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
+/* TODO:버튼 클릭 시 선택 된 항목 버튼 색 변경하기 
+$(document).ready(function(){
+	
+	$('.button span').on('click',changeColor);
+	
+})
+
+function changeColor(){
+	var color = $(this).attr('check');
+	
+	if(check=="checked"){
+		$(this).attr('check',"");
+		$(this).css('background',"#608bbc");
+	}else(check==""){
+		$(this).attr('check',"checked");
+		$(this).css('background',"#DB7093");
+	}
+	
+}
+*/
+
 var template;
 var payment;
 var days;
@@ -19,6 +40,7 @@ var endday="";
 function template1() {
 	template = document.getElementById("template").innerHTML="template1";
 	$('#templateforValue').val($('#template').text());
+	
 	
 }
 
@@ -193,11 +215,9 @@ function payment4(date) {
 <img src="./resources/image/shirt2.png">
 </div>
 
-
-
 <h3><Span>Template1</span></h3>
 <p>
-<a class="button" onclick="template1()"><span>Pick</span></a>
+<a class="button" check="" id="template1" onclick="template1()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -208,7 +228,7 @@ function payment4(date) {
 </div>
 <h3><Span>Template2</span></h3>
 <p>
-<a class="button" onclick="template2()"><span>Pick</span></a>
+<a class="button" check="" id="template2" onclick="template2()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -219,10 +239,11 @@ function payment4(date) {
 </div>
 <h3><Span>Template3</span></h3>
 <p>
-<a class="button" onclick="template3()"><span>Pick</span></a>
+<a class="button" check="" id="template1" onclick="template3()"><span>Pick</span></a>
 </p>
 </section>
 </div>
+
 
 <br><br>
 
@@ -233,7 +254,7 @@ function payment4(date) {
 <li>15,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment1('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -244,7 +265,7 @@ function payment4(date) {
 <li>30,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment2('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -255,7 +276,7 @@ function payment4(date) {
 <li>45,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment3('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -266,7 +287,7 @@ function payment4(date) {
 <li>60,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment4('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>

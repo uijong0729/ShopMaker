@@ -185,7 +185,7 @@ public class AnoticeController {
 			if(diff>diff2){
 
 				long diffDays = diff / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 60;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
@@ -193,7 +193,7 @@ public class AnoticeController {
 			}else{
 
 				long diffDays = diff2 / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 60;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
@@ -229,7 +229,7 @@ public class AnoticeController {
 			if(diff>diff2){
 
 				long diffDays = diff / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 90;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
@@ -237,7 +237,7 @@ public class AnoticeController {
 			}else{
 
 				long diffDays = diff2 / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 90;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
@@ -273,7 +273,7 @@ public class AnoticeController {
 			if(diff>diff2){
 
 				long diffDays = diff / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 180;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
@@ -281,7 +281,7 @@ public class AnoticeController {
 			}else{
 
 				long diffDays = diff2 / (24 * 60 * 60 * 1000);
-				diffDays = diffDays + 30;
+				diffDays = diffDays + 180;
 				diffDays = diffDays*(24 * 60 * 60 * 1000);
 				System.out.println(diffDays);
 				Date today = new Date(diffDays);
