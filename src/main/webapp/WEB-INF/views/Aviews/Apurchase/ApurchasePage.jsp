@@ -15,15 +15,18 @@ var payment;
 var days;
 var payConfirm;
 var endday="";
+
 function template1() {
 	template = document.getElementById("template").innerHTML="template1";
 	$('#templateforValue').val($('#template').text());
 	
 }
+
 function template2() {
 	template = document.getElementById("template").innerHTML="template2";
 	$('#templateforValue').val($('#template').text());
 }
+
 function template3() {
 	template = document.getElementById("template").innerHTML="template3";
 	$('#templateforValue').val($('#template').text());
@@ -43,7 +46,7 @@ function payment1(date) {
 		dataType: 'text',
 		success: function(value){
 			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
 			if(payConfirm == true){
 				document.getElementById('ApurchaseInfo').submit();
 			}else{
@@ -66,6 +69,7 @@ function payment1(date) {
 			document.getElementById("payment").innerHTML+=value;
 	}); */
 }
+
 function payment2(date) {
 	payment = document.getElementById("payment").innerHTML="30,000";
 	days = document.getElementById("days").innerHTML="60";
@@ -80,7 +84,7 @@ function payment2(date) {
 		dataType: 'text',
 		success: function(value){
 			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
 			if(payConfirm == true){
 				document.getElementById('ApurchaseInfo').submit();
 			}else{
@@ -102,6 +106,7 @@ function payment2(date) {
 	
 	}); */
 }
+
 function payment3(date) {
 	payment = document.getElementById("payment").innerHTML="45,000";
 	days = document.getElementById("days").innerHTML="90";
@@ -114,7 +119,7 @@ function payment3(date) {
 		dataType: 'text',
 		success: function(value){
 			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
 			if(payConfirm == true){
 				document.getElementById('ApurchaseInfo').submit();
 			}else{
@@ -136,6 +141,7 @@ function payment3(date) {
 	
 	}); */
 }
+
 function payment4(date) {
 	payment = document.getElementById("payment").innerHTML="60,000";
 	days = document.getElementById("days").innerHTML="180";
@@ -148,7 +154,7 @@ function payment4(date) {
 		dataType: 'text',
 		success: function(value){
 			endday=value;
-			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\사용만료일: "+endday);
+			payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment+"\n사용만료일: "+endday);
 			if(payConfirm == true){
 				document.getElementById('ApurchaseInfo').submit();
 			}else{
