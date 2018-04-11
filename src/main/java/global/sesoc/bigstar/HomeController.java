@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
-import global.sesoc.bigstar.vo.Bproducttable;
 
 /**
  * Handles requests for the application home page.
@@ -92,6 +92,25 @@ public class HomeController {
 		
 		return "Bviews/Bmain/Bpreview";
 	}
+	
+	@RequestMapping(value = "savepage", method=RequestMethod.POST)
+	public String pagesave(HttpServletResponse response, String savepage, Model model) {
+		response.setHeader("X-XSS-Protection", "0"); //X-XSS공격을 막기위한 방어수단 해제
+		savepage = savepage.replace("<meta", "<!-- <meta");
+		savepage = savepage.replace("/meta>", "/meta> -->");
+		savepage = savepage.replace("<title", "<!-- <title");
+		savepage = savepage.replace("/title>", "/title> -->");
+		
+		String savepage1 = savepage.substring(0, 1000);
+		String savepage2 = savepage.substring(1000, 2000);
+		String savepage3 = savepage.substring(2000, savepage.length());
+		
+		model.addAttribute("test1", savepage1);
+		model.addAttribute("test2", savepage2);
+		model.addAttribute("test3", savepage3);
+		return "Bviews/Bmain/test";
+	}
+	
 	
 	
 	

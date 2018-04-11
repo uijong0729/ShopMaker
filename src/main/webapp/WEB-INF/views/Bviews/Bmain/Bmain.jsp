@@ -15,18 +15,18 @@
 			});
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
-
-					
 					if ($(this.activeElement).attr("id").startsWith("button")) {
 						showmap(popup, $(this.activeElement).attr("id"));
-					}
-					if($(this.activeElement).attr("id").startsWith("text")) {
+						$("#delItem").val($(this.activeElement).attr("id"));
+					}else if($(this.activeElement).attr("id").startsWith("text")) {
 						showmap_text(popup, $(this.activeElement).attr("id"));
-					}
-					if ($(this.activeElement).attr("id").startsWith("image")) {
+						$("#delItem").val($(this.activeElement).attr("id"));
+					}else if ($(this.activeElement).attr("id").startsWith("image")) {
 						showmap_image(popup, $(this.activeElement).attr("id"));
+						$("#delItem").val($(this.activeElement).attr("id"));
+					} else {
+						return false;
 					}
-					$("#delItem").val($(this.activeElement).attr("id"));
 				}
 			});
 
@@ -61,10 +61,7 @@
 			                direction = 'none';
 			                break;
 			        }
-			        
 			    });
-			    
-			    
 			});
 			
 			
@@ -125,8 +122,6 @@
 				
 				$("#" + document.getElementById("latestComponent").value).css("left", finalX);
 				$("#" + document.getElementById("latestComponent").value).css("top", finalY);
-				console.log(ev.clientX + "." + ev.clientY);
-				console.log(finalX + "." + finalY);
 			}
 			
 			function newBtn() {
@@ -137,8 +132,11 @@
 					return;
 				} else {
 					count = document.getElementById('btnCount').value;
-					var str = '<button id="button' + count + '" class="button" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left: 300px; top: 300px; border=1px solid black;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					count *= 1;
+					var str = '<button id="button' + count + '" class="button" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+					document.getElementById('btnCount').value = count + 1;
 				}
 			}
 			
@@ -150,8 +148,10 @@
 					return;
 				} else {
 					count = document.getElementById('textCount').value;
-					var str = '<div id="text' + count + '" class="text" class="draggable" rows="3" cols="28" draggable="true" style="left: 300px; top: 300px; border= 1px solid black" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					count *= 1;
+					var str = '<div id="text' + count + '" class="text" class="draggable" rows="3" cols="28" draggable="true" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+					document.getElementById('textCount').value = count + 1;
 				}
 			}
 			
@@ -163,8 +163,10 @@
 					return;
 				} else {
 					count = document.getElementById('imageCount').value;
-					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left: 300px; top: 300px; " tabindex="0"></img>';
+					count *= 1;
+					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+					document.getElementById('imageCount').value = count + 1;
 				}
 			}
 			
@@ -437,7 +439,8 @@
 				}
 				
 				if (btnUrl != '' && btnUrl != null) {
-					$("#" + btnName).attr("onclick", ("location.href='" + btnUrl + "'"));
+					$("#" + btnName).attr("onclick", $('#Bcenter').load(btnUrl));
+					
 				}
 				
 				if (fontsize != '' && fontsize != null) {
@@ -499,8 +502,6 @@
 				    alert('이미지 투명도는 0~9 사이의 숫자만 입력할 수 있습니다');
 				    return false;
 				}
-				
-				fontsize *= 1;
 				
 				var imageName = $("#imageName").val();
 				
@@ -569,13 +570,14 @@
 				var str = '<ul>';
 				str += '<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>';
 				str += '<li style="cursor: pointer;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>';
+				str += '<li style="cursor: pointer;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>';
 				str += '<li>매장관리</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
-			
 			function Bsm() {
 				var str = '<ul>';
 				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer;">상품리스트 관리</li>';
@@ -591,18 +593,36 @@
 				$('#Bcenter').load('goBproductdetail');
 			}
 			
+			function Bsavepage() {
+				var btnCount = $('#btnCount').val();
+				for (var i = 0; i < btnCount ; i++) {
+				}
+				
+				var textCount = $('#textCount').val();
+				var ImageCount = $('#imageCount').val();
+				
+				$('div').removeClass("tabindex");
+				
+				$('#savepage').val($('#Bcenter').html());
+				$('#savepagefrm').submit();
+			}
+			
 			
 		</script>
 		<style type="text/css">
+			body {
+				width: 100%;
+				height: 100%;
+			}
 			#sidebar {
 				width: 150px;
 				height: 600px;
-				left: -149px;
+				left: -145px;
 				top: 12%;
 				border: 1px solid black;
 				position: fixed;
 				background: white;
-				transition: 0.5s;
+				transition: 0.3s;
 				transition-timing-function: linear;
 			}
 			#sidebar:HOVER {
@@ -645,35 +665,6 @@
 				height: 570px;
 				/* background: red; */
 				position: fixed;
-			}
-			.button {
-				width: 200px; 
-				height: 60px; 
-				background: gray; 
-				border-radius: 7px; 
-				text-align: center; 
-				position: absolute;
-				border: 1px solid black;
-				float: none;
-				resize: both;
-				overflow: hidden;
-			}
-			.text {
-				position: absolute;
-				width: 200px;
-				height: 60px;
-				background: #ffffff;
-				border: 1px  solid black;
-				border-radius: 7px;
-				resize: both;
-				overflow: hidden;
-			}
-			.image {
-				width: 60px; 
-				height: 60px; 
-				position: absolute;
-				resize: both;
-				overflow: hidden;
 			}
 			.textalign {
 				text-align: center;
@@ -755,16 +746,16 @@
 				height: 100%;
 			}
 			#mask {
-            position:absolute;
-            left:0;
-            top:0;
-            width: 100%;
-            height: 100%;
-            z-index:999;
-            background-color:#000000;
-			visibility: hidden;
-			transition: 0.3s;
-			opacity: 0.7;
+	            position:absolute;
+	            left:0;
+	            top:0;
+	            width: 100%;
+	            height: 100%;
+	            z-index:999;
+	            background-color:#000000;
+				visibility: hidden;
+				opacity: 0.7;
+			}
 		</style>
 		<title>Shop Maker</title>
 	
@@ -811,6 +802,8 @@
 				<ul>
 					<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>
 					<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li style="cursor: pointer;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>
+					<li style="cursor: pointer;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
@@ -863,6 +856,8 @@
 			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
 			<input type="hidden" id="imageName">
 		</div>
-		
+		<form id="savepagefrm" action="savepage" method="post">
+			<input type="hidden" id="savepage" name="savepage">
+		</form>
 	</body>
 </html>
