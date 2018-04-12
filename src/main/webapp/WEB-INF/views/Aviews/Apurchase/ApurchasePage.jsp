@@ -10,20 +10,20 @@
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
 <script>
 
-/* TODO:버튼 클릭 시 선택 된 항목 버튼 색 변경하기 
+/* 버려진 코드 : 버튼 클릭 시  배경 변경 관련 코드
 $(document).ready(function(){
 	
-	$('.button span').on('click',changeColor);
+	$('.button span').on('click',changeColor());
 	
 })
 
 function changeColor(){
 	var color = $(this).attr('check');
 	
-	if(check=="checked"){
+	if(color=="checked"){
 		$(this).attr('check',"");
 		$(this).css('background',"#608bbc");
-	}else(check==""){
+	}else if(color==""){
 		$(this).attr('check',"checked");
 		$(this).css('background',"#DB7093");
 	}
@@ -39,6 +39,9 @@ var endday="";
 
 function template1() {
 	template = document.getElementById("template").innerHTML="template1";
+	$('#template1').css("background", "#afafaf");
+	$('#template2').css("background", "#00000000");
+	$('#template3').css("background", "#00000000");
 	$('#templateforValue').val($('#template').text());
 	
 	
@@ -46,11 +49,17 @@ function template1() {
 
 function template2() {
 	template = document.getElementById("template").innerHTML="template2";
+	$('#template1').css("background", "#00000000");
+	$('#template2').css("background", "#afafaf");
+	$('#template3').css("background", "#00000000");
 	$('#templateforValue').val($('#template').text());
 }
 
 function template3() {
 	template = document.getElementById("template").innerHTML="template3";
+	$('#template1').css("background", "#00000000");
+	$('#template2').css("background", "#00000000");
+	$('#template3').css("background", "#afafaf");
 	$('#templateforValue').val($('#template').text());
 }
 
@@ -58,6 +67,10 @@ function payment1(date) {
 	
 	payment = document.getElementById("payment").innerHTML="15,000";
 	days = document.getElementById("days").innerHTML="30";
+	$('#payment1').css("background", "#afafaf");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	
@@ -95,6 +108,10 @@ function payment1(date) {
 function payment2(date) {
 	payment = document.getElementById("payment").innerHTML="30,000";
 	days = document.getElementById("days").innerHTML="60";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#afafaf");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	
@@ -132,6 +149,10 @@ function payment2(date) {
 function payment3(date) {
 	payment = document.getElementById("payment").innerHTML="45,000";
 	days = document.getElementById("days").innerHTML="90";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#afafaf");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	$.ajax({
@@ -167,6 +188,10 @@ function payment3(date) {
 function payment4(date) {
 	payment = document.getElementById("payment").innerHTML="60,000";
 	days = document.getElementById("days").innerHTML="180";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#afafaf");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	$.ajax({
@@ -217,7 +242,7 @@ function payment4(date) {
 
 <h3><Span>Template1</span></h3>
 <p>
-<a class="button" check="" id="template1" onclick="template1()"><span>Pick</span></a>
+<a class="button" id="template1" href="javascript:template1()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -228,7 +253,7 @@ function payment4(date) {
 </div>
 <h3><Span>Template2</span></h3>
 <p>
-<a class="button" check="" id="template2" onclick="template2()"><span>Pick</span></a>
+<a class="button" id="template2" href="javascript:template2()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -239,7 +264,7 @@ function payment4(date) {
 </div>
 <h3><Span>Template3</span></h3>
 <p>
-<a class="button" check="" id="template1" onclick="template3()"><span>Pick</span></a>
+<a class="button" id="template3" href="javascript:template3()"><span>Pick</span></a>
 </p>
 </section>
 </div>
@@ -254,7 +279,7 @@ function payment4(date) {
 <li>15,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" id="payment1" onclick="payment1('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment1('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -265,7 +290,7 @@ function payment4(date) {
 <li>30,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" id="payment2" onclick="payment2('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment2('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -276,7 +301,7 @@ function payment4(date) {
 <li>45,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" id="payment3" onclick="payment3('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment3('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -287,7 +312,7 @@ function payment4(date) {
 <li>60,000</li>
 </ul>
 <p>
-<a class="button" check="" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
+<a class="button" check="" id="payment4" onclick="payment4('${Amember.paymentexpirationdate}')"><span>Start now</span></a>
 <%-- payment4('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>

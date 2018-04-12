@@ -17,21 +17,34 @@ var payConfirm;
  
 function template1() {
 	template = document.getElementById("template").innerHTML="template1";
+	$('#template1').css("background", "#afafaf");
+	$('#template2').css("background", "#00000000");
+	$('#template3').css("background", "#00000000");
 	$('#templateforValue').val($('#template').text());
 	
 }
 function template2() {
 	template = document.getElementById("template").innerHTML="template2";
+	$('#template1').css("background", "#00000000");
+	$('#template2').css("background", "#afafaf");
+	$('#template3').css("background", "#00000000");
 	$('#templateforValue').val($('#template').text());
 }
 function template3() {
 	template = document.getElementById("template").innerHTML="template3";
+	$('#template1').css("background", "#00000000");
+	$('#template2').css("background", "#00000000");
+	$('#template3').css("background", "#afafaf");
 	$('#templateforValue').val($('#template').text());
 }
 
 function payment1() {
 	payment = document.getElementById("payment").innerHTML="15,000";
 	days = document.getElementById("days").innerHTML="30";
+	$('#payment1').css("background", "#afafaf");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
@@ -55,6 +68,10 @@ function payment1() {
 function payment2() {
 	payment = document.getElementById("payment").innerHTML="30,000";
 	days = document.getElementById("days").innerHTML="60";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#afafaf");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
@@ -76,6 +93,10 @@ function payment2() {
 function payment3() {
 	payment = document.getElementById("payment").innerHTML="45,000";
 	days = document.getElementById("days").innerHTML="90";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#afafaf");
+	$('#payment4').css("background", "#00000000");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	payConfirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
@@ -98,6 +119,10 @@ function payment3() {
 function payment4() {
 	payment = document.getElementById("payment").innerHTML="60,000";
 	days = document.getElementById("days").innerHTML="180";
+	$('#payment1').css("background", "#00000000");
+	$('#payment2').css("background", "#00000000");
+	$('#payment3').css("background", "#00000000");
+	$('#payment4').css("background", "#afafaf");
 	$('#paymentforValue').val($('#payment').text());
 	$('#daysforValue').val($('#days').text());
 	confirm = confirm("선택하신 결제 정보는 아래와 같습니다.\n템플릿: "+template+"\n기간: "+days+"\n결제금액: "+payment);
@@ -137,7 +162,7 @@ function payment4() {
 
 <h3><Span>Template1</span></h3>
 <p>
-<a class="button" onclick="template1()"><span>Pick</span></a>
+<a class="button" id="template1" onclick="template1()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -148,7 +173,7 @@ function payment4() {
 </div>
 <h3><Span>Template2</span></h3>
 <p>
-<a class="button" onclick="template2()"><span>Pick</span></a>
+<a class="button" id="template2" onclick="template2()"><span>Pick</span></a>
 </p>
 </section>
 
@@ -159,7 +184,7 @@ function payment4() {
 </div>
 <h3><Span>Template3</span></h3>
 <p>
-<a class="button" onclick="template3()"><span>Pick</span></a>
+<a class="button" id="template3" onclick="template3()"><span>Pick</span></a>
 </p>
 </section>
 </div>
@@ -173,7 +198,7 @@ function payment4() {
 <li>15,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment1()"><span>Start now</span></a>
+<a class="button" id="payment1" onclick="payment1()"><span>Start now</span></a>
 <%-- payment1('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -184,7 +209,7 @@ function payment4() {
 <li>30,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment2()"><span>Start now</span></a>
+<a class="button" id="payment2" onclick="payment2()"><span>Start now</span></a>
 <%-- payment2('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -195,7 +220,7 @@ function payment4() {
 <li>45,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment3()"><span>Start now</span></a>
+<a class="button" id="payment3" onclick="payment3()"><span>Start now</span></a>
 <%-- payment3('${Bmember.paymentexpirationdate}') --%>
 </p>
 </section>
@@ -206,7 +231,7 @@ function payment4() {
 <li>60,000</li>
 </ul>
 <p>
-<a class="button" onclick="payment4()"><span>Start now</span></a>
+<a class="button" id="payment4" onclick="payment4()"><span>Start now</span></a>
 <%-- payment4('${Amember.paymentexpirationdate}') --%>
 </p>
 </section>
