@@ -165,7 +165,9 @@ function showAdder(){
 				</div>
 				<br><br><br><br>
 				
-			<div style="margin: 30px;"><input type="submit" value="가입하기"></div>
+			<div style="margin: 30px;">
+				<input type="submit" value="가입하기">
+			</div>
 	
 	<!-- 디지털 아카이빙 -->
 	<!-- 스누핑, 스니핑, 스푸핑 -->
