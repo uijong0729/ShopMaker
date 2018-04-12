@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
+		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
@@ -133,7 +134,7 @@
 				} else {
 					count = document.getElementById('btnCount').value;
 					count *= 1;
-					var str = '<button id="button' + count + '" class="button" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					var str = '<button id="button' + count + '" class="button forDisableDrag draggable" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
 					
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('btnCount').value = count + 1;
@@ -149,7 +150,7 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					count *= 1;
-					var str = '<div id="text' + count + '" class="text" class="draggable" rows="3" cols="28" draggable="true" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" ondragstart="drag(this, event)" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text forDisableDrag draggable" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('textCount').value = count + 1;
 				}
@@ -164,7 +165,7 @@
 				} else {
 					count = document.getElementById('imageCount').value;
 					count *= 1;
-					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image" class="draggable" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
+					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image forDisableDrag draggable" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('imageCount').value = count + 1;
 				}
@@ -439,7 +440,11 @@
 				}
 				
 				if (btnUrl != '' && btnUrl != null) {
-					$("#" + btnName).attr("onclick", $('#Bcenter').load(btnUrl));
+					if (btnUrl.startsWith("http") || btnUrl.startsWith("www")) {
+						$("#" + btnName).attr("onclick", "location.href='" + btnUrl + "'");
+					} else {
+						$("#" + btnName).attr("onclick",movePage(btnUrl));
+					}
 					
 				}
 				
@@ -448,6 +453,10 @@
 				}
 				
 				closemap();
+			}
+			
+			function movePage(url) {
+				$('#Bcenter').load(url);
 			}
 			
 			function editText(btn) {
@@ -550,10 +559,10 @@
 			
 			function Bmm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bregist()" style="cursor: pointer;">회원가입 양식</li>';
-				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer;">로그인 양식</li>';
-				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer;">마이페이지 양식</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 양식</li>';
+				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인 양식</li>';
+				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지 양식</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
@@ -568,10 +577,10 @@
 			}
 			function Bmmback() {
 				var str = '<ul>';
-				str += '<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javasdcript:Bsm()">사이트 관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>';
-				str += '<li style="cursor: pointer;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>';
+				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
+				str += '<li style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>';
+				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>';
 				str += '<li>매장관리</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
@@ -581,18 +590,18 @@
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer;">상품리스트 관리</li>';
-				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer;">상품상페이지 관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트 관리</li>';
+				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상페이지 관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
 			
 			function Bpm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bheader()" style="cursor: pointer;">Header관리</li>';
-				str += '<li onclick="javascript:Bfooter()" style="cursor: pointer;">Footer관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer;">뒤로가기</li>';
+				str += '<li onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
+				str += '<li onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -622,7 +631,13 @@
 				var textCount = $('#textCount').val();
 				var ImageCount = $('#imageCount').val();
 				
-				$('div').removeClass("tabindex");
+				$('.forDeleteBtn').remove();
+				
+				console.log($('#Bcenter').find('[tabindex=0]').attr("id"));
+				$('#Bcenter').find('[tabindex=0]').removeAttr("tabindex");
+				$('.forDisableDrag').removeAttr("ondragstart");
+				$('.forDisableDrag').removeAttr("draggable");
+				$('.text').removeAttr("contenteditable");
 				
 				$('#savepage').val($('#Bcenter').html());
 				$('#savepagefrm').submit();
@@ -790,7 +805,6 @@
 		</header>
 
 		
-	
 		
 		
 		
@@ -805,9 +819,9 @@
 			<div id="page" onclick="javascript:page()">페이지</div>
 			<div id="component_tool">
 				<ul>
-					<li style="cursor: pointer;" onclick="javascript:newBtn()">버튼 추가</li>
-					<li style="cursor: pointer;" onclick="javascript:newText()">텍스트 추가</li>
-					<li style="cursor: pointer;" onclick="javascript:newImage()">이미지 추가</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
 				
 				</ul>
 				<input type="hidden" id="diffX">
@@ -821,10 +835,9 @@
 				
 			<div id="page_tool">
 				<ul>
-					<li style="cursor: pointer;" onclick="javascript:Bmm()">회원관리</li>
-					<li style="cursor: pointer;" onclick="javascript:Bsm()">사이트 관리</li>
-					<li style="cursor: pointer;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>
-					<li style="cursor: pointer;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>

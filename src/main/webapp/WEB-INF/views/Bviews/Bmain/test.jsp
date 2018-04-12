@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,7 +20,7 @@
 			<%@ include file="../Bheader.jsp" %>
 		</header>
 		<div id="testtest">
-		${test1}${test2}${test3}
+			${test}
 		</div>
 	</body>
 </html>

@@ -101,13 +101,32 @@ public class HomeController {
 		savepage = savepage.replace("<title", "<!-- <title");
 		savepage = savepage.replace("/title>", "/title> -->");
 		
-		String savepage1 = savepage.substring(0, 1000);
-		String savepage2 = savepage.substring(1000, 2000);
-		String savepage3 = savepage.substring(2000, savepage.length());
+		int size = savepage.length();
+		String[] savedpage = new String[(size/1000) + 1];
+		System.out.println(size);
+		System.out.println(size / 1000);
 		
-		model.addAttribute("test1", savepage1);
-		model.addAttribute("test2", savepage2);
-		model.addAttribute("test3", savepage3);
+		for (int i = 0; i <= (size / 1000); i++) {
+			if (i == 0 && size <= 1000) {
+				savedpage[i] = savepage;
+			}
+			if (i == 0 && size > 1000) {
+				savedpage[i] = savepage.substring(0, (i + 1) * 1000);
+			} else if (i == (size / 1000)) {
+				savedpage[i] = savepage.substring((i * 1000), size);
+			} else {
+				savedpage[i] = savepage.substring(i * 1000, (i + 1) * 1000);
+			}
+		} // 1000자단위로 나누어 배열에 저장 (DB에 저장 필요)
+		
+		
+		//DB에서 로드
+		String result = "";
+		for (int i = 0; i < savedpage.length; i++) {
+			result += savedpage[i];
+		}
+		model.addAttribute("test", result);
+		
 		return "Bviews/Bmain/test";
 	}
 	
