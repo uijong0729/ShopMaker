@@ -5,11 +5,16 @@
 
 <mapper namespace="global.sesoc.bigstar.dao.BproducttableMapper">
 	<select id="selectbproducttable" resultType="Bproducttable">
-		select * from Bproducttable where productcode =#{productcode}
+		select * from
+		Bproducttable where productcode =#{productcode}
 
 	</select>
 
+	<select id="selectallbproducttable" resultType="Bproducttable">
+		select * from
+		Bproducttable
 
+	</select>
 
 
 </mapper>
