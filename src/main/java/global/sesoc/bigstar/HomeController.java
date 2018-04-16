@@ -46,8 +46,8 @@ public class HomeController {
 	BordertableDAO dao;*/
 	/*@Autowired
 	BquestiontableDAO dao;*/
-	@Autowired
-	BreviewtableDAO dao;
+	//@Autowired
+	//BreviewtableDAO dao;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -71,7 +71,7 @@ public class HomeController {
 		//System.out.println(dao.selectbnoticetable(1).toString());
 		//System.out.println(dao.selectbordertable(1).toString());
 		//System.out.println(dao.selectbquestiontable(1).toString());
-		System.out.println(dao.selectbreviewtable(1).toString());
+		//System.out.println(dao.selectbreviewtable(1).toString());
 		return "home";
 	}
 	

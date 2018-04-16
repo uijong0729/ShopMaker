@@ -32,37 +32,80 @@ input[type=checkbox]
 <script>
 
 var counter = 0;
-
+var dialog = $( "#dialog" ).dialog({
+    autoOpen: true,
+    position:{
+        my:"center",
+        at:"right",
+        of:"#Bcenter" 
+        },
+    show: {
+      effect: "blind",
+      duration: 300
+    },
+    hide: {
+      effect: "explode",
+      duration: 300
+    }
+});
+	
+	
+	
 $(document).ready(function(){
 	
 	$('#addComponent').on('click', showAdder);
 	$('.li').on('click', changeColor);
 	$('#Bregister').on('click', goReg);
+	$('.ui-dialog').remove();
+	start();
+	$('#forHover').mouseleave(function(){
+		$(dialog).dialog( "close" );
+//		$('#dialog').dialog();
+	});
+	
 });
 
-$( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      position:{
-          my:"center",
-          at:"right",
-          of:"#Bcenter" 
-          },
-      show: {
-        effect: "blind",
-        duration: 300
-      },
-      hide: {
-        effect: "explode",
-        duration: 300
-      }
-    });
+function start() {
+	
+	//if ($('#Bregister')) {
+		$( function() { 		
+			$( "#dialog" ).dialog({
+			    autoOpen: true,
+			    position:{
+			        my:"center",
+			        at:"right",
+			        of:"#Bcenter" 
+			        },
+			    show: {
+			      effect: "blind",
+			      duration: 300
+			    },
+			    hide: {
+			      effect: "explode",
+			      duration: 300
+			    }
+			});
+			$('#forHover').mouseleave(function(){
+				$(dialog).dialog( "close" );
+//				$('#dialog').dialog();
+			});
+		});
+	//} 
+	
+	/* else {
+		//$('#dialog').css("visibility", "hidden");
+		$( "#dialog" ).dialog( "close" );
+		return;
+	} */
+}
+
+
  
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
- 
-} );
+ /*    $( "#opener" ).on( "click", function() {
+    		  $( "#dialog" ).dialog( "open" );
+    }); */
+
+
 
 $( "#dialog" ).position({
 	  my: "right center",
@@ -133,6 +176,9 @@ function showAdder(){
 }
 
 
+
+
+
 </script>
 
 </head>
@@ -172,9 +218,6 @@ function showAdder(){
 			<div style="margin: 30px;">
 				<a id="Bregister">가입하기</a>
 			</div>
-	
-	<!-- 디지털 아카이빙 -->
-	<!-- 스누핑, 스니핑, 스푸핑 -->
 		
 	<div id="dialog" title="다음 중에서 요소를 추가하세요">
 	    <ul style="list-style: none; display:inline;">
@@ -183,8 +226,10 @@ function showAdder(){
 	    	<li class="li" id="name" color="black"><span>이름</span></li>
 	    </ul>
 	</div>
+	
+	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
 
-<button style="margin: 30px;" id="opener">요소추가</button>
+<!-- <button style="margin: 30px;" id="opener">요소추가</button> -->
 	
 </body>
 </html>
