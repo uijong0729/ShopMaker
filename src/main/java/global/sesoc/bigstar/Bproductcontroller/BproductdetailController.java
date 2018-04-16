@@ -24,5 +24,11 @@ public class BproductdetailController {
 		
 		return "Bviews/Bproduct/Bbasket";
 	}
+	
+	@RequestMapping(value="productInsert", method=RequestMethod.GET)
+	public String productInsert() {
+		
+		return "Bviews/Bproduct/ProductInsert";
+	}
 
 }
