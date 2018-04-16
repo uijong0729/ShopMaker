@@ -46,8 +46,8 @@ public class HomeController {
 	BordertableDAO dao;*/
 	/*@Autowired
 	BquestiontableDAO dao;*/
-	//@Autowired
-	//BreviewtableDAO dao;
+	/*@Autowired
+	BreviewtableDAO dao;*/
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

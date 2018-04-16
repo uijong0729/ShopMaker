@@ -1,0 +1,123 @@
+*{
+    font-family: "맑은고딕";
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*border:1px solid red;*/
+}
+#insertBoard_wrapper{
+	width: 870px;
+    height: auto;
+    margin: auto;
+   
+	
+}
+.insertBoard_Title{
+	width: 855px;
+	height:40px;
+    font-size: 25px;
+    margin-left: 6px;
+    margin-bottom: 20px;
+    text-align: left;
+    text-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+table {
+    width: 98%;
+    height: 60px;
+    border-spacing: 0;
+    padding: 0px;
+}
+
+.td1{
+    border-top: 1px solid rgb(211, 211, 211);
+}
+tr td{
+    
+    border-bottom: 1px solid rgb(211, 211, 211);
+    height: 40px;
+    font-size: 14px;
+    
+}
+a:link{
+    color: rgb(61, 61, 61);
+    text-decoration: none;
+}
+a:active{
+   color: rgb(61, 61, 61);
+}
+a:visited{
+    color: rgb(61, 61, 61);
+    }
+tr td:nth-child(1) {
+    width:20%;
+    padding-left: 20px;
+}
+tr td:nth-child(2) {
+    width:80%;
+    
+}
+.boardContent{
+    height: 150px;
+    padding:20px 20px 20px 0px;
+}
+.submit_btn1{
+	 width: 65px;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid rgb(211, 211, 211);
+    
+    margin-top: 20px;
+    
+    display:inline-block;
+    float:left;
+    background-color: rgba(255, 255, 255, 0)
+}
+.submit_btn2{
+    width: 65px;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid rgb(211, 211, 211);
+    
+    margin-top: 20px;
+    margin-right:15px;
+    display:inline-block;
+    float:right;
+    background-color: rgba(255, 255, 255, 0)
+}
+.inpt{
+	width:70%;
+    height:80%;
+    border:0.5px solid rgb(211, 211, 211);
+}
+.content_inpt{
+	resize:none;
+	
+}
+.inputImg{
+	padding-top:10px;
+	width:50%;
+	height:30px;
+}
+
+.writerbox{
+	border: none;
+	background-color: white;
+}
+.img_wrap{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    margin-top: 10px;
+    
+}
+.img_wrap img{
+    width: 100%;
+    height: 100%;
+    
+}
+#tDate{
+	height:100px;
+}
