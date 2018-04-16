@@ -6,22 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./resources/css/Bpage/sellerProductUpload.css?ver=1" />
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#size_type').on('change',selectSize);	
-});
 
-function selectSize() {
-	var sizetype = document.getElementById('size_type');
-	var msg = sizetype.value;
-	
-	if(msg == '직접입력'){
-		document.getElementById('size').value = '';
-	} else {
-		document.getElementById('size').value = msg;
-	}
-}
-</script>
 <title>ProductInsert</title>
 </head>
 <body>
