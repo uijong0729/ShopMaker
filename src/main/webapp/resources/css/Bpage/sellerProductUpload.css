@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.sellerProduct_wrapper{
+    width: 1150px;
+    height: auto;
+    
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+.sellerProduct_title1{
+    font-size: 30px;
+    text-shadow: 0px 0px 0.5px rgb(0, 0, 0);
+    float: left;
+}
+.sellerProduct_titl2{
+    font-size: 16px;
+    text-shadow: 0px 0px 0.5px rgb(0, 0, 0);
+    float: left;
+    padding-top: 16px;
+    margin-left: 120px;
+}
+#clear{
+    clear: both;
+}
+
+.sellerProduct_header{
+    width: 1000px;
+    height: 30px;
+    margin: auto;
+}
+.optionBox{
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    border: 1.5px solid rgb(207, 207, 207);
+    font-size: 14px;
+    border-collapse: collapse;
+    
+}
+.optionBox td{
+    height: 40px;
+    border:  1px solid rgb(207, 207, 207);
+    
+}
+.optionBox tr td:nth-child(1){
+    width: 25%;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.optionBox tr td:nth-child(2){
+    width: 75%;
+    padding-left: 20px;
+}
+select{
+    width: 200px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding-left: 5px;
+    font-size: 14px;
+    color: rgb(134, 134, 134);
+}
+.productname{
+    width: 710px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+.price{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+.optionbox{
+    width: 700px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+.addBox{
+    width: 700px;
+    height: 30px;
+    background-color: white !important;
+}
+.addBox td{
+    background-color: white !important;
+    padding-left: 0 !important;
+    border: none;
+}
+.addtext{
+    width: 200px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px; 
+}
+.addbtn{
+    width: 40px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #d4d4d4;
+}
+.delbtn{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #d4d4d4;
+    color: black;
+}
+.sizeBox{
+    width: 600px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white !important;
+    border-collapse: collapse;
+}
+.sizeBox td{
+    background-color: white !important;
+    padding-left: 0 !important;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    font-size: 12px;
+    
+}
+.sizeBox tr td:nth-child(1){
+    width: 13% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizeBox tr td:nth-child(2){
+    width: 14.5% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizeBox tr td:nth-child(3){
+    width: 14.5% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizeBox tr td:nth-child(4){
+    width: 14.5% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizeBox tr td:nth-child(5){
+    width: 14.5% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizeBox tr td:nth-child(6){
+    width: 14.5% !important;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+.sizetext{
+    width: 70px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px; 
+    text-align: center;
+}
+.sizetext1{
+    width: 70px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px; 
+    text-align: center;
+}
+.img_wrap{
+    width: 350px;
+    height: 350px;
+}
+.dtimg_wrap{
+    width: 230px;
+    height: 230px;
+    
+}
+#imgbox{
+    width: 350px;
+    height: 430px;
+    float: left;
+    
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#dtimgbox{
+    width: 230px;
+    height: 280px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 10px;
+}
+.img_wrap img{
+    width: 100%;
+    height: 100%;
+    
+}
+.dtimg_wrap img{
+    width: 100%;
+    height: 100%;
+}
+.imgbox_text{
+    width: 350px;
+    font-size: 13px;
+   
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.filebox{
+    margin-top: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0; 
+}
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: rgb(68, 68, 68);
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em; 
+} /* named upload */ 
+.filebox .upload-name {
+    width:255px;
+    display: inline-block;
+    padding: .5em .75em;/* label�쓽 �뙣�뵫媛믨낵 �씪移� */ 
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */ 
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+.submitBtn{
+    width: 200px;
+    height: 70px;
+    background-color: rgb(238, 238, 238);
+    margin: auto;
+    border: none;
+    text-shadow: 0px 0px 0.5px rgb(0, 0, 0);
+    font-size: 25px;
+    margin-top: 50px;
+    
+    
+}
+
+.dtfilebox{
+    margin-top: 10px;
+}
+
+.dtfilebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0; 
+}
+.dtfilebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: rgb(68, 68, 68);
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em; 
+} /* named upload */ 
+.dtfilebox .dtupload-name {
+    width:135px;
+    display: inline-block;
+    padding: .5em .75em;/* label�쓽 �뙣�뵫媛믨낵 �씪移� */ 
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */ 
+    -moz-appearance: none;
+    appearance: none; 
+}
