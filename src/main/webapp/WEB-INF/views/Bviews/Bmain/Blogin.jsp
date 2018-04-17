@@ -8,6 +8,12 @@
 	<title>Insert title here</title>
 	<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 	<script>
+		$(document).ready(function() {
+			$('.ui-dialog').remove();
+		});
+		$(document).mousedown(function(ev) {
+			if (ev.which == 3) {
+				if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image")) {
 	$(document).mousedown(function(ev) {
 		if (ev.which == 3) {
 			if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select")) {

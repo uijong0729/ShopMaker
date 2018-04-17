@@ -21,13 +21,16 @@ public class BproductController {
 	public String goBmainlilst(Model model) {
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 		
-		for (int i = 1; i <= 40; i++) {
+		Bproducttable=Bpdao.selectallbproducttable();
+		
+		
+		/*for (int i = 1; i <= 40; i++) {
 			Bproducttable bp = new Bproducttable();
 			bp.setProductcode(Integer.toString(i));
 			bp.setProductname("product" + i);
 			bp.setProductprice(i * 1000);
 			Bproducttable.add(bp);
-		}
+		}*/
 		model.addAttribute("Bproducttable", Bproducttable);
 		model.addAttribute("rows", 4);
 		return "Bviews/Bmainlist/Bmainlist";

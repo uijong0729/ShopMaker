@@ -37,10 +37,13 @@
 	<body>
 		한줄 표시개수 : <input type="text" id="rows"><button onclick="javascript:check();">적용</button><br><br>
 		<c:forEach items="${Bproducttable}" var="b" varStatus="vars">
+			<a href="goBproductdetail?productname=${b.productname}">
 			<div id="div${vars.index + 1}" class="div">
-				<img src="http://post.phinf.naver.net/20150916_230/2051426_1442355159623nuW9g_JPEG/mug_obj_201509160712418552.jpg" style="width: 200px; height: 200px;"><br>
+				
+				<img src="${b.productimage }" style="width: 200px; height: 200px;"><br>
 				상품번호 : ${b.productcode}<br>상품명 : ${b.productname}<br>가격 : ${b.productprice}
 			</div>
+			</a>
 		</c:forEach>
 	</body>
 </html>
