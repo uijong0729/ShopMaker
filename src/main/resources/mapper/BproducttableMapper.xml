@@ -16,7 +16,7 @@
 		Bproducttable
 	</select>
 	
-	<select id="getProductdetailListByName" parameterType="string" resultType="ArrayList">
+	<select id="getProductdetailListByName" resultType="Bproducttable">
 		select * from Bproducttable where productname =#{productname}
 	</select>
 

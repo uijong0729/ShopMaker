@@ -5,6 +5,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.wating_Img').mouseenter(function() {
+			$('.showingImg').attr("src", $(this).attr("src"));
+		});
+		$('.wating_Img').mouseleave(function(){
+			$('.showingImg').attr("src", "${productDetailList[1].productimage}");
+		});
+		/* $('.showingImg').css("z-index", 99999);
+		$('.showingImg').mouseenter(function() {
+			var width = $(this).css("width");
+			var height = $(this).css("height");
+			for (var int = 0; int < width.length; int++) {
+				if (width.charAt(int) == 'p') {
+					width = width.substring(0, int);
+				}
+			}
+			for (var int = 0; int < height.length; int++) {
+				if (height.charAt(int) == 'p') {
+					height = height.substring(0, int);
+				}
+			}
+			$(this).css("width", (width * 1.2) + "px");
+			$(this).css("height", (height * 1.2) + "px");
+		});
+		$('.showingImg').mouseleave(function() {
+			var width = $(this).css("width");
+			var height = $(this).css("height");
+			for (var int = 0; int < width.length; int++) {
+				if (width.charAt(int) == 'p') {
+					width = width.substring(0, int);
+				}
+			}
+			for (var int = 0; int < height.length; int++) {
+				if (height.charAt(int) == 'p') {
+					height = height.substring(0, int);
+				}
+			}
+			$(this).css("width", (width * 5 / 6) + "px");
+			$(this).css("height", (height * 5 / 6) + "px");
+		}); */
+	});
+</script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
 <title>Insert title here</title>
 </head>
@@ -13,25 +56,26 @@
         <div class="a">
             <diV class="half_detail_Info_Img">
                 <div class="show_Img">
-                    <img class="showingImg" src="./resources/img/c2.jpg">
+                    <img class="showingImg" src="${productDetailList[1].productimage}">
                 </div>
                 <div class="wating_Img_place">
-                    <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg">
-                    <img class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/img/c2.jpg">
+                    <!-- <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg"> -->
+                    <img class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[0].productimage}">
+                	<img class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
                 </div>
             </diV><!-- 이미지 프리뷰 -->
             <div class="half_detail_Info_Text">
                 <form action="detailaddOrder.do">
                     <div class="info_box1">
                         <p class="product_name">
-                            <h3>까치</h3>
+                            <h3>${productDetailList[1].productname}</h3>
                         </p>
                     </div>
                     <br>
                     <table class="Info_table">
                         <tr>
                             <td>가격</td>
-                            <td><span>10000원</span></td>
+                            <td><span>${productDetailList[1].productprice}</span></td>
                         </tr>
                         <tr>
                             <td>배송비</td>
@@ -79,7 +123,8 @@
                         	<p>상세 설명</p>
                     	</div>
                     </a> 
-                    <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
+                    <%-- <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe"> --%>
+                    <a href="productReview" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
                     	<div class="tool">
                         	<p>상품 후기</p>
                     	</div>
