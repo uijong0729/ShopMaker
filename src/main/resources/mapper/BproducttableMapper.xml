@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.bigstar.dao.BproducttableMapper">
+
 	<select id="selectbproducttable" resultType="Bproducttable">
 		select * from
 		Bproducttable where productcode =#{productcode}
@@ -13,8 +14,10 @@
 	<select id="selectallbproducttable" resultType="Bproducttable">
 		select * from
 		Bproducttable
-
 	</select>
-
+	
+	<select id="getProductdetailListByName" parameterType="string" resultType="ArrayList">
+		select * from Bproducttable where productname =#{productname}
+	</select>
 
 </mapper>

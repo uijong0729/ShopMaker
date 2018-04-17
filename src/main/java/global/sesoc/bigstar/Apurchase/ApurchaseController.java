@@ -82,8 +82,8 @@ public class ApurchaseController {
 		String paymentexpirationdate = (String) session.getAttribute("paymentexpirationdate");
 		Amember amember = (Amember) session.getAttribute("Amember");
 		String membercode = amember.getMembercode();
-		System.out.println(paymentexpirationdate);
-		System.out.println(membercode);
+//		System.out.println(paymentexpirationdate);
+//		System.out.println(membercode);
 		
 		int result = 0;
 		result = AMdao.updateAmemberpaymentexpirationdate(paymentexpirationdate, membercode);

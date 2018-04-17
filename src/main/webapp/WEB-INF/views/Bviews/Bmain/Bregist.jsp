@@ -32,37 +32,80 @@ input[type=checkbox]
 <script>
 
 var counter = 0;
-
+var dialog = $( "#dialog" ).dialog({
+    autoOpen: true,
+    position:{
+        my:"center",
+        at:"right",
+        of:"#Bcenter" 
+        },
+    show: {
+      effect: "blind",
+      duration: 300
+    },
+    hide: {
+      effect: "explode",
+      duration: 300
+    }
+});
+	
+	
+	
 $(document).ready(function(){
 	
 	$('#addComponent').on('click', showAdder);
 	$('.li').on('click', changeColor);
 	$('#Bregister').on('click', goReg);
+	$('.ui-dialog').remove();
+	start();
+	$('#forHover').mouseleave(function(){
+		$(dialog).dialog( "close" );
+//		$('#dialog').dialog();
+	});
+	
 });
 
-$( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      position:{
-          my:"center",
-          at:"right",
-          of:"#Bcenter" 
-          },
-      show: {
-        effect: "blind",
-        duration: 300
-      },
-      hide: {
-        effect: "explode",
-        duration: 300
-      }
-    });
+function start() {
+	
+	//if ($('#Bregister')) {
+		$( function() { 		
+			$( "#dialog" ).dialog({
+			    autoOpen: true,
+			    position:{
+			        my:"center",
+			        at:"right",
+			        of:"#Bcenter" 
+			        },
+			    show: {
+			      effect: "blind",
+			      duration: 300
+			    },
+			    hide: {
+			      effect: "explode",
+			      duration: 300
+			    }
+			});
+			$('#forHover').mouseleave(function(){
+				$(dialog).dialog( "close" );
+//				$('#dialog').dialog();
+			});
+		});
+	//} 
+	
+	/* else {
+		//$('#dialog').css("visibility", "hidden");
+		$( "#dialog" ).dialog( "close" );
+		return;
+	} */
+}
+
+
  
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
- 
-} );
+ /*    $( "#opener" ).on( "click", function() {
+    		  $( "#dialog" ).dialog( "open" );
+    }); */
+
+
 
 $( "#dialog" ).position({
 	  my: "right center",
@@ -86,6 +129,29 @@ function changeColor(){
 				if(id == "address")
 				{
 					$('#addRow').append('<tr id="Baddress"><th width="100px;">주소</th><td width="200px;"><input></td></tr>');
+			
+			function addRow(){
+				$('#addRow').append('<tr class="rows" id="newrow'+ counter +'"><td width="100px;" id="regist_custom' + counter + '" tabindex="0">텍스트</td><td width="200px;"><input></td><td><input id="delete'+counter+'" class="rowsButton forDeleteBtn" type="button" value="삭제"></td></tr>');
+				counter = counter + 1;
+				$('.rowsButton').on("click", function() {
+					 $(this).parent().parent().remove();
+				});
+			}
+			$(document).mousedown(function(ev) {
+				if (ev.which == 3) {
+					if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select") || $(this.activeElement).attr("id").startsWith("spinner")) {
+						return false;
+					} else {
+						var inputString = prompt('변경할 텍스트를 입력해 주세요', 'none');
+						if (inputString == 'none' || inputString == '' || inputString == null) {
+							return false;
+						} else {
+							console.log($(this.activeElement).attr("id"));
+							$(this.activeElement).text(inputString);
+							return false;
+						}
+						return false;
+					}
 				}
 				else if(id == "phone")
 				{
@@ -133,6 +199,9 @@ function showAdder(){
 }
 
 
+
+
+
 </script>
 
 </head>
@@ -172,9 +241,6 @@ function showAdder(){
 			<div style="margin: 30px;">
 				<a id="Bregister">가입하기</a>
 			</div>
-	
-	<!-- 디지털 아카이빙 -->
-	<!-- 스누핑, 스니핑, 스푸핑 -->
 		
 	<div id="dialog" title="다음 중에서 요소를 추가하세요">
 	    <ul style="list-style: none; display:inline;">
@@ -183,8 +249,10 @@ function showAdder(){
 	    	<li class="li" id="name" color="black"><span>이름</span></li>
 	    </ul>
 	</div>
+	
+	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
 
-<button style="margin: 30px;" id="opener">요소추가</button>
+<!-- <button style="margin: 30px;" id="opener">요소추가</button> -->
 	
 </body>
 </html>

@@ -8,23 +8,29 @@
 	<title>Insert title here</title>
 	<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 	<script>
+		$(document).ready(function() {
+			$('.ui-dialog').remove();
+		});
 		$(document).mousedown(function(ev) {
 			if (ev.which == 3) {
 				if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image")) {
+	$(document).mousedown(function(ev) {
+		if (ev.which == 3) {
+			if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select")) {
+				return false;
+			} else {
+				var inputString = prompt('변경할 텍스트를 입력해 주세요', 'none');
+				if (inputString == 'none' || inputString == '' || inputString == null) {
 					return false;
 				} else {
-					var inputString = prompt('변경할 텍스트를 입력해 주세요', 'none');
-					if (inputString == 'none' || inputString == '' || inputString == null) {
-						return false;
-					} else {
-						console.log($(this.activeElement).attr("id"));
-						$(this.activeElement).text(inputString);
-						return false;
-					}
+					console.log($(this.activeElement).attr("id"));
+					$(this.activeElement).text(inputString);
 					return false;
 				}
+				return false;
 			}
-		});
+		}
+	});
 	</script>
 	
 	</head>
