@@ -6,13 +6,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
-		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
 				document.getElementById('btnCount').value = 0;
 				document.getElementById('textCount').value = 0;
 				document.getElementById('imageCount').value = 0;
+				document.getElementById('spinnerCount').value = 0;
+				document.getElementById('optionCounter').value = 1;
 			});
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
@@ -25,7 +26,15 @@
 					}else if ($(this.activeElement).attr("id").startsWith("image")) {
 						showmap_image(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
-					} else {
+					}else if ($(this.activeElement).attr("id").startsWith("select")) {
+						showmap_select(popup, $(this.activeElement).attr("id"));
+						$("#delItem").val($(this.activeElement).parent().attr("id"));
+					}else if ($(this.activeElement).attr("id").startsWith("spinner")) {
+						showmap_spinner(popup, $(this.activeElement).attr("id"));
+						$("#delItem").val($(this.activeElement).attr("id"));
+					}
+					
+					else {
 						return false;
 					}
 				}
@@ -134,7 +143,7 @@
 				} else {
 					count = document.getElementById('btnCount').value;
 					count *= 1;
-					var str = '<button id="button' + count + '" class="button forDisableDrag draggable" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
 					
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('btnCount').value = count + 1;
@@ -150,7 +159,7 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					count *= 1;
-					var str = '<div id="text' + count + '" class="text forDisableDrag draggable" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('textCount').value = count + 1;
 				}
@@ -165,9 +174,97 @@
 				} else {
 					count = document.getElementById('imageCount').value;
 					count *= 1;
-					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image forDisableDrag draggable" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
+					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image forDisableDrag" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('imageCount').value = count + 1;
+				}
+			}
+			
+			function newSelect() {
+				var count = document.getElementById('selectCount').value;
+				count *= 1;
+				if ( $("#select" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
+					document.getElementById('selectCount').value = count + 1;
+					return;
+				} else {
+					count = document.getElementById('selectCount').value;
+					count *= 1;
+					var str = '';
+					str += '<div id="divSelect' + count + '" class="divSelectForDrag" draggable="true" ondragstart="drag(this, event)" tabindex="0" style="position: absolute; left: 200px; top: 200px; text-align: left;">';
+					str += '<select id="select' + count + '" class="select forDisableDrag" style="width: 200px; height: 60px; position: absolute;">';
+					str += '<option>select' + count + '</option>';
+					str += '</select>';
+					str += '</div>';
+					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+					var reg = /[^0-9]/g;
+					var divHeight = $('#select' + count).css("height");
+					var divWidth = $('#select' + count).css("width");
+					divWidth = divWidth.replace(reg,'');
+					divHeight = divHeight.replace(reg, '');
+					divWidth *= 1;
+					divHeight *= 1;
+					divWidth += divHeight;
+					$('#divSelect' + count).css("width", divWidth + "px");
+					$('#divSelect' + count).css("height", divHeight + "px");
+					$('#divSelect' + count).css("background", "#afafaf");
+					var str2 = '<img id="dragHandle' + count + '" class="imageForDrag" src="/bigstar/resources/img/arrow.png" style="width: ' + divHeight + 'px; height: ' + divHeight + 'px; margin-left: ' + (divWidth - divHeight) + 'px">';
+					$('#divSelect' + count).html($('#divSelect' + count).html() + str2);
+					document.getElementById('selectCount').value = count + 1;
+				}
+			}
+			
+			function newSpinner() {
+				var count = document.getElementById('spinnerCount').value;
+				count *= 1;
+				if ( $("#spinner" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
+					document.getElementById('spinnerCount').value = count + 1;
+					return;
+				} else {
+					var str = '<div id="spinner' + count + '" style="width: 200px; height: 60px; position:absolute; left: 200px; top:200px; text-align: center; border: 1px solid black; background: #ffffff" draggable="true" ondragstart="drag(this, event)" tabindex="0">';
+					str += '<div id="number' + count + '" onkeydown="onlyNumber(this)" style="width: 100%; position: absolute; user-select: none;"></div>';
+					str += '<div id="numberUp' + count + '" style="position: absolute; text-align: center; user-select: none;" onclick="numberUp(this)">▲</div>';
+					str += '<div id="numberDown' + count + '" style="position: absolute; text-align: center; user-select: none;" onclick="numberDown(this)">▼</div>';
+					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+					var reg = /[^0-9]/g;
+					var width = $('#spinner0').css("width");
+					width = width.replace(reg, '');
+					width *= 1;
+					var height = $('#spinner0').css("height");
+					height = height.replace(reg, '');
+					height *= 0.5;
+					$('#number' + count).css("height", (height * 0.8) + "px");
+					$('#number' + count).css("margin-top", (height * 0.6) + "px");
+					$('#number' + count).text(0);
+					$('#numberUp' + count).css("margin-left", (width - height));
+					$('#numberUp' + count).css("width", height);
+					$('#numberUp' + count).css("height", height);
+					$('#numberDown' + count).css("margin-left", (width - height));
+					$('#numberDown' + count).css("margin-top", height);
+					$('#numberDown' + count).css("width", height);
+					$('#numberDown' + count).css("height", height);
+					document.getElementById('spinnerCount').value = count + 1;
+				}
+				
+			}
+			
+			function numberUp(btn) {
+				var clickedCount = btn.id.substring(8, btn.id.length);
+				var val = $('#number' + clickedCount).text();
+				var reg = /[^0-9]/g;
+				val = val.replace(reg, '');
+				val *= 1;
+				$('#number' + clickedCount).text(val + 1);
+			}
+			function numberDown(btn) {
+				var clickedCount = btn.id.substring(10, btn.id.length);
+				var val = $('#number' + clickedCount).text();
+				var reg = /[^0-9]/g;
+				val = val.replace(reg, '');
+				val *= 1;
+				if (val >= 1) {
+					$('#number' + clickedCount).text(val - 1);
+				} else {
+					$('#number' + clickedCount).text(0);
 				}
 			}
 			
@@ -272,6 +369,8 @@
 				if($('#popup').css('visibility') == "hidden") {
 					$('#popup_text').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "hidden");
+					$('#popup_select').css('visibility', "hidden");
+					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
@@ -366,6 +465,8 @@
 				if($('#popup_text').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "hidden");
+					$('#popup_select').css('visibility', "hidden");
+					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup_text').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
@@ -384,7 +485,164 @@
 				if($('#popup_image').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "hidden");
 					$('#popup_text').css('visibility', "hidden");
+					$('#popup_select').css('visibility', "hidden");
+					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "visible");
+					$('#mask').css('visibility', 'visible');
+					return false;
+				}
+			}
+			
+			function showmap_select(popup, id) {
+				var parent = $("#" + id).attr("id");
+				document.getElementById("selectName").value = parent;
+				var reg = /[^0-9]/g;
+				$("#select_width").val($("#" + parent).css("width").replace(reg, ''));
+				$("#select_height").val($("#" + parent).css("height").replace(reg, ''));
+				$("#select_fontsize").val($("#" + parent).css("font-size").replace(reg,''));
+				
+				var temp_textColor = $("#" + parent).css("color");
+				var temp_color = temp_textColor.substring(4, (temp_textColor.length - 1));
+				var color_split = temp_color.split(',');
+				var temp7 = (color_split[0] * 1).toString(16);
+				if (temp7 < 10) {
+					temp7 = "0" + temp7;
+				}
+				var temp8 = (color_split[1] * 1).toString(16);
+				if (temp8 < 10) {
+					temp8 = "0" + temp8;
+				}
+				var temp9 = (color_split[2] * 1).toString(16);
+				if (temp9 < 10) {
+					temp9 = "0" + temp9;
+				}
+				temp_color = temp7 + temp8 + temp9;
+				$("#select_textColor").val(temp_color);
+				
+				var temp_foo = $("#" + parent).css("background");
+				
+				var temp_foo_split;
+				for (var i = 0; i < temp_foo.length; i++) {
+					if (temp_foo.charAt(i) == ')') {
+						temp_foo_split = temp_foo.substring(4,i);
+					}
+				}
+				var foo_split = temp_foo_split.split(',');
+				var temp1 = (foo_split[0] * 1).toString(16);
+				if (temp1 < 10) {
+					temp1 = "0" + temp1;
+				}
+				var temp2 = (foo_split[1] * 1).toString(16);
+				if (temp2 < 10) {
+					temp2 = "0" + temp2;
+				}
+				var temp3 = (foo_split[2] * 1).toString(16);
+				if (temp3 < 10) {
+					temp3 = "0" + temp3;
+				}
+				temp_foo = temp1 + temp2 + temp3;
+				$("#select_bgColor").val(temp_foo);
+				
+				
+				
+				if($('#popup_image').css('visibility') == "hidden") {
+					$('#popup').css('visibility', "hidden");
+					$('#popup_text').css('visibility', "hidden");
+					$('#popup_image').css('visibility', "hidden");
+					$('#popup_spinner').css('visibility', "hidden");
+					$('#popup_select').css('visibility', "visible");
+					$('#mask').css('visibility', 'visible');
+					return false;
+				}
+			}
+			
+			function showmap_spinner(popup, id) {
+				var parent = $("#" + id).attr("id");
+				document.getElementById("spinnerName").value = parent;
+				var reg = /[^0-9]/g;
+				$("#spinner_width").val($("#" + parent).css("width").replace(reg, ''));
+				$("#spinner_height").val($("#" + parent).css("height").replace(reg, ''));
+				$("#spinner_fontsize").val($("#" + parent).css("font-size").replace(reg,''));
+				
+				var temp_textColor = $("#" + parent).css("color");
+				var temp_color = temp_textColor.substring(4, (temp_textColor.length - 1));
+				var color_split = temp_color.split(',');
+				var temp7 = (color_split[0] * 1).toString(16);
+				if (temp7 < 10) {
+					temp7 = "0" + temp7;
+				}
+				var temp8 = (color_split[1] * 1).toString(16);
+				if (temp8 < 10) {
+					temp8 = "0" + temp8;
+				}
+				var temp9 = (color_split[2] * 1).toString(16);
+				if (temp9 < 10) {
+					temp9 = "0" + temp9;
+				}
+				temp_color = temp7 + temp8 + temp9;
+				$("#spinner_textColor").val(temp_color);
+				
+				var temp_foo = $("#" + parent).css("background");
+				var temp_foo_split;
+				for (var i = 0; i < temp_foo.length; i++) {
+					if (temp_foo.charAt(i) == ')') {
+						temp_foo_split = temp_foo.substring(4,i);
+					}
+				}
+				var foo_split = temp_foo_split.split(',');
+				var temp1 = (foo_split[0] * 1).toString(16);
+				if (temp1 < 10) {
+					temp1 = "0" + temp1;
+				}
+				var temp2 = (foo_split[1] * 1).toString(16);
+				if (temp2 < 10) {
+					temp2 = "0" + temp2;
+				}
+				var temp3 = (foo_split[2] * 1).toString(16);
+				if (temp3 < 10) {
+					temp3 = "0" + temp3;
+				}
+				temp_foo = temp1 + temp2 + temp3;
+				$("#spinner_bgColor").val(temp_foo);
+				
+				var temp_border = $("#" + parent).css("border");
+				var temp_border_split_1, temp_border_split_2;
+				for (var i = 0; i < temp_border.length; i++) {
+					if (temp_border.charAt(i) == '(') {
+						temp_border_split_1 = temp_border.substring(i,temp_border.length - 1);
+					}
+				}
+				
+				for (var i = 0; i < temp_border.length; i++) {
+					if (temp_border.charAt(i) == ')') {
+						temp_border_split_2 = temp_border_split_1.substring(1,i);
+					}
+				}
+				
+				var border_split = temp_border_split_2.split(',');
+				var temp4 = (border_split[0] * 1).toString(16);
+				var temp5 = (border_split[1] * 1).toString(16);
+				var temp6 = (border_split[2] * 1).toString(16);
+				if (temp4 < 10) {
+					temp4 = "0" + temp4;
+				}
+				if (temp5 < 10) {
+					temp5 = "0" + temp5;
+				}
+				if (temp6 < 10) {
+					temp6 = "0" + temp6;
+				}
+				temp_border = temp4 + temp5 + temp6;
+				$("#spinner_bdColor").val(temp_border);
+				
+				
+				
+				if($('#popup_image').css('visibility') == "hidden") {
+					$('#popup').css('visibility', "hidden");
+					$('#popup_text').css('visibility', "hidden");
+					$('#popup_image').css('visibility', "hidden");
+					$('#popup_select').css('visibility', "hidden");
+					$('#popup_spinner').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
 				}
@@ -404,6 +662,16 @@
 			function closemap_image(popup) {
 				$('#mask').css('visibility', "hidden");
 				$('#popup_image').css('visibility', "hidden");
+				return false;
+			}
+			function closemap_select(popup) {
+				$('#mask').css('visibility', "hidden");
+				$('#popup_select').css('visibility', "hidden");
+				return false;
+			}
+			function closemap_spinner(popup) {
+				$('#mask').css('visibility', "hidden");
+				$('#popup_spinner').css('visibility', "hidden");
 				return false;
 			}
 			
@@ -529,6 +797,151 @@
 				
 				closemap_image();
 			}
+			
+			function editSelect(btn) {
+				var width = $("#select_width").val();
+				var height = $("#select_height").val();
+				var fontsize = $("#select_fontsize").val();
+				var textColor = "#" + $("#select_textColor").val();
+				var bgColor = "#" + $("#select_bgColor").val();
+				
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(width)) {
+				    alert('가로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(height)) {
+				    alert('세로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(fontsize)) {
+				    alert('글자크기는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				
+				var selectName = $("#selectName").val();
+				
+				if (width != '' && width != null) {
+					$("#" + selectName).css("width", width + "px");
+				}
+				if (height != '' && height != null) {
+					$("#" + selectName).css("height", height + "px");
+				}
+				var reg = /[^0-9]/g;
+				var handlerName = 'dragHandle' + selectName.replace(reg,'');
+				width = width.replace(reg,'');
+				height = height.replace(reg, '');
+				width *= 1;
+				height *= 1;
+				width += height;
+				$('#' + handlerName).css("margin-left", (width - height) + "px");
+				$('#' + handlerName).css("width", height + "px");
+				$('#' + handlerName).css("height", height + "px");
+				
+				if (fontsize != '' && fontsize != null) {
+					$("#" + selectName).css("font-size", fontsize + "px");
+				}
+				if (textColor != '' && textColor != null) {
+					$("#" + selectName).css("color", textColor);
+				}
+				if (bgColor != '' && bgColor != null) {
+					$("#" + selectName).css("background", bgColor);
+				}
+				
+				closemap_select();
+			}
+			
+			function editSpinner(btn) {
+				var width = $("#spinner_width").val();
+				var height = $("#spinner_height").val();
+				var fontsize = $("#spinner_fontsize").val();
+				var textColor = "#" + $("#spinner_textColor").val();
+				var bdColor = "#" + $("#spinner_bdColor").val();
+				var bgColor = "#" + $("#spinner_bgColor").val();
+				
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(width)) {
+				    alert('가로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(height)) {
+				    alert('세로길이는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				var regNumber = /^[0-9]*$/;
+				if(!regNumber.test(fontsize)) {
+				    alert('글자크기는 숫자만 입력할 수 있습니다');
+				    return false;
+				}
+				
+				var spinnerName = $("#spinnerName").val();
+				
+				if (width != '' && width != null) {
+					$("#" + spinnerName).css("width", width + "px");
+				}
+				if (height != '' && height != null) {
+					$("#" + spinnerName).css("height", height + "px");
+				}
+				var reg = /[^0-9]/g;
+				
+				if (fontsize != '' && fontsize != null) {
+					$("#" + spinnerName).css("font-size", fontsize + "px");
+				}
+				if (textColor != '' && textColor != null) {
+					$("#" + spinnerName).css("color", textColor);
+				}
+				if (bgColor != '' && bgColor != null) {
+					$("#" + spinnerName).css("background", bgColor);
+				}
+				if (bdColor != '' && bdColor != null) {
+					$("#" + spinnerName).css("border", "1px solid " + bdColor);
+				}
+				
+				var width = $('#' + spinnerName).css("width");
+				width = width.replace(reg, '');
+				width *= 1;
+				var height = $('#' + spinnerName).css("height");
+				height = height.replace(reg, '');
+				height *= 0.5;
+				var num = $('#' + spinnerName).attr("id").substring(7, $('#' + spinnerName).attr("id").length); 
+				$('#number' + num).css("height", (height * 0.8) + "px");
+				$('#number' + num).css("margin-top", (height * 0.6) + "px");
+				$('#numberUp' + num).css("margin-left", (width - height));
+				$('#numberUp' + num).css("width", height);
+				$('#numberUp' + num).css("height", height);
+				$('#numberDown' + num).css("margin-left", (width - height));
+				$('#numberDown' + num).css("margin-top", height);
+				$('#numberDown' + num).css("width", height);
+				$('#numberDown' + num).css("height", height);
+				
+				closemap_spinner();
+			}
+			
+			function addOption() {
+				var option = $('#optionCounter').val();
+				if ($('#select_option' + option).length) {
+				} else {
+					for (var i = 0; i < 10; i++) {
+						if ($('#select_option' + i).length) {
+							continue;
+						} else {
+							$('#optionCounter').val(i);
+						}
+					}
+				}
+				var str = '선택 옵션  &emsp;: ';
+				str += '<input type="text" id="select_option' + option + '">';
+				str += '<button onclick="javascript:addOption()">추가</button>';
+				str += '<button id="delOption' + option + '" onclick="javascript:delOption(this)">삭제</button><br>';
+				option *= 1;
+				$('#optionCounter').val(option + 1);
+				$(divForOption).html($(divForOption).html() + str);
+			}
+			
+			
 			function deleteComp(comp) {
 				var del = $("#delItem").val();
 				$("#" + del).remove();
@@ -536,6 +949,8 @@
 				closemap();
 				closemap_text();
 				closemap_image();
+				closemap_select();
+				closemap_spinner();
 				
 			}
 			
@@ -638,6 +1053,8 @@
 				$('.forDisableDrag').removeAttr("ondragstart");
 				$('.forDisableDrag').removeAttr("draggable");
 				$('.text').removeAttr("contenteditable");
+				$('.divSelectForDrag').css("background", "#00000000");
+				$('.imageForDrag').remove();
 				
 				$('#savepage').val($('#Bcenter').html());
 				$('#savepagefrm').submit();
@@ -742,6 +1159,30 @@
 				text-align: center;
 				z-index: 1000;
 			}
+			#popup_select {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
+			#popup_spinner {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
 			
 			.editBtn {
 				width: 90px;
@@ -822,7 +1263,8 @@
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
-				
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트버튼 추가</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
 				</ul>
 				<input type="hidden" id="diffX">
 				<input type="hidden" id="diffY">
@@ -830,6 +1272,8 @@
 				<input type="hidden" id="btnCount">
 				<input type="hidden" id="textCount">
 				<input type="hidden" id="imageCount">
+				<input type="hidden" id="selectCount">
+				<input type="hidden" id="spinnerCount">
 				<input type="hidden" id="delItem">
 			</div>
 				
@@ -845,7 +1289,6 @@
 			</div>
 			<input type="hidden" id="selected">
 		</div>
-		
 		
 		
 		
@@ -889,6 +1332,31 @@
 			이미지 주소 : <input type="text" id="image_url"><br><br>
 			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
 			<input type="hidden" id="imageName">
+		</div>
+		<div id="popup_select">
+			<br>
+			가로 크기 &emsp;: <input type="text" id="select_width"><br>
+			세로 크기 &emsp;: <input type="text" id="select_height"><br>
+			글자 크기 &emsp;: <input type="text" id="select_fontsize"><br>
+			글자 색상 &emsp;: <input id="select_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			배경 색상 &emsp;: <input id="select_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			<div id="divForOption">
+				선택 옵션  &emsp;: <input type="text" id="select_option0"><button onclick="javascript:addOption()">추가</button><button id="delOption0" onclick="javascript:delOption(this)">삭제</button><br>
+			</div>
+			<button class="editSelect" onclick="editSelect(this)">수정완료</button>&emsp;<button class="editSelect" id="delSelect" onclick="deleteComp()">삭제</button>&emsp;<button class="editSelect" onclick="closemap_select(popup)">닫기</button>
+			<input type="hidden" id="selectName">
+			<input type="hidden" id="optionCounter">
+		</div>
+		<div id="popup_spinner">
+			<br>
+			가로 크기 &emsp;: <input type="text" id="spinner_width"><br>
+			세로 크기 &emsp;: <input type="text" id="spinner_height"><br>
+			글자 크기 &emsp;: <input type="text" id="spinner_fontsize"><br>
+			글자 색상 &emsp;: <input id="spinner_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			배경 색상 &emsp;: <input id="spinner_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			테두리 색상 : <input id="spinner_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+			<button class="editSpinner" onclick="editSpinner(this)">수정완료</button>&emsp;<button class="editSpinner" id="delSpinner" onclick="deleteComp()">삭제</button>&emsp;<button class="editSpinner" onclick="closemap_spinner(popup)">닫기</button>
+			<input type="hidden" id="spinnerName">
 		</div>
 		<form id="savepagefrm" action="savepage" method="post">
 			<input type="hidden" id="savepage" name="savepage">

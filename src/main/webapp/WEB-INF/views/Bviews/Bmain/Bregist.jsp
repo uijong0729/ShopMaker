@@ -22,7 +22,7 @@
 			}
 			$(document).mousedown(function(ev) {
 				if (ev.which == 3) {
-					if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image")) {
+					if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select") || $(this.activeElement).attr("id").startsWith("spinner")) {
 						return false;
 					} else {
 						var inputString = prompt('변경할 텍스트를 입력해 주세요', 'none');
