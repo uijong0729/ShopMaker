@@ -42,5 +42,38 @@ public class BproductdetailController {
 		
 		return "Bviews/Bproduct/ProductReviewWrite";
 	}
+	
+	@RequestMapping(value="Bqnalist", method=RequestMethod.GET)
+	public String Bnotice() {
+		
+		return "Bviews/Bboard/Bqnalist";
+	}
+	
+	@RequestMapping(value="Bqnawriteform", method=RequestMethod.GET)
+	public String Bqnawriteform() {
+		
+		return "Bviews/Bboard/Bqnawriteform";
+	}
+	
+	@RequestMapping(value="Bqnaread", method=RequestMethod.GET)
+	public String Bqnaread() {
+		
+		return "Bviews/Bboard/Bqnaread";
+	}
+	
+	@RequestMapping(value="Bnoticelist", method=RequestMethod.GET)
+	public String Bnoticelist() {
+		
+		return "Bviews/Bboard/Bnoticelist";
+	}
+	
+	@RequestMapping(value="Bnoticewrite", method=RequestMethod.GET)
+	public String Bnoticewrite() {
+		
+		return "Bviews/Bboard/Bnoticewrite";
+	}
+	
+	
+	
 
 }
