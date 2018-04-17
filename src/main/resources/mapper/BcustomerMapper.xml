@@ -9,7 +9,20 @@
 
 	</select>
 
-
+	<insert id="insertBcustomer" parameterType="Bcustomer">
+	insert into Bcustomer
+	values(Bcustomer_seq.NEXTVAL, 
+			#{customerid},
+			#{customerpw},
+		
+				#{customeraddress},
+				#{customerhp},
+				#{customername},
+			
+			#{membercode}
+			)
+	
+	</insert>
 
 
 </mapper>

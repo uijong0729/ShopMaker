@@ -7,6 +7,6 @@ import global.sesoc.bigstar.vo.Bcustomer;
 public interface BcustomerMapper {
 	
 	public ArrayList<Bcustomer> selectbcustomer(int customercode);
-	
+	public int insertBcustomer(Bcustomer bcustomer);
 	
 }

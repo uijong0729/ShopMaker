@@ -18,8 +18,14 @@ public class BcustomerDAO implements BcustomerMapper {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(BcustomerMapper.class).selectbcustomer(customercode);
-	
-
 	}
+
+	@Override
+	public int insertBcustomer(Bcustomer bcustomer) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).insertBcustomer(bcustomer);
+	}
+	
+	
 
 }
