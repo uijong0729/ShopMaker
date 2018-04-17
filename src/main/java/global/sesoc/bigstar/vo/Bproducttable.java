@@ -1,5 +1,7 @@
 package global.sesoc.bigstar.vo;
 
+import java.util.ArrayList;
+
 public class Bproducttable {
 
 	String productcode;
@@ -122,6 +124,7 @@ public class Bproducttable {
 	public Bproducttable() {
 		super();
 	}
+	
 	
 	
 

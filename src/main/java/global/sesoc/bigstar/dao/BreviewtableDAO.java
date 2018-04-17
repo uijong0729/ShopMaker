@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import global.sesoc.bigstar.vo.Bproducttable;
 import global.sesoc.bigstar.vo.Breviewtable;
 @Repository
 public class BreviewtableDAO implements BreviewtableMapper {
@@ -21,5 +22,7 @@ public class BreviewtableDAO implements BreviewtableMapper {
 	
 
 	}
+
+	
 
 }

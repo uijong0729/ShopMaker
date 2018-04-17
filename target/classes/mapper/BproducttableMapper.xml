@@ -9,7 +9,9 @@
 
 	</select>
 
-
+	<select id="getProductdetailListByName" parameterType="string" resultType="ArrayList">
+		select * from Bproducttable where productname =#{productname}
+	</select>
 
 
 </mapper>
