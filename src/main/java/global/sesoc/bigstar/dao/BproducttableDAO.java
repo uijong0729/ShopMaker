@@ -18,14 +18,19 @@ public class BproducttableDAO implements BproducttableMapper {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(BproducttableMapper.class).selectbproducttable(productcode);
-	}
+		
 
 	@Override
 	public ArrayList<Bproducttable> getProductdetailListByName(String productname) {
 		// TODO Auto-generated method stub
 		return session.getMapper(BproducttableMapper.class).getProductdetailListByName(productname);
 	}
-	
-	
+	@Override
+	public ArrayList<Bproducttable> selectallbproducttable() {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(BproducttableMapper.class).selectallbproducttable();
+		
 
+	}
 }
