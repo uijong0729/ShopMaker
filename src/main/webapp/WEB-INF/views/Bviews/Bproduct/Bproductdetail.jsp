@@ -141,17 +141,25 @@
                     </a>
                 </div>
                 <br>
-                
+				
             </div><!-- 주문 디테일 -->
         </div>
+        <div style="margin: auto;">
+			<%@include file="ProductReview.jsp" %>
+			<%@include file="ProductQuestion.jsp" %>
+		</div>
         <div class="product_img_place">
             <!-- 상세 이미지 -->
         </div>
+      
         
+		<%-- <jsp:include page="../Bmain/Bpreview.jsp" flush="true">
+		</jsp:include> --%>
         <script type="text/javascript">
         function switchImg(src) {
             $('.showingImg').attr('src', src);
         }
         </script>
+        
 </body>
 </html>
