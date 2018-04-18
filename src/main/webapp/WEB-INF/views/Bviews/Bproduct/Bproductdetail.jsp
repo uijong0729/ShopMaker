@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
+<script type="text/javascript">
+function gopurchaseform() {
+	location.href="Bpurchaseform";
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -66,7 +71,7 @@
                     <input type="hidden" id="base_price"> 
                     <input type="hidden" id="p_common_name"> 
                     <input type="hidden" name="r_no">
-                    <button type="submit" class="pageMoveBtn">바로 주문</button>
+                    <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
                 </form>
                 <form action="addBasket.do" class="cartData">
                     <input type="hidden" name="index">
