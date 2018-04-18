@@ -26,7 +26,8 @@ public class BproductdetailController {
 		
 		System.out.println(productname);
 		
-		//TODO:productname에 해당하는 Bproducttable 객체를 DB에서 불러오기. 이후 제품상세 페이지에 제품 정보 뿌려주기.
+		//TODO: productname에 해당하는 Bproducttable 객체를 DB에서 불러오기. 이후 제품상세 페이지에 제품 정보 뿌려주기.
+		//TODO: 상품 후기 및 상품 문의 DB 테이블 불러온 후 Bproductdetail 상품 후기 및 상품 문의 테이블 정보 불러오기.
 		
 		ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
 		
@@ -91,6 +92,12 @@ public class BproductdetailController {
 	public String Bnoticewrite() {
 		
 		return "Bviews/Bboard/Bnoticewrite";
+	}
+	
+	@RequestMapping(value="Bpurchaseform", method=RequestMethod.GET)
+	public String Bpurchaseform() {
+		
+		return "Bviews/Bboard/Bpurchaseform";
 	}
 	
 	

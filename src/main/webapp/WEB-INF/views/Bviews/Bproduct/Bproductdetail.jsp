@@ -49,6 +49,11 @@
 	});
 </script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
+<script type="text/javascript">
+function gopurchaseform() {
+	location.href="Bpurchaseform";
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -110,7 +115,7 @@
                     <input type="hidden" id="base_price"> 
                     <input type="hidden" id="p_common_name"> 
                     <input type="hidden" name="r_no">
-                    <button type="submit" class="pageMoveBtn">바로 주문</button>
+                    <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
                 </form>
                 <form action="addBasket.do" class="cartData">
                     <input type="hidden" name="index">
@@ -141,17 +146,25 @@
                     </a>
                 </div>
                 <br>
-                
+				
             </div><!-- 주문 디테일 -->
         </div>
+        <div style="margin: auto;">
+			<%@include file="ProductReview.jsp" %>
+			<%@include file="ProductQuestion.jsp" %>
+		</div>
         <div class="product_img_place">
             <!-- 상세 이미지 -->
         </div>
+      
         
+		<%-- <jsp:include page="../Bmain/Bpreview.jsp" flush="true">
+		</jsp:include> --%>
         <script type="text/javascript">
         function switchImg(src) {
             $('.showingImg').attr('src', src);
         }
         </script>
+        
 </body>
 </html>
