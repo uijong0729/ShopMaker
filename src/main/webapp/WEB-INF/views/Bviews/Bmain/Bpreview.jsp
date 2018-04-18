@@ -46,7 +46,7 @@ $(document).ready(function(){
 
 
 		<div id="content" style="display: inline;">
-			
+			콘텐츠
 		</div>
 
 
