@@ -32,6 +32,12 @@ public class BcustomerDAO implements BcustomerMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcustomerMapper.class).loginBcustomer(map);
 	}
+
+	@Override
+	public ArrayList<Bcustomer> bCustomerList(String membercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).bCustomerList(membercode);
+	}
 	
 	
 

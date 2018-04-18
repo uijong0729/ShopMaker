@@ -11,6 +11,36 @@
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <style type="text/css">
 
+.submit
+{
+  display: inline-block;
+  font-size: 16px;
+  line-height: 42px;
+  width: 32%;
+  height: 42px;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #263238;
+  border: 1px solid #263238;
+  background: transparent;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  float : right;
+}
+
+.submit:hover
+{
+  display: inline-block;
+  background-color: #263238;
+  color: #ffffff;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
 
 
 ul{
@@ -111,7 +141,7 @@ function start() {
 			    }
 			});
 			$('#forHover').mouseleave(function(){
-				$(dialog).dialog( "close" );
+				$('#dialog').dialog( "close" );
 			});
 		});
 }
@@ -202,9 +232,10 @@ function changeColor(){
 <body style="text-align: center;">
 <div style="display: inline-block;">
 
-
+		<h1 id="login_title" tabindex="0">회원가입</h1>
+		<hr>
 		<form id="Bform" method="post" action="Bwellcome">
-		<div style="display: inline-block; position: static; margin-top: 150px;">
+		<div style="display: inline-block; position: static; margin-top: 20px;">
 				
 			<ul style="list-style: none;">
 				<li><div id="text_id" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">아이디</div> <div class="ib"><input style="width: 200px; resize: auto; overflow: hidden;" id="Bid" name="customerid" required="required"></div></li>
@@ -221,11 +252,15 @@ function changeColor(){
 		</div>
 				<input type="hidden" name="membercode" value='37'>
 		</form>
-				<br><br><br><br>
-				
-			<div style="margin: 30px;">
-				<a id="text_go" tabindex="0" style="cursor: pointer; background: #ffffff;">가입하기</a>
+		<hr>
+
+			<div id="text_main" tabindex="0" class="submit" style="margin: 10px; cursor: pointer;">
+				<a href="#">메인으로</a>
 			</div>
+			<div id="text_go" tabindex="0" class="submit" style="margin: 10px; cursor: pointer;">
+				가입하기
+			</div>
+
 		
 	<%-- 다이어로그 --%>	
 	<div id="dialog" title="편집 메뉴">

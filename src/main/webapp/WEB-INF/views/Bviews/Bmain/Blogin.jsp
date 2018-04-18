@@ -5,9 +5,44 @@
 	<head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
-	<script>
+	<title>로그인페이지</title>
+
+<style type="text/css">
+.submit
+{
+  display: inline-block;
+  font-size: 12px;
+  line-height: 42px;
+  width: 42%;
+  height: 42px;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #263238;
+  border: 1px solid #263238;
+  background: transparent;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  float : right;
+}
+
+.submit:hover
+{
+  display: inline-block;
+  background-color: #263238;
+  color: #ffffff;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+</style>
+
+<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+<script>
 $(document).ready(function() {
 	$('.ui-dialog').remove();
 	$('.reg').on('click', reg);	
@@ -52,17 +87,18 @@ $(document).mousedown(function(ev) {
 	<body>
 	
 		<div style="text-align: center;">
-			<div style="display: inline-block;">
-			<h2 id="login_title" tabindex="0">로그인 화면 편집</h2>
-				<form id="BloginForm" action="BcustomerLogin" method="post">
+			<div style="display: inline-block;" class="content">
+			<h1 class="login_header" id="login_title" tabindex="0">로그인</h1>
+			<hr>
+				<form id="BloginForm" action="BcustomerLogin" method="post" class="signin-cont cont">
 						<table>
 							<tr>
-								<td id="login_id" tabindex="0">아이디</td>
-								<td><input name="customerid"></td>
+								<!-- <td id="login_id" tabindex="0">아이디</td> -->
+								<td><input style="padding: 10px; margin: 4px;" placeholder="Your ID" name="customerid"></td>
 							</tr>
 							<tr>
-								<td id="login_pw" tabindex="0">비밀번호</td>
-								<td><input name="customerpw" type="password"></td>
+								<!-- <td id="login_pw" tabindex="0">비밀번호</td> -->
+								<td><input style="padding: 10px; margin: 4px;" placeholder="Your Password" name="customerpw" type="password"></td>
 							</tr>
 						</table>
 						<br>
@@ -70,9 +106,13 @@ $(document).mousedown(function(ev) {
 						<!-- 멤버코드 임시로 37 -->
 						<input type="hidden" name="membercode" value="37">
 				</form>
-				<div style="display: inline-block; padding: 4px; margin: 4px; cursor: pointer;" id="text_login" class="goLogin" tabindex="0">로그인</div>
-				<div style="display: inline-block; padding: 4px; margin: 4px; cursor: pointer;" id="text_register" class="reg" tabindex="0">회원가입</div>
-				<div style="display: inline-block; padding: 4px; margin: 4px; cursor: pointer;" id="text_search" tabindex="0">ID/PW 찾기</div>
+				
+				<div style="text-align: center;">
+				
+					<div style="display: inline-block; padding: 4px; margin: 4px; cursor: pointer;" id="text_register" class="reg submit" tabindex="0">회원가입</div>
+					<div style="display: inline-block; padding: 4px; margin: 4px; cursor: pointer;" id="text_login" class="goLogin submit" tabindex="0">로그인</div>
+				
+				</div>
 			</div>		
 		</div>	
 	

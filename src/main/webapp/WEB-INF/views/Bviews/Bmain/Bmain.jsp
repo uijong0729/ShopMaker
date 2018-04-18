@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html oncontextmenu="return false">
 	<head>
+	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
@@ -15,6 +17,7 @@
 				document.getElementById('spinnerCount').value = 0;
 				document.getElementById('optionCounter').value = 1;
 			});
+			
 			$(document).mousedown(function(e) {
 				if (e.which == 3) {
 					if ($(this.activeElement).attr("id").startsWith("button")) {
@@ -974,9 +977,10 @@
 			
 			function Bmm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 양식</li>';
-				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인 양식</li>';
-				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지 양식</li>';
+				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 화면편집</li>';
+				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인 화면편집</li>';
+				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지 화면편집</li>';
+				str += '<li onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트 보기</li>';
 				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
@@ -989,6 +993,9 @@
 			}
 			function Bmypage() {
 				$('#Bcenter').load('Bmypage');
+			}
+			function BmemberListPage(){
+				$('#Bcenter').load('BmemberListPage');
 			}
 			function Bmmback() {
 				var str = '<ul>';

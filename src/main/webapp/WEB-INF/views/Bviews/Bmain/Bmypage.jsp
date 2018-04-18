@@ -72,6 +72,8 @@ $(document).ready(function(){
 				$('.ib5').css('width', '205px');
 				
 	});
+	$('.ui-dialog').remove();
+	start();
 			
 });
 		
@@ -115,28 +117,29 @@ $( function() {
   } );
 
 //다이얼로그
-$( function() { 		
-			$( "#dialog" ).dialog({
-			    autoOpen: true,
-			    position:{
-			        my:"center",
-			        at:"right",
-			        of:"#Bcenter" 
-			        },
-			    show: {
-			      effect: "blind",
-			      duration: 300
-			    },
-			    hide: {
-			      effect: "explode",
-			      duration: 300
-			    }
-			});
-			$('#forHover').mouseleave(function(){
-				$(dialog).dialog( "close" );
-			});
-});
-		
+function start(){
+	$( function() { 		
+				$( "#dialog" ).dialog({
+				    autoOpen: true,
+				    position:{
+				        my:"center",
+				        at:"right",
+				        of:"#Bcenter" 
+				        },
+				    show: {
+				      effect: "blind",
+				      duration: 300
+				    },
+				    hide: {
+				      effect: "explode",
+				      duration: 300
+				    }
+				});
+				$('#forHover').mouseleave(function(){
+					$('#dialog').dialog( "close" );
+				});
+	});
+}		
 //다이얼로그 위치 조정		
 $( "#dialog" ).position({
 			  my: "right center",
@@ -163,22 +166,22 @@ function changeColor(){
 				else if(id == "pw")
 				{
 					$('#addRowTab1').append('<li id="Bpw"><div id="text_pw" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">비밀번호</div>'
-							+ '<div class="ib"><input value="${Blogin.customerpw}" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+							+ '<div class="ib"><input value="${Blogin.customerpw}" readonly="readonly" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "address")
 				{						
 					$('#addRowTab1').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">주소</div>'
-					+ '<div class="ib"><input value="${Blogin.customeraddress}" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
+					+ '<div class="ib"><input value="${Blogin.customeraddress}" readonly="readonly" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
 					$('#addRowTab1').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">전화번호</div>'
-							+ '<div class="ib"><input value="${Blogin.customerhp}" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+							+ '<div class="ib"><input value="${Blogin.customerhp}" readonly="readonly" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
 					$('#addRowTab1').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">이름</div>'
-							+ '<div class="ib"><input value="${Blogin.customername}" id="BInName" style="border: none; width: 200px; text-align: center;" name="customername" required="required"></div></li>');
+							+ '<div class="ib"><input value="${Blogin.customername}" readonly="readonly" id="BInName" style="border: none; width: 200px; text-align: center;" name="customername" required="required"></div></li>');
 				}
 	}
 	else
@@ -279,6 +282,9 @@ function changeColor(){
 					    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
 					    </ul>
 					</div>
-	
+					
+	<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
+	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
+	</div>
 	</body>
 </html>
