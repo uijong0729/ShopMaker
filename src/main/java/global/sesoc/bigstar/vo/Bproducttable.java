@@ -124,6 +124,12 @@ public class Bproducttable {
 	public Bproducttable() {
 		super();
 	}
+	public Bproducttable(String productname, String productimage, String membercode) {
+		super();
+		this.productname = productname;
+		this.productimage = productimage;
+		this.membercode = membercode;
+	}
 	
 	
 	

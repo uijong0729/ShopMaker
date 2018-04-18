@@ -11,6 +11,9 @@
 
 </script>
 
+${Bcustomer.customerid } 님 환영합니다.
+
+
 </head>
 <body>
 

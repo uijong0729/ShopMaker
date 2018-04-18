@@ -31,6 +31,7 @@ public class BproducttableDAO implements BproducttableMapper {
 	@Override
 	public ArrayList<Bproducttable> getProductdetailListByName(String productname) {
 		// TODO Auto-generated method stub
+		
 		return session.getMapper(BproducttableMapper.class).getProductdetailListByName(productname);
 	}
 
