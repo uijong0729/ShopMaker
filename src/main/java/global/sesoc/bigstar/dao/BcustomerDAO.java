@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class BcustomerDAO implements BcustomerMapper {
 	public int insertBcustomer(Bcustomer bcustomer) {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcustomerMapper.class).insertBcustomer(bcustomer);
+	}
+
+	@Override
+	public Bcustomer loginBcustomer(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).loginBcustomer(map);
 	}
 	
 	

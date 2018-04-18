@@ -23,6 +23,16 @@
 			)
 	
 	</insert>
+	
+	<select id="loginBcustomer" parameterType="map" resultType="Bcustomer">
+	
+		select * 
+		from Bcustomer 
+		where CUSTOMERID = #{customerid} 
+			AND CUSTOMERPW = #{customerpw}
+			AND membercode = #{membercode}
+	
+	</select>
 
 
 </mapper>

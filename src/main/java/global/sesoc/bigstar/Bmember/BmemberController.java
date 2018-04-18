@@ -2,7 +2,10 @@ package global.sesoc.bigstar.Bmember;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +46,22 @@ public class BmemberController {
 		return "Bviews/Bmain/Bcart";
 	}
 	
+	@RequestMapping(value="BcustomerLogin", method = RequestMethod.POST)
+	public String BcustomerLogin(String customerid, String customerpw, String membercode, HttpSession session) {
+		
+		System.out.println(customerid);
+		System.out.println(customerpw);
+		System.out.println(membercode);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("customerid", customerid);
+		map.put("customerpw", customerpw);
+		map.put("membercode", membercode);
+		
+		session.setAttribute("Blogin", dao.loginBcustomer(map));
+		
+		return "Bviews/Bmain/Bshopmain";
+	}
+	
 	@RequestMapping(value="Bwellcome", method=RequestMethod.POST)
 	public String Bwellcome(Bcustomer bcustomer, Model model)
 	{
@@ -69,6 +88,8 @@ public class BmemberController {
 		
 		return "Bviews/Bmain/Bwellcome";
 	}
+	
+
 	
 	
 }
