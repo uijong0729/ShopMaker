@@ -94,5 +94,13 @@ public class BproductdetailController {
 		return "Bviews/Bboard/Bnoticewrite";
 	}
 	
+	@RequestMapping(value="Bpurchaseform", method=RequestMethod.GET)
+	public String Bpurchaseform() {
+		
+		return "Bviews/Bboard/Bpurchaseform";
+	}
+	
+	
+	
 
 }

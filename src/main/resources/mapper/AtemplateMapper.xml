@@ -9,7 +9,15 @@
 
 	</select>
 
-
-
+	<insert id="savepage" parameterType="Atemplate">
+		insert into atemplatetable(templatecode, body1, body2)
+		values(#{templatecode}, #{body1}, #{body2})
+		
+	</insert>
+	
+	<select id="loadpage" resultType="Atemplate">
+		select * from atemplatetable
+		where templatecode = 'test'
+	</select>
 
 </mapper>

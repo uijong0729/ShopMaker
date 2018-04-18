@@ -22,4 +22,25 @@ public class AtemplateDAO implements AtemplateMapper {
 
 	}
 
+	public void savepage(Atemplate at) {
+		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
+		
+		try {
+			mapper.savepage(at);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Atemplate loadpage(String string) {
+		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
+		Atemplate at = new Atemplate();
+		try {
+			at = mapper.loadpage(string);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return at;
+	}
+
 }
