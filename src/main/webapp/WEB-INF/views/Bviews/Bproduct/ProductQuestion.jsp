@@ -11,7 +11,7 @@
 <center>
 		<br>
 		<div id="productInquiryBoard_wrapper">
-			<p class="pibTitle">상품 후기</p>
+			<p class="pibTitle">상품 문의</p>
 			<form action="getReviewList.do" method="post">
 					<a href="productReviewWrite"><p class="inquiryBtn" style="cursor: pointer">등록하기</p></a>
 				<input type="hidden" name="r_no">
