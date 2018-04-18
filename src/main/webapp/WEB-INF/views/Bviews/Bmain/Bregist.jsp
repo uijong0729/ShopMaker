@@ -10,6 +10,18 @@
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <style type="text/css">
+
+li{
+
+margin-bottom: 5px;
+
+}
+
+ul{
+margin-bottom: 0;
+margin-top: 0;
+}
+
 input[type=checkbox]
 {
   -webkit-transform: scale(2);
@@ -22,52 +34,64 @@ input[type=checkbox]
  font: bold;"
  margin: 3px;
  border-bottom: 1px solid white;
- padding: 17px;
+ padding: 9px;
  cursor: pointer;
- 
- 
 }
+
+.layer-li
+{
+ background-color: #000000; 
+ color: #ffffff; 
+ font: bold;"
+ margin: 3px;
+ border-bottom: 1px solid white;
+ padding: 9px;
+ cursor: pointer;
+}
+
+.ib{
+ display: inline-block;
+}
+
+.ib5{
+ display: inline-block;
+}
+
+
 </style>
 
 <script>
 
-var counter = 0;
-var dialog = $( "#dialog" ).dialog({
-    autoOpen: true,
-    position:{
-        my:"center",
-        at:"right",
-        of:"#Bcenter" 
-        },
-    show: {
-      effect: "blind",
-      duration: 300
-    },
-    hide: {
-      effect: "explode",
-      duration: 300
-    }
-});
-	
-	
-	
 $(document).ready(function(){
 	
-	$('#addComponent').on('click', showAdder);
+	//버튼을 누를 때 색깔 바꾸기
 	$('.li').on('click', changeColor);
-	$('#Bregister').on('click', goReg);
+	
+	$('#text_go').on('click', goReg);
 	$('.ui-dialog').remove();
 	start();
-	$('#forHover').mouseleave(function(){
-		$(dialog).dialog( "close" );
-//		$('#dialog').dialog();
+	
+	$('#verticalLayer').on('click', function(){
+		$('#verticalLayer').css('background', "white");
+		$('#tableLayer').css('background', "black");
+		$('.ib').css('width', '100%');
+		$('#verticalLayer').css('border', '1px solid black');
 	});
 	
+	$('#tableLayer').on('click', function(){
+		$('#tableLayer').css('background', "white");
+		$('#tableLayer').css('border', '1px solid black');
+		$('#verticalLayer').css('background', "black");
+		$('.ib').css('width', '200px');
+		$('.ib5').css('width', '205px');
+		
+	});
+	
+	$('#tableLayer').css('background', "white");
+	$('#tableLayer').css('border', '1px solid black');
 });
 
 function start() {
-	
-	//if ($('#Bregister')) {
 		$( function() { 		
 			$( "#dialog" ).dialog({
 			    autoOpen: true,
@@ -87,23 +111,10 @@ function start() {
 			});
 			$('#forHover').mouseleave(function(){
 				$(dialog).dialog( "close" );
-//				$('#dialog').dialog();
 			});
 		});
-	//} 
-	
-	/* else {
-		//$('#dialog').css("visibility", "hidden");
-		$( "#dialog" ).dialog( "close" );
-		return;
-	} */
 }
 
-
- 
- /*    $( "#opener" ).on( "click", function() {
-    		  $( "#dialog" ).dialog( "open" );
-    }); */
 
 
 
@@ -114,7 +125,29 @@ $( "#dialog" ).position({
 	});
 
 function goReg(){
-	document.getElementById('Bform').submit();
+	var getId = document.getElementById('Bid');
+	var getPw = document.getElementById('Bpw');
+	var getPw2 = document.getElementById('Bpw2');
+	var getAddress = document.getElementById('Baddress');
+	var getHp = document.getElementById('Bhp');
+	var getName = document.getElementById('Bname');
+
+	if(getId.value.length > 0 && getId.value.length < 10)
+	{
+		if(getPw.value.length > 0 && (getPw.value == getPw2.value))
+		{
+			document.getElementById('Bform').submit();		
+		}
+		else
+		{
+			alert('비밀번호를 확인해주세요');
+		}
+	}
+	else
+	{
+		alert('아이디는 20자 이내, 1자 이상으로 해주세요');
+	}
+	
 }
 
 function changeColor(){
@@ -127,39 +160,19 @@ function changeColor(){
 		$(this).css('background', "white");
 		$(this).css('border', '1px solid black');
 				if(id == "address")
-				{
-					$('#addRow').append('<tr id="Baddress"><th width="100px;">주소</th><td width="200px;"><input></td></tr>');
-			
-			function addRow(){
-				$('#addRow').append('<tr class="rows" id="newrow'+ counter +'"><td width="100px;" id="regist_custom' + counter + '" tabindex="0">텍스트</td><td width="200px;"><input></td><td><input id="delete'+counter+'" class="rowsButton forDeleteBtn" type="button" value="삭제"></td></tr>');
-				counter = counter + 1;
-				$('.rowsButton').on("click", function() {
-					 $(this).parent().parent().remove();
-				});
-			}
-			$(document).mousedown(function(ev) {
-				if (ev.which == 3) {
-					if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select") || $(this.activeElement).attr("id").startsWith("spinner")) {
-						return false;
-					} else {
-						var inputString = prompt('변경할 텍스트를 입력해 주세요', 'none');
-						if (inputString == 'none' || inputString == '' || inputString == null) {
-							return false;
-						} else {
-							console.log($(this.activeElement).attr("id"));
-							$(this.activeElement).text(inputString);
-							return false;
-						}
-						return false;
-					}
+				{						
+					$('#addRow').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px">주소</div>'
+					+ '<div class="ib"><input id="Baddress" style="width: 200px" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
-					$('#addRow').append('<tr id="Bphone"><th width="100px;">전화번호</th><td width="200px;"><input></td></tr>');
+					$('#addRow').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px">전화번호</div>'
+							+ '<div class="ib"><input id="Bhp" style="width: 200px" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
-					$('#addRow').append('<tr id="Bname"><th width="100px;">이름</th><td width="200px;"><input></td></tr>');
+					$('#addRow').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px">이름</div>'
+							+ '<div class="ib"><input id="Bname" style="width: 200px" name="customername" required="required"></div></li>');
 				}
 	}
 	else
@@ -181,78 +194,56 @@ function changeColor(){
 			$("#Bphone").remove();
 		}
 	}
-	
-	
-	
 }
-
-function showAdder(){
-	
-	
-	$('#addRow').append('<tr class="rows" id="newrow'+ counter +'"><td width="100px;">텍스트</td><td width="200px;"><input></td><td><input id="delete'+counter+'" class="rowsButton" type="button" value="삭제"></td></tr>');
-	counter = counter + 1;
-	
-	$('.rowsButton').on("click", function() {
-		 $(this).parent().parent().remove();
-	});
-	
-}
-
-
-
-
-
 </script>
 
 </head>
-<body>
+<body style="text-align: center;">
+<div style="display: inline-block;">
 
 
-
-		<form id="Bform">
+		<form id="Bform" method="post" action="Bwellcome">
 		<div style="display: inline-block; position: static; margin-top: 150px;">
 				
-					<table>
-						<tr>
-							<th width="100px;">아이디</th>
-							<td width="200px;"><input id="Bid" name="Bid"></td>	
-						</tr>
-						
-						<tr>
-							<th width="100px;">비밀번호</th>
-							<td width="200px;"><input type="password" id="Bpw" name="Bpw"></td>
-						</tr>
-						
-						<tr>
-							<th width="100px;">비밀번호 확인</th>
-							<td width="200px;"><input type="password" id="Bpw2"></td>
-						</tr>
-					</table>
-					
-					<table id="addRow">
+			<ul style="list-style: none;">
+				<li><div id="text_id" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">아이디</div> <div class="ib"><input style="width: 200px; resize: auto; overflow: hidden;" id="Bid" name="customerid" required="required"></div></li>
+				<li><div id="text_pw" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">비밀번호</div> <div class="ib"><input style="width: 200px;" type="password" id="Bpw" name="customerpw" required="required"></div></li>
+				<li><div id="text_pw2" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">비밀번호 확인</div> <div class="ib"><input style="width: 200px;" type="password" id="Bpw2" required="required"></div></li>
+				
+			</ul>
+			
+			<ul style="list-style: none;" id="addRow">
+								
 							
-						
-					</table>
+			</ul>
 					
-				</div>
+		</div>
+				<input type="hidden" name="membercode" value='37'>
 		</form>
 				<br><br><br><br>
 				
 			<div style="margin: 30px;">
-				<a id="Bregister">가입하기</a>
+				<a id="text_go" tabindex="0" style="cursor: pointer; background: #ffffff;">가입하기</a>
 			</div>
 		
-	<div id="dialog" title="다음 중에서 요소를 추가하세요">
+	<%-- 다이어로그 --%>	
+	<div id="dialog" title="편집 메뉴">
+		<h6>요소 추가하기</h6>
 	    <ul style="list-style: none; display:inline;">
 	    	<li class="li" id="address" color="black"><span>주소</span></li>
 	    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
 	    	<li class="li" id="name" color="black"><span>이름</span></li>
 	    </ul>
+	    
+	    <h6>배치 수정하기</h6>
+	    <ul style="list-style: none; display:inline;">
+	    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
+	    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
+	    </ul>
 	</div>
 	
 	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
-
-<!-- <button style="margin: 30px;" id="opener">요소추가</button> -->
-	
+	</div>
+</div>	
 </body>
 </html>
