@@ -62,13 +62,12 @@ input[type=checkbox]
 
 <script>
 
-var counter = 0;
 $(document).ready(function(){
 	
 	//버튼을 누를 때 색깔 바꾸기
 	$('.li').on('click', changeColor);
 	
-	$('#Bregister').on('click', goReg);
+	$('#text_go').on('click', goReg);
 	$('.ui-dialog').remove();
 	start();
 	
@@ -132,9 +131,7 @@ function goReg(){
 	var getAddress = document.getElementById('Baddress');
 	var getHp = document.getElementById('Bhp');
 	var getName = document.getElementById('Bname');
-	
 
-	
 	if(getId.value.length > 0 && getId.value.length < 10)
 	{
 		if(getPw.value.length > 0 && (getPw.value == getPw2.value))
@@ -201,8 +198,8 @@ function changeColor(){
 </script>
 
 </head>
-<body>
-
+<body style="text-align: center;">
+<div style="display: inline-block;">
 
 
 		<form id="Bform" method="post" action="Bwellcome">
@@ -226,9 +223,10 @@ function changeColor(){
 				<br><br><br><br>
 				
 			<div style="margin: 30px;">
-				<a id="text_go" tabindex="0" style="cursor: pointer; background: #ffffff;" id="Bregister">가입하기</a>
+				<a id="text_go" tabindex="0" style="cursor: pointer; background: #ffffff;">가입하기</a>
 			</div>
 		
+	<%-- 다이어로그 --%>	
 	<div id="dialog" title="편집 메뉴">
 		<h6>요소 추가하기</h6>
 	    <ul style="list-style: none; display:inline;">
@@ -246,10 +244,6 @@ function changeColor(){
 	
 	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
 	</div>
-<!-- <button style="margin: 30px;" id="opener">요소추가</button>
-<li><div id="text_1231231" tabindex="0" style="width: 200px; resize: auto; overflow: hidden; background: #ffffff; border: 1px solid #bbbbbb" contenteditable="true"></div></li>
-
- -->
-	
+</div>	
 </body>
 </html>
