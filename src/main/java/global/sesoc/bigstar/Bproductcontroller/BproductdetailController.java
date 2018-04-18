@@ -93,7 +93,5 @@ public class BproductdetailController {
 		return "Bviews/Bboard/Bnoticewrite";
 	}
 	
-	
-	
 
 }
