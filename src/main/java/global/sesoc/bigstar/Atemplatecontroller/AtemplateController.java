@@ -16,7 +16,7 @@ public class AtemplateController {
 	
 	@Autowired
 	AtemplateDAO adao;
-	
+	/*
 	@RequestMapping(value = "savepage", method=RequestMethod.POST)
 	public String pagesave(HttpServletResponse response, String savepage, Model model) {
 		response.setHeader("X-XSS-Protection", "0"); //X-XSS공격을 막기위한 방어수단 해제
@@ -55,21 +55,22 @@ public class AtemplateController {
 		if (savedpage[1] != null || savedpage[1].length() != 0) {
 			at.setBody2(savedpage[1]);
 		}
-/*		if (savedpage[2] != null || savedpage[2].length() != 0) {
+		if (savedpage[2] != null || savedpage[2].length() != 0) {
 			at.setBody3(savedpage[3]);
-		}*/
+		}
 		adao.savepage(at);
 		
 		model.addAttribute("test", result);
 		
 		return "Bviews/Bmain/Bmain";
-	}
+	}*/
 	
-	@RequestMapping(value = "loadpage", method = RequestMethod.GET)
+	@RequestMapping(value = "test", method = RequestMethod.GET)
 	public String loadpage(Model model) {
 		Atemplate at = new Atemplate();
 		at = adao.loadpage("test");
-		System.out.println(at.getBody1());
+		System.out.println("응 찍혀");
+		System.out.println(at.getTemplate());
 		int size = 0;
 		if (at.getBody1() != null && at.getBody1() != "") {
 			size += 1;

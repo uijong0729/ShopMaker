@@ -17,7 +17,7 @@
 	
 	<select id="loadpage" resultType="Atemplate">
 		select * from atemplatetable
-		where templatecode = 'test'
+		where templatecode = #{string}
 	</select>
 
 </mapper>
