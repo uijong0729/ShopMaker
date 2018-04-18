@@ -11,11 +11,7 @@
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <style type="text/css">
 
-li{
 
-margin-bottom: 5px;
-
-}
 
 ul{
 margin-bottom: 0;
@@ -36,6 +32,11 @@ input[type=checkbox]
  border-bottom: 1px solid white;
  padding: 9px;
  cursor: pointer;
+}
+li{
+
+margin-bottom: 5px;
+
 }
 
 .layer-li
