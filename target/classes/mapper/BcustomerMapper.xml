@@ -8,6 +8,13 @@
 		select * from Bcustomer where customercode =#{customercode}
 
 	</select>
+	
+	<select id="bCustomerList" resultType="Bcustomer">
+		select *
+		from Bcustomer
+		where membercode = #{membercode}
+		order by customercode desc
+	</select>
 
 	<insert id="insertBcustomer" parameterType="Bcustomer">
 	insert into Bcustomer

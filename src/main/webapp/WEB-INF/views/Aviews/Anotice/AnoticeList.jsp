@@ -96,7 +96,6 @@
 		<tr>
 			<th class="th10">번호</th>
 			<th class="th30">제목</th>
-			<th class="th10">조회수</th>
 			<th class="th20">등록일</th>
 		</tr>
 	

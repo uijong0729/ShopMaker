@@ -1,6 +1,8 @@
 package global.sesoc.bigstar.Bproductcontroller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,19 +51,24 @@ public class BproductController {
 				}
 			}
 		}
-	
 		
 
 		
 		for (int i = 0; i < temp.length; i++) {
-			
+				
 			count++;
 			String[] array = temp[i].trim().split(","); 
 			imageset2.add(array);
 			
 		}
 		
+		Map< String, String[] > arrMap = new HashMap<String, String[]>(); 
+		arrMap.put("key", temp);
+		
+		System.out.println(arrMap.get("key"));
+
 		System.out.println(count);
+		model.addAttribute("key", arrMap);
 		model.addAttribute("nameset", nameset);
 		model.addAttribute("Bproducttable", Bproducttable);
 		model.addAttribute("count", count);

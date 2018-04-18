@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.Bmember;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -60,6 +61,27 @@ public class BmemberController {
 		session.setAttribute("Blogin", dao.loginBcustomer(map));
 		
 		return "Bviews/Bmain/Bshopmain";
+	}
+	
+	@RequestMapping(value="BmemberListPage", method=RequestMethod.GET)
+	public String BmemberListPage(HttpSession session, Model model) {
+		
+		Bcustomer bc = (Bcustomer) session.getAttribute("Bcustomer");
+		
+		try 
+		{
+			ArrayList<Bcustomer> list = dao.bCustomerList(bc.getMembercode());
+			int countList = list.size();
+			model.addAttribute("bCustomerList", list);
+			model.addAttribute("bCountList", countList);
+		}
+		catch(NullPointerException e)
+		{
+			model.addAttribute("bCustomerList", "회원 리스트가 없습니다");
+			model.addAttribute("bCountList", 0);
+		}
+		
+		return "Bviews/Bmain/BcustomerList";
 	}
 	
 	@RequestMapping(value="Bwellcome", method=RequestMethod.POST)

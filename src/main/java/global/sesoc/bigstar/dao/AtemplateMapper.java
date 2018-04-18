@@ -7,6 +7,10 @@ import global.sesoc.bigstar.vo.Atemplate;
 public interface AtemplateMapper {
 	
 	public ArrayList<Atemplate> selectatemplate(int templatecode);
+
+	public void savepage(Atemplate at);
+
+	public Atemplate loadpage(String string);
 	
 	
 }
