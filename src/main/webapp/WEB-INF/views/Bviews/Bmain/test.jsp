@@ -20,7 +20,7 @@
 			<%@ include file="../Bheader.jsp" %>
 		</header>
 		<div id="testtest">
-			${test}
+			${result}
 		</div>
 	</body>
 </html>

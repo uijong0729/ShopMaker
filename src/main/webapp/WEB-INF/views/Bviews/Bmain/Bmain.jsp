@@ -1067,6 +1067,10 @@
 				$('#savepagefrm').submit();
 			}
 			
+			function Bloadpage() {
+				location.href="test";
+			}
+			
 		</script>
 		<style type="text/css">
 			body {
@@ -1288,6 +1292,7 @@
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
