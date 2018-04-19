@@ -19,8 +19,13 @@ public class BreviewtableDAO implements BreviewtableMapper {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(BreviewtableMapper.class).selectbreviewtable(reviewcode);
+	}
 	
-
+	@Override
+	public ArrayList<global.sesoc.bigstar.vo.Breviewtable> getReviewtableByName(String productname) {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(BreviewtableMapper.class).getReviewtableByName(productname);
 	}
 
 	

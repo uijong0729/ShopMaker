@@ -10,8 +10,53 @@
 	</select>
 
 	<insert id="savepage" parameterType="Atemplate">
-		insert into atemplatetable(templatecode, body1, body2)
-		values(#{templatecode}, #{body1}, #{body2})
+		insert into atemplatetable(templatecode
+								 <if test="body0 != null">
+								 , body0
+								 <if test="body1 != null">
+								 , body1
+								 <if test="body2 != null">
+								 , body2
+								 <if test="body3 != null">
+								 , body3
+								 <if test="body4 != null">
+								 , body4
+								 <if test="body5 != null">
+								 , body5
+								 <if test="body6 != null">
+								 , body6
+								 <if test="body7 != null">
+								 , body7
+								 <if test="body8 != null">
+								 , body8
+								 <if test="body9 != null">
+								 , body9
+								 </if></if></if></if></if></if></if></if></if></if>
+								 )
+						  values(#{templatecode}
+						   		 <if test="body0 != null">
+						   		 ,#{body0}
+						   		 <if test="body1 != null">
+						  		 ,#{body1}
+						  	     <if test="body2 != null">
+						 		 ,#{body2}
+						   	     <if test="body3 != null">
+						  		 ,#{body3}
+						   		 <if test="body4 != null">
+						 		 ,#{body4}
+						   		 <if test="body5 != null">
+						 		 ,#{body5}
+						   		 <if test="body6 != null">
+						 		 ,#{body6}
+						   		 <if test="body7 != null">
+						 		 ,#{body7}
+						   		 <if test="body8 != null">
+						 		 ,#{body8}
+						   		 <if test="body9 != null">
+								 ,#{body9}
+								 </if></if></if></if></if></if></if></if></if></if>
+								 )
+							
 		
 	</insert>
 	
