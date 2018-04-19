@@ -21,18 +21,35 @@ function reviewContent(code, image, content){
 		reviewImage += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
 		reviewImage += '</td>';
 	var	reviewContent = '<td class="reviewclass" colspan="4">' + content + '</td>';
+	var reviewBtn = '<c:if test="${Amember.membercode ==Review.membercode }">';
+		reviewBtn += '<td class="reviewclass" colspan="4">';
+		reviewBtn += '<a href="goBproductdetail?productname=${productDetailList[0].productname}"><p class="listbtn" style="cursor: pointer">목록</p></a>';
+		reviewBtn += '<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>';
+		reviewBtn += '<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>';
+		reviewBtn += '</c:if>';
+		reviewBtn += '</td>';
 	if ($('#reviewImage' + code).html() == "") {
 		$('#reviewImage' + code).html(reviewImage);
 		$('#reviewContent' + code).html(reviewContent);
+		$('#reviewBtn' + code).html(reviewBtn);
 		return;
 	}
 	if (!$('#reviewImage' + code).html() == "") {
 		$('#reviewImage' + code).html("");
 		$('#reviewContent' + code).html("");
+		$('#reviewBtn' + code).html("");
 		return;
 	}
 }
 
+/*  
+<c:if test="${Amember.membercode ==Review.membercode }">
+<a href="goBproductdetail?productname=${productDetailList[0].productname}"><p class="listbtn" style="cursor: pointer">목록</p></a>
+<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>
+<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>
+</c:if>
+ */
+ 
 </script>
 
 </head>
@@ -54,21 +71,18 @@ function reviewContent(code, image, content){
 				</table>
 					<c:forEach var="review" items="${reviewtableList}" varStatus="v">
 						<table id="reviewcontent${review.reviewcode}">
-							<tr></tr>
+							<tr>
+							</tr>
 							<tr>
 								<td>${review.reviewcode }</td>
 								<td style="cursor: pointer;" class="reviewtitle" user-select="none" onclick="javascript:reviewContent('${review.reviewcode}', '${review.reviewimage}', '${review.reviewcontent}')">${review.reviewtitle }</td>
 								<td>작성자: Bcustomer.customername</td>
 								<td>${review.reviewdate }</td>
 							</tr>
+							<tr id="reviewBtn${review.reviewcode}" class="reviewclass"></tr>
 							<tr id="reviewImage${review.reviewcode}" class="reviewclass"></tr>
 							<tr id="reviewContent${review.reviewcode}" class="reviewclass"></tr>
 						</table>
-						<a href="getReviewList?r_no=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">목록</p></a>
-						<c:if test="${Amember.membercode ==Review.membercode }">
-						<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>
-						<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>
-						</c:if>
 					</c:forEach>
 				</div>
 		</form>
