@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +14,7 @@
   display: inline-block;
   font-size: 12px;
   line-height: 42px;
-  width: 42%;
+  width: 100px;
   height: 42px;
   cursor: pointer;
   vertical-align: middle;
@@ -77,7 +78,13 @@ $(document).mousedown(function(ev) {
 		}
 });
 	
-
+//엔터키를 누르면 로그인	
+function enterkey(){
+	 if (window.event.keyCode == 13)
+	{
+		document.getElementById('BloginForm').submit();
+	}
+}
 		
 	
 	
@@ -94,11 +101,11 @@ $(document).mousedown(function(ev) {
 						<table>
 							<tr>
 								<!-- <td id="login_id" tabindex="0">아이디</td> -->
-								<td><input style="padding: 10px; margin: 4px;" placeholder="Your ID" name="customerid"></td>
+								<td><input onkeyup="enterkey()" style="padding: 10px; margin: 4px;" placeholder="Your ID" name="customerid"></td>
 							</tr>
 							<tr>
 								<!-- <td id="login_pw" tabindex="0">비밀번호</td> -->
-								<td><input style="padding: 10px; margin: 4px;" placeholder="Your Password" name="customerpw" type="password"></td>
+								<td><input onkeyup="enterkey()" style="padding: 10px; margin: 4px;" placeholder="Your Password" name="customerpw" type="password"></td>
 							</tr>
 						</table>
 						<br>
@@ -116,6 +123,11 @@ $(document).mousedown(function(ev) {
 			</div>		
 		</div>	
 	
+	<div style="text-align: center; color: red;">
+		<c:if test="${isThereId == 1}">
+			회원 정보가 없습니다. 로그인 정보를 확인 해주세요
+		</c:if>
+	</div>
 			
 	</body>
 </html>

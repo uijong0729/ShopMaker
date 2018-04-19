@@ -995,7 +995,7 @@
 				$('#Bcenter').load('Bmypage');
 			}
 			function BmemberListPage(){
-				$('#Bcenter').load('BmemberListPage');
+				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
 			}
 			function Bmmback() {
 				var str = '<ul>';
