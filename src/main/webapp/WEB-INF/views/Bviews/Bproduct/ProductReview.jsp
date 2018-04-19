@@ -17,18 +17,18 @@ $(document).ready(function(){
 
 
 function reviewContent(code, image, content){
-	var str1 = '<td class="reviewclass" colspan="4" style="height:auto;">';
-		str1 += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
-		str1 += '</td>';
-	var	str2 = '<td class="reviewclass" colspan="4">' + content + '</td>';
-	if ($('#review' + code).html() == "") {
-		$('#review' + code).html(str1);
-		$('#review' + code + '_2').html(str2);
+	var reviewImage = '<td class="reviewclass" colspan="4" style="height:auto;">';
+		reviewImage += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
+		reviewImage += '</td>';
+	var	reviewContent = '<td class="reviewclass" colspan="4">' + content + '</td>';
+	if ($('#reviewImage' + code).html() == "") {
+		$('#reviewImage' + code).html(reviewImage);
+		$('#reviewContent' + code).html(reviewContent);
 		return;
 	}
-	if (!$('#review' + code).html() == "") {
-		$('#review' + code).html("");
-		$('#review' + code + '_2').html("");
+	if (!$('#reviewImage' + code).html() == "") {
+		$('#reviewImage' + code).html("");
+		$('#reviewContent' + code).html("");
 		return;
 	}
 }
@@ -61,11 +61,15 @@ function reviewContent(code, image, content){
 								<td>작성자: Bcustomer.customername</td>
 								<td>${review.reviewdate }</td>
 							</tr>
-							<tr id="review${review.reviewcode}" class="reviewclass"></tr>
-							<tr id="review${review.reviewcode}_2" class="reviewclass"></tr>
+							<tr id="reviewImage${review.reviewcode}" class="reviewclass"></tr>
+							<tr id="reviewContent${review.reviewcode}" class="reviewclass"></tr>
 						</table>
+						<a href="getReviewList?r_no=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">목록</p></a>
+						<c:if test="${Amember.membercode ==Review.membercode }">
+						<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>
+						<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>
+						</c:if>
 					</c:forEach>
-					
 				</div>
 		</form>
 	
