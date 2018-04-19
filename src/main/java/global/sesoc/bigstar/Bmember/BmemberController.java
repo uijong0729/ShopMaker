@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.HomeController;
 import global.sesoc.bigstar.dao.BcustomerDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
 import global.sesoc.bigstar.vo.Bcustomer;
+import global.sesoc.bigstar.vo.Bordertable;
 
 @Controller
 public class BmemberController {
@@ -30,6 +33,30 @@ public class BmemberController {
 	@RequestMapping(value="Bregist", method = RequestMethod.GET)
 	public String Bregist() {
 		return "Bviews/Bmain/Bregist";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="checkBcustomerId", method= RequestMethod.POST)
+	public String checkBcustomerId(String customerid)
+	{
+		int countId = 0;
+		try 
+		{
+			countId = dao.searchBcustomerid(customerid);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		if(countId >= 1)
+		{
+			return "1";
+		}
+		else
+		{
+			return "0";
+		}
 	}
 	
 	@RequestMapping(value="Blogin", method = RequestMethod.GET)
@@ -48,7 +75,7 @@ public class BmemberController {
 	}
 	
 	@RequestMapping(value="BcustomerLogin", method = RequestMethod.POST)
-	public String BcustomerLogin(String customerid, String customerpw, String membercode, HttpSession session) {
+	public String BcustomerLogin(Model model, String customerid, String customerpw, String membercode, HttpSession session) {
 		
 		System.out.println(customerid);
 		System.out.println(customerpw);
@@ -58,26 +85,40 @@ public class BmemberController {
 		map.put("customerpw", customerpw);
 		map.put("membercode", membercode);
 		
-		session.setAttribute("Blogin", dao.loginBcustomer(map));
+		Bcustomer member = dao.loginBcustomer(map);
+		//System.out.println(member);
 		
-		return "Bviews/Bmain/Bshopmain";
+		session.setAttribute("Blogin", member);
+
+		if(member == null)
+		{
+			model.addAttribute("isThereId", 1);
+			return "Bviews/Bmain/Blogin";
+		}
+		else
+		{
+			model.addAttribute("isThereId", 0);
+			return "Bviews/Bmain/Bshopmain";
+			
+		}
+		
+		
 	}
 	
 	@RequestMapping(value="BmemberListPage", method=RequestMethod.GET)
-	public String BmemberListPage(HttpSession session, Model model) {
-		
-		Bcustomer bc = (Bcustomer) session.getAttribute("Bcustomer");
-		
+	public String BmemberListPage(HttpSession session, Model model, String membercode) {
 		try 
 		{
-			ArrayList<Bcustomer> list = dao.bCustomerList(bc.getMembercode());
+			ArrayList<Bcustomer> list = dao.bCustomerList(membercode);
+			System.out.println(list);
 			int countList = list.size();
 			model.addAttribute("bCustomerList", list);
 			model.addAttribute("bCountList", countList);
+			System.out.println(list.get(0));
+			model.addAttribute("BcustomerModel", list.get(0));
 		}
 		catch(NullPointerException e)
 		{
-			model.addAttribute("bCustomerList", "회원 리스트가 없습니다");
 			model.addAttribute("bCountList", 0);
 		}
 		
@@ -90,17 +131,17 @@ public class BmemberController {
 		System.out.println(bcustomer);
 		if(bcustomer.getCustomeraddress() == null)
 		{
-			bcustomer.setCustomeraddress("값이 없습니다");
+			bcustomer.setCustomeraddress("미입력");
 		}
 		
 		if(bcustomer.getCustomerhp() == null)
 		{
-			bcustomer.setCustomerhp("값이 없습니다");
+			bcustomer.setCustomerhp("미입력");
 		}
 		
 		if(bcustomer.getCustomername() == null)
 		{
-			bcustomer.setCustomername("값이 없습니다");
+			bcustomer.setCustomername("미입력");
 		}
 		
 		
@@ -109,6 +150,26 @@ public class BmemberController {
 		
 		
 		return "Bviews/Bmain/Bwellcome";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getOrderlist", method=RequestMethod.POST)
+	public List<Bordertable> getOrderlist(String membercode, String customercode) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("membercode", membercode);
+		map.put("customercode", customercode);
+		System.out.println(map);
+		try 
+		{
+			List<Bordertable> list = dao.BorderList(map);
+			System.out.println(list);
+			return list;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 

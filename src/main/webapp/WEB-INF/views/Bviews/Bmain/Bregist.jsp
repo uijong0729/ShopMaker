@@ -5,7 +5,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
@@ -16,7 +16,7 @@
   display: inline-block;
   font-size: 16px;
   line-height: 42px;
-  width: 32%;
+  width: 100px;
   height: 42px;
   cursor: pointer;
   vertical-align: middle;
@@ -162,12 +162,30 @@ function goReg(){
 	var getAddress = document.getElementById('Baddress');
 	var getHp = document.getElementById('Bhp');
 	var getName = document.getElementById('Bname');
-
+	var customerid = getId.value;
+	
 	if(getId.value.length > 0 && getId.value.length < 10)
 	{
 		if(getPw.value.length > 0 && (getPw.value == getPw2.value))
 		{
-			document.getElementById('Bform').submit();		
+			$.ajax({
+				url: 'checkBcustomerId',
+				type: 'post',
+				data:{customerid: customerid},
+				dataType:'text',
+				success: function(getResult){
+					if(getResult == '0')
+					{
+						alert('가입신청이 완료되었습니다.');
+						document.getElementById('Bform').submit();	
+					}
+					else
+					{
+						alert('이미 존재하는 아이디입니다.');
+					}
+				}
+			});
+				
 		}
 		else
 		{
@@ -278,7 +296,7 @@ function changeColor(){
 	    </ul>
 	</div>
 	
-	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
+	<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
 	</div>
 </div>	
 </body>

@@ -51,8 +51,8 @@ margin-bottom: 5px;
 		
 <script>
 $(document).ready(function(){
-	$('#addComponentMp').on('click', addRowMp);
-	$('.rowsButton').on("click", removeRow);
+	/* $('#addComponentMp').on('click', addRowMp);
+	$('.rowsButton').on("click", removeRow); */
 	$('.li').on('click', changeColor);
 	$('#tableLayer').css('background', "white");
 	$('#tableLayer').css('border', '1px solid black');
@@ -73,11 +73,39 @@ $(document).ready(function(){
 				
 	});
 	$('.ui-dialog').remove();
+	//오른쪽에 요소추가 창 
 	start();
+	
+	$('#orderList').on('click', orderList);
 			
 });
+
+//주문내역
+function orderList(){
+	var customercode = $('#customercode').val();
+	var membercode = $('#membercode').val();
+	//alert(customercode);
+	//alert(membercode);
+	$.ajax({
+		url: 'getOrderlist',
+		type: 'post',
+		data: {customercode: customercode, membercode: membercode},
+		dataType: 'json',
+		success: function(result){
+			//alert(result);
+			var id = result.id;
+			
+			$('#addRowTab4').html(id);
+			//$('#addRowTab2').html('<li>감자감자 감나리 감자</li><li>감탕감탕 감나리 감탕</li>');
+			
+		}
 		
-function addRowMp(){
+	});
+	
+}
+
+//텍스트 추가		
+/* function addRowMp(){
 			$('#addrowMp').append('<ul style="list-style: none;"><li><span>텍스트</span></li><li><input> <input class="rowsButton" type="button" value="삭제"></li></ul>');
 			$('.rowsButton').on("click", removeRow);
 			
@@ -86,7 +114,8 @@ function addRowMp(){
 function removeRow(){
 			 $(this).parent().parent().remove();
 }
-
+ */
+ 
 $(document).mousedown(function(ev) {
 			if (ev.which == 3) {
 				if ($(this.activeElement).attr("id").startsWith("button") || $(this.activeElement).attr("id").startsWith("text") || $(this.activeElement).attr("id").startsWith("image") || $(this.activeElement).attr("id").startsWith("select")) {
@@ -224,7 +253,8 @@ function changeColor(){
 <input id="address" type="hidden" value="${Blogin.customeraddress}">
 <input id="hp" type="hidden" value="${Blogin.customerhp}">
 <input id="name" type="hidden" value="${Blogin.customername}">
-	
+<input id="customercode" type="hidden" value="${Blogin.customercode}">
+<input id="membercode" type="hidden" value="${Blogin.membercode}">	
 	
 		<div style="text-align: center;">
 			<div style="display: inline-block;">
@@ -234,8 +264,9 @@ function changeColor(){
 				  <!-- 탭 리스트 -->
 				  <ul>
 				    <li><a href="#tabs-1" style="width: 300px;">내 계정</a></li>
-				    <li><a href="#tabs-2" style="width: 300px;">주문내역</a></li>
+				    <li><a id="orderList" href="#tabs-2" style="width: 300px;">주문내역</a></li>
 				    <li><a href="#tabs-3" style="width: 300px;">장바구니</a></li>
+				    <li><a href="#tabs-4" style="width: 300px;">배송정보</a></li>
 				  </ul>
 				  
 				  <!-- 제 1탭 -->
@@ -257,6 +288,13 @@ function changeColor(){
 				  	<ul style="list-style: none;" id="addRowTab3">
 						<li>장바구니가 없습니다.</li>		
 					</ul>	
+				  </div>
+				  
+				  <!-- 제 4탭 -->
+				  <div id="tabs-4">
+				  	<ul style="list-style: none;" id="addRowTab4">
+				  		<li>배송정보가 없습니다.</li>
+				  	</ul>
 				  </div>
 				
 				</div>
@@ -284,7 +322,7 @@ function changeColor(){
 					</div>
 					
 	<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
-	<div id="forHover" style="background: black; height: 400px; width: 30px; position: absolute; left: 5px; top: 100px;">
+	<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
 	</div>
 	</body>
 </html>

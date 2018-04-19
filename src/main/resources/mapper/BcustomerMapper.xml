@@ -40,6 +40,19 @@
 			AND membercode = #{membercode}
 	
 	</select>
+	
+	<select id="searchBcustomerid" parameterType="string" resultType="int">
+		select count(*)
+		from Bcustomer
+		where customerid = #{customerid}
+	</select>
+	
+	<select id="BorderList" resultType="Bordertable" parameterType="map">
+		select *
+		from Bordertable
+		where membercode = #{membercode} AND customercode = #{customercode}
+	
+	</select>
 
 
 </mapper>

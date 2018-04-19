@@ -11,11 +11,22 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				page();
+				if ($('#btnCount').val() == '' || $('#btnCount').val() == null) {
+					
+				}
 				document.getElementById('btnCount').value = 0;
 				document.getElementById('textCount').value = 0;
 				document.getElementById('imageCount').value = 0;
 				document.getElementById('spinnerCount').value = 0;
 				document.getElementById('optionCounter').value = 1;
+				
+				$('.forDeleteBtn').css("visibility", "visible");
+				$('#Bcenter').find('[tabindex=0]').addAttr("tabindex", 0);
+				$('.forDisableDrag').addAttr("ondragstart", "drag(this, event)");
+				$('.forDisableDrag').addAttr("draggable", "true");
+				$('.text').addAttr("contenteditable", "true");
+				$('.divSelectForDrag').css("background", "#ffffff");
+				$('.imageForDrag').css("visibility", "visible");
 			});
 			
 			$(document).mousedown(function(e) {
@@ -983,26 +994,28 @@
 				str += '<li onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트 보기</li>';
 				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
+				
 				$('#page_tool').html(str);
 			}
 			function Bregist() {
+				$('#pagename').val('Bregist');
 				$('#Bcenter').load('Bregist');
 			}
 			function Blogin() {
+				$('#pagename').val('Blogin');
 				$('#Bcenter').load('Blogin');
 			}
 			function Bmypage() {
+				$('#pagename').val('Bmypage');
 				$('#Bcenter').load('Bmypage');
 			}
 			function BmemberListPage(){
-				$('#Bcenter').load('BmemberListPage');
+				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
 			}
 			function Bmmback() {
 				var str = '<ul>';
 				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
 				str += '<li style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>';
 				str += '<li>매장관리</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
@@ -1046,30 +1059,27 @@
 			}
 			
 			function Bsavepage() {
-				var btnCount = $('#btnCount').val();
-				for (var i = 0; i < btnCount ; i++) {
-				}
+				alert("저장");
 				
-				var textCount = $('#textCount').val();
-				var ImageCount = $('#imageCount').val();
+				$('.forDeleteBtn').css("visibility", "hidden");
 				
-				$('.forDeleteBtn').remove();
-				
-				console.log($('#Bcenter').find('[tabindex=0]').attr("id"));
 				$('#Bcenter').find('[tabindex=0]').removeAttr("tabindex");
 				$('.forDisableDrag').removeAttr("ondragstart");
 				$('.forDisableDrag').removeAttr("draggable");
 				$('.text').removeAttr("contenteditable");
 				$('.divSelectForDrag').css("background", "#00000000");
-				$('.imageForDrag').remove();
+				$('.imageForDrag').css("visibility", "hidden");
 				
 				$('#savepage').val($('#Bcenter').html());
 				$('#savepagefrm').submit();
 			}
 			
 			function Bloadpage() {
-				location.href="test";
+				alert("로드");
+				location.href="loadpage?pageinfo=" + ${Amember.membercode} + $('#pagename').val();
+				
 			}
+			
 			
 		</script>
 		<style type="text/css">
@@ -1261,7 +1271,9 @@
 		
 		<!-- 중앙 화면 -->
 		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)">
-			
+			<c:if test="${result != ''}">
+				${result}
+			</c:if>
 		</div>
 	
 	<br><br><br><br><br>
@@ -1291,8 +1303,6 @@
 				<ul>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsavepage()">테스트페이지 저장</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bloadpage()">테스트페이지 로드</li>
 					<li>매장관리</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
@@ -1371,6 +1381,10 @@
 		</div>
 		<form id="savepagefrm" action="savepage" method="post">
 			<input type="hidden" id="savepage" name="savepage">
+			<input type="hidden" id="pagename" name="pagename">
+		</form>
+		<form id="loadpagefrm" action="loadpage" method="post">
+			<input type="hidden" id="lpagename" name="lpagename">
 		</form>
 	</body>
 </html>
