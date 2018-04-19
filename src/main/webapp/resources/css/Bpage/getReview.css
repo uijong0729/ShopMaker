@@ -1,0 +1,154 @@
+@CHARSET "UTF-8";
+*{
+    font-family: "맑은고딕";
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#getBoardInquiry_wrapper{
+	width: 870px;
+    height: auto;
+    margin: auto;
+   	
+	
+}
+.pibTitle{
+	width: 855px;
+	height:40px;
+    font-size: 25px;
+    margin-left: 6px;
+    margin-bottom: 20px;
+    text-align: left;
+    text-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+table {
+    width: 98%;
+    height: 60px;
+    border-spacing: 0;
+    padding: 0px;
+}
+
+.td1{
+    border-top: 1px solid rgb(211, 211, 211);
+}
+tr td{
+    
+    border-bottom: 1px solid rgb(211, 211, 211);
+    height: 40px;
+    font-size: 14px;
+    
+}
+
+tr td:nth-child(1) {
+    width:20%;
+    padding-left: 20px;
+}
+tr td:nth-child(2) {
+    width:80%;
+    
+}
+.boardContent{
+    height: 150px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: none;
+}
+.listbtn{
+    width: 55px;
+    height: 25px;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid rgb(211, 211, 211);
+    padding-top: 7px;
+    margin-top: 20px;
+    display:inline-block;
+}
+.insert_reply{
+	width:97.5%;
+	height:80px;
+	padding:10px;
+}
+.reply_place{
+	width:97.5%;
+	height:80px;
+	padding:10px;
+	border-bottom: 1px solid rgb(211, 211, 211);
+}
+.reply_content{
+	width:83%;
+	height:100%;
+	float: left;
+	margin-left:20px;
+}
+input.re_notd{
+	border: none;
+}
+.btnReply{
+	width:10%;
+	background-color: white;
+	height:100%;
+	float: left;
+	margin-left: 18px;
+	margin-top:0;
+	padding:0;
+}
+#reply_content{
+	width:73%;
+	height:67px;
+	
+	float:left;
+}
+.writer_name{
+	width:13.5%;
+	height:67px;
+	float: left;
+	text-align: center;
+	
+}
+.content_P{
+	width:100%;
+	height:67px;
+	border:1px solid rgb(211, 211, 211);
+	padding:1px;
+	margin-left: 5px;
+}
+#button_place{
+	width:10%;
+	height:67px;
+	float:left;
+	
+}
+.replyBtn{
+	width:100%;
+	background-color: white;
+	border: 1px solid rgb(211, 211, 211);
+	height:45%;
+	margin-left: 25px;
+	margin-top:0;
+	padding:0;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+.boardImg img{
+	width: 150px;
+	height: 150px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+.inquno{
+	border: none;
+}
+.boardImg{
+	border-top: none;
+}
+a:link{
+    color: rgb(61, 61, 61);
+    text-decoration: none;
+}
+a:active{
+   color: rgb(61, 61, 61);
+}
+a:visited{
+    color: rgb(61, 61, 61);
+    }

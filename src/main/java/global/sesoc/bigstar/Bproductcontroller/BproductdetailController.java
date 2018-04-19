@@ -40,16 +40,17 @@ public class BproductdetailController {
 		
 		ArrayList<Breviewtable> reviewtableList = RTdao.getReviewtableByName(productname);
 		
-		System.out.println("B리뷰테이블 리스트");
-		for (Breviewtable breviewtable2 : reviewtableList) {
-			System.out.println(breviewtable2);
-		}
+//		System.out.println("B리뷰테이블 리스트");
+//		for (Breviewtable breviewtable2 : reviewtableList) {
+//			System.out.println(breviewtable2);
+//		}
 		
 		ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
 		
-		for (Bproducttable temp : productDetailList) {
-			System.out.println(temp);
-		}
+//		System.out.println("BproductDetailList 리스트");
+//		for (Bproducttable temp : productDetailList) {
+//			System.out.println(temp);
+//		}
 		
 		model.addAttribute("productDetailList", productDetailList);
 		model.addAttribute("reviewtableList", reviewtableList);

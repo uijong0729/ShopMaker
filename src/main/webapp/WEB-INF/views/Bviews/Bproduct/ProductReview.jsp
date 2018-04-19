@@ -1,53 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./resources/css/Bpage/bproductReviewread.css">
 <title>Insert title here</title>
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/getReview.css">
 <script type="text/javascript">
 
-/* $(document).ready(function(){
-	$(".reviewtitle").on(click, function(){
-		alert("test");
-	});
+$(document).ready(function(){
 	
-}); */
+});
 
 
-function reviewContent(reviewcode, reviewcontent){
-	/* alert(reviewcode);
-	alert(reviewcontent); */
-	var reviewcontent_str = reviewcontent;
-	var reviewcode = reviewcode;
-	alert(reviewcode);
-	
-	var reviewContent_str = '<table>';
-	reviewContent_str = '<tr>';
-	reviewContent_str += '<td>';
-	reviewContent_str += '</td>';
-	reviewContent_str += '<td>';
-	reviewContent_str += reviewcontent_str;
-	reviewContent_str += '</td>';
-	reviewContent_str += '<td>';
-	reviewContent_str += '</td>';
-	reviewContent_str += '<td>';
-	reviewContent_str += '</td>';
-	reviewContent_str += '</tr>';
-	reviewContent_str += '</table>';
-	
-	$('#reviewcontent'+reviewcode).append(reviewContent_str);
-	
+function reviewContent(code, image, content){
+	var str1 = '<td class="reviewclass" colspan="4" style="height:auto;">';
+		str1 += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
+		str1 += '</td>';
+	var	str2 = '<td class="reviewclass" colspan="4">' + content + '</td>';
+	if ($('#review' + code).html() == "") {
+		$('#review' + code).html(str1);
+		$('#review' + code + '_2').html(str2);
+		return;
+	}
+	if (!$('#review' + code).html() == "") {
+		$('#review' + code).html("");
+		$('#review' + code + '_2').html("");
+		return;
+	}
 }
 
 </script>
 
 </head>
 <body>
-<center>
+
 		<br>
 		<div id="productInquiryBoard_wrapper">
 			<p class="pibTitle">상품 후기</p>
@@ -62,20 +52,22 @@ function reviewContent(reviewcode, reviewcontent){
 						<th>작성일</th>
 					</tr>
 				</table>
-					<c:forEach var="review" items="${reviewtableList}">
+					<c:forEach var="review" items="${reviewtableList}" varStatus="v">
 						<table id="reviewcontent${review.reviewcode}">
 							<tr></tr>
 							<tr>
 								<td>${review.reviewcode }</td>
-								<td><span style="cursor: pointer;" class="reviewtitle"
-									onclick="javascript:reviewContent('${review.reviewcode}','${review.reviewcontent}')">${review.reviewtitle }</span></td>
+								<td style="cursor: pointer;" class="reviewtitle" user-select="none" onclick="javascript:reviewContent('${review.reviewcode}', '${review.reviewimage}', '${review.reviewcontent}')">${review.reviewtitle }</td>
 								<td>작성자: Bcustomer.customername</td>
 								<td>${review.reviewdate }</td>
 							</tr>
+							<tr id="review${review.reviewcode}" class="reviewclass"></tr>
+							<tr id="review${review.reviewcode}_2" class="reviewclass"></tr>
 						</table>
 					</c:forEach>
+					
 				</div>
 		</form>
-	</center>
+	
 </body>
 </html>
