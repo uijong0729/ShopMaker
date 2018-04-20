@@ -240,10 +240,10 @@
 					str += '<div id="numberDown' + count + '" style="position: absolute; text-align: center; user-select: none;" onclick="numberDown(this)">▼</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					var reg = /[^0-9]/g;
-					var width = $('#spinner0').css("width");
+					var width = $('#spinner' + count).css("width");
 					width = width.replace(reg, '');
 					width *= 1;
-					var height = $('#spinner0').css("height");
+					var height = $('#spinner' + count).css("height");
 					height = height.replace(reg, '');
 					height *= 0.5;
 					$('#number' + count).css("height", (height * 0.8) + "px");
@@ -256,6 +256,7 @@
 					$('#numberDown' + count).css("margin-top", height);
 					$('#numberDown' + count).css("width", height);
 					$('#numberDown' + count).css("height", height);
+					
 					document.getElementById('spinnerCount').value = count + 1;
 				}
 				
@@ -986,6 +987,35 @@
 				$('#component_tool').css('visibility', 'hidden');
 			}
 			
+			function changeBg() {
+				$('#changeBg').css("visibility", "visible");
+				$('#mask').css('visibility', 'visible');
+			}
+			
+			function  changeBgColor() {
+			}
+			function changeBgImage() {
+				
+			}
+			function changeSubmit() {
+				var bgcolor = '#' + $('#backgroundColor').val();
+				alert(bgcolor);
+				$('#Bcenter').css("background", bgcolor);
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+			}
+			function changeImageSubmit() {
+				var uri = 'url("' + $('#bgUrl').val() + '")';
+				$('#Bcenter').css("background-image", uri);
+//				$('#Bcenter').css("background-repeat", "no-repeat");
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+			}
+			function changeCancle() {
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+			}
+			
 			function Bmm() {
 				var str = '<ul>';
 				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 화면편집</li>';
@@ -1223,6 +1253,18 @@
 				text-align: center;
 				z-index: 1000;
 			}
+			#changeBg {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
 			
 			.editBtn {
 				width: 90px;
@@ -1298,8 +1340,8 @@
 	
 	<br><br><br><br><br>
 		<div id="sidebar">
-			<div id="component" onclick="javascript:component()">컴포넌트</div>
-			<div id="page" onclick="javascript:page()">페이지</div>
+			<div id="component" onclick="javascript:component()">뷰</div>
+			<div id="page" onclick="javascript:page()">모델</div>
 			<div id="component_tool">
 				<ul>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
@@ -1307,6 +1349,7 @@
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트버튼 추가</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
+					<li style="cursor: pointer; user-select: none;" onclick="javascript:changeBg()">배경이미지 변경</li>
 				</ul>
 				<input type="hidden" id="diffX">
 				<input type="hidden" id="diffY">
@@ -1398,6 +1441,18 @@
 			테두리 색상 : <input id="spinner_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
 			<button class="editSpinner" onclick="editSpinner(this)">수정완료</button>&emsp;<button class="editSpinner" id="delSpinner" onclick="deleteComp()">삭제</button>&emsp;<button class="editSpinner" onclick="closemap_spinner(popup)">닫기</button>
 			<input type="hidden" id="spinnerName">
+		</div>
+		<div id="changeBg">
+			<button onclick="javascript:changeBgColor()">색상지정</button> <button onclick="javascript:changeBgImage()">이미지지정</button><br>
+			<div id="bgColorDiv">
+				<input id="backgroundColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
+				<button onclick="javascript:changeSubmit()">변경</button> <button onclick="javascript:changeCancle()">취소</button>
+			</div>
+			<div id="bgImageDiv">
+				<input type="text" id="bgUrl">
+				<button onclick="javascript:changeImageSubmit()">변경</button> <button onclick="javascript:changeCancle()">취소</button>
+			</div>
+			<div id="bgDiv"></div>
 		</div>
 		<form id="savepagefrm" action="savepage" method="post">
 			<input type="hidden" id="savepage" name="savepage">
