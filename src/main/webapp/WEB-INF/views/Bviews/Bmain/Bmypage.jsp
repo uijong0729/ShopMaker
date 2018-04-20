@@ -46,10 +46,34 @@ margin-bottom: 5px;
  display: inline-block;
 }
 
+.ol{
+	display: inline-block;
+	border: 1px solid black;
+	margin: 2px;
+	padding: 3px;
+}
 
-</style>		
-		
+.w1{width: 120px;}
+.w2{width: 120px;}
+.w3{width: 120px;}
+.w4{width: 200px;}
+.w5{width: 120px;}
+.w6{width: 120px;}
+
+</style>				
 <script>
+	var StringBuffer = function() {
+	    this.buffer = new Array();
+	};
+	
+	StringBuffer.prototype.append = function(str) {
+	    this.buffer[this.buffer.length] = str;
+	};
+	
+	StringBuffer.prototype.toString = function() {
+	    return this.buffer.join("");
+	};
+
 $(document).ready(function(){
 	/* $('#addComponentMp').on('click', addRowMp);
 	$('.rowsButton').on("click", removeRow); */
@@ -84,20 +108,35 @@ $(document).ready(function(){
 function orderList(){
 	var customercode = $('#customercode').val();
 	var membercode = $('#membercode').val();
-	//alert(customercode);
-	//alert(membercode);
+	//alert(customercode + " / " +membercode);
 	$.ajax({
 		url: 'getOrderlist',
 		type: 'post',
 		data: {customercode: customercode, membercode: membercode},
 		dataType: 'json',
 		success: function(result){
-			//alert(result);
-			var id = result.id;
+	        var innerText = new StringBuffer();
+	        innerText.append('<li>');
+			innerText.append('<span class="ol w1">주문번호</span>');
+			innerText.append('<span class="ol w2">제품번호</span>');
+			innerText.append('<span class="ol w3">주문수량</span>');
+			innerText.append('<span class="ol w4">주문일</span>');
+			innerText.append('<span class="ol w5">입금일</span>');
+			innerText.append('<span class="ol w6">결제상태</span>');
+			innerText.append('</li>');
 			
-			$('#addRowTab4').html(id);
+			for (var i in result) {
+				innerText.append('<li>');
+				innerText.append('<span class="ol w1">' + result[i].ordercode + '</span>');
+				innerText.append('<span class="ol w2">' + result[i].productcode + '</span>');
+				innerText.append('<span class="ol w3">' + result[i].orderquantity + '</span>');
+				innerText.append('<span class="ol w4">' + result[i].orderdate + '</span>');
+				innerText.append('<span class="ol w5">' + result[i].orderdepositdate + '</span>');
+				innerText.append('<span class="ol w6">' + result[i].orderpaymentstatus + '</span>');
+				innerText.append('</li>');
+			}
+			$('#addRowTab2').html(innerText.toString());
 			//$('#addRowTab2').html('<li>감자감자 감나리 감자</li><li>감탕감탕 감나리 감탕</li>');
-			
 		}
 		
 	});
