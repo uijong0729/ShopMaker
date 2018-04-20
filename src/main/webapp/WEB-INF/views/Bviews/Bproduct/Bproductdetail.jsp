@@ -46,6 +46,7 @@
 			$(this).css("width", (width * 5 / 6) + "px");
 			$(this).css("height", (height * 5 / 6) + "px");
 		}); */
+		
 	});
 </script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
@@ -151,7 +152,6 @@ function gopurchaseform() {
         </div>
         <div style="margin: auto;">
 			<%@include file="ProductReview.jsp" %>
-			<%@include file="ProductQuestion.jsp" %>
 		</div>
         <div class="product_img_place">
             <!-- 상세 이미지 -->
