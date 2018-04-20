@@ -74,14 +74,14 @@ function gopurchaseform() {
                 <form action="detailaddOrder.do">
                     <div class="info_box1">
                         <p class="product_name">
-                            <h3>${productDetailList[1].productname}</h3>
+                            <h3>${productDetailList[0].productname}</h3>
                         </p>
                     </div>
                     <br>
                     <table class="Info_table">
                         <tr>
                             <td>가격</td>
-                            <td><span>${productDetailList[1].productprice}</span></td>
+                            <td><span>${productDetailList[0].productprice}</span></td>
                         </tr>
                         <tr>
                             <td>배송비</td>

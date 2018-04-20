@@ -23,28 +23,29 @@ function goreviewlist() {
 			<table>
 				<tr>
 					<td class="td1">제목</td>
-					<td class="td1"><input type="text" class="inpt">
+					<td class="td1"><input type="text" name="reviewtitle" value="$review.reviewtitle" class="inpt">
 					</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="m_name" class="writerbox" readOnly>
-						<input type="hidden"> 
+					<td>
+						<input type="text" name="m_name" class="writerbox" value="$Bcustomer.customername" readOnly>
+						<input type="hidden" name="membercode" value="$review.membercode"> 
 					</td>
 				</tr>
 
 				<tr>
 				
-					<td colspan="2" class="boardContent"><textarea name="re_content" class="content_inpt" rows="10" cols="30"></textarea></td>
+					<td colspan="2" class="boardContent"><textarea name="reviewcontent" class="content_inpt" rows="10" cols="30"></textarea></td>
 				</tr>
 				<tr>
 					<td style="padding-bottom: 8px; padding-top: 8px;">사진 첨부<br><font style="font-size:12px; color:#F78181">사진은 수정이 불가하니<br>신중히 올려주세요</font></td>
 					<td><input type="file" name="uploadFile" style="padding-top:20px; font-size: 13px;"></td>
 				</tr>
 			</table>
-			<a><button  type="button" style="cursor: pointer" class="submit_btn1" onclick="goreviewlist()">목록</a>
+			<a><button type="button" style="cursor: pointer" class="submit_btn1" onclick="goreviewlist()">목록</a>
+			<input type="hidden" name="customercode" value="$review.customercode">
 			<button type="submit" class="submit_btn2" style="cursor: pointer">작성</button>
-			
 		</form>
 
 	</div>

@@ -98,7 +98,7 @@ public class BmemberController {
 		else
 		{
 			model.addAttribute("isThereId", 0);
-			return "Bviews/Bmain/Bshopmain";
+			return "redirect:goBmain";
 			
 		}
 		
