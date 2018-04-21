@@ -115,7 +115,7 @@ public class BproductdetailController {
 	@RequestMapping(value="Bpurchaseform", method=RequestMethod.GET)
 	public String Bpurchaseform() {
 		
-		return "Bviews/Bboard/Bpurchaseform";
+		return "Bviews/Bpurchase/Bpurchaseform";
 	}
 	
 	

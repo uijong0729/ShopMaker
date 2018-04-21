@@ -5,13 +5,22 @@
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=1"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
 		
 		<script type="text/javascript">
+		
 			$(document).ready(function() {
 				var windowHeight = $( window ).height();
 				$('#Bcenter').css("height", windowHeight + "px");
+				
+				//탭 css변화
+				$(".tabs").click(function() {
+					  $(".active").removeClass("active");
+					  $(this).addClass("active");
+					});
+				
 				page();
 				if ($('#btnCount').val() == '' || $('#btnCount').val() == null) {
 					
@@ -29,6 +38,8 @@
 				$('.text').addAttr("contenteditable", "true");
 				$('.divSelectForDrag').css("background", "#ffffff");
 				$('.imageForDrag').css("visibility", "visible");
+				
+				
 			});
 			
 			$(document).mousedown(function(e) {
@@ -1029,11 +1040,11 @@
 			
 			function Bmm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 화면편집</li>';
-				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인 화면편집</li>';
-				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지 화면편집</li>';
-				str += '<li onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트 보기</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입</li>';
+				str += '<li class="side" onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인</li>';
+				str += '<li class="side" onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지</li>';
+				str += '<li class="side" onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
 				
 				$('#page_tool').html(str);
@@ -1060,29 +1071,30 @@
 			}
 			function Bmmback() {
 				var str = '<ul>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
-				str += '<li style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계 및 분석</li>';
-				str += '<li>배송 및 세금</li>';
-				str += '<li>주문관리 및 결제관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
+				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
+				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>';
+				str += '<li class="side">배송 및 세금</li>';
+				str += '<li class="side">주문관리</li>';
+				str += '<li class="side">결제관리</li>';
+				str += '<li class="side" style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트 관리</li>';
-				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상페이지 관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
+				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
 			
 			function Bpm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
-				str += '<li onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
+				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -1090,9 +1102,9 @@
 			//통계 및 분석 링크
 			function Bsa(){
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bsale()" style="cursor: pointer; user-select: none;">매출관리</li>';
-				str += '<li onclick="javascript:Bcustomer()" style="cursor: pointer; user-select: none;">고객관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bsale()" style="cursor: pointer; user-select: none;">매출관리</li>';
+				str += '<li class="side" onclick="javascript:Bcustomer()" style="cursor: pointer; user-select: none;">고객관리</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -1153,58 +1165,7 @@
 				width: 100%;
 				height: 100%;
 			}
-			#sidebar {
-				width: 150px;
-				height: 600px;
-				left: -145px;
-				top: 12%;
-				border: 1px solid black;
-				position: fixed;
-				background: white;
-				transition: 0.3s;
-				transition-timing-function: linear;
-			}
-			#sidebar:HOVER {
-				width: 150px;
-				left: 0px;
-				background: white;
-				border: 1px solid black;
-			}
-			#component {
-				width: 75px;
-				height: 30px;
-				padding-top: 5px;
-				border: 1px solid #000000;
-				background: white;
-				position: fixed;
-				text-align: center;
-				user-select: none;
-			}
-			#page { 
-				width: 75px;
-				height: 30px;
-				padding-top: 5px;
-				margin-left: 74px;
-				border: 1px solid #000000;
-				position: fixed;
-				text-align: center;
-				background: white;
-				user-select: none;
-			}
-			#component_tool {
-				width: 150px;
-				margin-top: 30px;
-				height: 570px;
-				/* background: blue; */
-				position: fixed;
-			}
-			#page_tool {
-				width: 150px;
-				margin-top: 30px;
-				height: 570px;
-				/* background: red; */
-				position: fixed;
-			}
+			
 			.textalign {
 				text-align: center;
 				
@@ -1355,17 +1316,17 @@
 		</div>
 	
 	<br><br><br><br><br>
-		<div id="sidebar">
-			<div id="component" onclick="javascript:component()">뷰</div>
-			<div id="page" onclick="javascript:page()">모델</div>
-			<div id="component_tool">
+		<div class="sidebarsonomono" id="sidebar" style="margin-top: 30px; border-radius: 10px;">
+			<div class="tabs" id="component" onclick="javascript:component()">뷰</div>
+			<div class="tabs active" id="page" onclick="javascript:page()">모델</div>
+			<div class="toolbody" style="border-radius: 2px;" id="component_tool">
 				<ul>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트버튼 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:changeBg()">배경이미지 변경</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:changeBg()">배경설정</li>
 				</ul>
 				<input type="hidden" id="diffX">
 				<input type="hidden" id="diffY">
@@ -1378,13 +1339,14 @@
 				<input type="hidden" id="delItem">
 			</div>
 				
-			<div id="page_tool">
+			<div class="toolbody" id="page_tool">
 				<ul>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
-					<li style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계 및 분석</li>
-					<li>배송 및 세금</li>
-					<li>주문관리 및 결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
+					<li class="side">배송 및 세금</li>
+					<li class="side">주문관리</li>
+					<li class="side">결제관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">
