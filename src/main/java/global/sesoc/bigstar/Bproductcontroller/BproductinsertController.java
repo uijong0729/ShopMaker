@@ -30,12 +30,7 @@ public class BproductinsertController {
 	public String productInsert(String productkind, String productname, String productprice, String productquantity,
 			String productsize, String productcolor, String productspec, HttpServletResponse response, Model model,
 			HttpSession session) {
-
 		
-		Bproducttable bproduct=new Bproducttable(productname,Integer.parseInt(productprice),Integer.parseInt(productquantity),Integer.parseInt(productsize),productcolor,productspec,productkind,"37");
-		
-		Bpdao.insertbproducttable(bproduct);
-		System.out.println("들어옴?");
 		
 		return "Bviews/Bproduct/ProductInsert";
 	}

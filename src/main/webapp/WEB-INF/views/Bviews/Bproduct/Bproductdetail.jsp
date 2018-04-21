@@ -49,10 +49,14 @@
 		
 		//장바구니 추가
 		$('#goCart').on('click', function(){
+			var productcode = document.getElementById('productcode').value;
+			var customercode = document.getElementById('customercode').value;
+			//alert(productcode + '//' + customercode)
+			
 			$.ajax({
 				url: 'insertCart',
 				type: 'get',
-				data: {bproductcode: bproductcode, bcustomercode: bcustomercode},
+				data: {productcode: productcode, customercode: customercode},
 				success: function(){
 					alert('장바구니에 추가되었습니다');
 				},
@@ -73,7 +77,8 @@ function gopurchaseform() {
 <title>Insert title here</title>
 </head>
 <body>
-
+	<input id="productcode" type="hidden" value="${productcode }">
+	<input id="customercode" type="hidden" value="${Blogin.customercode}">
 	<div class="wrapper">
         <div class="a">
             <diV class="half_detail_Info_Img">
@@ -175,8 +180,6 @@ function gopurchaseform() {
         </div>
       
         
-		<%-- <jsp:include page="../Bmain/Bpreview.jsp" flush="true">
-		</jsp:include> --%>
         <script type="text/javascript">
         function switchImg(src) {
             $('.showingImg').attr('src', src);

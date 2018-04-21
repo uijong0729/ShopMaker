@@ -1279,9 +1279,10 @@
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
 					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
-					<li class="side">배송 및 세금</li>
-					<li class="side">주문관리</li>
-					<li class="side">결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;">배송 및 세금</li>
+					<li class="side" style="cursor: pointer; user-select: none;">주문관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;">결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bpm()">페이지관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">

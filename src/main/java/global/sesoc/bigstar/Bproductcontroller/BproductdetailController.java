@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.Bproductcontroller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.sesoc.bigstar.dao.BcarttableDAO;
 import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BquestiontableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
@@ -29,8 +31,11 @@ public class BproductdetailController {
 	@Autowired
 	BquestiontableDAO QTdao;
 	
+	@Autowired
+	BcarttableDAO cDao;
+	
 	@RequestMapping(value="goBproductdetail", method=RequestMethod.GET)
-	public String productdetail(Model model, String productname) {
+	public String productdetail(Model model, String productname, String productcode) {
 		
 		System.out.println(productname);
 		
@@ -56,7 +61,7 @@ public class BproductdetailController {
 		
 		model.addAttribute("productDetailList", productDetailList);
 		model.addAttribute("reviewtableList", reviewtableList);
-		
+		model.addAttribute("productcode", productcode);
 		return "Bviews/Bproduct/Bproductdetail";
 	}
 	
@@ -123,7 +128,16 @@ public class BproductdetailController {
 	@ResponseBody
 	@RequestMapping(value="insertCart", method=RequestMethod.GET)
 	public void insertCart(Bcarttable bcart) {
-			
+		String customer = bcart.getCustomercode();
+		String productcode = bcart.getProductcode();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("customercode", customer);
+		map.put("productcode", productcode);
+		System.out.println(map);
+		System.out.println(cDao.insertBcart(map));
+		//System.out.println(membercode + "//" + productcode);
+		//Bproducttable product =  cDao.getBproduct(Integer.parseInt(productcode));
+		
 	}
 	
 

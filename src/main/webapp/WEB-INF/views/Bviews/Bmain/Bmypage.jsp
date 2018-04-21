@@ -7,6 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>마이페이지</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/showlist.css?ver=3"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 
@@ -22,9 +23,7 @@
  cursor: pointer;
 }
 li{
-
 margin-bottom: 5px;
-
 }
 
 .layer-li
@@ -53,12 +52,25 @@ margin-bottom: 5px;
 	padding: 3px;
 }
 
+.ol2{
+	display: inline-block;
+	margin: 2px;
+	padding: 3px;
+}
+
 .w1{width: 120px;}
 .w2{width: 120px;}
 .w3{width: 120px;}
 .w4{width: 200px;}
 .w5{width: 120px;}
 .w6{width: 120px;}
+
+.c1{width: 120px; height: 60px;}
+.c2{width: 150px; height: 60px;}
+.c3{width: 70px; height: 60px;}
+.c4{width: 70px; height: 60px;}
+.c5{width: 70px; height: 60px;}
+.c6{width: 100px; height: 60px;}
 
 .submit
 {
@@ -132,8 +144,10 @@ $(document).ready(function(){
 	//오른쪽에 요소추가 창 
 	start();
 	
+	//주문 내역 탭 이벤트
 	$('#orderList').on('click', orderList);
-			
+	//카트 리스트 이벤트
+	$('#cartList').on('click', cartList);
 });
 
 //주문내역
@@ -149,7 +163,7 @@ function orderList(){
 		success: function(result){
 			if(result == null)
 			{
-				return;
+				$('#addRowTab2').html('<li>구매내역이 없습니다.</li>');
 			}
 			else
 			{
@@ -174,6 +188,56 @@ function orderList(){
 						innerText.append('</li>');
 					}
 					$('#addRowTab2').html(innerText.toString());
+			}
+		}
+		
+	});
+	
+}
+
+
+//장바구니
+function cartList(){
+	var customercode = $('#customercode').val();
+	
+	$.ajax({
+		url: 'getCartlist',
+		type: 'post',
+		data: {customercode: customercode},
+		dataType: 'json',
+		success: function(result){
+			if(result == null)
+			{
+				$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
+			}
+			else
+			{
+				 var innerText = new StringBuffer();
+			        innerText.append('<li>');
+					innerText.append('<span class="ol c1">이미지</span>');
+					innerText.append('<span class="ol c2">상품명</span>');
+					innerText.append('<span class="ol c3">색깔</span>');
+					innerText.append('<span class="ol c4">사이즈</span>');
+					innerText.append('<span class="ol c5">수량</span>');
+					innerText.append('<span class="ol c6">가격</span>');
+					innerText.append('<span class="ol2 c6"></span>');
+					innerText.append('</li>');
+					
+					for (var i in result) {
+						innerText.append('<li>');
+						innerText.append('<span class="ol c1">' + result[i].productimage + '</span>');
+						innerText.append('<span class="ol c2">' + result[i].productname+ '</span>');
+						innerText.append('<span class="ol c3">' + result[i].productcolor + '</span>');
+						innerText.append('<span class="ol c4">' + result[i].productsize + '</span>');
+						innerText.append('<span class="ol c5">' + result[i].productquantity + '</span>');
+						innerText.append('<span class="ol c6">' + result[i].productprice + '</span>');
+						innerText.append('<span class="ol2 c6"><img src="/bigstar/resources/img/Xsign.jpg"></span>');
+					}
+
+					
+					
+					innerText.append('</li><div class="orderBt" style="text-align: center;"><div style="display: inline-block;">주문하기</div></div>');
+					$('#addRowTab3').html(innerText.toString());
 			}
 		}
 		
@@ -332,7 +396,6 @@ function changeColor(){
 <input id="name" type="hidden" value="${Blogin.customername}">
 <input id="customercode" type="hidden" value="${Blogin.customercode}">
 <input id="membercode" type="hidden" value="${Blogin.membercode}">	
-	
 		<div style="text-align: center;">
 			<div style="display: inline-block;">
 				<h1 id="text_mypageTitle" tabindex="0">마이페이지</h1>
@@ -344,7 +407,7 @@ function changeColor(){
 				  <ul>
 				    <li><a href="#tabs-1" style="width: 220px;">계정정보</a></li>
 				    <li><a id="orderList" href="#tabs-2" style="width: 220px;">주문내역</a></li>
-				    <li><a href="#tabs-3" style="width: 220px;">장바구니</a></li>
+				    <li><a id="cartList" href="#tabs-3" style="width: 220px;">장바구니</a></li>
 				    <li><a href="#tabs-4" style="width: 220px;">배송정보</a></li>
 				  </ul>
 				  
