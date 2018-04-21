@@ -46,6 +46,8 @@
 			$(this).css("width", (width * 5 / 6) + "px");
 			$(this).css("height", (height * 5 / 6) + "px");
 		}); */
+		
+		//장바구니 추가
 		$('#goCart').on('click', function(){
 			$.ajax({
 				url: 'insertCart',

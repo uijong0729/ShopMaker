@@ -187,7 +187,7 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					count *= 1;
-					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('textCount').value = count + 1;
 				}
@@ -1085,10 +1085,10 @@
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트 관리</li>';
-				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상페이지 관리</li>';
-				str += '<li onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품삽입삭제 관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
+				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
+				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
