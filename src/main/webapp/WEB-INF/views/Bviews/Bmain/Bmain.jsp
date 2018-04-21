@@ -1,3 +1,4 @@
+<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -1148,27 +1149,33 @@
 			
 			//매출관리 링크
 			function Bsale(){
+				$('#pagename').val('BsaleChart');
 				$('#Bcenter').load('BsaleChart');
 			}
 			
 			//고객관리 링크
 			function Bcustomer(){
+				$('#pagename').val('BcustomerChart');
 				$('#Bcenter').load('BcustomerChart');
 			}
 			
 			function Bheader(){
+				$('#pagename').val('BpageHeader');
 				$('#Bcenter').load('BpageHeader');
 			}
 			
 			function Bfooter(){
+				$('#pagename').val('BpageFooter');
 				$('#Bcenter').load('BpageFooter');
 			}
 			
 			function Bmain(){
+				$('#pagename').val('BpageMain');
 				$('#Bcenter').load('BpageMain');
 			}
 			
 			function Bmainlist() {
+				$('#pagename').val('Bmainlist');
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
 			
@@ -1296,6 +1303,9 @@
 			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
 				<c:if test="${result != ''}">
 					${result}
+				</c:if>
+				<c:if test="${result == null}">
+					<%@ include file="./BpageMain.jsp" %>
 				</c:if>
 			</div>
 		</div>
