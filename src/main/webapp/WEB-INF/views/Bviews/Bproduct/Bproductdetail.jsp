@@ -46,6 +46,19 @@
 			$(this).css("width", (width * 5 / 6) + "px");
 			$(this).css("height", (height * 5 / 6) + "px");
 		}); */
+		$('#goCart').on('click', function(){
+			$.ajax({
+				url: 'insertCart',
+				type: 'get',
+				data: {bproductcode: bproductcode, bcustomercode: bcustomercode},
+				success: function(){
+					alert('장바구니에 추가되었습니다');
+				},
+				error: function(){
+					alert('장바구니 추가에 실패했습니다');
+				}
+			});
+		});
 		
 	});
 </script>
@@ -58,6 +71,7 @@ function gopurchaseform() {
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="wrapper">
         <div class="a">
             <diV class="half_detail_Info_Img">
@@ -70,6 +84,7 @@ function gopurchaseform() {
                 	<img class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
                 </div>
             </diV><!-- 이미지 프리뷰 -->
+            
             <div class="half_detail_Info_Text">
                 <form action="detailaddOrder.do">
                     <div class="info_box1">
@@ -120,7 +135,7 @@ function gopurchaseform() {
                 </form>
                 <form action="addBasket.do" class="cartData">
                     <input type="hidden" name="index">
-                    <button type="submit" class="pageMoveBtn">장바구니</button>
+                    <button id="goCart" type="button" class="pageMoveBtn">장바구니</button>
                 </form>
 
                 <div class="detail_toolBox">
@@ -147,8 +162,8 @@ function gopurchaseform() {
                     </a>
                 </div>
                 <br>
-				
-            </div><!-- 주문 디테일 -->
+			</div>
+           </div><!-- 주문 디테일 -->
         </div>
         <div style="margin: auto;">
 			<%@include file="ProductReview.jsp" %>
