@@ -154,7 +154,7 @@ public class BmemberController {
 		model.addAttribute("Bcustomer", bcustomer);
 		
 		
-		return "Bviews/Bmain/Bwellcome";
+		return "Bviews/Bmain/Blogin";
 	}
 	
 	@ResponseBody

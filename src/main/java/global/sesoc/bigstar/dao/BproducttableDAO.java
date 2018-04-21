@@ -35,4 +35,11 @@ public class BproducttableDAO implements BproducttableMapper {
 		return session.getMapper(BproducttableMapper.class).getProductdetailListByName(productname);
 	}
 
+	@Override
+	public int insertbproducttable(Bproducttable bproducttable) {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(BproducttableMapper.class).insertbproducttable(bproducttable);
+	}
+
 }

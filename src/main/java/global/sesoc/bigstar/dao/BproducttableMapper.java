@@ -9,6 +9,6 @@ public interface BproducttableMapper {
 	public ArrayList<Bproducttable> selectbproducttable(int productcode);
 	public ArrayList<Bproducttable> getProductdetailListByName(String productname);
 	public ArrayList<Bproducttable> selectallbproducttable();
-	
+	public int insertbproducttable(Bproducttable bproducttable);
 
 }

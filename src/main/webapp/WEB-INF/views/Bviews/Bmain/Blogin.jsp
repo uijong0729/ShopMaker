@@ -11,6 +11,8 @@
 <style type="text/css">
 .submit
 {
+  box-shadow: 0px 0px 1px 1px #ccc;  
+  border-radius: 3px;
   display: inline-block;
   font-size: 12px;
   line-height: 42px;

@@ -4,6 +4,18 @@ import java.util.ArrayList;
 
 public class Bproducttable {
 
+	public Bproducttable(String productname, int productprice, int productquantity, int productsize,
+			String productcolor, String productspec, String productkind, String membercode) {
+		super();
+		this.productname = productname;
+		this.productprice = productprice;
+		this.productquantity = productquantity;
+		this.productsize = productsize;
+		this.productcolor = productcolor;
+		this.productspec = productspec;
+		this.productkind = productkind;
+		this.membercode = membercode;
+	}
 	String productcode;
 	String productname;
 	int productprice;

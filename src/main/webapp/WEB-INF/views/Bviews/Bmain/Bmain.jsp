@@ -5,7 +5,7 @@
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=1"/>
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=3"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
 		
@@ -60,6 +60,7 @@
 						showmap_spinner(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
 					}
+					
 					
 					else {
 						return false;
@@ -170,7 +171,7 @@
 				} else {
 					count = document.getElementById('btnCount').value;
 					count *= 1;
-					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" tabindex="0" user-select="none" >버튼' + count + '</button>';
 					
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('btnCount').value = count + 1;
@@ -186,7 +187,7 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					count *= 1;
-					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('textCount').value = count + 1;
 				}
@@ -1005,6 +1006,7 @@
 				$('#mask').css('visibility', 'visible');
 				$('.changeA').css("visibility", "hidden");
 				$('.changeB').css("visibility", "hidden");
+				$('#default').click();
 			}
 			
 			function  changeBgColor() {
@@ -1090,6 +1092,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
 				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
+				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
 				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
@@ -1099,6 +1102,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
 				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li class="side" onclick="javascript:Bmain()" style="cursor: pointer; user-select: none;">Bmain</li>';
 				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
@@ -1132,6 +1136,9 @@
 				$('#Bcenter').load('BpageFooter');
 			}
 			
+			function Bmain(){
+				$('#Bcenter').load('BpageMain');
+			}
 			
 			function Bmainlist() {
 				$('#Bcenter').load('Bmainlist?rows=4');
@@ -1140,7 +1147,9 @@
 			function goBproductdetail() {
 				$('#Bcenter').load('goBproductdetail');
 			}
-			
+			function goBproductinsert() {
+				$('#Bcenter').load('goBproductinsert');
+			}
 			function Bsavepage() {
 				alert("저장");
 				
@@ -1175,42 +1184,7 @@
 				text-align: center;
 				
 			}
-			#popup {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
-			#popup_text {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 45%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
-			#popup_image {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
+			
 			#popup_select {
 				position:absolute;
 				left:35%;
@@ -1234,42 +1208,6 @@
 				border-radius: 10px;
 				text-align: center;
 				z-index: 1000;
-			}
-			#changeBg {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
-			
-			.editBtn {
-				width: 90px;
-				height: auto;
-				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
-			}
-			
-			.editText {
-				width: 90px;
-				height: auto;
-				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
-			}
-			
-			.editImage {
-				width: 90px;
-				height: auto;
-				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
 			}
 			.editTextBtn {
 				width: 70px;
@@ -1331,8 +1269,10 @@
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
-					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트</li>
-					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
+					
+					<!-- <li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li> -->
+					
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:changeBg()">배경설정</li>
 				</ul>
 				<input type="hidden" id="diffX">
@@ -1369,40 +1309,112 @@
 		
 		
 		<div id="mask"></div>
-		<div id="popup">
-			<br>
-			버튼 텍스트 : <input type="text" id="btnText"><br>
-			버튼 색상 &emsp;: <input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			테두리 두께 : <input type="text" id="btnBorder"><br>
-			테두리 색상 : <input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			글자 크기 &emsp;: <input type="text" id="fontsize"><br>
-			글자 색상 &emsp;: <input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			URL 　　　 : <input type="text" id="btnUrl"><br><br>
-			<button class="editBtn" onclick="editBtn(this)">수정완료</button>&emsp;<button class="editBtn" id="delBtn" onclick="deleteComp()">삭제</button>&emsp;<button class="editBtn" onclick="closemap(popup)">닫기</button>
+		
+		<div id="popup" class="popup Bheight">
+		<h5 class="mp editHeader" style="font: bold;">버튼 편집</h5>
+			<table class="mp">
+				<tr>
+					<th class="mp">버튼 텍스트</th>
+					<td class="mp"><input type="text" id="btnText"></td>
+				</tr>
+				<tr>
+					<th class="mp th">버튼 색상</th>
+					<td class="mp"><input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp th">테두리 두께</th>
+					<td class="mp"><input type="text" id="btnBorder"></td>
+				</tr>
+				<tr>
+					<th class="mp th">테두리 색상</th>
+					<td class="mp"><input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp th">글자 크기</th>
+					<td class="mp"><input type="text" id="fontsize"></td>
+				</tr>
+				<tr>
+					<th class="mp th">글자 색상</th>
+					<td class="mp"><input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">URL</th>
+					<td class="mp"><input type="text" id="btnUrl"></td>
+				</tr>
+			</table>
+			
+			<button class="editBtn" onclick="editBtn(this)">수정완료</button>
+			<button class="editBtn" id="delBtn" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap(popup)">닫기</button>
+			
 			<input type="hidden" id="btnName">
 			<input type="hidden" id="editBtnName">
 		</div>
-		<div id="popup_text">
-			<br>
-			텍스트  &nbsp;&emsp;&emsp;: <input type="text" id="text_text"><br><br>
-			글자 크기 &emsp;: <input type="text" id="text_fontsize"><br><br>
-			글자 색상 &emsp;: <input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			배경 색상 &emsp;: <input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			테두리 색상 : <input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			<button class="editText" onclick="editText(this)">수정완료</button>&emsp;<button class="editText" id="delText" onclick="deleteComp()">삭제</button>&emsp;<button class="editText" onclick="closemap_text(popup)">닫기</button>
+		
+		<div id="popup_text" class="popup Theight">
+			<h5 class="mp editHeader" style="font: bold;">텍스트 편집</h5>
+			<table class="mp" class="popup">
+				<tr>
+					<th class="mp">텍스트</th>
+					<td class="mp"><input type="text" id="text_text"></td>
+				</tr>
+				<tr>
+					<th class="mp">글자 크기</th>
+					<td class="mp"><input type="text" id="text_fontsize"></td>
+				</tr>
+				<tr>
+					<th class="mp">글자 색상</th>
+					<td class="mp"><input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">배경 색상</th>
+					<td class="mp"><input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">테두리 색상</th>
+					<td class="mp"><input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+			</table>
+			
+			<button class="editBtn" onclick="editText(this)">수정완료</button>
+			<button class="editBtn" id="delText" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap_text(popup)">닫기</button>
+			
 			<input type="hidden" id="textName">
 			<input type="hidden" id="editTextName">
 		</div>
-		<div id="popup_image">
-			<br>
-			가로 크기 &emsp;: <input type="text" id="image_width"><br><br>
-			세로 크기 &emsp;: <input type="text" id="image_height"><br><br>
-			투명도 &nbsp;&emsp;&emsp;: <input type="text" id="image_opacity"><br><br>
-			이미지 주소 : <input type="text" id="image_url"><br><br>
-			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
+		
+		
+		<div class="popup Iheight" id="popup_image">
+			<h5 class="mp editHeader">이미지 편집</h5>
+			<table>
+				<tr>
+					<th class="mp">가로 크기</th>
+					<td class="mp"><input type="text" id="image_width"></td>
+				</tr>
+				<tr>
+					<th class="mp">세로 크기</th>
+					<td class="mp"><input type="text" id="image_height"></td>
+				</tr>
+				<tr>
+					<th class="mp">투명도</th>
+					<td class="mp"><input type="text" id="image_opacity"></td>
+				</tr>
+				<tr>
+					<th class="mp">이미지 주소</th>
+					<td class="mp"><input type="text" id="image_url"></td>
+				</tr>
+			</table>
+			<button class="editBtn" onclick="editImage(this)">수정완료</button>
+			<button class="editBtn" id="delImage" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap_image(popup)">닫기</button>
+			
 			<input type="hidden" id="imageName">
 		</div>
-		<div id="popup_select">
+		
+		
+		
+		<!-- <div id="popup_select">
 			<br>
 			가로 크기 &emsp;: <input type="text" id="select_width"><br>
 			세로 크기 &emsp;: <input type="text" id="select_height"><br>
@@ -1416,6 +1428,8 @@
 			<input type="hidden" id="selectName">
 			<input type="hidden" id="optionCounter">
 		</div>
+		
+		
 		<div id="popup_spinner">
 			<br>
 			가로 크기 &emsp;: <input type="text" id="spinner_width"><br>
@@ -1426,19 +1440,31 @@
 			테두리 색상 : <input id="spinner_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
 			<button class="editSpinner" onclick="editSpinner(this)">수정완료</button>&emsp;<button class="editSpinner" id="delSpinner" onclick="deleteComp()">삭제</button>&emsp;<button class="editSpinner" onclick="closemap_spinner(popup)">닫기</button>
 			<input type="hidden" id="spinnerName">
-		</div>
-		<div id="changeBg">
-			<button onclick="javascript:changeBgColor()" style="background: white; border: 1px solid black; border-radius: 5px;">색상지정</button> <button onclick="javascript:changeBgImage()" style="background: white; border: 1px solid black; border-radius: 5px;">이미지지정</button><br>
-			<div id="bgColorDiv" class="changeA" style="position: absolute; margin-top: 50px; width: 100%; height: 100%;">
-				색상 : <input id="backgroundColor" class="jscolor jscolor-active changeA" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-				<button onclick="javascript:changeSubmit()" class="changeA" style="background: white; border: 1px solid black; border-radius: 5px;">변경</button> <button class="changeA" onclick="javascript:changeCancle()" style="background: white; border: 1px solid black; border-radius: 5px;">취소</button>
+		</div> -->
+		
+		
+		<div id="changeBg" class="popup BGheight">
+			<div>
+				<h5 class="editHeader">배경설정</h5>		
 			</div>
-			<div id="bgImageDiv" class="changeB" style="position: absolute; margin-top: 50px; width: 100%; height: 100%;">
-				주소 : <input type="text" id="bgUrl" class="changeB"><br><br>
-				<button onclick="javascript:changeImageSubmit()" class="changeB" style="background: white; border: 1px solid black; border-radius: 5px;">변경</button> <button class="changeB" onclick="javascript:changeCancle()" style="background: white; border: 1px solid black; border-radius: 5px;">취소</button>
-			</div>
-			<div id="bgDiv"></div>
+			
+			<button id="default" onclick="javascript:changeBgColor()" class="tabs">색상</button> 
+			<button onclick="javascript:changeBgImage()" class="tabs">이미지</button>
+			<hr>
+					<div id="bgColorDiv" class="changeA" style="position: absolute; margin-top: 5px; width: 100%; height: 100%;">
+						색상 : <input id="backgroundColor" class="jscolor jscolor-active changeA" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+						<button onclick="javascript:changeSubmit()" class="changeA editBtn">변경</button>
+						<button class="changeA editBtn" onclick="javascript:changeCancle()">취소</button>
+					</div>
+					<div id="bgImageDiv" class="changeB" style="position: absolute; margin-top: 5px; width: 100%; height: 100%;">
+						주소 : <input type="text" id="bgUrl" class="changeB"><br><br>
+						
+						<button onclick="javascript:changeImageSubmit()" class="changeB editBtn">변경</button> 
+						<button class="changeB editBtn" onclick="javascript:changeCancle()">취소</button>
+					</div>
+				<div id="bgDiv"></div>
 		</div>
+		
 		<form id="savepagefrm" action="savepage" method="post">
 			<input type="hidden" id="savepage" name="savepage">
 			<input type="hidden" id="pagename" name="pagename">

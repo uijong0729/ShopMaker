@@ -16,49 +16,42 @@
    	<p class="sellerProduct_titl2">자세한 상품등록 방법은 공지사항에서 확인해주세요</p>
 </div>
 <div id="clear"></div>
-    <form name="options" method="post" action="insertProduct.do" enctype="multipart/form-data">
+    <form name="options" method="post" action="insertproduct">
         <table class="optionBox">
             <tr>
-                <td >상품타입</td> <!-- productkind -->
-                <td>
-                    <select id="select_type" name="p_type">
-                        <option selected>Outer</option>
-                        <option>Top</option>
-                        <option>Bottom</option>
-                        <option>Shoes</option>
-                    </select>
-                </td>
+                <td>상품 종류</td>
+                <td><input id="productkind" type="text"><font style="font-size: 13px; margin-left: 5px"></font></td>
             </tr>
             <tr>
                 <td>상품명</td>
-                <td><input class="productname" type="text" name="p_name"></td>
+                <td><input id="productname" type="text" name="p_name"></td>
             </tr>
             <tr>
                 <td>가격</td>
-                <td><input class="price" type="text"><font style="font-size: 13px; margin-left: 5px">원</font></td>
+                <td><input id="productprice" type="text"><font style="font-size: 13px; margin-left: 5px">원</font></td>
             </tr>
             <tr>
                 <td>수량</td>
                 <td id="type_detail">
-                    <input class="price" type="text"><font style="font-size: 13px; margin-left: 5px">개</font>
+                    <input id="productquantity" type="text"><font style="font-size: 13px; margin-left: 5px">개</font>
                 </td>
           	</tr>
             <tr>
                 <td>사이즈</td>
                 <td>
-                    <input class="price" type="text" placeholder="숫자만 입력해주세요."><font style="font-size: 13px; margin-left: 5px">
+                    <input id="productsize" type="text" placeholder="숫자만 입력해주세요."><font style="font-size: 13px; margin-left: 5px">
                 </td>
             </tr>
             <tr>
                 <td>색상</td>
                 <td>
-                    <input class="price" type="text"><font style="font-size: 13px; margin-left: 5px">
+                    <input id="productcolor" type="text"><font style="font-size: 13px; margin-left: 5px">
                 </td>
             </tr>
             
             <tr>
                 <td>상품설명</td>
-                <td><textarea style="width:600px;height: 300px;margin-top: 10px;margin-bottom: 10px;"></textarea></td>
+                <td><textarea id="productspec" style="width:600px;height: 300px;margin-top: 10px;margin-bottom: 10px;"></textarea></td>
             </tr>
             <tr>
                 <td>노출이미지 (350x350)</td>
@@ -74,15 +67,7 @@
                         </div>
                     </div>
                     
-                    <d iv id="imgbox">
-                            <p class="imgbox_text"><b style="font-size: 14px;">&lt; 사진 2 &gt;</b> 마우스 포인터를 올렸을때 보이는 사진</p>
-                            <div class="img_wrap"><img id="img2"/></div>
-                            <div class="filebox">
-                                <input class="upload-name" value="파일선택" readOnly>
-                                <label for="input_img2">업로드</label>
-                                 <input type="file" id="input_img2" class="upload-hidden"> 
-                                </div>
-                        </div>
+                   
                     
                         
                     

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BquestiontableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
+import global.sesoc.bigstar.vo.Bcarttable;
 import global.sesoc.bigstar.vo.Bproducttable;
 import global.sesoc.bigstar.vo.Bquestiontable;
 import global.sesoc.bigstar.vo.Breviewtable;
@@ -118,7 +120,11 @@ public class BproductdetailController {
 		return "Bviews/Bpurchase/Bpurchaseform";
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="insertCart", method=RequestMethod.GET)
+	public void insertCart(Bcarttable bcart) {
+			
+	}
 	
 
 }
