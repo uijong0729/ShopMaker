@@ -93,4 +93,9 @@ public class HomeController {
 		
 		return "Bviews/Bmain/Bpreview";
 	}
+
+	
+	
+	
+
 }

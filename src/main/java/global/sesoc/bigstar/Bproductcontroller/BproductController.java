@@ -39,36 +39,25 @@ public class BproductController {
 		}
 		imageset.clear();
 		
-		String temp[] = new String[nameset.size()];
-		for (int i = 0; i < nameset.size(); i++) {
-			for (int j = 0; j < Bproducttable.size(); j++) {
-				if(nameset.get(i).equals(Bproducttable.get(j).getProductname())) {
-					if (temp[i] == null || temp[i].length() == 0) {
-						temp [i] = Bproducttable.get(j).getProductimage()+" , " ;
-					} else {
-						temp[i] += Bproducttable.get(j).getProductimage()+" , " ;
-					}
-				}
+		Map<String, String> arrMap = new HashMap<String, String>(); 
+		
+		for (int i = 0; i < Bproducttable.size(); i++) {
+			if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
+				String str = arrMap.get(Bproducttable.get(i).getProductname());
+				arrMap.remove(Bproducttable.get(i).getProductname());
+				arrMap.put(Bproducttable.get(i).getProductname(), str);
 			}
-		}
-		
-
-		
-		for (int i = 0; i < temp.length; i++) {
-				
-			count++;
-			String[] array = temp[i].trim().split(","); 
-			imageset2.add(array);
+			arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
 			
 		}
 		
-		Map< String, String[] > arrMap = new HashMap<String, String[]>(); 
-		arrMap.put("key", temp);
+		
 		
 		System.out.println(arrMap.get("key"));
 
 		System.out.println(count);
-		model.addAttribute("key", arrMap);
+		
+		model.addAttribute("map", arrMap);
 		model.addAttribute("nameset", nameset);
 		model.addAttribute("Bproducttable", Bproducttable);
 		model.addAttribute("count", count);

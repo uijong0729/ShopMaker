@@ -193,6 +193,11 @@ public class BmemberController {
 		
 		return clist;
 	}
+	
+	@RequestMapping(value = "Btracking", method = RequestMethod.GET)
+	public String btracking(String t_code, String t_invoice) {
+		return "Bviews/Bproduct/tracking";
+	}
 
 	
 	
