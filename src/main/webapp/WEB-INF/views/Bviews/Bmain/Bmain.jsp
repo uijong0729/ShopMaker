@@ -14,6 +14,13 @@
 			$(document).ready(function() {
 				var windowHeight = $( window ).height();
 				$('#Bcenter').css("height", windowHeight + "px");
+				
+				//탭 css변화
+				$(".tabs").click(function() {
+					  $(".active").removeClass("active");
+					  $(this).addClass("active");
+					});
+				
 				page();
 				if ($('#btnCount').val() == '' || $('#btnCount').val() == null) {
 					
@@ -32,11 +39,7 @@
 				$('.divSelectForDrag').css("background", "#ffffff");
 				$('.imageForDrag').css("visibility", "visible");
 				
-				//탭 css변화
-				$(".tabs").click(function() {
-					  $(".active").removeClass("active");
-					  $(this).addClass("active");
-					});
+				
 			});
 			
 			$(document).mousedown(function(e) {
@@ -1041,7 +1044,7 @@
 				str += '<li class="side" onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인</li>';
 				str += '<li class="side" onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지</li>';
 				str += '<li class="side" onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트</li>';
-				str += '<li class="side" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
 				
 				$('#page_tool').html(str);
@@ -1081,7 +1084,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
 				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
-				str += '<li class="side" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -1090,7 +1093,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
 				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
-				str += '<li class="side" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -1100,7 +1103,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bsale()" style="cursor: pointer; user-select: none;">매출관리</li>';
 				str += '<li class="side" onclick="javascript:Bcustomer()" style="cursor: pointer; user-select: none;">고객관리</li>';
-				str += '<li class="side" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
