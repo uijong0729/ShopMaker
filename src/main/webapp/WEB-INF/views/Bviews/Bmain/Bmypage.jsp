@@ -60,6 +60,38 @@ margin-bottom: 5px;
 .w5{width: 120px;}
 .w6{width: 120px;}
 
+.submit
+{
+  box-shadow:1px 1px 1px 1px black;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 42px;
+  width: 150px;
+  height: 46px;
+  cursor: pointer;
+  vertical-align: middle;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #263238;
+  border: 1px solid #263238;
+  background: transparent;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  float : center;
+}
+
+.submit:hover
+{
+  display: inline-block;
+  background-color: #263238;
+  color: #ffffff;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
 </style>				
 <script>
 	var StringBuffer = function() {
@@ -115,28 +147,34 @@ function orderList(){
 		data: {customercode: customercode, membercode: membercode},
 		dataType: 'json',
 		success: function(result){
-	        var innerText = new StringBuffer();
-	        innerText.append('<li>');
-			innerText.append('<span class="ol w1">주문번호</span>');
-			innerText.append('<span class="ol w2">제품번호</span>');
-			innerText.append('<span class="ol w3">주문수량</span>');
-			innerText.append('<span class="ol w4">주문일</span>');
-			innerText.append('<span class="ol w5">입금일</span>');
-			innerText.append('<span class="ol w6">결제상태</span>');
-			innerText.append('</li>');
-			
-			for (var i in result) {
-				innerText.append('<li>');
-				innerText.append('<span class="ol w1">' + result[i].ordercode + '</span>');
-				innerText.append('<span class="ol w2">' + result[i].productcode + '</span>');
-				innerText.append('<span class="ol w3">' + result[i].orderquantity + '</span>');
-				innerText.append('<span class="ol w4">' + result[i].orderdate + '</span>');
-				innerText.append('<span class="ol w5">' + result[i].orderdepositdate + '</span>');
-				innerText.append('<span class="ol w6">' + result[i].orderpaymentstatus + '</span>');
-				innerText.append('</li>');
+			if(result == null)
+			{
+				return;
 			}
-			$('#addRowTab2').html(innerText.toString());
-			//$('#addRowTab2').html('<li>감자감자 감나리 감자</li><li>감탕감탕 감나리 감탕</li>');
+			else
+			{
+				 var innerText = new StringBuffer();
+			        innerText.append('<li>');
+					innerText.append('<span class="ol w1">주문번호</span>');
+					innerText.append('<span class="ol w2">제품번호</span>');
+					innerText.append('<span class="ol w3">주문수량</span>');
+					innerText.append('<span class="ol w4">주문일</span>');
+					innerText.append('<span class="ol w5">입금일</span>');
+					innerText.append('<span class="ol w6">결제상태</span>');
+					innerText.append('</li>');
+					
+					for (var i in result) {
+						innerText.append('<li>');
+						innerText.append('<span class="ol w1">' + result[i].ordercode + '</span>');
+						innerText.append('<span class="ol w2">' + result[i].productcode + '</span>');
+						innerText.append('<span class="ol w3">' + result[i].orderquantity + '</span>');
+						innerText.append('<span class="ol w4">' + result[i].orderdate + '</span>');
+						innerText.append('<span class="ol w5">' + result[i].orderdepositdate + '</span>');
+						innerText.append('<span class="ol w6">' + result[i].orderpaymentstatus + '</span>');
+						innerText.append('</li>');
+					}
+					$('#addRowTab2').html(innerText.toString());
+			}
 		}
 		
 	});
@@ -234,12 +272,12 @@ function changeColor(){
 				else if(id == "pw")
 				{
 					$('#addRowTab1').append('<li id="Bpw"><div id="text_pw" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">비밀번호</div>'
-							+ '<div class="ib"><input value="${Blogin.customerpw}" readonly="readonly" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+							+ '<div class="ib"><input placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "address")
 				{						
 					$('#addRowTab1').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">주소</div>'
-					+ '<div class="ib"><input value="${Blogin.customeraddress}" readonly="readonly" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
+					+ '<div class="ib"><input value="${Blogin.customeraddress}" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
@@ -298,14 +336,16 @@ function changeColor(){
 		<div style="text-align: center;">
 			<div style="display: inline-block;">
 				<h1 id="text_mypageTitle" tabindex="0">마이페이지</h1>
+				
 				<!-- 탭 부분 -->
 				<div id="tabs">
+				
 				  <!-- 탭 리스트 -->
 				  <ul>
-				    <li><a href="#tabs-1" style="width: 300px;">내 계정</a></li>
-				    <li><a id="orderList" href="#tabs-2" style="width: 300px;">주문내역</a></li>
-				    <li><a href="#tabs-3" style="width: 300px;">장바구니</a></li>
-				    <li><a href="#tabs-4" style="width: 300px;">배송정보</a></li>
+				    <li><a href="#tabs-1" style="width: 220px;">계정정보</a></li>
+				    <li><a id="orderList" href="#tabs-2" style="width: 220px;">주문내역</a></li>
+				    <li><a href="#tabs-3" style="width: 220px;">장바구니</a></li>
+				    <li><a href="#tabs-4" style="width: 220px;">배송정보</a></li>
 				  </ul>
 				  
 				  <!-- 제 1탭 -->
@@ -313,6 +353,7 @@ function changeColor(){
 				  	<ul style="list-style: none;" id="addRowTab1">
 							
 					</ul>	  
+					<div class="submit">수정사항 반영</div>
 				  </div>
 				  
 				  <!-- 제 2탭 -->

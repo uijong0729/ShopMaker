@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.HomeController;
+import global.sesoc.bigstar.dao.BcarttableDAO;
 import global.sesoc.bigstar.dao.BcustomerDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
+import global.sesoc.bigstar.vo.Bcarttable;
 import global.sesoc.bigstar.vo.Bcustomer;
 import global.sesoc.bigstar.vo.Bordertable;
 
@@ -29,6 +31,9 @@ public class BmemberController {
 	
 	@Autowired
 	BcustomerDAO dao;
+	
+	@Autowired
+	BcarttableDAO cdao;
 	
 	@RequestMapping(value="Bregist", method = RequestMethod.GET)
 	public String Bregist() {
@@ -162,8 +167,15 @@ public class BmemberController {
 		try 
 		{
 			List<Bordertable> list = dao.BorderList(map);
-			System.out.println(list);
-			return list;
+			//System.out.println(list);
+			if(list == null)
+			{
+				return null;
+			}
+			else
+			{
+				return list;
+			}
 		}
 		catch(Exception e)
 		{
@@ -172,6 +184,15 @@ public class BmemberController {
 		return null;
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value="getCartlist", method=RequestMethod.POST)
+	public List<Bcarttable> getCartlist(String customercode) {
+		
+		List<Bcarttable> clist = cdao.selectbcarttable(Integer.parseInt(customercode));
+		
+		return clist;
+	}
 
 	
 	

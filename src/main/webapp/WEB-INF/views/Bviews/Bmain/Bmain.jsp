@@ -1061,7 +1061,7 @@
 				var str = '<ul>';
 				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
 				str += '<li style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
-				str += '<li>매장관리</li>';
+				str += '<li style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계 및 분석</li>';
 				str += '<li>배송 및 세금</li>';
 				str += '<li>주문관리 및 결제관리</li>';
 				str += '<li style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
@@ -1084,6 +1084,26 @@
 				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
+			}
+			
+			//통계 및 분석 링크
+			function Bsa(){
+				var str = '<ul>';
+				str += '<li onclick="javascript:Bsale()" style="cursor: pointer; user-select: none;">매출관리</li>';
+				str += '<li onclick="javascript:Bcustomer()" style="cursor: pointer; user-select: none;">고객관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str +='</ul>';
+				$('#page_tool').html(str);
+			}
+			
+			//매출관리 링크
+			function Bsale(){
+				$('#Bcenter').load('BsaleChart');
+			}
+			
+			//고객관리 링크
+			function Bcustomer(){
+				$('#Bcenter').load('BcustomerChart');
 			}
 			
 			function Bheader(){
@@ -1361,7 +1381,7 @@
 				<ul>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
-					<li>매장관리</li>
+					<li style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계 및 분석</li>
 					<li>배송 및 세금</li>
 					<li>주문관리 및 결제관리</li>
 				</ul>
