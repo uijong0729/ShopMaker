@@ -61,6 +61,7 @@
 						$("#delItem").val($(this.activeElement).attr("id"));
 					}
 					
+					
 					else {
 						return false;
 					}
@@ -1083,9 +1084,10 @@
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
-				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
-				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트 관리</li>';
+				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상페이지 관리</li>';
+				str += '<li onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품삽입삭제 관리</li>';
+				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
@@ -1135,7 +1137,9 @@
 			function goBproductdetail() {
 				$('#Bcenter').load('goBproductdetail');
 			}
-			
+			function goBproductinsert() {
+				$('#Bcenter').load('goBproductinsert');
+			}
 			function Bsavepage() {
 				alert("저장");
 				

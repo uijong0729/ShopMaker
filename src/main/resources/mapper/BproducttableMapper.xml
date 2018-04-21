@@ -15,9 +15,14 @@
 		select * from
 		Bproducttable
 	</select>
-	
+
 	<select id="getProductdetailListByName" resultType="Bproducttable">
-		select * from Bproducttable where productname =#{productname}
+		select * from
+		Bproducttable where productname =#{productname}
 	</select>
 
+	<insert id="insertbproducttable" parameterType="Bproducttable">
+		insert into BPRODUCTTABLE(productcode,productname,productprice,productquantity,productsize,productcolor,productspec,productimage,productpushdate,productdisplay,productkind,productsale,membercode) 
+                    VALUES(BPRODUCTTABLE_seq.NEXTVAL,#{Bproducttable.productname},#{Bproducttable.productprice},#{Bproducttable.productquantity},#{Bproducttable.productsize},#{Bproducttable.productcolor},#{Bproducttable.productspec},#{Bproducttable.productimage},sysdate,1,#{Bproducttable.productkind},#{Bproducttable.productsale},#{Bproducttable.membercode}) 
+	</insert>
 </mapper>
