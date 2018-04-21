@@ -1054,6 +1054,7 @@
 				$('#Bcenter').css("background", "");
 			}
 			function BmemberListPage(){
+				$('#pagename').val('Bmypage');
 				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
 				$('#Bcenter').css("background", "");
 			}

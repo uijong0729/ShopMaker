@@ -53,6 +53,7 @@ margin: 4px;
   <a href="productReview">[임시] BproductReview 페이지</a>
   <a href="Bnoticelist">[임시] BNotice 페이지</a>
   <a href="Bqnalist">[임시] BQNA 페이지</a>
+  <a href="Btracking?t_code=05&t_invoice=412078273935">[임시]Btracking</a>
 </footer>
 
 
