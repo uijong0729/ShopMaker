@@ -94,7 +94,9 @@ public class AmemberController {
 		map.put("pw", pw);
 
 		Amember am = AMdao.loginAcustomer(map);
-		String a = am.getPaymentexpirationdate();
+		String a;
+		a = am.getPaymentexpirationdate();
+		a = "1970-01-01";
 		a = a.substring(0, 10);
 		am.setPaymentexpirationdate(a);
 		if (am == null) {

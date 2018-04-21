@@ -1025,7 +1025,12 @@
 			}
 			function changeImageSubmit() {
 				var uri = 'url("' + $('#bgUrl').val() + '")';
+				var width = $(document).width();
+				var height = $(document).height();
 				$('#Bcenter').css("background-image", uri);
+				$('#Bcenter').css("background-repeat", "no-repeat");
+				$('#Bcenter').css("background-size", width + "px " + height + "px");
+				$('#Bcenter').css("background-attachment", "fixed");
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
 				$('.changeA').css("visibility", "hidden");
@@ -1148,7 +1153,7 @@
 				$('.divSelectForDrag').css("background", "#00000000");
 				$('.imageForDrag').css("visibility", "hidden");
 				
-				$('#savepage').val($('#Bcenter').html());
+				$('#savepage').val($('#BcenterOuter').html());
 				$('#savepagefrm').submit();
 			}
 			
@@ -1309,10 +1314,12 @@
 		
 		
 		<!-- 중앙 화면 -->
-		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
-			<c:if test="${result != ''}">
-				${result}
-			</c:if>
+		<div id="BcenterOuter">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
+				<c:if test="${result != ''}">
+					${result}
+				</c:if>
+			</div>
 		</div>
 	
 	<br><br><br><br><br>
