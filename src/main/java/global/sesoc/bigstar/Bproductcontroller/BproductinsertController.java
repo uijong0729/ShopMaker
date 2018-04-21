@@ -27,14 +27,15 @@ public class BproductinsertController {
 		return "Bviews/Bproduct/ProductInsert";
 	}
 	@RequestMapping(value = "insertproduct", method = RequestMethod.POST)
-	public String productInsert(String productkind, String productname, String productprice, String productquantity,
-			String productsize, String productcolor, String productspec, HttpServletResponse response, Model model,
-			HttpSession session) {
-
+	public String productInsert(Bproducttable bp, Model model,
+			HttpSession session) {/*
+		String productkind, String productname, String productprice, String productquantity,
+		String productsize, String productcolor, String productspec, HttpServletResponse response*/
+		bp.setMembercode("37");
+		System.out.println(bp);
+		//Bproducttable bproduct=new Bproducttable(productname,Integer.parseInt(productprice),Integer.parseInt(productquantity),Integer.parseInt(productsize),productcolor,productspec,productkind,"37");
 		
-		Bproducttable bproduct=new Bproducttable(productname,Integer.parseInt(productprice),Integer.parseInt(productquantity),Integer.parseInt(productsize),productcolor,productspec,productkind,"37");
-		
-		Bpdao.insertbproducttable(bproduct);
+		Bpdao.insertbproducttable(bp);
 		System.out.println("들어옴?");
 		
 		return "Bviews/Bproduct/ProductInsert";
