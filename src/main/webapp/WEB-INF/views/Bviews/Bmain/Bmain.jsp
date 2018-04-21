@@ -1,3 +1,4 @@
+<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,11 +6,22 @@
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=3"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
 		
 		<script type="text/javascript">
+		
 			$(document).ready(function() {
+				var windowHeight = $( window ).height();
+				$('#Bcenter').css("height", windowHeight + "px");
+				
+				//탭 css변화
+				$(".tabs").click(function() {
+					  $(".active").removeClass("active");
+					  $(this).addClass("active");
+					});
+				
 				page();
 				if ($('#btnCount').val() == '' || $('#btnCount').val() == null) {
 					
@@ -27,6 +39,8 @@
 				$('.text').addAttr("contenteditable", "true");
 				$('.divSelectForDrag').css("background", "#ffffff");
 				$('.imageForDrag').css("visibility", "visible");
+				
+				
 			});
 			
 			$(document).mousedown(function(e) {
@@ -46,7 +60,10 @@
 					}else if ($(this.activeElement).attr("id").startsWith("spinner")) {
 						showmap_spinner(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
+					} else if ($(this.activeElement).attr("id") == "slide" || $(this.activeElement).attr("id").startsWith("img")) {
+						showmap_slide(popup, $(this.activeElement).attr("id"));
 					}
+					
 					
 					else {
 						return false;
@@ -157,7 +174,7 @@
 				} else {
 					count = document.getElementById('btnCount').value;
 					count *= 1;
-					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top: 200px; width: 200px; height: 60px; background: gray; text-align: center; position: absolute; border: 1px solid black; resize: both; overflow: hidden;" user-select="none" tabindex="0">버튼' + count + '</button>';
+					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" tabindex="0" user-select="none" >버튼' + count + '</button>';
 					
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('btnCount').value = count + 1;
@@ -173,7 +190,7 @@
 				} else {
 					count = document.getElementById('textCount').value;
 					count *= 1;
-					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="3" cols="28" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: #ffffff; border: 1px  solid black; border-radius: 7px; resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					document.getElementById('textCount').value = count + 1;
 				}
@@ -240,10 +257,10 @@
 					str += '<div id="numberDown' + count + '" style="position: absolute; text-align: center; user-select: none;" onclick="numberDown(this)">▼</div>';
 					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
 					var reg = /[^0-9]/g;
-					var width = $('#spinner0').css("width");
+					var width = $('#spinner' + count).css("width");
 					width = width.replace(reg, '');
 					width *= 1;
-					var height = $('#spinner0').css("height");
+					var height = $('#spinner' + count).css("height");
 					height = height.replace(reg, '');
 					height *= 0.5;
 					$('#number' + count).css("height", (height * 0.8) + "px");
@@ -256,6 +273,7 @@
 					$('#numberDown' + count).css("margin-top", height);
 					$('#numberDown' + count).css("width", height);
 					$('#numberDown' + count).css("height", height);
+					
 					document.getElementById('spinnerCount').value = count + 1;
 				}
 				
@@ -662,6 +680,12 @@
 				}
 			}
 			
+			function showmap_slide(popup, id) {
+				$('#popup_slide').css('visibility', "visible");
+				$('#mask').css('visibility', 'visible');
+				return false;
+			}
+			
 			function closemap(popup) {
 				$('#mask').css('visibility', "hidden");
 				$('#popup').css('visibility', "hidden");
@@ -687,6 +711,9 @@
 				$('#mask').css('visibility', "hidden");
 				$('#popup_spinner').css('visibility', "hidden");
 				return false;
+			} function closemap_slide() {
+				$('#popup_slide').css('visibility', 'hidden');
+				$('#mask').css('visibility', 'hidden');
 			}
 			
 			function editBtn(btn) {
@@ -986,13 +1013,74 @@
 				$('#component_tool').css('visibility', 'hidden');
 			}
 			
+			function changeBg() {
+				$('#changeBg').css("visibility", "visible");
+				$('#mask').css('visibility', 'visible');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
+				$('#default').click();
+			}
+			
+			function  changeBgColor() {
+				$('.changeA').css("visibility", "visible");
+				$('.changeB').css("visibility", "hidden");
+			}
+			function changeBgImage() {
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "visible");
+			}
+			function changeSubmit() {
+				var bgcolor = '#' + $('#backgroundColor').val();
+				$('#Bcenter').css("background", bgcolor);
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
+			}
+			function changeImageSubmit() {
+				var uri = 'url("' + $('#bgUrl').val() + '")';
+				var width = $(document).width();
+				var height = $(document).height();
+				$('#Bcenter').css("background-image", uri);
+				$('#Bcenter').css("background-repeat", "no-repeat");
+				$('#Bcenter').css("background-size", width + "px " + height + "px");
+				$('#Bcenter').css("background-attachment", "fixed");
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
+			}
+			function changeCancle() {
+				$('#changeBg').css("visibility", "hidden");
+				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
+			}
+			
+			function changeSlide() {
+				if ($('#slide_first').val() != '' || $('#slide_first').val() != null) {
+					$('#img1').attr('src', $('#slide_first').val());
+				}
+				if ($('#slide_second').val() != '' || $('#slide_second').val() != null) {
+					$('#img2').attr('src', $('#slide_second').val());
+				}
+				if ($('#slide_third').val() != '' || $('#slide_third').val() != null) {
+					$('#img3').attr('src', $('#slide_third').val());
+				}
+				if ($('#slide_fourth').val() != '' || $('#slide_fourth').val() != null) {
+					$('#img4').attr('src', $('#slide_fourth').val());
+				}
+				$('#mask').css('visibility', 'hidden');
+				$('#popup_slide').css('visibility', 'hidden');
+			}
+			
 			function Bmm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입 화면편집</li>';
-				str += '<li onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인 화면편집</li>';
-				str += '<li onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지 화면편집</li>';
-				str += '<li onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트 보기</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입</li>';
+				str += '<li class="side" onclick="javascript:Blogin()"  style="cursor: pointer; user-select: none;">로그인</li>';
+				str += '<li class="side" onclick="javascript:Bmypage()" style="cursor: pointer; user-select: none;">마이페이지</li>';
+				str += '<li class="side" onclick="javascript:BmemberListPage()" style="cursor: pointer; user-select: none;">회원 리스트</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str += '</ul>';
 				
 				$('#page_tool').html(str);
@@ -1000,64 +1088,103 @@
 			function Bregist() {
 				$('#pagename').val('Bregist');
 				$('#Bcenter').load('Bregist');
+				$('#Bcenter').css("background", "");
 			}
 			function Blogin() {
 				$('#pagename').val('Blogin');
 				$('#Bcenter').load('Blogin');
+				$('#Bcenter').css("background", "");
 			}
 			function Bmypage() {
 				$('#pagename').val('Bmypage');
 				$('#Bcenter').load('Bmypage');
+				$('#Bcenter').css("background", "");
 			}
 			function BmemberListPage(){
+				$('#pagename').val('Bmypage');
 				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
+				$('#Bcenter').css("background", "");
 			}
 			function Bmmback() {
 				var str = '<ul>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
-				str += '<li style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
-				str += '<li>매장관리</li>';
-				str += '<li>배송 및 세금</li>';
-				str += '<li>주문관리 및 결제관리</li>';
-				str += '<li style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
+				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
+				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>';
+				str += '<li class="side">배송 및 세금</li>';
+				str += '<li class="side">주문관리</li>';
+				str += '<li class="side">결제관리</li>';
+				str += '<li class="side" style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트 관리</li>';
-				str += '<li onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상페이지 관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
+				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
+				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
 			
 			function Bpm() {
 				var str = '<ul>';
-				str += '<li onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
-				str += '<li onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
-				str += '<li onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
+				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li class="side" onclick="javascript:Bmain()" style="cursor: pointer; user-select: none;">Bmain</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
 			}
 			
+			//통계 및 분석 링크
+			function Bsa(){
+				var str = '<ul>';
+				str += '<li class="side" onclick="javascript:Bsale()" style="cursor: pointer; user-select: none;">매출관리</li>';
+				str += '<li class="side" onclick="javascript:Bcustomer()" style="cursor: pointer; user-select: none;">고객관리</li>';
+				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
+				str +='</ul>';
+				$('#page_tool').html(str);
+			}
+			
+			//매출관리 링크
+			function Bsale(){
+				$('#pagename').val('BsaleChart');
+				$('#Bcenter').load('BsaleChart');
+			}
+			
+			//고객관리 링크
+			function Bcustomer(){
+				$('#pagename').val('BcustomerChart');
+				$('#Bcenter').load('BcustomerChart');
+			}
+			
 			function Bheader(){
+				$('#pagename').val('BpageHeader');
 				$('#Bcenter').load('BpageHeader');
 			}
 			
 			function Bfooter(){
+				$('#pagename').val('BpageFooter');
 				$('#Bcenter').load('BpageFooter');
 			}
 			
+			function Bmain(){
+				$('#pagename').val('BpageMain');
+				$('#Bcenter').load('BpageMain');
+			}
 			
 			function Bmainlist() {
+				$('#pagename').val('Bmainlist');
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
 			
 			function goBproductdetail() {
 				$('#Bcenter').load('goBproductdetail');
 			}
-			
+			function goBproductinsert() {
+				$('#Bcenter').load('goBproductinsert');
+			}
 			function Bsavepage() {
 				alert("저장");
 				
@@ -1070,7 +1197,7 @@
 				$('.divSelectForDrag').css("background", "#00000000");
 				$('.imageForDrag').css("visibility", "hidden");
 				
-				$('#savepage').val($('#Bcenter').html());
+				$('#savepage').val($('#BcenterOuter').html());
 				$('#savepagefrm').submit();
 			}
 			
@@ -1087,98 +1214,12 @@
 				width: 100%;
 				height: 100%;
 			}
-			#sidebar {
-				width: 150px;
-				height: 600px;
-				left: -145px;
-				top: 12%;
-				border: 1px solid black;
-				position: fixed;
-				background: white;
-				transition: 0.3s;
-				transition-timing-function: linear;
-			}
-			#sidebar:HOVER {
-				width: 150px;
-				left: 0px;
-				background: white;
-				border: 1px solid black;
-			}
-			#component {
-				width: 75px;
-				height: 30px;
-				padding-top: 5px;
-				border: 1px solid #000000;
-				background: white;
-				position: fixed;
-				text-align: center;
-				user-select: none;
-			}
-			#page { 
-				width: 75px;
-				height: 30px;
-				padding-top: 5px;
-				margin-left: 74px;
-				border: 1px solid #000000;
-				position: fixed;
-				text-align: center;
-				background: white;
-				user-select: none;
-			}
-			#component_tool {
-				width: 150px;
-				margin-top: 30px;
-				height: 570px;
-				/* background: blue; */
-				position: fixed;
-			}
-			#page_tool {
-				width: 150px;
-				margin-top: 30px;
-				height: 570px;
-				/* background: red; */
-				position: fixed;
-			}
+			
 			.textalign {
 				text-align: center;
 				
 			}
-			#popup {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
-			#popup_text {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 45%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
-			#popup_image {
-				position:absolute;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
+			
 			#popup_select {
 				position:absolute;
 				left:35%;
@@ -1203,29 +1244,17 @@
 				text-align: center;
 				z-index: 1000;
 			}
-			
-			.editBtn {
-				width: 90px;
-				height: auto;
+			#popup_slide {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
 				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
-			}
-			
-			.editText {
-				width: 90px;
-				height: auto;
-				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
-			}
-			
-			.editImage {
-				width: 90px;
-				height: auto;
-				background: #ffffff;
-				border: 1px solid #000000;
-				border-radius: 7px;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
 			}
 			.editTextBtn {
 				width: 70px;
@@ -1270,23 +1299,31 @@
 		
 		
 		<!-- 중앙 화면 -->
-		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<c:if test="${result != ''}">
-				${result}
-			</c:if>
+		<div id="BcenterOuter">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
+				<c:if test="${result != ''}">
+					${result}
+				</c:if>
+				<c:if test="${result == null}">
+					<%@ include file="./BpageMain.jsp" %>
+				</c:if>
+			</div>
 		</div>
 	
 	<br><br><br><br><br>
-		<div id="sidebar">
-			<div id="component" onclick="javascript:component()">컴포넌트</div>
-			<div id="page" onclick="javascript:page()">페이지</div>
-			<div id="component_tool">
+		<div class="sidebarsonomono" id="sidebar" style="margin-top: 30px; border-radius: 10px;">
+			<div class="tabs" id="component" onclick="javascript:component()">뷰</div>
+			<div class="tabs active" id="page" onclick="javascript:page()">모델</div>
+			<div class="toolbody" style="border-radius: 2px;" id="component_tool">
 				<ul>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트버튼 추가</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newBtn()">버튼 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newText()">텍스트 추가</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newImage()">이미지 추가</li>
+					
+					<!-- <li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSelect()">셀렉트</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:newSpinner()">스피너 추가</li> -->
+					
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:changeBg()">배경설정</li>
 				</ul>
 				<input type="hidden" id="diffX">
 				<input type="hidden" id="diffY">
@@ -1299,13 +1336,14 @@
 				<input type="hidden" id="delItem">
 			</div>
 				
-			<div id="page_tool">
+			<div class="toolbody" id="page_tool">
 				<ul>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
-					<li style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
-					<li>매장관리</li>
-					<li>배송 및 세금</li>
-					<li>주문관리 및 결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
+					<li class="side">배송 및 세금</li>
+					<li class="side">주문관리</li>
+					<li class="side">결제관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">
@@ -1321,40 +1359,112 @@
 		
 		
 		<div id="mask"></div>
-		<div id="popup">
-			<br>
-			버튼 텍스트 : <input type="text" id="btnText"><br>
-			버튼 색상 &emsp;: <input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			테두리 두께 : <input type="text" id="btnBorder"><br>
-			테두리 색상 : <input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			글자 크기 &emsp;: <input type="text" id="fontsize"><br>
-			글자 색상 &emsp;: <input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-			URL 　　　 : <input type="text" id="btnUrl"><br><br>
-			<button class="editBtn" onclick="editBtn(this)">수정완료</button>&emsp;<button class="editBtn" id="delBtn" onclick="deleteComp()">삭제</button>&emsp;<button class="editBtn" onclick="closemap(popup)">닫기</button>
+		
+		<div id="popup" class="popup Bheight">
+		<h5 class="mp editHeader" style="font: bold;">버튼 편집</h5>
+			<table class="mp">
+				<tr>
+					<th class="mp">버튼 텍스트</th>
+					<td class="mp"><input type="text" id="btnText"></td>
+				</tr>
+				<tr>
+					<th class="mp th">버튼 색상</th>
+					<td class="mp"><input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp th">테두리 두께</th>
+					<td class="mp"><input type="text" id="btnBorder"></td>
+				</tr>
+				<tr>
+					<th class="mp th">테두리 색상</th>
+					<td class="mp"><input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp th">글자 크기</th>
+					<td class="mp"><input type="text" id="fontsize"></td>
+				</tr>
+				<tr>
+					<th class="mp th">글자 색상</th>
+					<td class="mp"><input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">URL</th>
+					<td class="mp"><input type="text" id="btnUrl"></td>
+				</tr>
+			</table>
+			
+			<button class="editBtn" onclick="editBtn(this)">수정완료</button>
+			<button class="editBtn" id="delBtn" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap(popup)">닫기</button>
+			
 			<input type="hidden" id="btnName">
 			<input type="hidden" id="editBtnName">
 		</div>
-		<div id="popup_text">
-			<br>
-			텍스트  &nbsp;&emsp;&emsp;: <input type="text" id="text_text"><br><br>
-			글자 크기 &emsp;: <input type="text" id="text_fontsize"><br><br>
-			글자 색상 &emsp;: <input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			배경 색상 &emsp;: <input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			테두리 색상 : <input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
-			<button class="editText" onclick="editText(this)">수정완료</button>&emsp;<button class="editText" id="delText" onclick="deleteComp()">삭제</button>&emsp;<button class="editText" onclick="closemap_text(popup)">닫기</button>
+		
+		<div id="popup_text" class="popup Theight">
+			<h5 class="mp editHeader" style="font: bold;">텍스트 편집</h5>
+			<table class="mp" class="popup">
+				<tr>
+					<th class="mp">텍스트</th>
+					<td class="mp"><input type="text" id="text_text"></td>
+				</tr>
+				<tr>
+					<th class="mp">글자 크기</th>
+					<td class="mp"><input type="text" id="text_fontsize"></td>
+				</tr>
+				<tr>
+					<th class="mp">글자 색상</th>
+					<td class="mp"><input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">배경 색상</th>
+					<td class="mp"><input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+				<tr>
+					<th class="mp">테두리 색상</th>
+					<td class="mp"><input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
+				</tr>
+			</table>
+			
+			<button class="editBtn" onclick="editText(this)">수정완료</button>
+			<button class="editBtn" id="delText" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap_text(popup)">닫기</button>
+			
 			<input type="hidden" id="textName">
 			<input type="hidden" id="editTextName">
 		</div>
-		<div id="popup_image">
-			<br>
-			가로 크기 &emsp;: <input type="text" id="image_width"><br><br>
-			세로 크기 &emsp;: <input type="text" id="image_height"><br><br>
-			투명도 &nbsp;&emsp;&emsp;: <input type="text" id="image_opacity"><br><br>
-			이미지 주소 : <input type="text" id="image_url"><br><br>
-			<button class="editImage" onclick="editImage(this)">수정완료</button>&emsp;<button class="editImage" id="delImage" onclick="deleteComp()">삭제</button>&emsp;<button class="editImage" onclick="closemap_image(popup)">닫기</button>
+		
+		
+		<div class="popup Iheight" id="popup_image">
+			<h5 class="mp editHeader">이미지 편집</h5>
+			<table>
+				<tr>
+					<th class="mp">가로 크기</th>
+					<td class="mp"><input type="text" id="image_width"></td>
+				</tr>
+				<tr>
+					<th class="mp">세로 크기</th>
+					<td class="mp"><input type="text" id="image_height"></td>
+				</tr>
+				<tr>
+					<th class="mp">투명도</th>
+					<td class="mp"><input type="text" id="image_opacity"></td>
+				</tr>
+				<tr>
+					<th class="mp">이미지 주소</th>
+					<td class="mp"><input type="text" id="image_url"></td>
+				</tr>
+			</table>
+			<button class="editBtn" onclick="editImage(this)">수정완료</button>
+			<button class="editBtn" id="delImage" onclick="deleteComp()">삭제</button>
+			<button class="editBtn" onclick="closemap_image(popup)">닫기</button>
+			
 			<input type="hidden" id="imageName">
 		</div>
-		<div id="popup_select">
+		
+		
+		
+		<!-- <div id="popup_select">
 			<br>
 			가로 크기 &emsp;: <input type="text" id="select_width"><br>
 			세로 크기 &emsp;: <input type="text" id="select_height"><br>
@@ -1368,6 +1478,8 @@
 			<input type="hidden" id="selectName">
 			<input type="hidden" id="optionCounter">
 		</div>
+		
+		
 		<div id="popup_spinner">
 			<br>
 			가로 크기 &emsp;: <input type="text" id="spinner_width"><br>
@@ -1378,7 +1490,40 @@
 			테두리 색상 : <input id="spinner_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
 			<button class="editSpinner" onclick="editSpinner(this)">수정완료</button>&emsp;<button class="editSpinner" id="delSpinner" onclick="deleteComp()">삭제</button>&emsp;<button class="editSpinner" onclick="closemap_spinner(popup)">닫기</button>
 			<input type="hidden" id="spinnerName">
+		</div> -->
+		
+		
+		<div id="changeBg" class="popup BGheight">
+			<div>
+				<h5 class="editHeader">배경설정</h5>		
+			</div>
+			
+			<button id="default" onclick="javascript:changeBgColor()" class="tabs">색상</button> 
+			<button onclick="javascript:changeBgImage()" class="tabs">이미지</button>
+			<hr>
+					<div id="bgColorDiv" class="changeA" style="position: absolute; margin-top: 5px; width: 100%; height: 100%;">
+						색상 : <input id="backgroundColor" class="jscolor jscolor-active changeA" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+						<button onclick="javascript:changeSubmit()" class="changeA editBtn">변경</button>
+						<button class="changeA editBtn" onclick="javascript:changeCancle()">취소</button>
+					</div>
+					<div id="bgImageDiv" class="changeB" style="position: absolute; margin-top: 5px; width: 100%; height: 100%;">
+						주소 : <input type="text" id="bgUrl" class="changeB"><br><br>
+						
+						<button onclick="javascript:changeImageSubmit()" class="changeB editBtn">변경</button> 
+						<button class="changeB editBtn" onclick="javascript:changeCancle()">취소</button>
+					</div>
+				<div id="bgDiv"></div>
 		</div>
+		
+		<div id="popup_slide" class="popup BGheight">
+			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
+			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
+			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
+			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
+		</div>
+		
 		<form id="savepagefrm" action="savepage" method="post">
 			<input type="hidden" id="savepage" name="savepage">
 			<input type="hidden" id="pagename" name="pagename">

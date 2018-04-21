@@ -23,12 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.common.util.FileService;
 import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BquestiontableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
 import global.sesoc.bigstar.vo.Bcustomer;
+import global.sesoc.bigstar.vo.Bcarttable;
 import global.sesoc.bigstar.vo.Bproducttable;
 import global.sesoc.bigstar.vo.Breviewtable;
 
@@ -316,7 +318,14 @@ public class BproductdetailController {
 	@RequestMapping(value="Bpurchaseform", method=RequestMethod.GET)
 	public String Bpurchaseform() {
 		
-		return "Bviews/Bboard/Bpurchaseform";
+		return "Bviews/Bpurchase/Bpurchaseform";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="insertCart", method=RequestMethod.GET)
+	public void insertCart(Bcarttable bcart) {
+			
+	}
+	
 
 }

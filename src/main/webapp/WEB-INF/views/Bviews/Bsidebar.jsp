@@ -33,7 +33,7 @@ function Bmm(){
 			}); 
 			$('#Bcart').on('click', function(){
 				$('#Bcenter').load('Bcart');
-			}); 
+			});
 	}
 	else
 	{
@@ -44,13 +44,16 @@ function Bmm(){
 function Bsm(){
 	if(onOff != 2)
 	{
-		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li><li id="goBproductdetail" style="cursor: pointer;">상품상페이지 관리</li></ul>');
+		$('#subMenu').html('<ul><li id="Bmainlist" style="cursor: pointer;">상품리스트 관리</li><li id="goBproductInsert" style="cursor: pointer;">상품삽입삭제 관리</li><li id="goBproductdetail" style="cursor: pointer;">상품상세페이지 관리</li></ul>');
 		onOff = 2;
 		$('#Bmainlist').on('click', function() {
 			$('#Bcenter').load('Bmainlist?rows=4');
 		});
 		$('#goBproductdetail').on('click', function() {
 			$('#Bcenter').load('goBproductdetail');
+		});
+		$('#goproductInsert').on('click', function() {
+			$('#Bcenter').load('goBproductInsert');
 		});
 	}
 	else
@@ -88,6 +91,7 @@ function Bpm(){
 	<div style="width: 40%; fixed; left: 0">
 		<aside style="display: inline-block; border: 1px solid black; ">
 			<div><h1>편집메뉴</h1></div>
+			
 			<ul>
 				<li style="cursor: pointer;" id="BmemberManagement">회원관리</li>
 				<li style="cursor: pointer;" id="BsiteManagement">사이트 관리</li>
