@@ -1057,10 +1057,18 @@
 			}
 			
 			function changeSlide() {
-				$('#img1').attr('src', $('#slide_first').val());
-				$('#img2').attr('src', $('#slide_second').val());
-				$('#img3').attr('src', $('#slide_third').val());
-				$('#img4').attr('src', $('#slide_fourth').val());
+				if ($('#slide_first').val() != '' || $('#slide_first').val() != null) {
+					$('#img1').attr('src', $('#slide_first').val());
+				}
+				if ($('#slide_second').val() != '' || $('#slide_second').val() != null) {
+					$('#img2').attr('src', $('#slide_second').val());
+				}
+				if ($('#slide_third').val() != '' || $('#slide_third').val() != null) {
+					$('#img3').attr('src', $('#slide_third').val());
+				}
+				if ($('#slide_fourth').val() != '' || $('#slide_fourth').val() != null) {
+					$('#img4').attr('src', $('#slide_fourth').val());
+				}
 				$('#mask').css('visibility', 'hidden');
 				$('#popup_slide').css('visibility', 'hidden');
 			}
