@@ -59,6 +59,8 @@
 					}else if ($(this.activeElement).attr("id").startsWith("spinner")) {
 						showmap_spinner(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
+					} else if ($(this.activeElement).attr("id") == "slide" || $(this.activeElement).attr("id").startsWith("img")) {
+						showmap_slide(popup, $(this.activeElement).attr("id"));
 					}
 					
 					
@@ -677,6 +679,12 @@
 				}
 			}
 			
+			function showmap_slide(popup, id) {
+				$('#popup_slide').css('visibility', "visible");
+				$('#mask').css('visibility', 'visible');
+				return false;
+			}
+			
 			function closemap(popup) {
 				$('#mask').css('visibility', "hidden");
 				$('#popup').css('visibility', "hidden");
@@ -702,6 +710,9 @@
 				$('#mask').css('visibility', "hidden");
 				$('#popup_spinner').css('visibility', "hidden");
 				return false;
+			} function closemap_slide() {
+				$('#popup_slide').css('visibility', 'hidden');
+				$('#mask').css('visibility', 'hidden');
 			}
 			
 			function editBtn(btn) {
@@ -1045,6 +1056,15 @@
 				$('.changeB').css("visibility", "hidden");
 			}
 			
+			function changeSlide() {
+				$('#img1').attr('src', $('#slide_first').val());
+				$('#img2').attr('src', $('#slide_second').val());
+				$('#img3').attr('src', $('#slide_third').val());
+				$('#img4').attr('src', $('#slide_fourth').val());
+				$('#mask').css('visibility', 'hidden');
+				$('#popup_slide').css('visibility', 'hidden');
+			}
+			
 			function Bmm() {
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bregist()" style="cursor: pointer; user-select: none;">회원가입</li>';
@@ -1198,6 +1218,18 @@
 				z-index: 1000;
 			}
 			#popup_spinner {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
+			#popup_slide {
 				position:absolute;
 				left:35%;
 				top:30%;
@@ -1463,6 +1495,15 @@
 						<button class="changeB editBtn" onclick="javascript:changeCancle()">취소</button>
 					</div>
 				<div id="bgDiv"></div>
+		</div>
+		
+		<div id="popup_slide" class="popup BGheight">
+			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
+			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
+			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
+			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
 		</div>
 		
 		<form id="savepagefrm" action="savepage" method="post">

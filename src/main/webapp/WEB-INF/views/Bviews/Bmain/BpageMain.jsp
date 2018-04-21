@@ -21,17 +21,17 @@
 	</header>
 
 		<div id=slide_container>
-			<div class="slides">
-				<img src="./resources/img/slide1.jpg"/>
+			<div id="slide" class="slides" tabindex="0">
+				<img id="img1" src="./resources/img/slide1.jpg"/>
 			</div>
 			<div class="slides">
-				<img src="./resources/img/slide2.jpg"/>
+				<img id="img2" src="./resources/img/slide2.jpg"/>
 			</div>
 			<div class="slides">
-				<img src="./resources/img/slide3.jpg"/>
+				<img id="img3" src="./resources/img/slide3.jpg"/>
 			</div>
 			<div class="slides">
-				<img src="./resources/img/slide4.jpg"/>
+				<img id="img4" src="./resources/img/slide4.jpg"/>
 			</div>
 		</div>
 
