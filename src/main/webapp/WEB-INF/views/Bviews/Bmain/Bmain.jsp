@@ -1,3 +1,4 @@
+<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,6 +60,8 @@
 					}else if ($(this.activeElement).attr("id").startsWith("spinner")) {
 						showmap_spinner(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
+					} else if ($(this.activeElement).attr("id") == "slide" || $(this.activeElement).attr("id").startsWith("img")) {
+						showmap_slide(popup, $(this.activeElement).attr("id"));
 					}
 					
 					
@@ -677,6 +680,12 @@
 				}
 			}
 			
+			function showmap_slide(popup, id) {
+				$('#popup_slide').css('visibility', "visible");
+				$('#mask').css('visibility', 'visible');
+				return false;
+			}
+			
 			function closemap(popup) {
 				$('#mask').css('visibility', "hidden");
 				$('#popup').css('visibility', "hidden");
@@ -702,6 +711,9 @@
 				$('#mask').css('visibility', "hidden");
 				$('#popup_spinner').css('visibility', "hidden");
 				return false;
+			} function closemap_slide() {
+				$('#popup_slide').css('visibility', 'hidden');
+				$('#mask').css('visibility', 'hidden');
 			}
 			
 			function editBtn(btn) {
@@ -1027,7 +1039,12 @@
 			}
 			function changeImageSubmit() {
 				var uri = 'url("' + $('#bgUrl').val() + '")';
+				var width = $(document).width();
+				var height = $(document).height();
 				$('#Bcenter').css("background-image", uri);
+				$('#Bcenter').css("background-repeat", "no-repeat");
+				$('#Bcenter').css("background-size", width + "px " + height + "px");
+				$('#Bcenter').css("background-attachment", "fixed");
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
 				$('.changeA').css("visibility", "hidden");
@@ -1038,6 +1055,23 @@
 				$('#mask').css('visibility', 'hidden');
 				$('.changeA').css("visibility", "hidden");
 				$('.changeB').css("visibility", "hidden");
+			}
+			
+			function changeSlide() {
+				if ($('#slide_first').val() != '' || $('#slide_first').val() != null) {
+					$('#img1').attr('src', $('#slide_first').val());
+				}
+				if ($('#slide_second').val() != '' || $('#slide_second').val() != null) {
+					$('#img2').attr('src', $('#slide_second').val());
+				}
+				if ($('#slide_third').val() != '' || $('#slide_third').val() != null) {
+					$('#img3').attr('src', $('#slide_third').val());
+				}
+				if ($('#slide_fourth').val() != '' || $('#slide_fourth').val() != null) {
+					$('#img4').attr('src', $('#slide_fourth').val());
+				}
+				$('#mask').css('visibility', 'hidden');
+				$('#popup_slide').css('visibility', 'hidden');
 			}
 			
 			function Bmm() {
@@ -1097,6 +1131,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
 				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li class="side" onclick="javascript:Bmain()" style="cursor: pointer; user-select: none;">Bmain</li>';
 				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
@@ -1114,23 +1149,33 @@
 			
 			//매출관리 링크
 			function Bsale(){
+				$('#pagename').val('BsaleChart');
 				$('#Bcenter').load('BsaleChart');
 			}
 			
 			//고객관리 링크
 			function Bcustomer(){
+				$('#pagename').val('BcustomerChart');
 				$('#Bcenter').load('BcustomerChart');
 			}
 			
 			function Bheader(){
+				$('#pagename').val('BpageHeader');
 				$('#Bcenter').load('BpageHeader');
 			}
 			
 			function Bfooter(){
+				$('#pagename').val('BpageFooter');
 				$('#Bcenter').load('BpageFooter');
 			}
 			
+			function Bmain(){
+				$('#pagename').val('BpageMain');
+				$('#Bcenter').load('BpageMain');
+			}
+			
 			function Bmainlist() {
+				$('#pagename').val('Bmainlist');
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
 			
@@ -1152,7 +1197,7 @@
 				$('.divSelectForDrag').css("background", "#00000000");
 				$('.imageForDrag').css("visibility", "hidden");
 				
-				$('#savepage').val($('#Bcenter').html());
+				$('#savepage').val($('#BcenterOuter').html());
 				$('#savepagefrm').submit();
 			}
 			
@@ -1188,6 +1233,18 @@
 				z-index: 1000;
 			}
 			#popup_spinner {
+				position:absolute;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 40%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
+			#popup_slide {
 				position:absolute;
 				left:35%;
 				top:30%;
@@ -1242,10 +1299,15 @@
 		
 		
 		<!-- 중앙 화면 -->
-		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
-			<c:if test="${result != ''}">
-				${result}
-			</c:if>
+		<div id="BcenterOuter">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
+				<c:if test="${result != ''}">
+					${result}
+				</c:if>
+				<c:if test="${result == null}">
+					<%@ include file="./BpageMain.jsp" %>
+				</c:if>
+			</div>
 		</div>
 	
 	<br><br><br><br><br>
@@ -1452,6 +1514,15 @@
 						<button class="changeB editBtn" onclick="javascript:changeCancle()">취소</button>
 					</div>
 				<div id="bgDiv"></div>
+		</div>
+		
+		<div id="popup_slide" class="popup BGheight">
+			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
+			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
+			3번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
+			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
+			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
 		</div>
 		
 		<form id="savepagefrm" action="savepage" method="post">

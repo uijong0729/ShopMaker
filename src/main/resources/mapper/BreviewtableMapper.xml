@@ -5,7 +5,7 @@
 
 <mapper namespace="global.sesoc.bigstar.dao.BreviewtableMapper">
 
-	<select id="selectbreviewtable" resultType="Breviewtable">
+	<select id="selectBreviewtable" resultType="Breviewtable">
 	
 		select * from Breviewtable where reviewcode =#{reviewcode}
 
@@ -20,6 +20,31 @@
 		where productcode in(select productcode from bPRODUCTTABLE where productname=#{0})
 
 	</select>
+	
+	<insert id="insertReview" parameterType="Breviewtable">
+		
+		INSERT INTO Breviewtable(
+		reviewcode
+		, reviewtitle
+		, reviewscore
+		, reviewcontent
+		, reviewimage
+		, productcode
+		, customercode
+		, membercode
+		)
+		VALUES( 
+		Breviewtable_seq.nextval
+		, #{reviewtitle}
+		, #{reviewscore}
+		, #{reviewcontent}
+		, #{reviewimage}
+		, #{productcode}
+		, #{customercode}
+		, #{membercode}
+		)
+		
+	</insert>
 
 
 </mapper>

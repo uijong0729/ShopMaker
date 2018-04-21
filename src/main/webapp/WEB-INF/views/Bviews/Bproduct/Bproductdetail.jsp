@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,14 +97,14 @@ function gopurchaseform() {
                 <form action="detailaddOrder.do">
                     <div class="info_box1">
                         <p class="product_name">
-                            <h3>${productDetailList[1].productname}</h3>
+                            <h3>${productDetailList[0].productname}</h3>
                         </p>
                     </div>
                     <br>
                     <table class="Info_table">
                         <tr>
                             <td>가격</td>
-                            <td><span>${productDetailList[1].productprice}</span></td>
+                            <td><span>${productDetailList[0].productprice}</span></td>
                         </tr>
                         <tr>
                             <td>배송비</td>
@@ -113,7 +114,9 @@ function gopurchaseform() {
                             <td>색상</td>
                             <td>색상을 선택해 주세요 <br> 
                             	<select class="option_selecter" id="color_selecter" onchange="color_select(this.value)">
-                                            
+                                      <c:forEach var="color" items="${productDetailList }" varStatus="loopStat">
+									 	<option value="${color.productcolor}">${color.productcolor}</option>
+									 </c:forEach>      
                                 </select>
                             </td>
                         </tr>
@@ -121,7 +124,9 @@ function gopurchaseform() {
                             <td>사이즈</td>
                             <td>사이즈를 선택해 주세요 <br> <select class="option_selecter"
                                 id="size_selecter" onchange="size_select(this.value)">
-                                           
+									 <c:forEach var="size" items="${productDetailList }" varStatus="loopStat">
+									 	<option value="${size.productsize}">${size.productsize}</option>
+									 </c:forEach>
                                 </select>
                             </td>
                         </tr>
@@ -134,10 +139,10 @@ function gopurchaseform() {
                             <td colspan="2" class="amount_set_TD"></td>
                         </tr>
                     </table>
-                    <input type="hidden" name="index"> 
-                    <input type="hidden" id="base_price"> 
-                    <input type="hidden" id="p_common_name"> 
-                    <input type="hidden" name="r_no">
+	                    <input type="hidden" name="index"> 
+	                    <input type="hidden" id="base_price"> 
+	                    <input type="hidden" id="p_common_name"> 
+	                    <input type="hidden" name="r_no">
                     <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
                 </form>
                 <form action="addBasket.do" class="cartData">

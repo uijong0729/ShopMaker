@@ -3,6 +3,8 @@ package global.sesoc.bigstar.Bproductcontroller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +37,7 @@ public class BproductdetailController {
 	BcarttableDAO cDao;
 	
 	@RequestMapping(value="goBproductdetail", method=RequestMethod.GET)
-	public String productdetail(Model model, String productname, String productcode) {
+	public String productdetail(HttpSession session, Model model, String productname, String productcode) {
 		
 		System.out.println(productname);
 		
