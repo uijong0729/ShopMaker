@@ -67,5 +67,10 @@ public class BpageController {
 		return "Bviews/Bmain/Bshopmain";
 	}
 	
+	@RequestMapping(value = "BpageMain", method = RequestMethod.GET)
+	public String BpageMain() {
+		return "Bviews/Bmain/BpageMain";
+	}
+	
 	
 }
