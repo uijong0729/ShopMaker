@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="width: 100%; height: 100%;">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +10,6 @@
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <style type="text/css">
-
 .submit
 {
   display: inline-block;
@@ -247,7 +246,7 @@ function changeColor(){
 </script>
 
 </head>
-<body style="text-align: center;">
+<body style="text-align: center; width: 100%; height: 100%;">
 <div style="display: inline-block;">
 
 		<h1 id="login_title" tabindex="0">회원가입</h1>
@@ -281,7 +280,7 @@ function changeColor(){
 
 		
 	<%-- 다이어로그 --%>	
-	<div id="dialog" title="편집 메뉴">
+	<div id="dialog" title="편집 메뉴" style="width: 100%; height: 100%;">
 		<h6>요소 추가하기</h6>
 	    <ul style="list-style: none; display:inline;">
 	    	<li class="li" id="address" color="black"><span>주소</span></li>

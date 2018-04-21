@@ -10,6 +10,8 @@
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var windowHeight = $( window ).height();
+				$('#Bcenter').css("height", windowHeight + "px");
 				page();
 				if ($('#btnCount').val() == '' || $('#btnCount').val() == null) {
 					
@@ -990,30 +992,39 @@
 			function changeBg() {
 				$('#changeBg').css("visibility", "visible");
 				$('#mask').css('visibility', 'visible');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
 			}
 			
 			function  changeBgColor() {
+				$('.changeA').css("visibility", "visible");
+				$('.changeB').css("visibility", "hidden");
 			}
 			function changeBgImage() {
-				
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "visible");
 			}
 			function changeSubmit() {
 				var bgcolor = '#' + $('#backgroundColor').val();
-				alert(bgcolor);
 				$('#Bcenter').css("background", bgcolor);
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
 			}
 			function changeImageSubmit() {
 				var uri = 'url("' + $('#bgUrl').val() + '")';
 				$('#Bcenter').css("background-image", uri);
-//				$('#Bcenter').css("background-repeat", "no-repeat");
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
 			}
 			function changeCancle() {
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
+				$('.changeA').css("visibility", "hidden");
+				$('.changeB').css("visibility", "hidden");
 			}
 			
 			function Bmm() {
@@ -1030,17 +1041,21 @@
 			function Bregist() {
 				$('#pagename').val('Bregist');
 				$('#Bcenter').load('Bregist');
+				$('#Bcenter').css("background", "");
 			}
 			function Blogin() {
 				$('#pagename').val('Blogin');
 				$('#Bcenter').load('Blogin');
+				$('#Bcenter').css("background", "");
 			}
 			function Bmypage() {
 				$('#pagename').val('Bmypage');
 				$('#Bcenter').load('Bmypage');
+				$('#Bcenter').css("background", "");
 			}
 			function BmemberListPage(){
 				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
+				$('#Bcenter').css("background", "");
 			}
 			function Bmmback() {
 				var str = '<ul>';
@@ -1312,7 +1327,7 @@
 		
 		
 		<!-- 중앙 화면 -->
-		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
 			<c:if test="${result != ''}">
 				${result}
 			</c:if>
@@ -1423,14 +1438,14 @@
 			<input type="hidden" id="spinnerName">
 		</div>
 		<div id="changeBg">
-			<button onclick="javascript:changeBgColor()">색상지정</button> <button onclick="javascript:changeBgImage()">이미지지정</button><br>
-			<div id="bgColorDiv">
-				<input id="backgroundColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br>
-				<button onclick="javascript:changeSubmit()">변경</button> <button onclick="javascript:changeCancle()">취소</button>
+			<button onclick="javascript:changeBgColor()" style="background: white; border: 1px solid black; border-radius: 5px;">색상지정</button> <button onclick="javascript:changeBgImage()" style="background: white; border: 1px solid black; border-radius: 5px;">이미지지정</button><br>
+			<div id="bgColorDiv" class="changeA" style="position: absolute; margin-top: 50px; width: 100%; height: 100%;">
+				색상 : <input id="backgroundColor" class="jscolor jscolor-active changeA" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"><br><br>
+				<button onclick="javascript:changeSubmit()" class="changeA" style="background: white; border: 1px solid black; border-radius: 5px;">변경</button> <button class="changeA" onclick="javascript:changeCancle()" style="background: white; border: 1px solid black; border-radius: 5px;">취소</button>
 			</div>
-			<div id="bgImageDiv">
-				<input type="text" id="bgUrl">
-				<button onclick="javascript:changeImageSubmit()">변경</button> <button onclick="javascript:changeCancle()">취소</button>
+			<div id="bgImageDiv" class="changeB" style="position: absolute; margin-top: 50px; width: 100%; height: 100%;">
+				주소 : <input type="text" id="bgUrl" class="changeB"><br><br>
+				<button onclick="javascript:changeImageSubmit()" class="changeB" style="background: white; border: 1px solid black; border-radius: 5px;">변경</button> <button class="changeB" onclick="javascript:changeCancle()" style="background: white; border: 1px solid black; border-radius: 5px;">취소</button>
 			</div>
 			<div id="bgDiv"></div>
 		</div>
