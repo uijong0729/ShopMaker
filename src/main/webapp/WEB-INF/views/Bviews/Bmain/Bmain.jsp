@@ -1096,6 +1096,7 @@
 				var str = '<ul>';
 				str += '<li class="side" onclick="javascript:Bheader()" style="cursor: pointer; user-select: none;">Header관리</li>';
 				str += '<li class="side" onclick="javascript:Bfooter()" style="cursor: pointer; user-select: none;">Footer관리</li>';
+				str += '<li class="side" onclick="javascript:Bmain()" style="cursor: pointer; user-select: none;">Bmain</li>';
 				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
@@ -1129,6 +1130,9 @@
 				$('#Bcenter').load('BpageFooter');
 			}
 			
+			function Bmain(){
+				$('#Bcenter').load('BpageMain');
+			}
 			
 			function Bmainlist() {
 				$('#Bcenter').load('Bmainlist?rows=4');
