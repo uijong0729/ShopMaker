@@ -28,11 +28,10 @@
 				document.getElementById('btnCount').value = 0;
 				document.getElementById('textCount').value = 0;
 				document.getElementById('imageCount').value = 0;
-				document.getElementById('spinnerCount').value = 0;
-				document.getElementById('optionCounter').value = 1;
+//				document.getElementById('spinnerCount').value = 0;
+//				document.getElementById('optionCounter').value = 1;
 				
 				$('.forDeleteBtn').css("visibility", "visible");
-				$('#Bcenter').find('[tabindex=0]').addAttr("tabindex", 0);
 				$('.forDisableDrag').addAttr("ondragstart", "drag(this, event)");
 				$('.forDisableDrag').addAttr("draggable", "true");
 				$('.text').addAttr("contenteditable", "true");
@@ -53,13 +52,13 @@
 					}else if ($(this.activeElement).attr("id").startsWith("image")) {
 						showmap_image(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
-					}else if ($(this.activeElement).attr("id").startsWith("select")) {
+					}/* else if ($(this.activeElement).attr("id").startsWith("select")) {
 						showmap_select(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).parent().attr("id"));
 					}else if ($(this.activeElement).attr("id").startsWith("spinner")) {
 						showmap_spinner(popup, $(this.activeElement).attr("id"));
 						$("#delItem").val($(this.activeElement).attr("id"));
-					} else if ($(this.activeElement).attr("id") == "slide" || $(this.activeElement).attr("id").startsWith("img")) {
+					} */ else if ($(this.activeElement).attr("id") == "slide" || $(this.activeElement).attr("id").startsWith("img")) {
 						showmap_slide(popup, $(this.activeElement).attr("id"));
 					}
 					
@@ -210,7 +209,7 @@
 				}
 			}
 			
-			function newSelect() {
+			/* function newSelect() {
 				var count = document.getElementById('selectCount').value;
 				count *= 1;
 				if ( $("#select" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
@@ -241,9 +240,9 @@
 					$('#divSelect' + count).html($('#divSelect' + count).html() + str2);
 					document.getElementById('selectCount').value = count + 1;
 				}
-			}
+			} */
 			
-			function newSpinner() {
+			/* function newSpinner() {
 				var count = document.getElementById('spinnerCount').value;
 				count *= 1;
 				if ( $("#spinner" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
@@ -297,7 +296,7 @@
 				} else {
 					$('#number' + clickedCount).text(0);
 				}
-			}
+			} */
 			
 			function showmap(popup, id) {
 				var parent = $("#" + id).attr("id");
@@ -400,8 +399,8 @@
 				if($('#popup').css('visibility') == "hidden") {
 					$('#popup_text').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "hidden");
-					$('#popup_select').css('visibility', "hidden");
-					$('#popup_spinner').css('visibility', "hidden");
+//					$('#popup_select').css('visibility', "hidden");
+//					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
@@ -496,8 +495,8 @@
 				if($('#popup_text').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "hidden");
-					$('#popup_select').css('visibility', "hidden");
-					$('#popup_spinner').css('visibility', "hidden");
+//					$('#popup_select').css('visibility', "hidden");
+//					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup_text').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
@@ -516,15 +515,15 @@
 				if($('#popup_image').css('visibility') == "hidden") {
 					$('#popup').css('visibility', "hidden");
 					$('#popup_text').css('visibility', "hidden");
-					$('#popup_select').css('visibility', "hidden");
-					$('#popup_spinner').css('visibility', "hidden");
+//					$('#popup_select').css('visibility', "hidden");
+//					$('#popup_spinner').css('visibility', "hidden");
 					$('#popup_image').css('visibility', "visible");
 					$('#mask').css('visibility', 'visible');
 					return false;
 				}
 			}
 			
-			function showmap_select(popup, id) {
+			/* function showmap_select(popup, id) {
 				var parent = $("#" + id).attr("id");
 				document.getElementById("selectName").value = parent;
 				var reg = /[^0-9]/g;
@@ -585,9 +584,9 @@
 					$('#mask').css('visibility', 'visible');
 					return false;
 				}
-			}
+			} */
 			
-			function showmap_spinner(popup, id) {
+			/* function showmap_spinner(popup, id) {
 				var parent = $("#" + id).attr("id");
 				document.getElementById("spinnerName").value = parent;
 				var reg = /[^0-9]/g;
@@ -677,7 +676,7 @@
 					$('#mask').css('visibility', 'visible');
 					return false;
 				}
-			}
+			} */
 			
 			function showmap_slide(popup, id) {
 				$('#popup_slide').css('visibility', "visible");
@@ -701,7 +700,7 @@
 				$('#popup_image').css('visibility', "hidden");
 				return false;
 			}
-			function closemap_select(popup) {
+			/* function closemap_select(popup) {
 				$('#mask').css('visibility', "hidden");
 				$('#popup_select').css('visibility', "hidden");
 				return false;
@@ -710,7 +709,8 @@
 				$('#mask').css('visibility', "hidden");
 				$('#popup_spinner').css('visibility', "hidden");
 				return false;
-			} function closemap_slide() {
+			} */
+			function closemap_slide() {
 				$('#popup_slide').css('visibility', 'hidden');
 				$('#mask').css('visibility', 'hidden');
 			}
@@ -838,7 +838,7 @@
 				closemap_image();
 			}
 			
-			function editSelect(btn) {
+			/* function editSelect(btn) {
 				var width = $("#select_width").val();
 				var height = $("#select_height").val();
 				var fontsize = $("#select_fontsize").val();
@@ -958,7 +958,7 @@
 				$('#numberDown' + num).css("height", height);
 				
 				closemap_spinner();
-			}
+			} */
 			
 			function addOption() {
 				var option = $('#optionCounter').val();
@@ -989,8 +989,8 @@
 				closemap();
 				closemap_text();
 				closemap_image();
-				closemap_select();
-				closemap_spinner();
+//				closemap_select();
+//				closemap_spinner();
 				
 			}
 			
@@ -1205,7 +1205,7 @@
 				
 			}
 			
-			#popup_select {
+			/* #popup_select {
 				position:absolute;
 				left:35%;
 				top:30%;
@@ -1228,7 +1228,7 @@
 				border-radius: 10px;
 				text-align: center;
 				z-index: 1000;
-			}
+			} */
 			#popup_slide {
 				position:absolute;
 				left:35%;
@@ -1313,8 +1313,8 @@
 				<input type="hidden" id="btnCount">
 				<input type="hidden" id="textCount">
 				<input type="hidden" id="imageCount">
-				<input type="hidden" id="selectCount">
-				<input type="hidden" id="spinnerCount">
+				<!-- <input type="hidden" id="selectCount">
+				<input type="hidden" id="spinnerCount"> -->
 				<input type="hidden" id="delItem">
 			</div>
 				

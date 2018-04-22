@@ -26,4 +26,19 @@
 		insert into BPRODUCTTABLE(productcode,productname,productprice,productquantity,productsize,productcolor,productspec,productpushdate,productdisplay,productkind,membercode) 
                     VALUES(BPRODUCTTABLE_seq.NEXTVAL,#{productname},#{productprice},#{productquantity},#{productsize},#{productcolor},#{productspec},sysdate,1,#{productkind},#{membercode}) 
 	</insert>
+	
+	<select id="selectkind" resultType="Bproducttable">
+		select distinct productkind from
+		Bproducttable 
+	</select>
+	
+	<select id="selectkindproduct" resultType="Bproducttable">
+		select * from
+		Bproducttable 
+		where productkind=#{productkind}
+	</select>
+	
+	<delete id="delProduct" parameterType="String">
+		delete from Bproducttable where productcode=#{pc}
+	</delete>
 </mapper>
