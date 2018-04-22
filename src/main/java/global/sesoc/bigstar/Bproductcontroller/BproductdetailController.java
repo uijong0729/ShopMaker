@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import javax.servlet.http.HttpSession;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,14 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.sesoc.bigstar.common.util.FileService;
 import global.sesoc.bigstar.dao.BcarttableDAO;
 import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BquestiontableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
-import global.sesoc.bigstar.vo.Bcustomer;
 import global.sesoc.bigstar.vo.Bcarttable;
+import global.sesoc.bigstar.vo.Bcustomer;
 import global.sesoc.bigstar.vo.Bproducttable;
 import global.sesoc.bigstar.vo.Breviewtable;
 
@@ -73,10 +70,20 @@ public class BproductdetailController {
 		
 		ArrayList<Breviewtable> reviewtableList = RTdao.getReviewtableByName(productname);
 		
-//		System.out.println("B리뷰테이블 리스트");
-//		for (Breviewtable breviewtable2 : reviewtableList) {
-//			System.out.println(breviewtable2);
-//		}
+		for (Breviewtable breviewtable : reviewtableList) {
+			if (breviewtable.getReviewimage()==null || breviewtable.getReviewimage().equals("null☆")) {
+				breviewtable.setReviewimage("noimg.jpg");
+			}
+		}
+		
+		System.out.println("B리뷰테이블 리스트");
+		for (Breviewtable breviewtable2 : reviewtableList) {
+			/*System.out.println(breviewtable2);
+			if (breviewtable2.getReviewimage().endsWith(pathD) == true) {
+				breviewtable2.setReviewimage(breviewtable2.getReviewimage().substring(0, breviewtable2.getReviewimage().length() - 1));
+			}*/
+			breviewtable2.setReviewimage(breviewtable2.getReviewimage(), pathD);
+		}
 		
 		ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
 		
@@ -88,9 +95,11 @@ public class BproductdetailController {
 		model.addAttribute("productDetailList", productDetailList);
 		model.addAttribute("reviewtableList", reviewtableList);
 		model.addAttribute("productname", productname);
+		model.addAttribute("productcode", productcode);
+		
+		session.setAttribute("productcode", productcode);
 		session.setAttribute("productname", productname);
 		
-		model.addAttribute("productcode", productcode);
 		return "Bviews/Bproduct/Bproductdetail";
 	}
 	
@@ -136,7 +145,7 @@ public class BproductdetailController {
 	 * 원용수
 	 * 
 	 * */
-	@RequestMapping(value="insertReview", method=RequestMethod.POST)
+	/*@RequestMapping(value="insertReview", method=RequestMethod.POST)
 	public String insertReview(HttpSession session, MultipartFile upload, String productname, String reviewtitle, 
 			String customercode, String reviewcontent, String reviewimage, String customername) {
 		
@@ -145,10 +154,10 @@ public class BproductdetailController {
 		Breviewtable bReviewtable = new Breviewtable();
 		
 		System.out.println("customername: "+customername);
-		/*System.out.println("customercode: "+customercode);*/
+		System.out.println("customercode: "+customercode);
 		System.out.println("reviewtitle: "+reviewtitle);
 		System.out.println("reviewcontent: "+reviewcontent);
-		/*System.out.println("reviewimage: "+reviewimage);*/
+		System.out.println("reviewimage: "+reviewimage);
 		
 		
 		int reviewscore = 3;
@@ -167,11 +176,11 @@ public class BproductdetailController {
 		
 		System.out.println(bReviewtable);
 		
-		/*
+		
 		 * TODO: 이미지 및 파일 업로드 구현
 		 * 
 		 * 원용수
-		 */		
+		 		
 		
 		if (!upload.isEmpty()) {
 			logger.info("첨부 파일이 있음");
@@ -182,11 +191,11 @@ public class BproductdetailController {
 		}
 		
 		
-		/*
+		
 		 * 데이터베이스에 Breviewtable 넣기
 		 * 
 		 * 원용수
-		 * */
+		 * 
 		
 		int result = 0;
 		
@@ -195,7 +204,7 @@ public class BproductdetailController {
 		System.out.println("SQL insert 결과: "+result);
 		
 		return "redirect:goBproductdetail?productname="+productname;
-	}
+	}*/
 	
 	/*
 	 * 상품 후기 등록
@@ -205,9 +214,13 @@ public class BproductdetailController {
 	
 	@ResponseBody
 	@RequestMapping(value="upload", method=RequestMethod.POST)
-	public String upload(MultipartHttpServletRequest mhsq, HttpServletRequest hsreq){
+	public String upload(MultipartHttpServletRequest mhsq, HttpServletRequest hsreq, HttpSession session){
 		
 		logger.debug("upload 시작");
+		
+		String productcode = (String) session.getAttribute("productcode");
+		
+		logger.debug("productcode: "+productcode);
 		
 		String imagesPath = hsreq.getSession().getServletContext().getRealPath("/resources/image");
 		
@@ -229,7 +242,6 @@ public class BproductdetailController {
 		Breviewtable bReviewtable = new Breviewtable();
 		
 		int reviewscore = 3;
-		String productcode="45";
 		String customercode="1";
 		String membercode="36";
 		
@@ -341,6 +353,35 @@ public class BproductdetailController {
 		//System.out.println(membercode + "//" + productcode);
 		//Bproducttable product =  cDao.getBproduct(Integer.parseInt(productcode));
 		
+	}
+	
+	@RequestMapping(value = "delReview", method = RequestMethod.GET)
+	public String delReview(HttpSession session, String reviewcode) {
+		String Url = null;
+		RTdao.delReview(reviewcode);
+		String productname = (String) session.getAttribute("productname");
+		String productcode = (String) session.getAttribute("productcode");
+		
+		/* productname이 한글이라서 java 단에서 return 값이 한글로 들어가면 인식을 못한다(ex. 자바는 '토끼'를 '??'으로 인식함)*/
+		/*return "redirect:goBproductdetail?productname=" + productname + "&productcode=" + productcode;*/
+		
+		/* [Spring Framework] 한글 파라미터가 포함된 URL 전송문제 해결 - 가랏 김준형!! URL을 부탁해!! From 용수
+		 * 
+		 String goBproductdetail = "redirect:goBproductdetail?productname=" + productname + "&productcode=" + productcode;
+		
+		logger.debug(goBproductdetail);
+		
+		try {
+			Url = URLEncoder.encode(goBproductdetail, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return Url;
+		
+		*/
+		return "goBamin";
 	}
 	
 

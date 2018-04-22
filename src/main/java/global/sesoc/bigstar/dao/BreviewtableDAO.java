@@ -34,4 +34,8 @@ public class BreviewtableDAO implements BreviewtableMapper {
 		return session.getMapper(BreviewtableMapper.class).selectBreviewtable(reviewcode);
 	}
 
+	public void delReview(String reviewcode) {
+		session.getMapper(BreviewtableMapper.class).delReview(reviewcode);
+	}
+
 }

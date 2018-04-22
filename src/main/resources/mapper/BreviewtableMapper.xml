@@ -45,6 +45,10 @@
 		)
 		
 	</insert>
+	
+	<delete id="delReview" parameterType="String">
+		delete from breviewtable where reviewcode=#{reviewcode}
+	</delete>
 
 
 </mapper>

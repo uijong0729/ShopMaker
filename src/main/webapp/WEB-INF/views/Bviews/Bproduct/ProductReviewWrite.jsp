@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,7 +33,7 @@ function formUpload(){
 				return;
 			}
 			alert("이미지 업로드가 완료되었습니다.");
-			location.href="redirect:goBproductdetail?productname='토끼'";
+			location.href="Bmainlist?rows=4";
 		},
 		error : function(e){
 			alert(JSON.stringify(e));
@@ -44,7 +44,7 @@ function formUpload(){
 var count = 1;
 
 function fileFormAdd(){
-	if(count < 5){
+	if(count < 1){
 		var str = $('#fileDiv').html();
 		str += '<input type="file" name="uploadFile'+(count++)+'">';
 		$('#fileDiv').html(str);
@@ -92,7 +92,7 @@ function goreviewlist() {
 					<td style="padding-bottom: 8px; padding-top: 8px;">사진 첨부<br><font style="font-size:12px; color:#F78181">사진은 수정이 불가하니<br>신중히 올려주세요</font></td>
 					<td>
 						<input type="file" class="upload" name="uploadFile" style="padding-top:20px; font-size: 13px;">
-						<input type="button" value="추가" id="fileAddBt" class="button" style="width:50px; font-size:13px; padding:3 0 3 0;">
+						<!-- <input type="button" value="추가" id="fileAddBt" class="button" style="width:50px; font-size:13px; padding:3 0 3 0;"> -->
 						<div id="fileDiv">
 						</div>
 					</td>
