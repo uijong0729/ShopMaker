@@ -13,16 +13,20 @@
 
 $(document).ready(function(){
 	
+	$('#inquiryBtn').on('click', function(){
+		location.href="goProductReviewWrite?productcode="+${productDetailList[0].productcode};
+	});
+	
 });
 
 
 function reviewContent(code, image, content){
-	var reviewImage = '<td class="reviewclass" colspan="4" style="height:auto;">';
+	var reviewImage = '<td colspan="4" style="height:auto;">';
 		reviewImage += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
 		reviewImage += '</td>';
-	var	reviewContent = '<td class="reviewclass" colspan="4">' + content + '</td>';
+	var	reviewContent = '<td colspan="4">' + content + '</td>';
 	var reviewBtn = '<c:if test="${Amember.membercode ==Review.membercode }">';
-		reviewBtn += '<td class="reviewclass" colspan="4">';
+		reviewBtn += '<td  colspan="4">';
 		reviewBtn += '<a href="goBproductdetail?productname=${productDetailList[0].productname}"><p class="listbtn" style="cursor: pointer">목록</p></a>';
 		reviewBtn += '<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>';
 		reviewBtn += '<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>';
@@ -57,21 +61,20 @@ function reviewContent(code, image, content){
 
 		<br>
 		<div id="productInquiryBoard_wrapper">
+			
 			<p class="pibTitle">상품 후기</p>
 			<form action="getReviewList.do" method="post">
-					<a href="productReviewWrite"><p class="inquiryBtn" style="cursor: pointer">등록하기</p></a>
+					<input type="hidden" name="productname" value="${productname }">
+					<!-- TODO: 상품 후기 [등록하기]는 로그인을 해야 이용할 수 있도록 c:if 로그인값 존재시 보이는 것으로 태그 처리하기. -->
+					<a href="goProductReviewWrite?productcode=${productDetailList[0].productcode}"><p id="inquiryBtn" class="inquiryBtn" style="cursor: pointer">등록하기</p></a>
 				<input type="hidden" name="r_no">
-				<table>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-					</tr>
-				</table>
 					<c:forEach var="review" items="${reviewtableList}" varStatus="v">
 						<table id="reviewcontent${review.reviewcode}">
 							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
 							</tr>
 							<tr>
 								<td>${review.reviewcode }</td>
@@ -79,11 +82,21 @@ function reviewContent(code, image, content){
 								<td>작성자: Bcustomer.customername</td>
 								<td>${review.reviewdate }</td>
 							</tr>
-							<tr id="reviewBtn${review.reviewcode}" class="reviewclass"></tr>
-							<tr id="reviewImage${review.reviewcode}" class="reviewclass"></tr>
-							<tr id="reviewContent${review.reviewcode}" class="reviewclass"></tr>
+							<tr id="reviewBtn${review.reviewcode}" ></tr>
+							<tr id="reviewImage${review.reviewcode}" >
+							
+							</tr>
+							<tr id="reviewContent${review.reviewcode}" ></tr>
 						</table>
 					</c:forEach>
+<%-- 							
+								<th>파일 이미지 미리보기 기능(파일 다운로드)	</th>
+								<td>
+									<c:if test="${review.reviewimage != null}"> <!-- 파일을 업로드 했다면! -->
+					                  <img alt="preview" src="download?boardnum=${board.boardnum}">
+					               </c:if>
+					           	</td> 
+--%>
 				</div>
 		</form>
 	

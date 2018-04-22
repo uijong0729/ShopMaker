@@ -53,6 +53,7 @@
 .optionBox tr td:nth-child(2){
     width: 75%;
     padding-left: 20px;
+    text-align: left;
 }
 select{
     width: 200px;
@@ -201,8 +202,8 @@ select{
     
 }
 .dtimg_wrap img{
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 300px;
 }
 .imgbox_text{
     width: 350px;
@@ -242,7 +243,7 @@ select{
 .filebox .upload-name {
     width:255px;
     display: inline-block;
-    padding: .5em .75em;/* label�쓽 �뙣�뵫媛믨낵 �씪移� */ 
+    padding: .5em .75em;/* label占쎌벥 占쎈솭占쎈뎃揶쏅�⑤궢 占쎌뵬燁삼옙 */ 
     font-size: inherit;
     font-family: inherit;
     line-height: normal;
@@ -251,7 +252,7 @@ select{
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
-    -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */ 
+    -webkit-appearance: none; /* 占쎄퐬占쎌뵠占쎈뼒�뇡占� 占쎌뇚占쎌굨 揶쏅Ŋ�뀤疫뀐옙 */ 
     -moz-appearance: none;
     appearance: none; 
 }
@@ -270,7 +271,8 @@ select{
 }
 
 .dtfilebox{
-    margin-top: 10px;
+    margin-top: 80px;
+    margin-bottom: 20px;
 }
 
 .dtfilebox input[type="file"] {
@@ -299,7 +301,7 @@ select{
 .dtfilebox .dtupload-name {
     width:135px;
     display: inline-block;
-    padding: .5em .75em;/* label�쓽 �뙣�뵫媛믨낵 �씪移� */ 
+    padding: .5em .75em;/* label占쎌벥 占쎈솭占쎈뎃揶쏅�⑤궢 占쎌뵬燁삼옙 */ 
     font-size: inherit;
     font-family: inherit;
     line-height: normal;
@@ -308,7 +310,7 @@ select{
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
-    -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */ 
+    -webkit-appearance: none; /* 占쎄퐬占쎌뵠占쎈뼒�뇡占� 占쎌뇚占쎌굨 揶쏅Ŋ�뀤疫뀐옙 */ 
     -moz-appearance: none;
     appearance: none; 
 }

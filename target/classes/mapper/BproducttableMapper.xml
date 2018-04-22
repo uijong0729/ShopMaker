@@ -10,14 +10,27 @@
 		Bproducttable where productcode =#{productcode}
 
 	</select>
+	
+	<!-- 장바구니 -->
+	<select id="getCart" resultType="Bproducttable">
+		select p.productname, p.productprice, p.productquantity, p.productimage, p.productcolor, p.productsize
+		from Bproducttable p, Bcustomer c 
+		where p.productcode = #{productcode} AND c.customercode = #{customercode}
+	</select>
 
 	<select id="selectallbproducttable" resultType="Bproducttable">
 		select * from
 		Bproducttable
 	</select>
-	
+
 	<select id="getProductdetailListByName" resultType="Bproducttable">
-		select * from Bproducttable where productname =#{productname}
+		select * from
+		Bproducttable where productname =#{productname}
 	</select>
 
+	<insert id="insertbproducttable" parameterType="Bproducttable">
+	
+		insert into BPRODUCTTABLE(productcode,productname,productprice,productquantity,productsize,productcolor,productspec,productpushdate,productdisplay,productkind,membercode) 
+                    VALUES(BPRODUCTTABLE_seq.NEXTVAL,#{productname},#{productprice},#{productquantity},#{productsize},#{productcolor},#{productspec},sysdate,1,#{productkind},#{membercode}) 
+	</insert>
 </mapper>

@@ -4,12 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.bigstar.dao.BcarttableMapper">
+	<!-- 멤버 코드로 제품 리스트 가져오기 -->
 	<select id="selectbcarttable" resultType="Bcarttable">
 		select * from bcarttable where customercode =#{customercode}
 
 	</select>
-
-
+	
+	<!-- 제품 코드로 제품 정보 가져오기 -->
+	<select id="getBproduct" parameterType="string" resultType="Bproducttable">
+		select * 
+		from bproducttable
+		where productcode = #{productcode}
+	</select>
+	
+	<!-- 장바구니 추가 -->
+	<insert id="insertBcart" parameterType="map">
+		insert into BcartTable
+		values(#{customercode}, #{productcode})
+	</insert>
 
 
 </mapper>

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,10 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import global.sesoc.bigstar.HomeController;
 import global.sesoc.bigstar.dao.BcarttableDAO;
 import global.sesoc.bigstar.dao.BcustomerDAO;
+import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
 import global.sesoc.bigstar.vo.Bcarttable;
 import global.sesoc.bigstar.vo.Bcustomer;
 import global.sesoc.bigstar.vo.Bordertable;
+import global.sesoc.bigstar.vo.Bproducttable;
 
 @Controller
 public class BmemberController {
@@ -34,6 +37,9 @@ public class BmemberController {
 	
 	@Autowired
 	BcarttableDAO cdao;
+	
+	@Inject
+	BproducttableDAO pdao;
 	
 	@RequestMapping(value="Bregist", method = RequestMethod.GET)
 	public String Bregist() {
@@ -103,7 +109,7 @@ public class BmemberController {
 		else
 		{
 			model.addAttribute("isThereId", 0);
-			return "Bviews/Bmain/Bshopmain";
+			return "redirect:goBmain";
 			
 		}
 		
@@ -187,17 +193,37 @@ public class BmemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="getCartlist", method=RequestMethod.POST)
-	public List<Bcarttable> getCartlist(String customercode) {
+	public List<Bproducttable> getCartlist(String customercode) {
+		List<Bcarttable> clist = null;
+		try 
+		{
+			clist = cdao.selectbcarttable(Integer.parseInt(customercode));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		
-		List<Bcarttable> clist = cdao.selectbcarttable(Integer.parseInt(customercode));
+		List<Bproducttable> cart = new ArrayList<Bproducttable>();
 		
-		return clist;
+		System.out.println(clist);
+		for (Bcarttable bcarttable : clist) {
+			String pCode = bcarttable.getProductcode();
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("customercode", customercode);
+			map.put("productcode", pCode);
+			cart.add(pdao.getCart(map));
+		}
+		
+		return cart;
 	}
 	
 	@RequestMapping(value = "Btracking", method = RequestMethod.GET)
 	public String btracking(String t_code, String t_invoice) {
 		return "Bviews/Bproduct/tracking";
 	}
+	
+	
 
 	
 	

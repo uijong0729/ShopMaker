@@ -1,0 +1,35 @@
+@charset "UTF-8"; 
+ 
+ .deleteBt
+ {
+	cursor: pointer;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.48);
+ }
+ 
+.orderBt
+{
+	margin: 0;
+	border-radius: 4px !important;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.48);
+	cursor: pointer;
+	width: 120px;
+	height: 40px;
+	padding-top: 5px;
+	display: inline-block;
+	text-align: center;
+	user-select: none;
+	transition: background 0.32s ease-in-out, box-shadow 0.32s ease-in-out;
+	background: #11111a !important; 
+	color: #ffffaa !important;
+	
+}
+
+.orderBt:hover
+{
+	border: 1px solid black;
+	background: #f1f1f1 !important; 
+	color: black !important;
+}
+
+
+	

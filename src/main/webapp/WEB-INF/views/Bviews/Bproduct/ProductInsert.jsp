@@ -135,10 +135,6 @@ submitBtn {
 									</div>
 								</div>
 
-
-
-
-
 							</td>
 						</tr>
 						<tr>
@@ -146,6 +142,9 @@ submitBtn {
 							</td>
 							<td>
 								<div name="dtimgbox1">
+									<p class="imgbox_text">
+										<b style="font-size: 14px;">&lt; 제품 상세이미지 &gt;</b>
+									</p>
 									<div class="dtimg_wrap">
 										<img id="img3" />
 									</div>
@@ -164,39 +163,6 @@ submitBtn {
 										<input class="dtupload-name" value="파일선택" readOnly> <label
 											for="input_img4">업로드</label> <input type="file"
 											id="input_img4" class="dtupload-hidden">
-									</div>
-								</div>
-
-								<div id="dtimgbox3">
-									<div class="dtimg_wrap">
-										<img id="img5" />
-									</div>
-									<div class="dtfilebox">
-										<input class="dtupload-name" value="파일선택" readOnly> <label
-											for="input_img5">업로드</label> <input type="file"
-											id="input_img5" class="dtupload-hidden">
-									</div>
-								</div>
-
-								<div id="dtimgbox4">
-									<div class="dtimg_wrap">
-										<img id="img6" />
-									</div>
-									<div class="dtfilebox">
-										<input class="dtupload-name" value="파일선택" readOnly> <label
-											for="input_img6">업로드</label> <input type="file"
-											id="input_img6" class="dtupload-hidden">
-									</div>
-								</div>
-
-								<div id="dtimgbox5">
-									<div class="dtimg_wrap">
-										<img id="img7" />
-									</div>
-									<div class="dtfilebox">
-										<input class="dtupload-name" value="파일선택" readOnly> <label
-											for="input_img7">업로드</label> <input type="file"
-											id="input_img7" class="dtupload-hidden">
 									</div>
 								</div>
 							</td>

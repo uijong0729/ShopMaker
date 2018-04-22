@@ -1,3 +1,4 @@
+<%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -1057,10 +1058,18 @@
 			}
 			
 			function changeSlide() {
-				$('#img1').attr('src', $('#slide_first').val());
-				$('#img2').attr('src', $('#slide_second').val());
-				$('#img3').attr('src', $('#slide_third').val());
-				$('#img4').attr('src', $('#slide_fourth').val());
+				if ($('#slide_first').val() != '' || $('#slide_first').val() != null) {
+					$('#img1').attr('src', $('#slide_first').val());
+				}
+				if ($('#slide_second').val() != '' || $('#slide_second').val() != null) {
+					$('#img2').attr('src', $('#slide_second').val());
+				}
+				if ($('#slide_third').val() != '' || $('#slide_third').val() != null) {
+					$('#img3').attr('src', $('#slide_third').val());
+				}
+				if ($('#slide_fourth').val() != '' || $('#slide_fourth').val() != null) {
+					$('#img4').attr('src', $('#slide_fourth').val());
+				}
 				$('#mask').css('visibility', 'hidden');
 				$('#popup_slide').css('visibility', 'hidden');
 			}
@@ -1140,27 +1149,33 @@
 			
 			//매출관리 링크
 			function Bsale(){
+				$('#pagename').val('BsaleChart');
 				$('#Bcenter').load('BsaleChart');
 			}
 			
 			//고객관리 링크
 			function Bcustomer(){
+				$('#pagename').val('BcustomerChart');
 				$('#Bcenter').load('BcustomerChart');
 			}
 			
 			function Bheader(){
+				$('#pagename').val('BpageHeader');
 				$('#Bcenter').load('BpageHeader');
 			}
 			
 			function Bfooter(){
+				$('#pagename').val('BpageFooter');
 				$('#Bcenter').load('BpageFooter');
 			}
 			
 			function Bmain(){
+				$('#pagename').val('BpageMain');
 				$('#Bcenter').load('BpageMain');
 			}
 			
 			function Bmainlist() {
+				$('#pagename').val('Bmainlist');
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
 			
@@ -1289,6 +1304,9 @@
 				<c:if test="${result != ''}">
 					${result}
 				</c:if>
+				<c:if test="${result == null}">
+					<%@ include file="./BpageMain.jsp" %>
+				</c:if>
 			</div>
 		</div>
 	
@@ -1323,9 +1341,10 @@
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
 					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
-					<li class="side">배송 및 세금</li>
-					<li class="side">주문관리</li>
-					<li class="side">결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;">배송 및 세금</li>
+					<li class="side" style="cursor: pointer; user-select: none;">주문관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;">결제관리</li>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bpm()">페이지관리</li>
 				</ul>
 			</div>
 			<input type="hidden" id="selected">

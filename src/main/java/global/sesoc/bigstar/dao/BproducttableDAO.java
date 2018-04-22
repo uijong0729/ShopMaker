@@ -1,6 +1,7 @@
 package global.sesoc.bigstar.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class BproducttableDAO implements BproducttableMapper {
 
 		return session.getMapper(BproducttableMapper.class).selectbproducttable(productcode);
 	}
+	
 
 	@Override
 	public ArrayList<Bproducttable> selectkind() {
@@ -57,6 +59,13 @@ public class BproducttableDAO implements BproducttableMapper {
 
 	public int delProduct(String pc) {
 		return session.getMapper(BproducttableMapper.class).delProduct(pc);
+	}
+
+
+	@Override
+	public Bproducttable getCart(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BproducttableMapper.class).getCart(map);
 	}
 
 }

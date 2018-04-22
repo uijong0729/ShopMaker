@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Bproducttable {
 
-	public Bproducttable(String productname, int productprice, int productquantity, int productsize,
+	public Bproducttable(String productcode, String productname, int productprice, int productquantity, int productsize,
 			String productcolor, String productspec, String productkind, String membercode) {
 		super();
+		this.productcode = productcode;
 		this.productname = productname;
 		this.productprice = productprice;
 		this.productquantity = productquantity;
