@@ -33,21 +33,21 @@
 			<center>
 				<a href="#">
 					<div id="header_outer" class="header_menu">
-						<div tabindex="0" id="text_temp0" style="background: #f9f9f9; border: none;">Outer</div><br>---<br>Coat&amp;Jacket
+						<div tabindex="0" id="text_temp0" style="background: #f9f9f9; border: none;"><b>Outer</b></div>---<br><div tabindex="0" id="text_temp1" style="background: #f9f9f9; border: none;">Coat&amp;Jacket</div>
 					</div>
 				</a>
 					<div id="header_top" class="header_menu">
-						<b>Top</b><br>---<br>Shirt&amp;Hoodie
+						<div tabindex="0" id="text_temp2" style="background: #f9f9f9; border: none;"><b>Top</b></div>---<br><div tabindex="0" id="text_temp3" style="background: #f9f9f9; border: none;">Shirt&amp;Hoodie</div>
 					</div>
 				</a>
 				<a href="#">
 					<div id="header_bottom" class="header_menu">
-						<b>Bottom</b><br>---<br>Jean&amp;Slacks
+						<div tabindex="0" id="text_temp4" style="background: #f9f9f9; border: none;"><b>Bottom</b></div>---<br><div tabindex="0" id="text_temp5" style="background: #f9f9f9; border: none;">Jean&amp;Slacks</div>
 					</div>
 				</a>
 				<a href="#">
 					<div id="header_shoes" class="header_menu">
-						<b>Shoes</b><br>---<br>Dress&amp;Running
+						<div tabindex="0" id="text_temp6" style="background: #f9f9f9; border: none;"><b>Shoes</b></div>---<br><div tabindex="0" id="text_temp7" style="background: #f9f9f9; border: none;">Dress&amp;Running</div>
 					</div>
 				</a>
 			</center>
