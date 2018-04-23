@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./resources/css/Bpage/bproductReviewread.css">
+<link rel="stylesheet" href="./resources/css/Bpage/bproductReviewread.css?ver=1">
 <title>Insert title here</title>
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/getReview.css">
+<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/getReview.css?ver=1">
 <script type="text/javascript">
 
 $(document).ready(function(){
