@@ -82,11 +82,6 @@ public class HomeController {
 		return "Aviews/Amember/Login";
 	}
 	
-	@RequestMapping(value="goBmain", method=RequestMethod.GET)
-	public String goBmain() {
-		
-		return "Bviews/Bmain/Bmain";
-	}
 	
 	@RequestMapping(value="preview", method=RequestMethod.GET)
 	public String preview() {
