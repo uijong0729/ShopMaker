@@ -69,6 +69,10 @@ public String getReviewimage() {
 public void setReviewimage(String reviewimage) {
 	this.reviewimage = reviewimage;
 }
+public void setReviewimage(String path, String pathD){
+	String productImgPathArr[] = path.split(pathD);
+	this.reviewimage = productImgPathArr[0].trim();
+}
 public String getProductcode() {
 	return productcode;
 }

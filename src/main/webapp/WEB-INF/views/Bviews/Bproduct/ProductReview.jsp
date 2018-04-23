@@ -13,6 +13,7 @@
 
 $(document).ready(function(){
 	
+	
 	$('#inquiryBtn').on('click', function(){
 		location.href="goProductReviewWrite?productcode="+${productDetailList[0].productcode};
 	});
@@ -22,14 +23,14 @@ $(document).ready(function(){
 
 function reviewContent(code, image, content){
 	var reviewImage = '<td colspan="4" style="height:auto;">';
-		reviewImage += '<img style="width: 50%;" src="' + image + '" class="reviewclass reviewimage">';
+		reviewImage += '<img style="height:200px; width:auto;" src=./resources/image/' + image + ' class="reviewclass reviewimage">';
 		reviewImage += '</td>';
 	var	reviewContent = '<td colspan="4">' + content + '</td>';
 	var reviewBtn = '<c:if test="${Amember.membercode ==Review.membercode }">';
 		reviewBtn += '<td  colspan="4">';
 		reviewBtn += '<a href="goBproductdetail?productname=${productDetailList[0].productname}"><p class="listbtn" style="cursor: pointer">목록</p></a>';
 		reviewBtn += '<a href="updateReview?reviewcode=${review.reviewcode}"><p class="listbtn"  style="cursor: pointer">수정</p></a>';
-		reviewBtn += '<a href="deleteReview?reviewcode=${review.reviewcode}"><p class="listbtn" style="cursor: pointer">삭제</p></a>';
+		reviewBtn += '<p class="listbtn" style="cursor: pointer" onclick="javascript:delReview(' + code + ')">삭제</p>';
 		reviewBtn += '</c:if>';
 		reviewBtn += '</td>';
 	if ($('#reviewImage' + code).html() == "") {
@@ -44,6 +45,15 @@ function reviewContent(code, image, content){
 		$('#reviewBtn' + code).html("");
 		return;
 	}
+}
+
+function delReview(code) {
+	/* var productname = $('#productname').val();
+	alert(productname);
+	var url = 'delReview?reviewcode=' + code + '&productname=' + productname;
+	*/
+	var url = 'delReview?reviewcode=' + code;
+	location.href=url;
 }
 
 /*  
@@ -99,6 +109,6 @@ function reviewContent(code, image, content){
 --%>
 				</div>
 		</form>
-	
+	<input type="hidden" id="productname" value="${productname}">
 </body>
 </html>

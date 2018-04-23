@@ -11,5 +11,7 @@ public interface BreviewtableMapper {
 	public int insertReview(Breviewtable bReviewtable);
 
 	public Breviewtable selectBreviewtable(String reviewcode);
+
+	public void delReview(String reviewcode);
 	
 }
