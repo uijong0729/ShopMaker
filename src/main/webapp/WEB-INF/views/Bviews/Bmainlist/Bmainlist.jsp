@@ -11,8 +11,6 @@
             position: absolute;
             text-align: center;
          }
-         
-         
       </style>
       <script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
       <script type="text/javascript">
@@ -28,32 +26,8 @@
                $('#div' + i).css("margin-left", ((x * 25) - 1) + "%");
                $('#div' + i).css("margin-top", (y * 300) + "px");
             }
-            
-            
-            var myImage=document.getElementById("mainImage");
-            var imageArray=["1.jpg","2.jpg","3.jpg","4.jpg"];
-            var imageIndex=0;
-
-            function changeImage(){
-               myImage.setAttribute("src",imageArray[imageIndex]);
-               imageIndex++;
-               if(imageIndex>=imageArray.length){
-                  imageIndex=0;
-               }
-            }
-            setInterval(changeImage,3000);
-
-
-         setTimeout(function() {
-            
-
-
-            
-         }, 3000);
-
-
-
          });
+         
          function check() {
             var rows = document.getElementById('rows').value;
             $('#Bcenter').load("Bmainlist?rows=" + rows);

@@ -206,8 +206,10 @@ public class BproductdetailController {
 		return "redirect:goBproductdetail?productname="+productname;
 	}*/
 	
+	
+	
 	/*
-	 * 상품 후기 등록
+	 * 상품 후기 등록 
 	 * 
 	 * 원용수
 	 * */
@@ -241,7 +243,14 @@ public class BproductdetailController {
 		
 		Breviewtable bReviewtable = new Breviewtable();
 		
-		int reviewscore = 3;
+		int reviewscore = 0;
+		
+		/* 
+		 * JSP에서 customercode, membercode 실제 값 매핑 필요!
+		 * - String customercode="1";
+		 * - String membercode="36";
+		 * */
+		
 		String customercode="1";
 		String membercode="36";
 		
@@ -269,6 +278,11 @@ public class BproductdetailController {
 		return str;
 	}
 	
+	/*
+	 * 파일 다운로드 기능 
+	 * 
+	 * 원용수
+	 * */
 	
 	@RequestMapping(value="download", method= RequestMethod.GET)
 	public void download(String reviewcode, HttpServletResponse response){
@@ -335,7 +349,11 @@ public class BproductdetailController {
 	}
 	
 	@RequestMapping(value="Bpurchaseform", method=RequestMethod.GET)
-	public String Bpurchaseform() {
+	public String Bpurchaseform(HttpSession session, Model model) {
+		
+		Bcustomer bCustomer = (Bcustomer) session.getAttribute("Blogin");
+		
+		model.addAttribute("bCustomer", bCustomer);
 		
 		return "Bviews/Bpurchase/Bpurchaseform";
 	}
