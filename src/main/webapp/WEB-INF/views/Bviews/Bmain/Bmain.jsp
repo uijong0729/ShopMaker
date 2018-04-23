@@ -14,7 +14,6 @@
 		
 			$(document).ready(function() {
 				var windowHeight = $( window ).height();
-				$('#Bcenter').css("height", windowHeight + "px");
 				
 				//탭 css변화
 				$(".tabs").click(function() {
@@ -38,8 +37,7 @@
 				$('.text').addAttr("contenteditable", "true");
 				$('.divSelectForDrag').css("background", "#ffffff");
 				$('.imageForDrag').css("visibility", "visible");
-				
-				
+				$('#pagename').val('BpageMain');
 			});
 			
 			$(document).mousedown(function(e) {
@@ -1150,31 +1148,37 @@
 			//매출관리 링크
 			function Bsale(){
 				$('#pagename').val('BsaleChart');
+				$('#pagename').val('BsaleChart');
 				$('#Bcenter').load('BsaleChart');
 			}
 			
 			//고객관리 링크
 			function Bcustomer(){
 				$('#pagename').val('BcustomerChart');
+				$('#pagename').val('BcustomerChart');
 				$('#Bcenter').load('BcustomerChart');
 			}
 			
 			function Bheader(){
-				$('#pagename').val('BpageHeader');
-				$('#Bcenter').load('BpageHeader');
+				$('#pagename').val('Bheader');
+				$('#pagename').val('Bheader');
+				$('#Bcenter').load('Bheader');
 			}
 			
 			function Bfooter(){
-				$('#pagename').val('BpageFooter');
-				$('#Bcenter').load('BpageFooter');
+				$('#pagename').val('Bfooter');
+				$('#pagename').val('Bfooter');
+				$('#Bcenter').load('Bfooter');
 			}
 			
 			function Bmain(){
+				$('#pagename').val('BpageMain');
 				$('#pagename').val('BpageMain');
 				$('#Bcenter').load('BpageMain');
 			}
 			
 			function Bmainlist() {
+				$('#pagename').val('Bmainlist?rows=4');
 				$('#pagename').val('Bmainlist');
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
@@ -1199,7 +1203,6 @@
 				$('.button').css("resize", "none");
 				$('.text').css("resize", "none");
 				$('.image').css("resize", "none");
-				
 				
 				$('#savepage').val($('#BcenterOuter').html());
 				$('#savepagefrm').submit();
@@ -1273,7 +1276,6 @@
 			.Bcenter {
 				text-align: center;
 				width: 100%;
-				height: 100%;
 			}
 			#mask {
 	            position:absolute;
@@ -1304,7 +1306,7 @@
 		
 		<!-- 중앙 화면 -->
 		<div id="BcenterOuter">
-			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height: 2000px;">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%;">
 				<c:if test="${result != ''}">
 					${result}
 				</c:if>

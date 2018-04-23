@@ -69,5 +69,9 @@
 		delete from atemplatetable
 		where templatecode like #{membercode} || '%'
 	</delete>
+	
+	<select id="getPage" parameterType="String" resultType="Atemplate">
+		select * from atemplatetable where templatecode=#{link}
+	</select>
 
 </mapper>

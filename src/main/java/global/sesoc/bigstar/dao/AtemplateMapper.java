@@ -14,5 +14,7 @@ public interface AtemplateMapper {
 
 	public void deleteShop(String membercode);
 	
+	public Atemplate getPage(String link);
+	
 	
 }

@@ -16,9 +16,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
+<%-- 	<header>
 		<%@ include file="Bheader.jsp" %>
-	</header>
+	</header> --%>
 
 		<div id=slide_container>
 			<div id="slide" class="slides" tabindex="0">
@@ -169,9 +169,9 @@
 		<br>
 		
 	<!--footer-->
-	<footer>
+	<%-- <footer>
 		<%@ include file="Bfooter.jsp" %>
-	</footer>
+	</footer> --%>
 		
 		
 	<script type="text/javascript" src="./resources/js/slideshow.js"></script>
