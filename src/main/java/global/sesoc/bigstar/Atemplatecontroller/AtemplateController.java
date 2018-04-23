@@ -126,4 +126,12 @@ public class AtemplateController {
 		
 		return "Bviews/Bmain/Bmain";
 	}
+	
+	
+	@RequestMapping(value = "deleteShop", method = RequestMethod.GET)
+	public String deleteShop(String membercode) {
+		adao.deleteShop(membercode);
+		
+		return "Aviews/Amember/Amypage";
+	}
 }

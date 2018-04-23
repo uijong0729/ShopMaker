@@ -43,4 +43,13 @@ public class AtemplateDAO implements AtemplateMapper {
 		return at;
 	}
 
+	public void deleteShop(String membercode) {
+		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
+		try {
+			mapper.deleteShop(membercode);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
