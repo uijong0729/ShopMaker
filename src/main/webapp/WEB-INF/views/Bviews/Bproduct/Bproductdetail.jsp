@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
 	$(document).ready(function() {
+
 		$('.wating_Img').mouseenter(function() {
 			$('.showingImg').attr("src", $(this).attr("src"));
 		});
@@ -67,14 +71,30 @@
 			});
 		});
 		
+		
 	});
 </script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
 <script type="text/javascript">
+
+
 function gopurchaseform() {
 	location.href="Bpurchaseform";
 }
+
 </script>
+
+<style type="text/css">
+
+.productQty
+{
+	width: 50px;
+	height: 27px;
+	text-align: center;
+}
+</style>
+
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -97,30 +117,40 @@ function gopurchaseform() {
                 <form action="detailaddOrder.do">
                     <div class="info_box1">
                         <p class="product_name">
-                            <h3>${productDetailList[0].productname}</h3>
+                            <h3><%-- ${productDetailList[0].productname} --%></h3>
                         </p>
                     </div>
                     <br>
                     <table class="Info_table">
                         <tr>
+                            <td>상품명</td>
+                            <td><h3 style="text-align:justify;margin-top: 15px;">${productDetailList[0].productname}</h3></td>
+                        </tr>
+                        <tr>
                             <td>가격</td>
-                            <td><span>${productDetailList[0].productprice}</span></td>
+                            <td><fmt:formatNumber value="${productDetailList[0].productprice}" type="currency"/></td>
                         </tr>
                         <tr>
                             <td>배송비</td>
                             <td>30,000원 이상 무료, 미만 2,500원</td>
                         </tr>
                         <tr>
-                            <td>색상</td>
-                            <td>색상을 선택해 주세요 <br> 
+                            <td>선택사항</td>
+                            <td style="size: 5px;">색상 및 사이즈를 선택해 주세요 <br> 
                             	<select class="option_selecter" id="color_selecter" onchange="color_select(this.value)">
-                                      <c:forEach var="color" items="${productDetailList }" varStatus="loopStat">
-									 	<option value="${color.productcolor}">${color.productcolor}</option>
+                                      <c:forEach var="product" items="${productDetailList }" varStatus="loopStat">
+									 	<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>
 									 </c:forEach>      
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="margin-bottom: 30px;">
+                        <td>수량</td>
+                        <td><input type="number" class="productQty" min="0" max="50" step="1" value="0" size="6" name="productQty"></td>
+                        
+                        </tr>
+                        
+                        <%-- <tr>
                             <td>사이즈</td>
                             <td>사이즈를 선택해 주세요 <br> <select class="option_selecter"
                                 id="size_selecter" onchange="size_select(this.value)">
@@ -129,19 +159,20 @@ function gopurchaseform() {
 									 </c:forEach>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> --%>
+                        <!-- <tr>
                             <td colspan="2">옵션은 5개 까지 추가 가능합니다 &nbsp;&nbsp;&nbsp;
                                 <button type="button" onclick="valueShow()" class="evtBtn">옵션추가</button>
                             </td>
-                        </tr>
-                        <tr id="amount_set_TR">
+                        </tr> -->
+                        <!-- <tr id="amount_set_TR">
                             <td colspan="2" class="amount_set_TD"></td>
-                        </tr>
+                        </tr> -->
                     </table>
-	                    <input type="hidden" name="index"> 
-	                    <input type="hidden" id="base_price"> 
-	                    <input type="hidden" id="p_common_name"> 
+                    <br>
+	                    <input type="hidden" name="index">
+	                    <input type="hidden" id="base_price">
+	                    <input type="hidden" id="p_common_name">
 	                    <input type="hidden" name="r_no">
                     <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
                 </form>

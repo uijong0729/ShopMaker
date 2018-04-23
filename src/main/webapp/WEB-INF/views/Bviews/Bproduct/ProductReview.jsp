@@ -92,11 +92,11 @@ function delReview(code) {
 								<td>작성자: Bcustomer.customername</td>
 								<td>${review.reviewdate }</td>
 							</tr>
-							<tr id="reviewBtn${review.reviewcode}" ></tr>
 							<tr id="reviewImage${review.reviewcode}" >
 							
 							</tr>
 							<tr id="reviewContent${review.reviewcode}" ></tr>
+							<tr id="reviewBtn${review.reviewcode}" ></tr>
 						</table>
 					</c:forEach>
 <%-- 							
