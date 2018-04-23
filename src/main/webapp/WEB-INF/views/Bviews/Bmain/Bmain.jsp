@@ -1524,7 +1524,7 @@
 			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
 			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
 			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
-			3번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
+			4번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
 			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
 			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
 		</div>
