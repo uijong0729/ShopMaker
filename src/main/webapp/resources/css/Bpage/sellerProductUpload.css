@@ -40,6 +40,17 @@
     border-collapse: collapse;
     
 }
+
+.optionBox1 {
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    border: 1.5px solid rgb(207, 207, 207);
+    font-size: 14px;
+    border-collapse: collapse;
+    
+}
+
 .optionBox td{
     height: 40px;
     border:  1px solid rgb(207, 207, 207);
@@ -55,6 +66,43 @@
     padding-left: 20px;
     text-align: left;
 }
+
+.optionBox1 tr td:nth-child(1){
+    width: 20%;
+    background-color: rgb(247, 247, 247);
+    padding-left: 25px;
+}
+
+.optionBox1 tr td:nth-child(2){
+    width: 40%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.optionBox1 tr td:nth-child(3){
+    width: 10%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.optionBox1 tr td:nth-child(4){
+    width: 10%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.optionBox1 tr td:nth-child(5){
+    width: 10%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.optionBox1 tr td:nth-child(6){
+    width: 10%;
+    padding-left: 20px;
+    text-align: left;
+}
+
 select{
     width: 200px;
     height: 30px;
@@ -243,7 +291,7 @@ select{
 .filebox .upload-name {
     width:255px;
     display: inline-block;
-    padding: .5em .75em;/* label占쎌벥 占쎈솭占쎈뎃揶쏅�⑤궢 占쎌뵬燁삼옙 */ 
+    padding: .5em .75em;/* label�뜝�럩踰� �뜝�럥�넮�뜝�럥�럠�뤆�룆占썩뫀沅� �뜝�럩逾х뇖�궪�삕 */ 
     font-size: inherit;
     font-family: inherit;
     line-height: normal;
@@ -252,9 +300,22 @@ select{
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
-    -webkit-appearance: none; /* 占쎄퐬占쎌뵠占쎈뼒�뇡占� 占쎌뇚占쎌굨 揶쏅Ŋ�뀤疫뀐옙 */ 
+    -webkit-appearance: none; /* �뜝�럡�맟�뜝�럩逾졾뜝�럥堉믭옙�눀�뜝占� �뜝�럩�뇶�뜝�럩援� �뤆�룆흮占쎈�ㅷ뼨�먯삕 */ 
     -moz-appearance: none;
     appearance: none; 
+}
+
+.submitBtn1{
+    width: 150px;
+    height: 60px;
+    background-color: rgb(238, 238, 238);
+    margin: auto;
+    border: 1px;
+    text-shadow: 0px 0px 0.5px rgb(0, 0, 0);
+    font-size: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;    
 }
 
 .submitBtn{
@@ -265,9 +326,7 @@ select{
     border: none;
     text-shadow: 0px 0px 0.5px rgb(0, 0, 0);
     font-size: 25px;
-    margin-top: 50px;
-    
-    
+    margin-top: 50px;    
 }
 
 .dtfilebox{
@@ -301,7 +360,7 @@ select{
 .dtfilebox .dtupload-name {
     width:135px;
     display: inline-block;
-    padding: .5em .75em;/* label占쎌벥 占쎈솭占쎈뎃揶쏅�⑤궢 占쎌뵬燁삼옙 */ 
+    padding: .5em .75em;/* label�뜝�럩踰� �뜝�럥�넮�뜝�럥�럠�뤆�룆占썩뫀沅� �뜝�럩逾х뇖�궪�삕 */ 
     font-size: inherit;
     font-family: inherit;
     line-height: normal;
@@ -310,7 +369,7 @@ select{
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
-    -webkit-appearance: none; /* 占쎄퐬占쎌뵠占쎈뼒�뇡占� 占쎌뇚占쎌굨 揶쏅Ŋ�뀤疫뀐옙 */ 
+    -webkit-appearance: none; /* �뜝�럡�맟�뜝�럩逾졾뜝�럥堉믭옙�눀�뜝占� �뜝�럩�뇶�뜝�럩援� �뤆�룆흮占쎈�ㅷ뼨�먯삕 */ 
     -moz-appearance: none;
     appearance: none; 
 }
