@@ -14,9 +14,8 @@
 	</header>
 		<div style="width: 100%; height: 100%; text-align: center;">
 			${Amember.id}님 환영합니다<br>
-			<button onclick="location.href='goBmain'">쇼핑몰 생성</button> <button onclick="location.href='goBmain'">쇼핑몰 관리</button> <button>쇼핑몰 삭제</button>
+			<button onclick="location.href='goBmain'">쇼핑몰 생성</button> <button onclick="location.href='goBmain'">쇼핑몰 관리</button> <button onclick="location.href='deleteShop?membercode=${Amember.membercode}'">쇼핑몰 삭제</button>
 		</div>
-		
 		
 	<footer>
 		<%@ include file="../footer.jsp" %>
