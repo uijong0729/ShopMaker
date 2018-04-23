@@ -74,7 +74,7 @@
 		
 	});
 </script>
-<link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css?ver=3"/>
+<link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
 <script type="text/javascript">
 
 
