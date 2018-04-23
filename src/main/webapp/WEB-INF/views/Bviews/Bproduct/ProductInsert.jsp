@@ -27,6 +27,12 @@
 			$('.forDelete').remove();
 			var list = ${json}; 
 			var str = '';
+			str += '<tr><td>상품 이름</td>';
+			str += '<td>상품 가격</td>';
+			str += '<td>상품 크기</td>';
+			str += '<td>상품 색상</td>';
+			str += '<td>상품 수량</td>';
+			str += '<td>상품 삭제</td></tr>';
 			for (let ele of list) {
 				if (ele.productkind == typekind) {
 					str += '<tr class="forDelete">';
@@ -35,11 +41,11 @@
 					str += '<td class="classTd td3">' + ele.productsize + '</td>';
 					str += '<td class="classTd td4">' + ele.productcolor + '</td>';
 					str += '<td class="classTd td5">' + ele.productquantity + '</td>';
-					str += '<td class="classTd td6"><input type="button" class="submitBtn" onclick="delProduct(' + ele.productcode + ');"style="cursor: pointer" value="삭제"></td>';
+					str += '<td class="classTd td6"><input type="button" class="submitBtn1" onclick="delProduct(' + ele.productcode + ');"style="cursor: pointer" value="삭제"></td>';
 					str += '</tr>';
 				}
 			}
-			$('#optionBox').html($('#optionBox').html() + str);
+			$('#optionBox').html($('#optionBox1').html() + str);
 		}
 	}
 	
@@ -141,20 +147,28 @@ submitBtn {
 							<td>상품상세사진<br>(가로 800px 이하의 사진)
 							</td>
 							<td>
-								<div name="dtimgbox1">
-									<p class="imgbox_text">
-										<b style="font-size: 14px;">&lt; 제품 상세이미지 &gt;</b>
-									</p>
+								<div name="dtimgbox2">
 									<div class="dtimg_wrap">
-										<img id="img3" />
+										<img id="img4" />
 									</div>
 									<div class="dtfilebox">
 										<input class="dtupload-name" value="파일선택" readOnly> <label
-											for="input_img3">업로드</label> <input type="file"
-											id="input_img3" class="dtupload-hidden">
+											for="input_img4">업로드</label> <input type="file"
+											id="input_img4" class="dtupload-hidden">
 									</div>
 								</div>
-
+								
+								<div name="dtimgbox2">
+									<div class="dtimg_wrap">
+										<img id="img4" />
+									</div>
+									<div class="dtfilebox">
+										<input class="dtupload-name" value="파일선택" readOnly> <label
+											for="input_img4">업로드</label> <input type="file"
+											id="input_img4" class="dtupload-hidden">
+									</div>
+								</div>
+								
 								<div name="dtimgbox2">
 									<div class="dtimg_wrap">
 										<img id="img4" />
