@@ -1101,7 +1101,7 @@
 				$('#Bcenter').css("background", "");
 			}
 			function BmemberListPage(){
-				$('#pagename').val('Bmypage');
+				$('#pagename').val('BmemberListPage');
 				$('#Bcenter').load('BmemberListPage?membercode=${Amember.membercode}');
 				$('#Bcenter').css("background", "");
 			}
@@ -1180,7 +1180,7 @@
 			}
 			
 			function goBproductdetail() {
-				$('#Bcenter').load('goBproductdetail');
+				$('#Bcenter').load('goBproductdetail?productname=fake&productcode=0');
 			}
 			function goBproductinsert() {
 				$('#Bcenter').load('goBproductinsert');
@@ -1196,6 +1196,10 @@
 				$('.text').removeAttr("contenteditable");
 				$('.divSelectForDrag').css("background", "#00000000");
 				$('.imageForDrag').css("visibility", "hidden");
+				$('.button').css("resize", "none");
+				$('.text').css("resize", "none");
+				$('.image').css("resize", "none");
+				
 				
 				$('#savepage').val($('#BcenterOuter').html());
 				$('#savepagefrm').submit();
@@ -1520,7 +1524,7 @@
 			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
 			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
 			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
-			3번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
+			4번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
 			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
 			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
 		</div>

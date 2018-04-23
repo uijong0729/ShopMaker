@@ -209,17 +209,17 @@ function changeColor(){
 		$(this).css('border', '1px solid black');
 				if(id == "address")
 				{						
-					$('#addRow').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px">주소</div>'
+					$('#addRow').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
 					+ '<div class="ib"><input id="Baddress" style="width: 200px" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
-					$('#addRow').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px">전화번호</div>'
+					$('#addRow').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px background: #ffffff;">전화번호</div>'
 							+ '<div class="ib"><input id="Bhp" style="width: 200px" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
-					$('#addRow').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px">이름</div>'
+					$('#addRow').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px background: #ffffff;">이름</div>'
 							+ '<div class="ib"><input id="Bname" style="width: 200px" name="customername" required="required"></div></li>');
 				}
 	}
@@ -249,7 +249,7 @@ function changeColor(){
 <body style="text-align: center; width: 100%; height: 100%;">
 <div style="display: inline-block;">
 
-		<h1 id="login_title" tabindex="0">회원가입</h1>
+		<h1 id="text_title" tabindex="0" style="background: #ffffff">회원가입</h1>
 		<hr>
 		<form id="Bform" method="post" action="Bwellcome">
 		<div style="display: inline-block; position: static; margin-top: 20px;">

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
-	href="./resources/css/Bpage/sellerProductUpload.css?ver=1" />
+	href="./resources/css/Bpage/sellerProductUpload.css?ver=4" />
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
@@ -181,55 +181,54 @@ submitBtn {
 		<!-- 제 2탭 -->
 		<div id="tabs-2">
 
-			<div class="sellerProduct_wrapper">
-				<div class="sellerProduct_header">
-					<p class="sellerProduct_title1">상품삭제_</p>
-					<p class="sellerProduct_titl2">삭제할 상품 종류를 선택하세요?</p>
-					<p>
-						<select id="vmMnDataSize" name="dataVolumn">
-							<option id="selectDataSize" value="">선택</option>
-							<c:forEach items="${selectkind}" var="s">
-								<option value="${s.productkind }">${s.productkind }</option>
-							</c:forEach>
-						</select>
-					</p>
+         <div class="sellerProduct_wrapper">
+            <div class="sellerProduct_header">
+               <p class="sellerProduct_title1">상품삭제_</p>
+               <p class="sellerProduct_titl2">삭제할 상품 종류를 선택하세요?</p>
+               <p>
+                  <select id="vmMnDataSize" name="dataVolumn">
+                     <option id="selectDataSize" value="">선택</option>
+                     <c:forEach items="${selectkind}" var="s">
+                        <option value="${s.productkind }">${s.productkind }</option>
+                     </c:forEach>
+                  </select>
+               </p>
 
-				</div>
-				<div id="deletelist">
-					<form method="post" action="deleteproduct">
-						<table id="optionBox" class="optionBox">
-							<tr>
-								
-								<td>상품 이름</td>
-								<td>상품 가격</td>
-								<td>상품 크기</td>
-								<td>상품 색상</td>
-								<td>상품 수량</td>
-								<td>상품 삭제</td>
-							</tr>
-							<c:forEach items="${allproduct}" var="a">
-								<tr class="forDelete">
-							
-									<td class="classTd td1">${a.productname }</td>
-									<td class="classTd td2">${a.productprice }</td>
-									<td class="classTd td3">${a.productsize }</td>
-									<td class="classTd td4">${a.productcolor }</td>
-									<td class="classTd td5">${a.productquantity }</td>
-									<td class="classTd td6"><input type="button" class="submitBtn" onclick="javascript:delProduct('${a.productcode}')" style="cursor: pointer" value="삭제"></td>
-								</tr>
-							</c:forEach>
-						</table>
-						<center>
-							<input type="submit" class="submitBtn" style="cursor: pointer"value="삭제">
-						</center>
-					</form>
-				</div>
-				
-				
-			</div>
+            </div>
+            <div id="deletelist">
+               <form method="post" action="deleteproduct">
+                  <table id="optionBox" class="optionBox1">
+                     <tr>                       
+                        <td>상품 이름</td>
+                        <td>상품 가격</td>
+                        <td>상품 크기</td>
+                        <td>상품 색상</td>
+                        <td>상품 수량</td>
+                        <td>상품 삭제</td>
+                     </tr>
+                     <c:forEach items="${allproduct}" var="a">
+                        <tr class="forDelete">
+                     
+                           <td class="classTd td1">${a.productname }</td>
+                           <td class="classTd td2">${a.productprice }</td>
+                           <td class="classTd td3">${a.productsize }</td>
+                           <td class="classTd td4">${a.productcolor }</td>
+                           <td class="classTd td5">${a.productquantity }</td>
+                           <td class="classTd td6"><input type="button" class="submitBtn1" onclick="javascript:delProduct('${a.productcode}')" style="cursor: pointer" value="삭제"></td>
+                        </tr>
+                     </c:forEach>
+                  </table>
+                  <center>
+                     <input type="submit" class="submitBtn1" style="cursor: pointer"value="삭제">
+                  </center>
+               </form>
+            </div>
+            
+            
+         </div>
 
 
-		</div>
+      </div>
 
 
 	</div>
