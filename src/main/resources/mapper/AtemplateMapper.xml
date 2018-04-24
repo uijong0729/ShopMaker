@@ -64,5 +64,14 @@
 		select * from atemplatetable
 		where templatecode = #{string}
 	</select>
+	
+	<delete id="deleteShop" parameterType="String">
+		delete from atemplatetable
+		where templatecode like #{membercode} || '%'
+	</delete>
+	
+	<select id="getPage" parameterType="String" resultType="Atemplate">
+		select * from atemplatetable where templatecode=#{link}
+	</select>
 
 </mapper>

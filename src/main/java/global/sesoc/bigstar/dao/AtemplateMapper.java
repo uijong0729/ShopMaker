@@ -11,6 +11,10 @@ public interface AtemplateMapper {
 	public void savepage(Atemplate at);
 
 	public Atemplate loadpage(String string);
+
+	public void deleteShop(String membercode);
+	
+	public Atemplate getPage(String link);
 	
 	
 }

@@ -211,8 +211,8 @@ function changeColor(){
 		$(this).css('border', '1px solid black');
 				if(id == "address")
 				{						
-					$('#addRow').append('<li class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
 					+ '<div class="ib"><input id="Baddress" class="forminput" style="width: 200px" name="customeraddress" required="required"></div></li>');
+					$('#addRow').append('<li class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
 				}
 				else if(id == "phone")
 				{
@@ -252,7 +252,7 @@ function changeColor(){
 
 <div style="display: inline-block;">
 
-		<h1 id="login_title" tabindex="0">회원가입</h1>
+		<h1 id="text_title" tabindex="0" style="background: #ffffff">회원가입</h1>
 		<hr>
 		<form id="Bform" class="Bform" method="post" action="Bwellcome">
 		<div style="display: inline-block; position: static; margin-top: 20px;">

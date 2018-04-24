@@ -24,7 +24,6 @@ public class AtemplateDAO implements AtemplateMapper {
 
 	public void savepage(Atemplate at) {
 		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
-		
 		try {
 			mapper.savepage(at);
 		} catch(Exception e) {
@@ -42,5 +41,27 @@ public class AtemplateDAO implements AtemplateMapper {
 		}
 		return at;
 	}
+
+	public void deleteShop(String membercode) {
+		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
+		try {
+			mapper.deleteShop(membercode);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Atemplate getPage(String link) {
+		// TODO Auto-generated method stub
+		AtemplateMapper mapper = session.getMapper(AtemplateMapper.class);
+		Atemplate at = new Atemplate();
+		try {
+			at = mapper.getPage(link);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return at;
+	}
+	
 
 }

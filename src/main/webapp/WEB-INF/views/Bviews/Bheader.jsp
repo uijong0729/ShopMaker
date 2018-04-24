@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="/bigstar/resources/css/headerfooter.css?ver=5">
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript">
+			function myShop(code) {
+				location.href="goMyShop?code=" + code + "&page=BpageMain";
+			}
 		</script>
 		<style type="text/css">
 			.button{
@@ -37,6 +40,7 @@
 					<c:if test="${Amember != null }">
 						<a class="w3-bar-item w3-button" href="javascript:Bsavepage()">저장하기</a>
 						<a class="w3-bar-item w3-button" href="javascript:Bloadpage()">불러오기</a>
+						<a class="w3-bar-item w3-button" href="javascript:myShop(${Amember.membercode})">내 쇼핑몰</a>
 						<a class="w3-bar-item w3-button" href="Logout">로그아웃</a>
 					</c:if>
 				</div>
