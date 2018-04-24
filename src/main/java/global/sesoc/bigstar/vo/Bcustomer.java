@@ -9,6 +9,8 @@ public class Bcustomer {
 	String customerhp;
 	String customername;
 	String membercode;
+	String bpushdate;
+	
 	public Bcustomer(String customercode, String customerid, String customerpw, String customeraddress,
 			String customerhp, String customername, String membercode) {
 		super();
@@ -65,12 +67,20 @@ public class Bcustomer {
 	public void setMembercode(String membercode) {
 		this.membercode = membercode;
 	}
+	public String getBpushdate() {
+		return bpushdate;
+	}
+	public void setBpushdate(String bpushdate) {
+		this.bpushdate = bpushdate;
+	}
+	
 	@Override
 	public String toString() {
 		return "Bcustomer [customercode=" + customercode + ", customerid=" + customerid + ", customerpw=" + customerpw
 				+ ", customeraddress=" + customeraddress + ", customerhp=" + customerhp + ", customername="
 				+ customername + ", membercode=" + membercode + "]";
 	}
+
 	
 
 }

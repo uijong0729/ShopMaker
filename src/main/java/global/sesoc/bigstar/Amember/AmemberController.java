@@ -94,6 +94,7 @@ public class AmemberController {
 		map.put("pw", pw);
 
 		Amember am = AMdao.loginAcustomer(map);
+		session.setAttribute("loginCode", am.getMembercode());
 		String a;
 		a = am.getPaymentexpirationdate();
 		a = "1970-01-01";
@@ -114,6 +115,7 @@ public class AmemberController {
 			return "Aviews/Amember/Login";
 		}else {
 			session.setAttribute("Amember", am);
+			//session.setAttribute("loginCode", am.getMembercode());
 			// model.addAttribute("AloginResult", 2)
 			return "home";
 		}

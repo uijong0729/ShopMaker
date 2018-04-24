@@ -51,6 +51,12 @@ public class BcustomerDAO implements BcustomerMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcustomerMapper.class).BorderList(map);
 	}
+
+	@Override
+	public int countCustomer(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).countCustomer(map);
+	}
 	
 	
 	

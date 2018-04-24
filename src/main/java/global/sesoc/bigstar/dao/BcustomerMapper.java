@@ -14,4 +14,5 @@ public interface BcustomerMapper {
 	public ArrayList<Bcustomer> bCustomerList(String membercode);
 	public int searchBcustomerid(String id);
 	public ArrayList<Bordertable> BorderList(HashMap<String, String> map);
+	public int countCustomer(HashMap<String, Object> map);
 }

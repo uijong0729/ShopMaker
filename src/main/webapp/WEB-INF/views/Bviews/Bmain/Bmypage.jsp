@@ -7,6 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>마이페이지</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		 <link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=1"/>
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/showlist.css?ver=3"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
@@ -154,16 +155,15 @@ $(document).ready(function(){
 function orderList(){
 	var customercode = $('#customercode').val();
 	var membercode = $('#membercode').val();
-	//alert(customercode + " / " +membercode);
 	$.ajax({
 		url: 'getOrderlist',
 		type: 'post',
 		data: {customercode: customercode, membercode: membercode},
 		dataType: 'json',
 		success: function(result){
-			if(result == null)
+			if(result == null || result == '')
 			{
-				$('#addRowTab2').html('<li>구매내역이 없습니다.</li>');
+				$('#addRowTab2').html('<li>주문 내역이 없습니다.</li>');
 			}
 			else
 			{
@@ -330,28 +330,28 @@ function changeColor(){
 	
 				if(id == "id")
 				{						
-					$('#addRowTab1').append('<li id="Bid"><div id="text_id" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">아이디</div>'
-					+ '<div class="ib"><input value="${Blogin.customerid}" readonly="readonly" id="BInId" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
+					$('#addRowTab1').append('<li class="formli" id="Bid"><div id="text_id" tabindex="0" class="ib5 formcol" style="width: 205px;">아이디</div>'
+					+ '<div class="ib"><input class="forminput" value="${Blogin.customerid}" readonly="readonly" id="BInId" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "pw")
 				{
-					$('#addRowTab1').append('<li id="Bpw"><div id="text_pw" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">비밀번호</div>'
-							+ '<div class="ib"><input placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+					$('#addRowTab1').append('<li class="formli" class="formli" id="Bpw"><div id="text_pw" tabindex="0" class="ib5 formcol" style="width: 205px;">비밀번호</div>'
+							+ '<div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "address")
 				{						
-					$('#addRowTab1').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">주소</div>'
-					+ '<div class="ib"><input value="${Blogin.customeraddress}" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
+					$('#addRowTab1').append('<li class="formli" class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5 formcol" style="width: 205px;">주소</div>'
+					+ '<div class="ib"><input class="forminput" value="${Blogin.customeraddress}" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
-					$('#addRowTab1').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">전화번호</div>'
-							+ '<div class="ib"><input value="${Blogin.customerhp}" readonly="readonly" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+					$('#addRowTab1').append('<li class="formli" id="Bphone"><div id="text_hp" tabindex="0" class="ib5 formcol" style="width: 205px;">전화번호</div>'
+							+ '<div class="ib"><input class="forminput" value="${Blogin.customerhp}" readonly="readonly" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
-					$('#addRowTab1').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px; border: 1px solid black">이름</div>'
-							+ '<div class="ib"><input value="${Blogin.customername}" readonly="readonly" id="BInName" style="border: none; width: 200px; text-align: center;" name="customername" required="required"></div></li>');
+					$('#addRowTab1').append('<li class="formli" id="Bname"><div id="text_name" tabindex="0" class="ib5 formcol" style="width: 205px;">이름</div>'
+							+ '<div class="ib"><input class="forminput" value="${Blogin.customername}" readonly="readonly" id="BInName" style="border: none; width: 200px; text-align: center;" name="customername" required="required"></div></li>');
 				}
 	}
 	else
@@ -413,10 +413,14 @@ function changeColor(){
 				  
 				  <!-- 제 1탭 -->
 				  <div id="tabs-1">
-				  	<ul style="list-style: none;" id="addRowTab1">
+				  	<div class="Bform" style="display: inline-block;">
+				  		<ul style="list-style: none;" id="addRowTab1">
 							
-					</ul>	  
-					<div class="submit">수정사항 반영</div>
+						</ul>
+					</div>
+					<div>	  
+						<div class="submit">수정사항 반영</div>
+					</div>
 				  </div>
 				  
 				  <!-- 제 2탭 -->
