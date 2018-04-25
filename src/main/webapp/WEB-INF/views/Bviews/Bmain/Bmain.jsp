@@ -1185,7 +1185,7 @@
 			}
 			
 			function goBproductdetail() {
-				$('#Bcenter').load('goBproductdetail?productname=fake&productcode=0');
+				$('#Bcenter').load('goBproductdetail?productname=너구리&productcode=0');
 			}
 			function goBproductinsert() {
 				$('#Bcenter').load('goBproductinsert');
