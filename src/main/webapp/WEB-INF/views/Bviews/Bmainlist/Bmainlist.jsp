@@ -38,7 +38,9 @@
       </script>
    </head>
    <body>
-      한줄 표시개수 : <input type="text" id="rows"><button onclick="javascript:check();">적용</button><br><br>
+   <div class="forDeleteDiv">
+      	한줄 표시개수 : <input type="text" id="rows"><button onclick="javascript:check();">적용</button>
+   </div><br><br>
       
       <c:forEach items="${nameset}" var="n" varStatus="vars">
          <c:set var="done" value="false" />

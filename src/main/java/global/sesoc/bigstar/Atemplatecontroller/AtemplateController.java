@@ -21,10 +21,10 @@ public class AtemplateController {
 	@RequestMapping(value = "savepage", method=RequestMethod.POST)
 	public String pagesave(HttpServletResponse response, String savepage, String pagename, Model model, HttpSession hs) {
 		response.setHeader("X-XSS-Protection", "0"); //X-XSS공격을 막기위한 방어수단 해제
-		savepage = savepage.replace("<meta", "<!-- <meta");
+		/*savepage = savepage.replace("<meta", "<!-- <meta");
 		savepage = savepage.replace("/meta>", "/meta> -->");
 		savepage = savepage.replace("<title", "<!-- <title");
-		savepage = savepage.replace("/title>", "/title> -->");
+		savepage = savepage.replace("/title>", "/title> -->");*/
 		
 		int size = savepage.length();
 		String[] savedpage = new String[10];

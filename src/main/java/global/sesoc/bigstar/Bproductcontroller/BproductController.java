@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.bigstar.dao.AtemplateDAO;
 import global.sesoc.bigstar.dao.BproducttableDAO;
+import global.sesoc.bigstar.dao.BreviewtableDAO;
 import global.sesoc.bigstar.vo.Atemplate;
 import global.sesoc.bigstar.vo.Bproducttable;
+import global.sesoc.bigstar.vo.Breviewtable;
 import net.sf.json.JSONArray;
 
 @Controller
@@ -25,6 +27,12 @@ public class BproductController {
 	BproducttableDAO Bpdao;
 	@Autowired
 	AtemplateDAO adao;
+	@Autowired
+	BreviewtableDAO RTdao;
+	@Autowired
+	BproducttableDAO PTdao;
+	
+	private String pathD = "☆";
 
 	@RequestMapping(value = "Bmainlist", method = RequestMethod.GET)
 	public String goBmainlilst(Model model) {
@@ -175,13 +183,39 @@ public class BproductController {
 	}
 	
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
-	public String goMyShop(String page, String code, Model model) {
+	public String goMyShop(String page, String code, String productname, String productcode, Model model, HttpSession session) {
 		String link = code + page;
 		Atemplate at = adao.getPage(link);
 		Atemplate header = adao.getPage(code + "Bheader");
 		Atemplate footer = adao.getPage(code + "Bfooter");
 		
-		
+		if (page.equals("Bproductdetail")) {
+			ArrayList<Breviewtable> reviewtableList = RTdao.getReviewtableByName(productname);
+			
+			for (Breviewtable breviewtable : reviewtableList) {
+				if (breviewtable.getReviewimage()==null || breviewtable.getReviewimage().equals("null☆")) {
+					breviewtable.setReviewimage("noimg.jpg");
+				}
+			}
+			
+			for (Breviewtable breviewtable2 : reviewtableList) {
+				/*System.out.println(breviewtable2);
+				if (breviewtable2.getReviewimage().endsWith(pathD) == true) {
+					breviewtable2.setReviewimage(breviewtable2.getReviewimage().substring(0, breviewtable2.getReviewimage().length() - 1));
+				}*/
+				breviewtable2.setReviewimage(breviewtable2.getReviewimage(), pathD);
+			}
+			
+			ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
+			
+			model.addAttribute("productDetailList", productDetailList);
+			session.setAttribute("reviewtableList", reviewtableList);
+			model.addAttribute("productname", productname);
+			model.addAttribute("productcode", productcode);
+			
+			session.setAttribute("productcode", productcode);
+			session.setAttribute("productname", productname);
+		}
 		String bodyContent = "";
 		if (at.getBody0() != null && at.getBody0() != "") {
 			bodyContent += at.getBody0();
@@ -292,5 +326,10 @@ public class BproductController {
 	@RequestMapping(value = "Bfooter", method = RequestMethod.GET)
 	public String Bfooter() {
 		return "Bviews/Bmain/Bfooter";
+	}
+	
+	@RequestMapping(value = "ProductReview", method = RequestMethod.GET)
+	public String ProductReview() {
+		return "Bviews/Bproduct/ProductReview";
 	}
 }

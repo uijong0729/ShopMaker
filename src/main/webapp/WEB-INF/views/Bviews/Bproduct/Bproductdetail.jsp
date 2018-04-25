@@ -11,7 +11,9 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
 	$(document).ready(function() {
-
+	                	
+	                	
+		
 		$('.wating_Img').mouseenter(function() {
 			$('.showingImg').attr("src", $(this).attr("src"));
 		});
@@ -72,6 +74,7 @@
 		});
 		
 		
+		
 	});
 </script>
 <link rel="stylesheet" href="./resources/css/Bpage/Bproductdetail.css"/>
@@ -98,7 +101,7 @@ function gopurchaseform() {
 <title>Insert title here</title>
 </head>
 <body>
-	<input id="productcode" type="hidden" value="${productcode }">
+	<input id="productcode" type="hidden" value="${productcode}">
 	<input id="customercode" type="hidden" value="${Blogin.customercode}">
 	<div class="wrapper">
         <div class="a">
@@ -108,8 +111,8 @@ function gopurchaseform() {
                 </div>
                 <div class="wating_Img_place">
                     <!-- <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg"> -->
-                    <img class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[0].productimage}">
-                	<img class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
+                    <img id="img_1" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[0].productimage}">
+                	<img id="img_2" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
                 </div>
             </diV><!-- 이미지 프리뷰 -->
             
@@ -124,11 +127,11 @@ function gopurchaseform() {
                     <table class="Info_table">
                         <tr>
                             <td>상품명</td>
-                            <td><h3 style="text-align:justify;margin-top: 15px;">${productDetailList[0].productname}</h3></td>
+                            <td><h3 id="Bproductname" style="text-align:justify;margin-top: 15px;">${productDetailList[0].productname}</h3></td>
                         </tr>
                         <tr>
                             <td>가격</td>
-                            <td><fmt:formatNumber value="${productDetailList[0].productprice}" type="currency"/></td>
+                            <td id="Bproductprice"><fmt:formatNumber value="${productDetailList[0].productprice}" type="currency"/></td>
                         </tr>
                         <tr>
                             <td>배송비</td>
@@ -208,7 +211,7 @@ function gopurchaseform() {
 			</div>
            </div><!-- 주문 디테일 -->
         </div>
-        <div style="margin: auto;">
+        <div id="Bproductreview" style="margin: auto;">
 			<%@include file="ProductReview.jsp" %>
 		</div>
         <div class="product_img_place">

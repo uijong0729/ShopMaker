@@ -1173,7 +1173,6 @@
 			
 			function Bmain(){
 				$('#pagename').val('BpageMain');
-				$('#pagename').val('BpageMain');
 				$('#Bcenter').load('BpageMain');
 			}
 			
@@ -1184,15 +1183,18 @@
 			}
 			
 			function goBproductdetail() {
+				$('#pagename').val('Bproductdetail');
 				$('#Bcenter').load('goBproductdetail?productname=fake&productcode=0');
 			}
 			function goBproductinsert() {
+				$('#pagename').val('Bproductinsert');
 				$('#Bcenter').load('goBproductinsert');
 			}
 			function Bsavepage() {
 				alert("저장");
 				
 				$('.forDeleteBtn').css("visibility", "hidden");
+				$('.forDeleteDiv').css("visibility", "hidden");
 				
 				$('#Bcenter').find('[tabindex=0]').removeAttr("tabindex");
 				$('.forDisableDrag').removeAttr("ondragstart");

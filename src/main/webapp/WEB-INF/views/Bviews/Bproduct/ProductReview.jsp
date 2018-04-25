@@ -15,7 +15,7 @@ $(document).ready(function(){
 	
 	
 	$('#inquiryBtn').on('click', function(){
-		location.href="goProductReviewWrite?productcode="+${productDetailList[0].productcode};
+		location.href="goProductReviewWrite?productcode="+'${productDetailList[0].productcode}';
 	});
 	
 });
