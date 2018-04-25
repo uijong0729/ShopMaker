@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=1"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<script src="/bigstar/resources/js/jquery-ui.js"></script>
 <style type="text/css">
@@ -105,6 +106,7 @@ $(document).ready(function(){
 		$('#verticalLayer').css('background', "white");
 		$('#tableLayer').css('background', "black");
 		$('.ib').css('width', '100%');
+		$('.ib5').css('width', '100%');
 		$('#verticalLayer').css('border', '1px solid black');
 	});
 	
@@ -209,18 +211,18 @@ function changeColor(){
 		$(this).css('border', '1px solid black');
 				if(id == "address")
 				{						
-					$('#addRow').append('<li id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
-					+ '<div class="ib"><input id="Baddress" style="width: 200px" name="customeraddress" required="required"></div></li>');
+					+ '<div class="ib"><input id="Baddress" class="forminput" style="width: 200px" name="customeraddress" required="required"></div></li>');
+					$('#addRow').append('<li class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
 				}
 				else if(id == "phone")
 				{
-					$('#addRow').append('<li id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px background: #ffffff;">전화번호</div>'
-							+ '<div class="ib"><input id="Bhp" style="width: 200px" name="customerhp" required="required"></div></li>');
+					$('#addRow').append('<li class="formli" id="Bphone"><div id="text_hp" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">전화번호</div>'
+							+ '<div class="ib"><input id="Bhp" class="forminput" style="width: 200px" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
-					$('#addRow').append('<li id="Bname"><div id="text_name" tabindex="0" class="ib5" style="width: 205px background: #ffffff;">이름</div>'
-							+ '<div class="ib"><input id="Bname" style="width: 200px" name="customername" required="required"></div></li>');
+					$('#addRow').append('<li class="formli" id="Bname"><div id="text_name" tabindex="0" class="ib5 forminput" style="width: 205px; background: #ffffff;">이름</div>'
+							+ '<div class="ib"><input id="Bname" class="forminput" style="width: 200px" name="customername" required="required"></div></li>');
 				}
 	}
 	else
@@ -247,17 +249,18 @@ function changeColor(){
 
 </head>
 <body style="text-align: center; width: 100%; height: 100%;">
+
 <div style="display: inline-block;">
 
 		<h1 id="text_title" tabindex="0" style="background: #ffffff">회원가입</h1>
 		<hr>
-		<form id="Bform" method="post" action="Bwellcome">
+		<form id="Bform" class="Bform" method="post" action="Bwellcome">
 		<div style="display: inline-block; position: static; margin-top: 20px;">
 				
-			<ul style="list-style: none;">
-				<li><div id="text_id" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">아이디</div> <div class="ib"><input style="width: 200px; resize: auto; overflow: hidden;" id="Bid" name="customerid" required="required"></div></li>
-				<li><div id="text_pw" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">비밀번호</div> <div class="ib"><input style="width: 200px;" type="password" id="Bpw" name="customerpw" required="required"></div></li>
-				<li><div id="text_pw2" tabindex="0" style="width: 200px; background: #ffffff;" class="ib">비밀번호 확인</div> <div class="ib"><input style="width: 200px;" type="password" id="Bpw2" required="required"></div></li>
+			<ul style="list-style: none;">			
+				<li class="formli" ><div id="text_id" class="ib" tabindex="0" style="width: 200px; background: #ffffff;">아이디</div> <div class="ib forminput"><input class="forminput" style="width: 200px; resize: auto; overflow: hidden;" id="Bid" name="customerid" required="required"></div></li>
+				<li class="formli" ><div id="text_pw" class="ib" tabindex="0" style="width: 200px; background: #ffffff;">비밀번호</div> <div class="ib forminput"><input class="forminput" style="width: 200px;" type="password" id="Bpw" name="customerpw" required="required"></div></li>
+				<li class="formli" ><div id="text_pw2" class="ib" tabindex="0" style="width: 200px; background: #ffffff;">비밀번호 확인</div> <div class="ib forminput"><input class="forminput" style="width: 200px;" type="password" id="Bpw2" required="required"></div></li>
 				
 			</ul>
 			
@@ -271,10 +274,10 @@ function changeColor(){
 		</form>
 		<hr>
 
-			<div id="text_main" tabindex="0" class="submit" style="margin: 10px; cursor: pointer;">
-				<a href="#">메인으로</a>
+			<div id="text_main" tabindex="0" class="submitBt" style="margin: 10px; cursor: pointer;">
+				메인으로
 			</div>
-			<div id="text_go" tabindex="0" class="submit" style="margin: 10px; cursor: pointer;">
+			<div id="text_go" tabindex="0" class="submitBt" style="margin: 10px; cursor: pointer;">
 				가입하기
 			</div>
 

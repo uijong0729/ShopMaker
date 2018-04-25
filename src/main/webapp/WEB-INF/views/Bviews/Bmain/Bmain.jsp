@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=3"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		
 		<script type="text/javascript">
 		
@@ -1154,13 +1155,13 @@
 			
 			//고객관리 링크
 			function Bcustomer(){
-				$('#pagename').val('BcustomerChart');
+				
 				$('#pagename').val('BcustomerChart');
 				$('#Bcenter').load('BcustomerChart');
+				
 			}
 			
 			function Bheader(){
-				$('#pagename').val('Bheader');
 				$('#pagename').val('Bheader');
 				$('#Bcenter').load('Bheader');
 			}

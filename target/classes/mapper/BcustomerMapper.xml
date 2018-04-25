@@ -26,7 +26,8 @@
 				#{customerhp},
 				#{customername},
 			
-			#{membercode}
+			#{membercode},
+			sysdate
 			)
 	
 	</insert>
@@ -53,6 +54,14 @@
 		where membercode = #{membercode} AND customercode = #{customercode}
 	
 	</select>
+	
+	<select id="countCustomer" parameterType="map" resultType="integer">
+ 		select count(*) 
+ 		from bcustomer 
+ 		where membercode = #{membercode}
+ 				AND to_char(bpushdate, 'MM') = #{bpushdate}
+ 	
+ 	</select>
 
 
 </mapper>

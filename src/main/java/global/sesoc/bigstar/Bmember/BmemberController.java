@@ -170,43 +170,41 @@ public class BmemberController {
 		map.put("membercode", membercode);
 		map.put("customercode", customercode);
 		System.out.println(map);
+		
+		List<Bordertable> list = null;
 		try 
 		{
-			List<Bordertable> list = dao.BorderList(map);
+			list = dao.BorderList(map);
 			//System.out.println(list);
-			if(list == null)
-			{
-				return null;
-			}
-			else
-			{
-				return list;
-			}
+			return list;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			return list;
 		}
-		return null;
 	}
 	
 	
 	@ResponseBody
 	@RequestMapping(value="getCartlist", method=RequestMethod.POST)
 	public List<Bproducttable> getCartlist(String customercode) {
+		
 		List<Bcarttable> clist = null;
+		List<Bproducttable> cart = new ArrayList<Bproducttable>();
+		
 		try 
 		{
 			clist = cdao.selectbcarttable(Integer.parseInt(customercode));
+			System.out.println(clist);
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
+			cart = null;
+			return cart;
 		}
 		
-		List<Bproducttable> cart = new ArrayList<Bproducttable>();
-		
-		System.out.println(clist);
 		for (Bcarttable bcarttable : clist) {
 			String pCode = bcarttable.getProductcode();
 			HashMap<String, String> map = new HashMap<String, String>();
@@ -214,7 +212,7 @@ public class BmemberController {
 			map.put("productcode", pCode);
 			cart.add(pdao.getCart(map));
 		}
-		
+		System.out.println(cart);
 		return cart;
 	}
 	

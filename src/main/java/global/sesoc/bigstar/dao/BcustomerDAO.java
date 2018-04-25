@@ -16,7 +16,7 @@ public class BcustomerDAO implements BcustomerMapper {
 	SqlSession session;
 	
 	@Override
-	public ArrayList<Bcustomer> selectbcustomer(int customercode) {
+	public Bcustomer selectbcustomer(int customercode) {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(BcustomerMapper.class).selectbcustomer(customercode);
@@ -50,6 +50,12 @@ public class BcustomerDAO implements BcustomerMapper {
 	public ArrayList<Bordertable> BorderList(HashMap<String, String> map) {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcustomerMapper.class).BorderList(map);
+	}
+
+	@Override
+	public int countCustomer(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).countCustomer(map);
 	}
 	
 	

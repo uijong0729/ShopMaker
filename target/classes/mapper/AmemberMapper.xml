@@ -60,5 +60,15 @@
  		where MEMBERCODE = #{1}
  	</update>
  	
+ 	<select id="selectVip" parameterType="string" resultType="global.sesoc.bigstar.vo.Avip">
+ 	
+ 	select * 
+ 	from Avip 
+ 	where membercode = #{membercode}
+ 	order by countcustomer desc
+ 	
+ 	</select>
+ 	
+ 	
  	
  </mapper>

@@ -56,22 +56,10 @@
 <body>
 
 
-<!-- header Navbar (sit on top) -->
-<header class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="/bigstar" class="w3-bar-item w3-button"><b>Shop</b> maker</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-    <a href="loginPage" class="w3-bar-item w3-button">Login</a>
-      <a href="#projects" class="w3-bar-item w3-button">Template</a>
-      <a href="#about" class="w3-bar-item w3-button">About</a>
-      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-      <a href="AqnaPage" class="w3-bar-item w3-button">Q&A</a>
-      <a href="AnoticeList" class="w3-bar-item w3-button">Notice</a>
-      <a href="ApurchasePage" class="w3-bar-item w3-button">Purchase</a>
-    </div>
-  </div>
-</header>
+	<!-- 헤더 -->
+		<header>
+			<%@ include file="Bviews/Bheader.jsp" %>
+		</header>
 
 <!-- banner -->
 <div class="w3-display-container w3-content w3-wide main" style="max-width:1500px;" id="home">
@@ -167,21 +155,6 @@
     </div>
   </div>
 
-  <!-- Contact Section -->
-  <div class="w3-container w3-padding-32" id="contact">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-    <p>Lets get in touch and talk about your and our next project.</p>
-    <form action="/action_page.php" target="_blank">
-      <input class="w3-input" type="text" placeholder="Name" required name="Name">
-      <input class="w3-input w3-section" type="text" placeholder="Email" required name="Email">
-      <input class="w3-input w3-section" type="text" placeholder="Subject" required name="Subject">
-      <input class="w3-input w3-section" type="text" placeholder="Comment" required name="Comment">
-      <button class="w3-button w3-black w3-section" type="submit">
-        <i class="fa fa-paper-plane"></i> SEND MESSAGE
-      </button>
-    </form>
-  </div>
-  
 <!-- End page content -->
 </article>
 
