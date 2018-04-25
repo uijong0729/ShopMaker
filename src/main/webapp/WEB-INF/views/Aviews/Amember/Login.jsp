@@ -43,7 +43,22 @@ $(document).ready(function(){
 	   { 
 	      if(logininputPassword.length >= 1) 
 	      { 
-	    	 document.getElementById('AgoLogin').submit();
+	    	  $.ajax({
+		  			url: 'loginAcustomer',
+		  			type: 'post',
+		  			data:{id: logininputId, password: logininputPassword},
+		  			dataType: 'text',
+		  			success: function(result){
+		  				if(result == '1')
+		  				{
+		  					document.getElementById('AgoLogin').submit();
+		  				}
+		  				else{
+		  					alert('아이디나 비밀번호를 확인해주세요')
+		  				}
+		  			}
+		  		
+		  			});
 	      } 
 	      else 
 	      { 
@@ -73,8 +88,23 @@ function enterkey() {
 			   { 
 			      if(logininputPassword.length >= 1) 
 			      { 
-			    	  
-			    	 document.getElementById('AgoLogin').submit();
+			    	  $.ajax({
+			  			url: 'loginAcustomer',
+			  			type: 'post',
+			  			data:{id: logininputId, password: logininputPassword},
+			  			dataType: 'text',
+			  			success: function(result){
+			  				if(result == '1')
+			  				{
+			  					document.getElementById('AgoLogin').submit();
+			  				}
+			  				else{
+			  					alert('아이디나 비밀번호를 확인해주세요')
+			  				}
+			  			}
+			  		
+			  			});
+			    	 
 			      } 
 			      else 
 			      { 
@@ -245,7 +275,10 @@ function selectEmail(){
 
 <article style="text-align: center;">
 
+<h2 style="text-shadow: 4px 4px 4px #ccc;">로그인이 필요한 서비스입니다</h2>
+
 <div class="main" style="text-align: center; display: inline-block;">
+	
 	<div style="display: inline-block;">
 			<div class="switchButtons">
 				<button id="signUp" onclick="switchSignUp()" >Sign Up</button>

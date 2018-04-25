@@ -51,9 +51,7 @@ public class AmemberController {
 			String addressA, String addressB, String biznumber) {
 
 		Amember member = new Amember();
-
 		member.setId(id);
-
 		member.setPw(password);
 
 		String mailaddress = emailA + "@" + emailB;
@@ -84,17 +82,50 @@ public class AmemberController {
 			return "";
 		}
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "loginAcustomer", method = RequestMethod.POST)
+	public String loginAcustomer(String id, String password) {
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pw", password);
+		
+		Amember result = AMdao.loginAcustomer(map);
+		if(result == null)
+		{
+			return "0";
+		}
+		else
+		{
+			return "1";
+		}
+	}
+	
 
 	@RequestMapping(value = "AgoLogin", method = RequestMethod.POST)
-
 	public String AgoLogin(String id, String pw, HttpServletResponse response, Model model, HttpSession session) {
 	HashMap<String, String> map = new HashMap<String, String>();
 
 		map.put("id", id);
 		map.put("pw", pw);
 
-		Amember am = AMdao.loginAcustomer(map);
-		session.setAttribute("loginCode", am.getMembercode());
+		Amember am = null;
+		try 
+		{
+			am = AMdao.loginAcustomer(map);
+			if(am == null)
+			{
+				return "Aviews/Amember/Login";
+			}
+		}
+		catch(Exception e)
+		{
+			return "Aviews/Amember/Login";
+		}
+		
+		session.setAttribute("loginCode", am.getMembercode()); 
 		String a;
 		a = am.getPaymentexpirationdate();
 		a = "1970-01-01";
