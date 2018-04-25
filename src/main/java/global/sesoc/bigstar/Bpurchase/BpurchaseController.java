@@ -20,7 +20,6 @@ import global.sesoc.bigstar.vo.Bordertable;
 import global.sesoc.bigstar.vo.Bproducttable;
 
 @Controller
-@SessionAttributes("orderList")
 public class BpurchaseController {
 	
 	//구매페이지 이동
@@ -35,6 +34,7 @@ public class BpurchaseController {
 		purchaseList.add(product);
 		
 		session.setAttribute("purchaseList", purchaseList);
+		session.setAttribute("orderList", orderList);
 		
 		return "Bviews/Bpurchase/Bpurchaseform";
 	}
