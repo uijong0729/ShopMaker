@@ -29,6 +29,7 @@
                         <select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
                            <option value="1" selected>직접입력</option>
                            <option value="naver.com">naver.com</option>
+                           <option value="gmail.com">gmail.com</option>
                            <option value="hanmail.net">hanmail.net</option>
                         </select>
                      </td>
@@ -46,8 +47,8 @@
                   <tr>
                      <td>수령자 주소 <b style="color: red">*</b></td>
                      <td>
-                        <input type="text" style="width: 300px" class="addressInput" id="baseAddress"> 기본 주소 <br> 
-                        <input type="text" style="width: 300px" class="addressInput"> 상세 주소 <br>
+                        <input type="text" style="width: 300px" class="addressInput" id="baseAddress"> <sub>(기본 주소)</sub> <br> 
+                        <input type="text" style="width: 300px" class="addressInput"> <sub>(상세 주소)</sub><br>
                      </td>
                   </tr>
                   <tr>

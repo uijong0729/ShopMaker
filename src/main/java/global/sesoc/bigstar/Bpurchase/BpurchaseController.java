@@ -1,24 +1,42 @@
 package global.sesoc.bigstar.Bpurchase;
 
 import java.text.DateFormat;
-import java.util.Locale;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.border.Border;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import global.sesoc.bigstar.vo.Bcustomer;
+import global.sesoc.bigstar.vo.Bordertable;
+import global.sesoc.bigstar.vo.Bproducttable;
 
 @Controller
+@SessionAttributes("orderList")
 public class BpurchaseController {
 	
 	//구매페이지 이동
-	@RequestMapping(value = "BpurchasePage", method = RequestMethod.GET) 
-	public String BpurchasePage() {
-	 
-		return "Bviews/Bpurchase/BpurchasePage";
+	@RequestMapping(value = "goBpurchaseform", method = RequestMethod.GET) 
+	public String BpurchasePage(Model model, HttpSession session, Bproducttable product, String productQty) {
+		
+		Bcustomer bc  = (Bcustomer) session.getAttribute("Blogin");
+		
+		ArrayList <Bordertable> orderList = new ArrayList <Bordertable>();
+		
+		ArrayList <Bproducttable> purchaseList = new ArrayList<Bproducttable>();
+		purchaseList.add(product);
+		
+		session.setAttribute("purchaseList", purchaseList);
+		
+		return "Bviews/Bpurchase/Bpurchaseform";
 	}
 	
 	@RequestMapping(value = "BpurchaseIndex", method = RequestMethod.POST)
