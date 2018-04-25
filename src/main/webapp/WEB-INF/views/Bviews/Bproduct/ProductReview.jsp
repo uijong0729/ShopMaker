@@ -69,7 +69,6 @@ function delReview(code) {
 </head>
 <body>
 
-		<br>
 		<div id="productInquiryBoard_wrapper">
 			
 			<p class="pibTitle">상품 후기</p>
@@ -107,8 +106,10 @@ function delReview(code) {
 					               </c:if>
 					           	</td> 
 --%>
+					</form>
 				</div>
-		</form>
+		
 	<input type="hidden" id="productname" value="${productname}">
+	<div style="padding-bottom: 220px;"></div>
 </body>
 </html>

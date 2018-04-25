@@ -79,7 +79,7 @@
 
 
 function gopurchaseform() {
-	location.href="Bpurchaseform";
+	location.href="goBpurchaseform";
 }
 
 </script>
@@ -114,7 +114,7 @@ function gopurchaseform() {
             </diV><!-- 이미지 프리뷰 -->
             
             <div class="half_detail_Info_Text">
-                <form action="detailaddOrder.do">
+                <form action="goBpurchaseform">
                     <div class="info_box1">
                         <p class="product_name">
                             <h3><%-- ${productDetailList[0].productname} --%></h3>
@@ -137,10 +137,10 @@ function gopurchaseform() {
                         <tr>
                             <td>선택사항</td>
                             <td style="size: 5px;">색상 및 사이즈를 선택해 주세요 <br> 
-                            	<select class="option_selecter" id="color_selecter" onchange="color_select(this.value)">
+                            	<select class="option_selecter" id="option_selecter" onchange="color_select(this.value)">
                                       <c:forEach var="product" items="${productDetailList }" varStatus="loopStat">
-									 	<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>
-									 </c:forEach>      
+									 	<option name="product" value="${product}">${product.productcolor}, ${product.productsize}</option>
+									 </c:forEach>
                                 </select>
                             </td>
                         </tr>
@@ -170,24 +170,22 @@ function gopurchaseform() {
                         </tr> -->
                     </table>
                     <br>
-	                    <input type="hidden" name="index">
-	                    <input type="hidden" id="base_price">
-	                    <input type="hidden" id="p_common_name">
-	                    <input type="hidden" name="r_no">
-                    <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
+	                    
+                    <button type="submit" class="pageMoveBtn">바로 주문</button>
                 </form>
-                <form action="addBasket.do" class="cartData">
-                    <input type="hidden" name="index">
+                <form id="cartList" class="cartData">
+                    <input type="hidden" id="productcode" value="${productcode}">
+                    <input type="hidden" id="customercode" value="${customercode}">
                     <button id="goCart" type="button" class="pageMoveBtn">장바구니</button>
                 </form>
 
-                <div class="detail_toolBox">
+                <%-- <div class="detail_toolBox">
                     <a onclick="changeAction_place(this.id)" id="product_info">
                     	<div class="tool">
                         	<p>상세 설명</p>
                     	</div>
                     </a> 
-                    <%-- <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe"> --%>
+                    <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
                     <a href="productReview" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
                     	<div class="tool">
                         	<p>상품 후기</p>
@@ -203,18 +201,14 @@ function gopurchaseform() {
                         	<p>배송 정보</p>
                     	</div>
                     </a>
-                </div>
+                </div> --%>
                 <br>
 			</div>
-           </div><!-- 주문 디테일 -->
-        </div>
-        <div style="margin: auto;">
+           </div><!--<!-- 테일 - -->       </div>
+        <!-- 상품후기 -->
+        <div>
 			<%@include file="ProductReview.jsp" %>
 		</div>
-        <div class="product_img_place">
-            <!-- 상세 이미지 -->
-        </div>
-      
         
         <script type="text/javascript">
         function switchImg(src) {
