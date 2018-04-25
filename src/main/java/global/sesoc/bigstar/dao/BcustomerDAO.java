@@ -16,7 +16,7 @@ public class BcustomerDAO implements BcustomerMapper {
 	SqlSession session;
 	
 	@Override
-	public ArrayList<Bcustomer> selectbcustomer(int customercode) {
+	public Bcustomer selectbcustomer(int customercode) {
 		// TODO Auto-generated method stub
 		
 		return session.getMapper(BcustomerMapper.class).selectbcustomer(customercode);

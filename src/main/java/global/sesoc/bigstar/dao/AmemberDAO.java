@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.bigstar.vo.Amember;
+import global.sesoc.bigstar.vo.Avip;
 @Repository
 public class AmemberDAO implements AmemberMapper {
 	
@@ -52,6 +53,12 @@ public class AmemberDAO implements AmemberMapper {
 	public int updateAmemberpaymentexpirationdate(String paymentexpirationdate, String membercode) {
 		// TODO Auto-generated method stub
 		return session.getMapper(AmemberMapper.class).updateAmemberpaymentexpirationdate(paymentexpirationdate, membercode);
+	}
+
+	@Override
+	public ArrayList<Avip> selectVip(String membercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(AmemberMapper.class).selectVip(membercode);
 	}
 
 }

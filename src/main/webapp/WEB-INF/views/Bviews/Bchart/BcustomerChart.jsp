@@ -13,7 +13,7 @@
 
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 <script src="/bigstar/resources/js/jquery-ui.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- loader.js 는 Bmain에 옮겼음 -->
 <script type="text/javascript">
 var date = new Date();
 
@@ -36,72 +36,111 @@ if(month4 <= 0){month4 = month4 + 12}
 var month5 = month - 4;
 if(month5 <= 0){month5 = month5 + 12}
 
-//탭 : 탭은 하위 단에 li태그를 포함해야만 작동
+var membercode = ${Amember.membercode};
 
 
     $(document).ready(function(){
+    	
     	//최신버전 load
     	google.charts.load('current', {'packages':['corechart']});
     	//drawChart 은 함수이름
-    	google.charts.setOnLoadCallback(drawChart);   
+    	google.charts.setOnLoadCallback(drawChart); 
     	
+    	$.ajax({
+    		url:'getChart',
+    		type:'POST',
+    		data:{membercode: membercode},
+    		dataType:'json',
+    		success: function(result){
+    	    	
+    			var arr = new Array(5);
+    			$.each(result, function(index, item){
+    				arr[index] = item;
+                });
+
+    			//고객 유입수
+    	        var cData = new google.visualization.DataTable();
+    	        
+    	        cData.addColumn('string', '월');
+    	        cData.addColumn('number', '회원 수');
+    	        cData.addColumn('number', '총 회원 수');
+    	        cData.addRows([
+    	          ["" + month5 + "월", arr[4], arr[4]],
+    	          ["" + month4 + "월", arr[3], arr[3] + arr[4]],
+    	          ["" + month3 + "월", arr[2], arr[2] + arr[3] + arr[4]],
+    	          ["" + month2 + "월", arr[1], arr[1] + arr[2] + arr[3] + arr[4]],
+    	          ["" + month + "월", arr[0], arr[0] + arr[1] + arr[2] + arr[3] + arr[4]]
+    	        ]);
+    	      
+    	        //차트2
+    	        var BcountMember = {'title':'회원 유입 추이',
+    	                'is3D':true,
+    	                'width':800,
+    	                'height':400};
+    	       
+    	        var lineChart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+    	        lineChart.draw(cData, BcountMember); 
+    		},
+    		error: function(){
+    			alert("차트를 불러 올 수 없습니다");
+    		}
+    	});
+    	 
+    	//탭
     	$( "#tabs" ).tabs({show: { effect: "blind", duration: 800 }});
     	$('#Bbuy').html('선호 상품 분석');
     	$('#Binput').html('유입량 분석');
-    	
-        drawChart();
     });
     
     function drawChart() {
-        // 판매량
-        var pData = new google.visualization.DataTable();
-        pData.addColumn('string', '판매물품');
-        pData.addColumn('number', '판매량');
-        pData.addRows([
-          ['청바지', 30],
-          ['티셔츠', 5],
-          ['신발', 10],
-          ['목걸이', 40],
-          ['입걸이', 20]
-        ]);
-        
-        //정렬
-        pData.sort({column: 1, desc: true});
-        //차트1
-        var Bpurchase =
-        {'title':'상품 판매현황 (내림차순)',
-                       'is3D':true,
-                       'width':800,
-                       'height':400
-        }
+    	
+    	$.ajax({
+    		url: 'getClient',
+    		type:'POST',
+    		data: {membercode: membercode},
+    		dataType: 'json',
+    		success: function(result){
+    			
+    			var code = new Array(3);
+    			var count = new Array(3);
+    			
+    			//리스트를 foreach로 출력
+    			$.each(result, function(index, item){
+    				code[index] = item.customerCode;
+    				count[index] = item.countCustomer;
+    				
+                });
+    			
+    			 // 판매량
+    	        var pData = new google.visualization.DataTable();
+    	        pData.addColumn('string', 'VIP고객');
+    	        pData.addColumn('number', '구매량');
+    	        pData.addRows([
+    	          [code[0], count[0]],
+    	          [code[1], count[1]],
+    	          [code[2], count[2]],
+    	        ]);
+    	        
+    	        //정렬
+    	        pData.sort({column: 1, desc: true});
+    	        
+    	        //차트1
+    	        var Bpurchase =
+    	        {'title':'VIP고객 현황 (내림차순)',
+    	                       'is3D':true,
+    	                       'width':800,
+    	                       'height':400
+    	        }
+    	        
+    	        // 차트를 그린다..... //draw를 해줘야 화면에 등장.
+    	        var barChart = new google.visualization.BarChart(document.getElementById('chart_div1'));
+    	        barChart.draw(pData, Bpurchase);
+    		},
+    		error: function(){
+    			alert('잠시만 기다려주세요');
+    		}
+    	});
       
-      
-        //고객 유입수
-        var cData = new google.visualization.DataTable();
-        
-        cData.addColumn('string', '월');
-        cData.addColumn('number', '회원 수');
-        cData.addColumn('number', '총 회원 수');
-        cData.addRows([
-          ["" + month5 + "월", 30, 30],
-          ["" + month4 + "월", 5, 35],
-          ["" + month3 + "월", 10, 45],
-          ["" + month2 + "월", 40, 85],
-          ["" + month + "월", 20, 105]
-        ]);
-      
-        //차트2
-        var BcountMember = {'title':'회원 유입 추이',
-                'is3D':true,
-                'width':800,
-                'height':400};
-        
-        // 차트를 그린다..... //draw를 해줘야 화면에 등장.
-        var barChart = new google.visualization.BarChart(document.getElementById('chart_div1'));
-        barChart.draw(pData, Bpurchase);
-       
-        var lineChart = new google.visualization.LineChart(document.getElementById('chart_div2'));
-        lineChart.draw(cData, BcountMember); 
     }
 
     
@@ -111,10 +150,7 @@ if(month5 <= 0){month5 = month5 + 12}
 </script>
 </head>
 <body>
-<c:forEach items="${monthList }" var="m" varStatus="status">
-	<input id='${status }' type="hidden" value='${m}'>
-	${m }
-</c:forEach>
+
 
 
 <h1>고객관리</h1>

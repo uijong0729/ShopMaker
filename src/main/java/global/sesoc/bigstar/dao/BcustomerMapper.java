@@ -8,7 +8,7 @@ import global.sesoc.bigstar.vo.Bordertable;
 
 public interface BcustomerMapper {
 	
-	public ArrayList<Bcustomer> selectbcustomer(int customercode);
+	public Bcustomer selectbcustomer(int customercode);
 	public int insertBcustomer(Bcustomer bcustomer);
 	public Bcustomer loginBcustomer(HashMap<String, String> map);
 	public ArrayList<Bcustomer> bCustomerList(String membercode);
