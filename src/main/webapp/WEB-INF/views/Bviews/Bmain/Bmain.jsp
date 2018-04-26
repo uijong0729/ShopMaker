@@ -1178,8 +1178,7 @@
 			}
 			
 			function Bmainlist() {
-				$('#pagename').val('Bmainlist?rows=4');
-				$('#pagename').val('Bmainlist');
+				$('#pagename').val('Bmainlist'); 
 				$('#Bcenter').load('Bmainlist?rows=4');
 			}
 			
