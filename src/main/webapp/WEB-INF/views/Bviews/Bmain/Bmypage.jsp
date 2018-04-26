@@ -48,9 +48,16 @@ margin-bottom: 5px;
 
 .ol{
 	display: inline-block;
-	border: 1px solid black;
 	margin: 2px;
 	padding: 3px;
+}
+
+.label-euj{
+	display: inline-block;
+	margin: 2px;
+	padding: 3px;
+	margin-bottom: 3px;
+	box-shadow: 0px 3px 3px gray;
 }
 
 .ol2{
@@ -66,12 +73,12 @@ margin-bottom: 5px;
 .w5{width: 120px;}
 .w6{width: 120px;}
 
-.c1{width: 120px; height: 60px;}
-.c2{width: 150px; height: 60px;}
-.c3{width: 70px; height: 60px;}
-.c4{width: 70px; height: 60px;}
-.c5{width: 70px; height: 60px;}
-.c6{width: 100px; height: 60px;}
+.c1{width: 120px; height: 40px;}
+.c2{width: 150px; height: 40px;}
+.c3{width: 70px; height: 40px;}
+.c4{width: 70px; height: 40px;}
+.c5{width: 70px; height: 40px;}
+.c6{width: 100px; height: 40px;}
 
 .submit
 {
@@ -103,6 +110,12 @@ margin-bottom: 5px;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+.imagesize
+{
+	width: 100px;
+	height: 80px;
 }
 
 </style>				
@@ -214,30 +227,45 @@ function cartList(){
 			{
 				 var innerText = new StringBuffer();
 			        innerText.append('<li>');
-					innerText.append('<span class="ol c1">이미지</span>');
-					innerText.append('<span class="ol c2">상품명</span>');
-					innerText.append('<span class="ol c3">색깔</span>');
-					innerText.append('<span class="ol c4">사이즈</span>');
-					innerText.append('<span class="ol c5">수량</span>');
-					innerText.append('<span class="ol c6">가격</span>');
+					innerText.append('<span class="label-euj c1">이미지</span>');
+					innerText.append('<span class="label-euj c2">상품명</span>');
+					innerText.append('<span class="label-euj c3">색깔</span>');
+					innerText.append('<span class="label-euj c4">사이즈</span>');
+					innerText.append('<span class="label-euj c5">수량</span>');
+					innerText.append('<span class="label-euj c6">가격</span>');
 					innerText.append('<span class="ol2 c6"></span>');
-					innerText.append('</li>');
-					
+					innerText.append('</li><hr>');
+		              
 					for (var i in result) {
 						innerText.append('<li>');
-						innerText.append('<span class="ol c1">' + result[i].productimage + '</span>');
+						innerText.append('<span class="ol c1"><img class="imagesize" src="' + result[i].productimage + '"></span>');
 						innerText.append('<span class="ol c2">' + result[i].productname+ '</span>');
 						innerText.append('<span class="ol c3">' + result[i].productcolor + '</span>');
 						innerText.append('<span class="ol c4">' + result[i].productsize + '</span>');
 						innerText.append('<span class="ol c5">' + result[i].productquantity + '</span>');
 						innerText.append('<span class="ol c6">' + result[i].productprice + '</span>');
 						innerText.append('<span class="ol2 c6"><img src="/bigstar/resources/img/Xsign.jpg"></span>');
+						
 					}
-
 					
-					
-					innerText.append('</li><div class="orderBt" style="text-align: center;"><div style="display: inline-block;">주문하기</div></div>');
+					innerText.append('</li><hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
+					$('#goBorder').on('click', function(){
+						//주문 액션
+						var form = document.createElement('form');
+			             form.action = "goBorder";
+			             form.method = "post";
+			              
+			            var inputTag = document.createElement('input');
+			             inputTag.name = "membercode";
+			             inputTag.value = customercode;
+			             inputTag.type = "hidden";
+			              
+			             form.appendChild(inputTag);
+			             document.body.appendChild(form);
+			              
+			             form.submit();
+					});
 			}
 		}
 		
@@ -471,5 +499,6 @@ function changeColor(){
 	<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
 	<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
 	</div>
+	
 	</body>
 </html>
