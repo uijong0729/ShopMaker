@@ -90,11 +90,8 @@ margin-bottom: 5px;
 
 
 </style>
-
-<script>
-
+<script type="text/javascript">
 $(document).ready(function(){
-	
 	//버튼을 누를 때 색깔 바꾸기
 	$('.li').on('click', changeColor);
 	
@@ -157,6 +154,7 @@ $( "#dialog" ).position({
 	});
 
 function goReg(){
+	alert('aa');
 	var getId = document.getElementById('Bid');
 	var getPw = document.getElementById('Bpw');
 	var getPw2 = document.getElementById('Bpw2');
@@ -211,8 +209,8 @@ function changeColor(){
 		$(this).css('border', '1px solid black');
 				if(id == "address")
 				{						
-					+ '<div class="ib"><input id="Baddress" class="forminput" style="width: 200px" name="customeraddress" required="required"></div></li>');
 					$('#addRow').append('<li class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5" style="width: 205px; background: #ffffff;">주소</div>'
+					+ '<div class="ib"><input id="Baddress" class="forminput" style="width: 200px" name="customeraddress" required="required"></div></li>');
 				}
 				else if(id == "phone")
 				{
