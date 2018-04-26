@@ -69,10 +69,6 @@
 						<a class="w3-bar-item w3-button bt2-euj" href="Amypage">마이페이지</a>
 						<a class="w3-bar-item w3-button bt2-euj" href="javascript:myShop(${Amember.membercode})">내 쇼핑몰</a>
 						<a class="w3-bar-item w3-button bt2-euj" href="Logout">로그아웃</a>
-						<div class="saveload-euj" style="text-align: right; display: inline-block;">
-							<div class="bt-euj"><a class="w3-bar-item w3-button" href="javascript:Bsavepage()">저장하기</a></div>
-							<div class="bt-euj"><a class="w3-bar-item w3-button" href="javascript:Bloadpage()">불러오기</a></div>
-						</div>
 					</c:if>
 				</div>
 				<br>
