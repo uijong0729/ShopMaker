@@ -14,21 +14,21 @@
 			$(document).ready(function() {
 				if (${param.page == 'Bproductdetail'}) {
 					alert('${productDetailList[0].productimage}');
-					$('#productcode').val('${productDetailList[0].productcode}');
-					$('#customercode').val('${sessionScope.Blogin.customercode}');
-					$('.showingImg').attr("src", '${productDetailList[0].productimage}');
-					$('.showingImg').css('width', '400px');
-					$('.showingImg').css('height', 'auto');
-					$('#img_1').attr("src", '${productDetailList[0].productimage}');
-					$('#img_2').attr("src", '${productDetailList[1].productimage}');
-					$('#Bproductname').text('${productDetailList[0].productname}');
-					$('#Bproductprice').text('${productDetailList[0].productprice}');
-					$('#product_iframe').attr("href", 'getInqueryList.do?r_no=${ProductOne.r_no }');
-					var str = '<c:forEach var="product" items="${productDetailList }" varStatus="loopStat">';
-					str += '<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>';
-					str += '</c:forEach>';
-					$('#color_selecter').append(str);
-					$('#Bproductreview').load('ProductReview');
+			          $('#productcode').val('${productDetailList[0].productcode}');
+			          $('#customercode').val('${sessionScope.Blogin.customercode}');
+			          $('.showingImg').attr("src", '${productDetailList[0].productimage}');
+			          $('.showingImg').css('width', '400px');
+			          $('.showingImg').css('height', 'auto');
+			          $('#img_1').attr("src", '${productDetailList[0].productimage}');
+			          $('#img_2').attr("src", '${productDetailList[1].productimage}');
+			          $('#Bproductname').text('${productDetailList[0].productname}');
+			          $('#Bproductprice').text('${productDetailList[0].productprice}');
+			          $('#product_iframe').attr("href", 'getInqueryList.do?r_no=${ProductOne.r_no }');
+			          var str = '<c:forEach var="product" items="${productDetailList }" varStatus="loopStat">';
+			          str += '<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>';
+			          str += '</c:forEach>';
+			          $('#color_selecter').append(str);
+			          $('#Bproductreview').load('ProductReview');
 				}
 		});
 			

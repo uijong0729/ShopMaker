@@ -57,7 +57,7 @@
 <c:set var="count" value="0" />
 	<div id="product">
 		<c:forEach items="${nameset}" var="n" varStatus="vars">
-			<c:set var="done" value="false" />
+			<c:set var="done" value="false" /> 
 			<c:forEach items="${Bproducttable}" var="b" varStatus="varss">
 				<c:if test="${nameset[vars.index] == Bproducttable[varss.index].productname}">
 					<c:if test="${done == false}">
@@ -65,7 +65,7 @@
 					<c:if test="${count%4==0}">
 					<ul>
 					</c:if>
-						<a href="goBproductdetail?productname=${b.productname}&productcode=${b.productcode }">
+						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
 							<li>
 								<div id="outer">
 									<img src="${b.productimage }">
