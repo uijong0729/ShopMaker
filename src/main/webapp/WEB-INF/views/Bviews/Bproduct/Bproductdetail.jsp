@@ -11,15 +11,13 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
 	$(document).ready(function() {
-	                	
-	                	
 		
 		$('.wating_Img').mouseenter(function() {
 			$('.showingImg').attr("src", $(this).attr("src"));
 		});
-		/* $('.wating_Img').mouseleave(function(){
+		$('.wating_Img').mouseleave(function(){
 			$('.showingImg').attr("src", "${productDetailList[1].productimage}");
-		}); */
+		});
 		/* $('.showingImg').css("z-index", 99999);
 		$('.showingImg').mouseenter(function() {
 			var width = $(this).css("width");
@@ -82,7 +80,7 @@
 
 
 function gopurchaseform() {
-	location.href="goBpurchaseform";
+	location.href="Bpurchaseform";
 }
 
 </script>
@@ -107,7 +105,7 @@ function gopurchaseform() {
         <div class="a">
             <diV class="half_detail_Info_Img">
                 <div class="show_Img">
-                    <img class="showingImg" src="${productDetailList[0].productimage}" style="width: 380px; margin: inherit;">
+                    <img class="showingImg" src="${productDetailList[1].productimage}">
                 </div>
                 <div class="wating_Img_place">
                     <!-- <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg"> -->
@@ -117,7 +115,7 @@ function gopurchaseform() {
             </diV><!-- 이미지 프리뷰 -->
             
             <div class="half_detail_Info_Text">
-                <form action="goBpurchaseform">
+                <form action="detailaddOrder.do">
                     <div class="info_box1">
                         <p class="product_name">
                             <h3><%-- ${productDetailList[0].productname} --%></h3>
@@ -140,10 +138,10 @@ function gopurchaseform() {
                         <tr>
                             <td>선택사항</td>
                             <td style="size: 5px;">색상 및 사이즈를 선택해 주세요 <br> 
-                            	<select class="option_selecter" id="option_selecter" onchange="color_select(this.value)">
+                            	<select class="option_selecter" id="color_selecter" onchange="color_select(this.value)">
                                       <c:forEach var="product" items="${productDetailList }" varStatus="loopStat">
-									 	<option name="product" value="${product}">${product.productcolor}, ${product.productsize}</option>
-									 </c:forEach>
+									 	<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>
+									 </c:forEach>      
                                 </select>
                             </td>
                         </tr>
@@ -173,22 +171,24 @@ function gopurchaseform() {
                         </tr> -->
                     </table>
                     <br>
-	                    
-                    <button type="submit" class="pageMoveBtn">바로 주문</button>
+	                    <input type="hidden" name="index">
+	                    <input type="hidden" id="base_price">
+	                    <input type="hidden" id="p_common_name">
+	                    <input type="hidden" name="r_no">
+                    <button type="submit" class="pageMoveBtn" onclick="gopurchaseform()">바로 주문</button>
                 </form>
-                <form id="cartList" class="cartData">
-                    <input type="hidden" id="productcode" value="${productcode}">
-                    <input type="hidden" id="customercode" value="${customercode}">
+                <form action="addBasket.do" class="cartData">
+                    <input type="hidden" name="index">
                     <button id="goCart" type="button" class="pageMoveBtn">장바구니</button>
                 </form>
 
-                <%-- <div class="detail_toolBox">
+                <div class="detail_toolBox">
                     <a onclick="changeAction_place(this.id)" id="product_info">
                     	<div class="tool">
                         	<p>상세 설명</p>
                     	</div>
                     </a> 
-                    <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
+                    <%-- <a href="getReviewList.do?r_no=${ProductOne.r_no }" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe"> --%>
                     <a href="productReview" target="action_place" onclick="changeAction_place(this.id)" id="product_iframe">
                     	<div class="tool">
                         	<p>상품 후기</p>
@@ -204,7 +204,7 @@ function gopurchaseform() {
                         	<p>배송 정보</p>
                     	</div>
                     </a>
-                </div> --%>
+                </div>
                 <br>
 			</div>
            </div><!-- 주문 디테일 -->
@@ -212,6 +212,10 @@ function gopurchaseform() {
         <div id="Bproductreview" style="margin: auto;">
 			<%@include file="ProductReview.jsp" %>
 		</div>
+        <div class="product_img_place">
+            <!-- 상세 이미지 -->
+        </div>
+      
         
         <script type="text/javascript">
         function switchImg(src) {

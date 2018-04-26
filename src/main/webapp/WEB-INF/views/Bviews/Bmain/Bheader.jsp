@@ -24,7 +24,7 @@
 		<div id="header_small_navbar">
 			<ul>
 				<li><a id="temp1" tabindex="0" href="#" class="header_member">회원가입</a></li>
-				<li style="width: 60px;"><a id="temp2" href="#" tabindex="0" class="header_member">로그인</a></li>
+				<li style="width: 60px;"><a id="temp2" href="goMyShop?code=${Amember.membercode}&page=Blogin" tabindex="0" class="header_member">로그인</a></li>
 				<li><a id="temp3" href="#" class="header_member" tabindex="0">공지사항</a></li>
 			</ul>
 		</div>
