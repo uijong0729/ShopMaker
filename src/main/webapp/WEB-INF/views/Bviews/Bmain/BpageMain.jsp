@@ -68,7 +68,7 @@
 						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
 							<li>
 								<div id="outer">
-									<img src="${b.productimage }">
+									<img src="./resources/image/${b.productimage }">
 									<dl>
 										<dd>상품명 : ${b.productname}</dd>
 										<dd>가격 : ${b.productprice}</dd>
