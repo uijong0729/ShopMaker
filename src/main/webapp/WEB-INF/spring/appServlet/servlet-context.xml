@@ -49,7 +49,6 @@
 			<mvc:mapping path="/loadpage" />
 			<mvc:mapping path="/deleteShop" />
 			<mvc:mapping path="/BcustomerChart" />
-			<mvc:mapping path="/goBmain" />
 			<beans:ref bean="loginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

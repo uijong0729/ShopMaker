@@ -63,5 +63,13 @@
  	
  	</select>
 
+	<update id="updateCustomer" parameterType="Bcustomer">
+		update bcustomer
+		set customerpw = #{customerpw}, 
+			customeraddress = #{customeraddress}, 
+			customerhp = #{customerhp}
+		where customercode = #{customercode}
+	</update>
+		
 
 </mapper>

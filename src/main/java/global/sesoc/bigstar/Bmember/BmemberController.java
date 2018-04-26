@@ -221,7 +221,34 @@ public class BmemberController {
 		return "Bviews/Bproduct/tracking";
 	}
 	
-	
+	@RequestMapping(value = "updateBcustomer", method = RequestMethod.POST)
+	public String updateBcustomer(String customerpw, String customeraddress, String customerhp, String customercode)
+	{
+		Bcustomer bcustomer = new Bcustomer();
+			bcustomer.setCustomeraddress(customeraddress);
+			bcustomer.setCustomerhp(customerhp);
+			bcustomer.setCustomercode(customercode);
+		
+		if(customerpw == "" || customerpw.equals("") || customerpw == null)
+		{
+			try 
+			{
+				bcustomer.setCustomerpw(dao.selectbcustomer(Integer.parseInt(customercode)).getCustomerpw());
+			}
+			catch(Exception e)
+			{
+				bcustomer.setCustomerpw(customerpw);
+			}
+		}
+		else
+		{
+			bcustomer.setCustomerpw(customerpw);
+		}
+		System.out.println(bcustomer);
+		System.out.println(dao.updateCustomer(bcustomer));;
+		
+		return "Bviews/Bmain/Bmain";
+	}
 
 	
 	

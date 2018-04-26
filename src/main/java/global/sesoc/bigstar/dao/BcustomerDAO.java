@@ -57,6 +57,12 @@ public class BcustomerDAO implements BcustomerMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcustomerMapper.class).countCustomer(map);
 	}
+
+	@Override
+	public int updateCustomer(Bcustomer bcustomer) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcustomerMapper.class).updateCustomer(bcustomer);
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html style="width: 100%; height: 100%;">
 <head>
@@ -63,6 +64,12 @@ input[type=checkbox]
  padding: 9px;
  cursor: pointer;
 }
+
+.formli
+{
+	border-radius: 10px;
+	
+}
 li{
 
 margin-bottom: 5px;
@@ -97,6 +104,7 @@ $(document).ready(function(){
 	
 	$('#text_go').on('click', goReg);
 	$('.ui-dialog').remove();
+	
 	start();
 	
 	$('#verticalLayer').on('click', function(){
@@ -268,7 +276,7 @@ function changeColor(){
 			</ul>
 					
 		</div>
-				<input type="hidden" name="membercode" value='37'>
+				<input type="hidden" name="membercode" value='${param.code }'>
 		</form>
 		<hr>
 
@@ -279,25 +287,27 @@ function changeColor(){
 				가입하기
 			</div>
 
-		
-	<%-- 다이어로그 --%>	
-	<div id="dialog" title="편집 메뉴" style="width: 100%; height: 100%;">
-		<h6>요소 추가하기</h6>
-	    <ul style="list-style: none; display:inline;">
-	    	<li class="li" id="address" color="black"><span>주소</span></li>
-	    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
-	    	<li class="li" id="name" color="black"><span>이름</span></li>
-	    </ul>
-	    
-	    <h6>배치 수정하기</h6>
-	    <ul style="list-style: none; display:inline;">
-	    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
-	    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
-	    </ul>
-	</div>
 	
-	<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
-	</div>
+	<c:if test="${Amember.id != null }">	
+		<%-- 다이어로그 --%>	
+		<div id="dialog" title="편집 메뉴" style="width: 100%; height: 100%;">
+			<h6>요소 추가하기</h6>
+		    <ul style="list-style: none; display:inline;">
+		    	<li class="li" id="address" color="black"><span>주소</span></li>
+		    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
+		    	<li class="li" id="name" color="black"><span>이름</span></li>
+		    </ul>
+		    
+		    <h6>배치 수정하기</h6>
+		    <ul style="list-style: none; display:inline;">
+		    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
+		    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
+		    </ul>
+		</div>
+		
+		<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
+		</div>
+	</c:if> 
 </div>	
 </body>
 </html>
