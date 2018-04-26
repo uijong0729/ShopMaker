@@ -56,12 +56,14 @@
 		$('#goCart').on('click', function(){
 			var productcode = document.getElementById('productcode').value;
 			var customercode = document.getElementById('customercode').value;
+			var productQty = document.getElementById('productQty').value;
+			alert("productQty:"+productQty );
 			//alert(productcode + '//' + customercode)
 			
 			$.ajax({
 				url: 'insertCart',
 				type: 'get',
-				data: {productcode: productcode, customercode: customercode},
+				data: {productcode: productcode, customercode: customercode, productQty: productQty},
 				success: function(){
 					alert('장바구니에 추가되었습니다');
 				},
@@ -147,7 +149,7 @@ function gopurchaseform() {
                         </tr>
                         <tr style="margin-bottom: 30px;">
                         <td>수량</td>
-                        <td><input type="number" class="productQty" min="0" max="50" step="1" value="0" size="6" name="productQty"></td>
+                        <td><input type="number" class="productQty" min="0" max="50" step="1" value="0" size="6" id="productQty" name="productQty"></td>
                         
                         </tr>
                         
