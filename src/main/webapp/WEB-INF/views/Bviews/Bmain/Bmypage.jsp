@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,14 +44,23 @@ margin-bottom: 5px;
 }
 
 .ib5{
+ border: 1px solid gray;
+ border-radius: 10px;
  display: inline-block;
 }
 
 .ol{
 	display: inline-block;
-	border: 1px solid black;
 	margin: 2px;
 	padding: 3px;
+}
+
+.label-euj{
+	display: inline-block;
+	margin: 2px;
+	padding: 3px;
+	margin-bottom: 3px;
+	box-shadow: 0px 3px 3px gray;
 }
 
 .ol2{
@@ -66,12 +76,12 @@ margin-bottom: 5px;
 .w5{width: 120px;}
 .w6{width: 120px;}
 
-.c1{width: 120px; height: 60px;}
-.c2{width: 150px; height: 60px;}
-.c3{width: 70px; height: 60px;}
-.c4{width: 70px; height: 60px;}
-.c5{width: 70px; height: 60px;}
-.c6{width: 100px; height: 60px;}
+.c1{width: 120px; height: 40px;}
+.c2{width: 150px; height: 40px;}
+.c3{width: 70px; height: 40px;}
+.c4{width: 70px; height: 40px;}
+.c5{width: 70px; height: 40px;}
+.c6{width: 100px; height: 40px;}
 
 .submit
 {
@@ -103,6 +113,12 @@ margin-bottom: 5px;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+.imagesize
+{
+	width: 100px;
+	height: 80px;
 }
 
 </style>				
@@ -149,6 +165,11 @@ $(document).ready(function(){
 	$('#orderList').on('click', orderList);
 	//카트 리스트 이벤트
 	$('#cartList').on('click', cartList);
+	
+	$('#updateBcustomer').on('click', function(){
+		document.getElementById('updateForm').submit();
+		alert('변경되었습니다');
+	});
 });
 
 //주문내역
@@ -214,30 +235,46 @@ function cartList(){
 			{
 				 var innerText = new StringBuffer();
 			        innerText.append('<li>');
-					innerText.append('<span class="ol c1">이미지</span>');
-					innerText.append('<span class="ol c2">상품명</span>');
-					innerText.append('<span class="ol c3">색깔</span>');
-					innerText.append('<span class="ol c4">사이즈</span>');
-					innerText.append('<span class="ol c5">수량</span>');
-					innerText.append('<span class="ol c6">가격</span>');
+					innerText.append('<span class="label-euj c1">이미지</span>');
+					innerText.append('<span class="label-euj c2">상품명</span>');
+					innerText.append('<span class="label-euj c3">색깔</span>');
+					innerText.append('<span class="label-euj c4">사이즈</span>');
+					innerText.append('<span class="label-euj c5">수량</span>');
+					innerText.append('<span class="label-euj c6">가격</span>');
 					innerText.append('<span class="ol2 c6"></span>');
-					innerText.append('</li>');
-					
+					innerText.append('</li><hr>');
+		              
 					for (var i in result) {
 						innerText.append('<li>');
-						innerText.append('<span class="ol c1">' + result[i].productimage + '</span>');
+						innerText.append('<span class="ol c1"><img class="imagesize" src="' + result[i].productimage + '"></span>');
 						innerText.append('<span class="ol c2">' + result[i].productname+ '</span>');
 						innerText.append('<span class="ol c3">' + result[i].productcolor + '</span>');
 						innerText.append('<span class="ol c4">' + result[i].productsize + '</span>');
 						innerText.append('<span class="ol c5">' + result[i].productquantity + '</span>');
 						innerText.append('<span class="ol c6">' + result[i].productprice + '</span>');
 						innerText.append('<span class="ol2 c6"><img src="/bigstar/resources/img/Xsign.jpg"></span>');
+						
 					}
-
 					
-					
-					innerText.append('</li><div class="orderBt" style="text-align: center;"><div style="display: inline-block;">주문하기</div></div>');
+					innerText.append('</li><hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
+					$('#goBorder').on('click', function(){
+						
+						//주문 액션
+						var form = document.createElement('form');
+			             form.action = "goBpurchaseformFromCart";
+			             form.method = "post";
+			              
+			            var inputTag = document.createElement('input');
+			             inputTag.name = "customercode";
+			             inputTag.value = customercode;
+			             inputTag.type = "hidden";
+			              
+			             form.appendChild(inputTag);
+			             document.body.appendChild(form);
+			              
+			             form.submit();
+					});
 			}
 		}
 		
@@ -336,7 +373,7 @@ function changeColor(){
 				else if(id == "pw")
 				{
 					$('#addRowTab1').append('<li class="formli" class="formli" id="Bpw"><div id="text_pw" tabindex="0" class="ib5 formcol" style="width: 205px;">비밀번호</div>'
-							+ '<div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+							+ '<div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerpw" required="required"></div></li>');
 				}
 				else if(id == "address")
 				{						
@@ -346,11 +383,11 @@ function changeColor(){
 				else if(id == "phone")
 				{
 					$('#addRowTab1').append('<li class="formli" id="Bphone"><div id="text_hp" tabindex="0" class="ib5 formcol" style="width: 205px;">전화번호</div>'
-							+ '<div class="ib"><input class="forminput" value="${Blogin.customerhp}" readonly="readonly" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
+							+ '<div class="ib"><input class="forminput" value="${Blogin.customerhp}" id="BInHp" style="border: none; width: 200px; text-align: center;" name="customerhp" required="required"></div></li>');
 				}
 				else if(id == "name")
 				{
-					$('#addRowTab1').append('<li class="formli" id="Bname"><div id="text_name" tabindex="0" class="ib5 formcol" style="width: 205px;">이름</div>'
+					$('#addRowTab1').append('<li class="formli" id="Bname"><div id="text_name" tabindex="0" class="ib5 formcol" style="width: 205px;">성명</div>'
 							+ '<div class="ib"><input class="forminput" value="${Blogin.customername}" readonly="readonly" id="BInName" style="border: none; width: 200px; text-align: center;" name="customername" required="required"></div></li>');
 				}
 	}
@@ -395,7 +432,8 @@ function changeColor(){
 <input id="hp" type="hidden" value="${Blogin.customerhp}">
 <input id="name" type="hidden" value="${Blogin.customername}">
 <input id="customercode" type="hidden" value="${Blogin.customercode}">
-<input id="membercode" type="hidden" value="${Blogin.membercode}">	
+<input id="membercode" name="membercode" type="hidden" value="${Blogin.membercode}">	
+
 		<div style="text-align: center;">
 			<div style="display: inline-block;">
 				<h1 id="text_mypageTitle" tabindex="0">마이페이지</h1>
@@ -414,12 +452,16 @@ function changeColor(){
 				  <!-- 제 1탭 -->
 				  <div id="tabs-1">
 				  	<div class="Bform" style="display: inline-block;">
-				  		<ul style="list-style: none;" id="addRowTab1">
-							
-						</ul>
+				  		<form id="updateForm" action="updateBcustomer" method="post">	
+				  			<input name="customercode" type="hidden" value="${Blogin.customercode}">	
+					  		<ul style="list-style: none;" id="addRowTab1">
+								
+							</ul>
+						</form>
+					
 					</div>
 					<div>	  
-						<div class="submit">수정사항 반영</div>
+						<div id="updateBcustomer" class="submit">수정사항 반영</div>
 					</div>
 				  </div>
 				  
@@ -449,27 +491,28 @@ function changeColor(){
 		</div>
 		
 		
-		
-		<%-- dialog 부분 --%>
-					<div id="dialog" title="내 계정 편집 메뉴">
-						<h6>요소 추가하기</h6>
-					    <ul style="list-style: none; display:inline;">
-					    	<li class="li" id="id" color="black"><span>아이디</span></li>
-					    	<li class="li" id="pw" color="black"><span>비밀번호</span></li>
-					    	<li class="li" id="address" color="black"><span>주소</span></li>
-					    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
-					    	<li class="li" id="name" color="black"><span>이름</span></li>
-					    </ul>
-					    
-					    <h6>배치 수정하기</h6>
-					    <ul style="list-style: none; display:inline;">
-					    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
-					    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
-					    </ul>
-					</div>
-					
-	<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
-	<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
-	</div>
+		<c:if test="${Amember.id != null }">
+			<%-- dialog 부분 --%>
+						<div id="dialog" title="내 계정 편집 메뉴">
+							<h6>요소 추가하기</h6>
+						    <ul style="list-style: none; display:inline;">
+						    	<li class="li" id="id" color="black"><span>아이디</span></li>
+						    	<li class="li" id="pw" color="black"><span>비밀번호</span></li>
+						    	<li class="li" id="address" color="black"><span>주소</span></li>
+						    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
+						    	<li class="li" id="name" color="black"><span>이름</span></li>
+						    </ul>
+						    
+						    <h6>배치 수정하기</h6>
+						    <ul style="list-style: none; display:inline;">
+						    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
+						    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
+						    </ul>
+						</div>
+								
+				<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
+				<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
+				</div>
+		</c:if>
 	</body>
 </html>

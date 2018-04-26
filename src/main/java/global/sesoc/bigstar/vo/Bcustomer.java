@@ -22,6 +22,15 @@ public class Bcustomer {
 		this.customername = customername;
 		this.membercode = membercode;
 	}
+	
+	public Bcustomer(String customerpw, String customeraddress,
+			String customerhp) {
+		super();
+		this.customerpw = customerpw;
+		this.customeraddress = customeraddress;
+		this.customerhp = customerhp;
+	}
+	
 	public Bcustomer() {
 		super();
 	}

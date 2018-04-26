@@ -183,7 +183,7 @@ public class BproductController {
 	}
 	
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
-	public String goMyShop(String page, String code, String productname, String productcode, Model model, HttpSession session) {
+	public String goMyShop(String page, String code, String category, String productname, String productcode, Model model, HttpSession session) {
 		String link = code + page;
 		Atemplate at = adao.getPage(link);
 		Atemplate header = adao.getPage(code + "Bheader");
@@ -216,6 +216,62 @@ public class BproductController {
 			session.setAttribute("productcode", productcode);
 			session.setAttribute("productname", productname);
 		}
+		
+		
+		
+		
+		if (page.equals("Bmainlist")) {
+			ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
+			ArrayList<String> nameset = new ArrayList<String>();
+			ArrayList<String> imageset = new ArrayList<String>();
+			
+			int count=0;
+			Bproducttable=Bpdao.selectkindproduct(category);
+			
+			for (Bproducttable b : Bproducttable) {
+				imageset.add(b.getProductname());
+			}
+			for (int i = 0; i < imageset.size(); i++) {
+				if (!nameset.contains(imageset.get(i))) {
+					nameset.add(imageset.get(i));
+				}
+			}
+			imageset.clear();
+			
+			Map<String, String> arrMap = new HashMap<String, String>(); 
+			
+			for (int i = 0; i < Bproducttable.size(); i++) {
+				if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
+					String str = arrMap.get(Bproducttable.get(i).getProductname());
+					arrMap.remove(Bproducttable.get(i).getProductname());
+					arrMap.put(Bproducttable.get(i).getProductname(), str);
+				}
+				arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
+				
+			}
+			
+			
+			
+			System.out.println(arrMap.get("key"));
+
+			System.out.println(count);
+			
+			model.addAttribute("map", arrMap);
+			model.addAttribute("nameset", nameset);
+			model.addAttribute("Bproducttable", Bproducttable);
+			System.out.println(Bproducttable);
+			model.addAttribute("count", count);
+			
+			model.addAttribute("rows", 4);
+			
+			session.setAttribute("productcode", productcode);
+			session.setAttribute("productname", productname);
+		}
+		
+		
+		
+		
+		
 		String bodyContent = "";
 		if (at.getBody0() != null && at.getBody0() != "") {
 			bodyContent += at.getBody0();

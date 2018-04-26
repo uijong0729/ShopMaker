@@ -24,7 +24,7 @@
 		<div id="header_small_navbar">
 			<ul>
 				<li><a id="temp1" tabindex="0" href="#" class="header_member">회원가입</a></li>
-				<li style="width: 60px;"><a id="temp2" href="#" tabindex="0" class="header_member">로그인</a></li>
+				<li style="width: 60px;"><a id="temp2" tabindex="0" class="header_member">로그인</a></li>
 				<li><a id="temp3" href="#" class="header_member" tabindex="0">공지사항</a></li>
 			</ul>
 		</div>
@@ -58,52 +58,52 @@
 		<div id="header_submenu" class="submenu">
 			<ul style="margin: 0; padding: 0"> 
 				<li class="sub_Outer">
-					<a href="#">Coat</a>
+					<a id="forLink0">Coat</a>
 				</li>
 				<li class="sub_Outer">
-					<a href="#">Jacket</a>
+					<a id="forLink1">Jacket</a>
 				</li>
 				<li class="sub_Outer">
-					<a href="#">Cardigan</a>
+					<a id="forLink2">Cardigan</a>
 				</li>
 				<li class="sub_Outer">
-					<a href="#">AndSoOn</a>
+					<a id="forLink3">AndSoOn</a>
 				</li>
 				<li class="sub_Top">
-					<a href="#">TShirt</a>
+					<a id="forLink4">TShirt</a>
 				</li>
 				<li class="sub_Top">
-					<a href="#">Shirt</a>
+					<a id="forLink5">Shirt</a>
 				</li>
 				<li class="sub_Top">
-					<a href="#">Hoody</a>
+					<a id="forLink6">Hoody</a>
 				</li>
 				<li class="sub_Top">
-					<a href="#">AndSoOn</a>
+					<a id="forLink7">AndSoOn</a>
 				</li>
 				<li class="sub_Bottom">
-					<a href="#">Jeans</a>
+					<a id="forLink8">Jeans</a>
 				</li>
 				<li class="sub_Bottom">
-					<a href="#">Slacks</a>
+					<a id="forLink9">Slacks</a>
 				</li>
 				<li class="sub_Bottom">
-					<a href="#">Skirt</a>
+					<a id="forLink10">Skirt</a>
 				</li>
 				<li class="sub_Bottom">
-					<a href="#">AndSoOn</a>
+					<a id="forLink11">AndSoOn</a>
 				</li>
 				<li class="sub_Shoes">
-					<a href="#">Sneakers</a>
+					<a id="forLink12">Sneakers</a>
 				</li>
 				<li class="sub_Shoes">
-					<a href="#">Loafer</a>
+					<a id="forLink13">Loafer</a>
 				</li>
 				<li class="sub_Shoes">
-					<a href="#">Heals</a>
+					<a id="forLink14">Heals</a>
 				</li>
 				<li class="sub_Shoes">
-					<a href="#">AndSoOn</a>
+					<a id="forLink15">AndSoOn</a>
 				</li>
 			</ul>
 		</div>

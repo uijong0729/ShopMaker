@@ -12,10 +12,28 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript">
 			$(document).ready(function() {
+				 $('#temp2').attr('href','goMyShop?code=${Amember.membercode}&page=Blogin');
+				 $('#forLink0').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink0').text());
+				 $('#forLink1').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink1').text());
+				 $('#forLink2').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink2').text());
+				 $('#forLink3').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink3').text());
+				 $('#forLink4').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink4').text());
+				 $('#forLink5').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink5').text());
+				 $('#forLink6').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink6').text());
+				 $('#forLink7').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink7').text());
+				 $('#forLink8').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink8').text());
+				 $('#forLink9').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink9').text());
+				 $('#forLink10').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink10').text());
+				 $('#forLink11').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink11').text());
+				 $('#forLink12').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink12').text());
+				 $('#forLink13').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink13').text());
+				 $('#forLink14').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink14').text());
+				 $('#forLink15').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink15').text());
+				
+				
 				if (${param.page == 'Bproductdetail'}) {
-					alert('${productDetailList[0].productimage}');
-					$('#productcode').val('${productDetailList[0].productcode}');
-					$('#customercode').val('${sessionScope.Blogin.customercode}');
+			    	$('#productcode').val('${productDetailList[0].productcode}');
+			    	$('#customercode').val('${sessionScope.Blogin.customercode}');
 					$('.showingImg').attr("src", '${productDetailList[0].productimage}');
 					$('.showingImg').css('width', '400px');
 					$('.showingImg').css('height', 'auto');
@@ -29,6 +47,26 @@
 					str += '</c:forEach>';
 					$('#color_selecter').append(str);
 					$('#Bproductreview').load('ProductReview');
+				}
+				if(${param.page == 'Bmainlist'}) {
+					$('#forAppend').html('');
+					var str = '';
+						str += '<c:forEach items="${nameset}" var="n" varStatus="vars">';
+				        str += '<c:set var="done" value="false" />';
+				        str += '<c:forEach items="${Bproducttable}" var="b" varStatus="varss">';
+				        str += '<c:if test="${nameset[vars.index] == Bproducttable[varss.index].productname}">';
+		             	str += '<c:if test="${done == false}">';
+					    str += '<a href="goBproductdetail?productname=${b.productname}&productcode=${b.productcode }">';
+					    str += '<div id="div${vars.index + 1}" class="div">';
+					    str += '<img src="${b.productimage }" style="width: 200px; height: 200px;"><br>';
+				        str += '상품명 : ${b.productname}<br>가격 : ${b.productprice}';
+					    str += '</div></a>';
+					    str += '<c:set var="done" value="true"/>';
+					    str += '</c:if>';
+					    str += '</c:if>';
+					    str += '</c:forEach>';
+					    str += '</c:forEach>';
+					$('#forAppend').append(str);
 				}
 		});
 			
