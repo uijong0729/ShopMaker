@@ -363,9 +363,11 @@ public class BproductdetailController {
 	public void insertCart(Bcarttable bcart) {
 		String customer = bcart.getCustomercode();
 		String productcode = bcart.getProductcode();
+		String productQty = bcart.getProductQty();
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("customercode", customer);
 		map.put("productcode", productcode);
+		map.put("productQty", productQty);
 		System.out.println(map);
 		System.out.println(cDao.insertBcart(map));
 		//System.out.println(membercode + "//" + productcode);
