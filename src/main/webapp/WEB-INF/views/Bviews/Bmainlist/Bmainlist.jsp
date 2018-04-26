@@ -49,7 +49,7 @@
                <c:if test="${done == false}">
                   <a href="goBproductdetail?productname=${b.productname}&productcode=${b.productcode }">
                   <div id="div${vars.index + 1}" class="div">
-                     <img src="${b.productimage }" style="width: 200px; height: 200px;"><br>
+                     <img src="./resources/image/${b.productimage }" style="width: 200px; height: 200px;"><br>
                      
                      상품명 : ${b.productname}<br>가격 : ${b.productprice}
                   </div></a>
