@@ -1304,7 +1304,7 @@
 		
 		<!-- 헤더 -->
 		<header>
-			<%@ include file="../Bheader.jsp" %>
+			<%@ include file="../header.jsp" %>
 		</header>
 
 		

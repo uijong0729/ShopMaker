@@ -88,9 +88,6 @@ public class BmemberController {
 	@RequestMapping(value="BcustomerLogin", method = RequestMethod.POST)
 	public String BcustomerLogin(Model model, String customerid, String customerpw, String membercode, HttpSession session) {
 		
-		System.out.println(customerid);
-		System.out.println(customerpw);
-		System.out.println(membercode);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("customerid", customerid);
 		map.put("customerpw", customerpw);
@@ -121,11 +118,9 @@ public class BmemberController {
 		try 
 		{
 			ArrayList<Bcustomer> list = dao.bCustomerList(membercode);
-			System.out.println(list);
 			int countList = list.size();
 			model.addAttribute("bCustomerList", list);
 			model.addAttribute("bCountList", countList);
-			System.out.println(list.get(0));
 			model.addAttribute("BcustomerModel", list.get(0));
 		}
 		catch(NullPointerException e)
@@ -137,9 +132,7 @@ public class BmemberController {
 	}
 	
 	@RequestMapping(value="Bwellcome", method=RequestMethod.POST)
-	public String Bwellcome(Bcustomer bcustomer, Model model)
-	{
-		System.out.println(bcustomer);
+	public String Bwellcome(Bcustomer bcustomer, Model model, HttpSession hs, String membercode) {
 		if(bcustomer.getCustomeraddress() == null)
 		{
 			bcustomer.setCustomeraddress("미입력");
@@ -155,12 +148,10 @@ public class BmemberController {
 			bcustomer.setCustomername("미입력");
 		}
 		
-		
-		System.out.println(dao.insertBcustomer(bcustomer));
 		model.addAttribute("Bcustomer", bcustomer);
+		System.out.println(membercode);
 		
-		
-		return "Bviews/Bmain/Blogin";
+		return "redirect:/goMyShop?code=" + membercode + "&page=BpageMain";
 	}
 	
 	@ResponseBody
@@ -169,7 +160,6 @@ public class BmemberController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("membercode", membercode);
 		map.put("customercode", customercode);
-		System.out.println(map);
 		
 		List<Bordertable> list = null;
 		try 
@@ -212,7 +202,6 @@ public class BmemberController {
 			map.put("productcode", pCode);
 			cart.add(pdao.getCart(map));
 		}
-		System.out.println(cart);
 		return cart;
 	}
 	
@@ -244,8 +233,6 @@ public class BmemberController {
 		{
 			bcustomer.setCustomerpw(customerpw);
 		}
-		System.out.println(bcustomer);
-		System.out.println(dao.updateCustomer(bcustomer));;
 		
 		return "Bviews/Bmain/Bmain";
 	}

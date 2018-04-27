@@ -161,8 +161,7 @@ $( "#dialog" ).position({
 	  of: "document"
 	});
 
-function goReg(){
-	alert('aa');
+function goReg(){ 
 	var getId = document.getElementById('Bid');
 	var getPw = document.getElementById('Bpw');
 	var getPw2 = document.getElementById('Bpw2');
@@ -276,7 +275,7 @@ function changeColor(){
 			</ul>
 					
 		</div>
-				<input type="hidden" name="membercode" value='${param.code }'>
+				<input type="hidden" id="membercode" name="membercode" value='${param.code }'>
 		</form>
 		<hr>
 
