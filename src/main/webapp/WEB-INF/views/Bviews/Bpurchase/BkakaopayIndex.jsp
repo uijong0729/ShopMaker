@@ -262,7 +262,7 @@ PC 결제
             dataType: 'json'
         });
         
- */		location.href = "AkakaopayInfo";
+ */		location.href = "BkakaopayInfo";
  
         /* request.done(function( data ) {
             if(agent === 'web'){

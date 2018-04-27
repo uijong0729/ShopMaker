@@ -25,9 +25,7 @@ function finish(){
 <br>
 <p>카카오페이 결제가 정상적으로 완료되었습니다.</p>
 <p>결제일시: ${serverTime }</p>
-<p>템플릿명: ${templateforValue }</p>
-<p>결제금액: ${paymentforValue }원</p>
-<p>결제기간: ${daysforValue }일</p>
+<p>결제금액: ${totalPrice }원</p>
 <div class="alert alert-warning">
 <!-- 해당 페이지는 카카오페이에서 제공하는 페이지가 아닙니다. -->
 </div>

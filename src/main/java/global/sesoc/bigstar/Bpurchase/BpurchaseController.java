@@ -52,39 +52,29 @@ public class BpurchaseController {
 		Bcustomer bCustomer = (Bcustomer) session.getAttribute("Blogin");
 		Amember aMember = (Amember) session.getAttribute("Amember");
 		
-		// 구입 관련 알고리즘 구현 필요!!
-		// 예를들어, 하나의 상품을 구매하는 경우 또는 여러 상품을 동시에 구매하는 경우!
-		// if productcode 가 하나인 경우 if else productcode가 여러개 인 경우
-		
 		Bordertable order = new Bordertable();
-		order.setCustomercode(bCustomer.getCustomercode());
+		//order.setCustomercode(bCustomer.getCustomercode());
+		//customercode 임시값 설정 해뒀음!!!!
+		String customercode = "37";
+		order.setCustomercode(customercode);
 		//order.setMembercode(aMember.getMembercode());
 		order.setMembercode("37");
 		order.setProductcode(productcode);
 		order.setOrderquantity(productQty);
 		
-		ArrayList <Bordertable> orderList = new ArrayList <Bordertable>();
-		orderList.set(0, order);
-		
 		ArrayList<Bproducttable> purchaseList = BPdao.selectbproducttable(Integer.parseInt(productcode));
+		Bproducttable purchaseProduct = purchaseList.get(0);
+		System.out.println(purchaseProduct);
+		int totalPrice = 0;
+		for (Bproducttable b : purchaseList) {
+			totalPrice += b.getProductprice();
+		}
 		
-		
-		// 구매정보 입력 페이지에 주문 품목 확인을 구현하기 위한 알고리즘
-		// 현재는 하나만 저장하여 넣지만, 추후 작업은 for문을 통하여 여러개의 상품 정보를 리스트에 넣어야 한다.
-		ArrayList<Object> purchaseListAndOrderList = new ArrayList<Object>();
-		
-		Map<String, Object> order1 = new HashMap<String, Object>();
-		order1.put("orderList", orderList.get(0));
-		order1.put("purchaseList", purchaseListAndOrderList.get(0));
-		purchaseListAndOrderList.add(order1);
-		/* 아래와 같이 여러개의 주문을 처리
-		Map<String, Object> order2 = new HashMap<String, Object>();
-		order2.put("orderList", orderList.get(1));
-		order2.put("purchaseList", purchaseListAndOrderList.get(1));
-		purchaseListAndOrderList.add(order2);
-		*/
 		session.setAttribute("order", order);
-		model.addAttribute("purchaseListAndOrderList", purchaseListAndOrderList);
+		session.setAttribute("totalPrice", totalPrice);
+		model.addAttribute("purchaseProduct", purchaseProduct);
+		model.addAttribute("purchaseList", purchaseList);
+		model.addAttribute("totalPrice", totalPrice);
 		
 		return "Bviews/Bpurchase/Bpurchaseform";
 	}
@@ -115,22 +105,21 @@ public class BpurchaseController {
 	}
 	
 	@RequestMapping(value = "BpurchaseIndex", method = RequestMethod.POST)
-	public String BpurchaseIndex(Model model, HttpSession session, String templateforValue, String paymentforValue, String daysforValue) {
-//		System.out.println(templateforValue);
-//		System.out.println(paymentforValue);
-//		System.out.println(daysforValue);
+	public String BpurchaseIndex(Model model, HttpSession session, String str_name, String str_email01, String str_email02, String str_phonenum, String baseAddress, String detailAddress) {
 		
-		HashMap<String, String> BpurchaseInfo = new HashMap<String, String>();
-		BpurchaseInfo.put("templateforValue", templateforValue);
-		BpurchaseInfo.put("paymentforValue", paymentforValue);
-		BpurchaseInfo.put("daysforValue", daysforValue);
+		Bordertable order = (Bordertable) session.getAttribute("order");
+		String orderdeliverylocation = baseAddress+" "+detailAddress;
+		order.setOrderdeliverylocation(orderdeliverylocation);
+		System.out.println(baseAddress+" "+detailAddress);
 		
-		session.setAttribute("BpurchaseInfo", BpurchaseInfo);
+		session.setAttribute("order", order);
 		return "Bviews/Bpurchase/BkakaopayIndex";
 	}
 	
 	@RequestMapping(value = "BkakaopayInfo", method = RequestMethod.GET)
 	public String BkakaopayInfo(){
+		
+		
 		
 		return "Bviews/Bpurchase/BkakaopayInfo"; 
 	}
@@ -151,19 +140,13 @@ public class BpurchaseController {
 		
 		model.addAttribute("serverTime", formattedDate);
 		
-		HashMap<String, String> BpurchaseInfo = (HashMap<String, String>) session.getAttribute("BpurchaseInfo");
+		Bordertable order = (Bordertable) session.getAttribute("order");
 		
-		String templateforValue = BpurchaseInfo.get("templateforValue");
-		String paymentforValue = BpurchaseInfo.get("paymentforValue");
-		String daysforValue = BpurchaseInfo.get("daysforValue");
+		logger.debug(order.toString());
 		
-//		System.out.println(templateforValue);
-//		System.out.println(paymentforValue);
-//		System.out.println(daysforValue);
-		
-		model.addAttribute("templateforValue", templateforValue);
-		model.addAttribute("paymentforValue", paymentforValue);
-		model.addAttribute("daysforValue", daysforValue);
+		//TODO: Bordertable order 데이터베이스에 INSERT 하기.
+//		int result = 0;
+//		result = BOdao.insertBordertable(order);
 		
 		return "Bviews/Bpurchase/BkakaopaySuccess"; 
 	}
