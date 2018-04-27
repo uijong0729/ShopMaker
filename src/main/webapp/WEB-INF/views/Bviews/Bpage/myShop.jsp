@@ -2,16 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html id="html">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bfooter.css?ver=3"/>
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bfooter.css?ver=7"/>
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bheader.css"/>
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bpagemain.css"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript">
 			$(document).ready(function() {
+				
+				
+				$('#image_header').parent().attr('href', 'goMyShop?code=${Amember.membercode}&page=BpageMain');
+				$('#temp1').attr('href','goMyShop?code=${Amember.membercode}&page=Bregist');
 				$('#temp2').attr('href','goMyShop?code=${Amember.membercode}&page=Blogin');
 				$('#temp3').attr('href','goMyShop?code=${Amember.membercode}&page=Bnoticelist');
 				$('#forLink0').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink0').text());
@@ -69,15 +73,24 @@
 					    str += '</c:forEach>';
 					$('#forAppend').append(str);
 				}
+				if(${param.page == 'Blogin'}) {
+					$('#text_login').attr('onclick', 'location.href="goMyShop?code=${Amember.membercode}&page=Blogin"');
+				}
+				if(${param.page == 'Bregist'}) {
+					$('#text_main').attr('onclick', 'location.href="goMyShop?code=${Amember.membercode}&page=BpageMain"');
+					$('#membercode').val(${Amember.membercode});
+				}
 		});
 			
 		</script>
+		<style type="text/css">
+		</style>
 	</head>
-	<body>
+	<body id="body">
 		<div>
 			${headerContent}
 		</div>
-		<div>
+		<div style="height: auto;">
 			${body}
 		</div>
 		<div class="forVerticalAlign">

@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bfooter.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bfooter.css?ver=2">
 <title>Insert title here</title>
 </head>
 <body>
+<div class="footer_wrapper"> 
 <div id=footer_footer>
 		<div id=footer_fotterMenu>
 			<div id=footer_ft01>
