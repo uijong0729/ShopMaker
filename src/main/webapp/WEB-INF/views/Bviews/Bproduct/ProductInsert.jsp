@@ -83,7 +83,7 @@
 					return;
 				}
 				alert("이미지 업로드가 완료되었습니다.");
-				location.href="Bmainlist?rows=4";
+				location.href="goBmain";
 			},
 			error : function(e){
 				alert(JSON.stringify(e));
@@ -247,8 +247,29 @@ submitBtn {
 					<table class="optionBox">
 						<tr>
 							<td>상품 종류</td>
-							<td><input name="productkind" type="text"><font
-								style="font-size: 13px; margin-left: 5px"></font></td>
+							<td><select
+								id="productkind" name="productkind">
+									<option id="selectprokind" value="">선택</option>
+
+									<option value="Sofa">Sofa</option>
+									<option value="Rug">Rug</option>
+									<option value="Storage">Storage</option>
+									<option value="AndSoOn">AndSoOn</option>
+									<option value="Table">Table</option>
+									<option value="Chair">Chair</option>
+									<option value="Cabinet">Cabinet</option>
+									<option value="AndSoOn ">AndSoOn </option>
+									<option value="Bed">Bed</option>
+									<option value="Wardrobe">Wardrobe</option>
+									<option value="Desk">Desk</option>
+									<option value="ETC">ETC</option>
+									<option value="BabyBed">BabyBed</option>
+									<option value="BabyDesk">BabyDesk</option>
+									<option value="BookShelf">BookShelf</option>
+									<option value="ETC ">ETC </option>
+
+
+							</select></td>
 						</tr>
 						<tr>
 							<td>상품명</td>
@@ -298,9 +319,10 @@ submitBtn {
 									<input type="button" value="추가" id="fileAddBt" class="button" style="width:50px; font-size:13px; padding:3 0 3 0;">
 									<div id="fileDiv"></div> -->
 									<div class="dtfilebox">
-											<input type="file" id="input_img" class="upload" name="uploadFile" value="파일선택" readOnly> 
-											<label for="input_img" id="fileAddBt">업로드</label> 
-											<input type="file" id="input_img" class="dtupload-hidden">
+										<input type="file" id="input_img" class="upload"
+											name="uploadFile" value="파일선택" readOnly> <label
+											for="input_img" id="fileAddBt">업로드</label> <input type="file"
+											id="input_img" class="dtupload-hidden">
 										<div id="fileDiv"></div>
 									</div>
 								</div>
@@ -340,7 +362,7 @@ submitBtn {
 										<div id="fileDiv"></div>
 									</div>
 								</div>
-								
+
 								<div name="dtimgbox2">
 									<div class="dtimg_wrap">
 										<img id="img2" />
@@ -397,8 +419,8 @@ submitBtn {
 					</table>
 					<!-- <button type="button" onclick="valueShow()">valueShow</button> -->
 					<center>
-						<input id="subBt" type="button" class="submitBtn" style="cursor: pointer"
-							value="등록">
+						<input id="subBt" type="button" class="submitBtn"
+							style="cursor: pointer" value="등록">
 					</center>
 				</form>
 			</div>
@@ -448,9 +470,7 @@ submitBtn {
 								</tr>
 							</c:forEach>
 						</table>
-						<center>
-							
-						</center>
+						<center></center>
 					</form>
 				</div>
 			</div>
