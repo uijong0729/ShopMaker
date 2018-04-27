@@ -26,7 +26,6 @@ th
 
 th:hover
 {
-  display: inline-block;
   background-color: #263238;
   color: #ffffff;
   -moz-transition: all 0.2s;
@@ -48,21 +47,21 @@ th:hover
 	<h2 style="display: inline-block; box-shadow: 2px 2px 1px 1px gray;">회원 리스트</h2>
 	
 	<div style="text-align: center;">
-		<div style="display: inline-block; border: 1px solid silver; border-bottom-width: thin;" style="box-shadow: 4px 4px 2px 2px gray;">
+		<div style="display: inline-block; border: 1px solid silver; border-radius: 5px; border-bottom-width: thin; box-shadow: 4px 4px 2px 2px gray;">
 			<c:if test="${bCountList >= 1}">
 				<table>
-					<tr>
-						<th style="width: 120px;">아이디</th>
-						<th style="width: 120px;">성명</th>
-						<th style="width: 170px;">전화번호</th>
-						<th style="width: 300px;">주소</th>
+					<tr style="margin-bottom: 5px;">
+						<th style="width: 120px; margin: 8px;">아이디</th>
+						<th style="width: 120px; margin: 8px;">성명</th>
+						<th style="width: 170px; margin: 8px;">전화번호</th>
+						<th style="width: 300px; margin: 8px;">주소</th>
 					</tr>
 				<c:forEach var="list" items="${bCustomerList}">
-					<tr>
-						<td style="width: 120px;">${list.customerid }</td>
-						<td style="width: 120px;">${list.customername }</td>
-						<td style="width: 170px;">${list.customerhp }</td>
-						<td style="width: 300px;">${list.customeraddress }</td>
+					<tr style="margin: 8px; margin-bottom: 10px;">
+						<td style="width: 120px; margin: 8px;">${list.customerid }</td>
+						<td style="width: 120px; margin: 8px;">${list.customername }</td>
+						<td style="width: 170px; margin: 8px;">${list.customerhp }</td>
+						<td style="width: 300px; margin: 8px;">${list.customeraddress }</td>
 					</tr>
 				</c:forEach>
 					
