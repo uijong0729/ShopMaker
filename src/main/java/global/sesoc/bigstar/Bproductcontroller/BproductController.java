@@ -185,7 +185,8 @@ public class BproductController {
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
 	public String goMyShop(String page, String code, String category, String productname, String productcode, Model model, HttpSession session) {
 		String link = code + page;
-		Atemplate at = adao.getPage(link);
+		Atemplate at = new Atemplate();
+		at = adao.getPage(link);
 		Atemplate header = adao.getPage(code + "Bheader");
 		Atemplate footer = adao.getPage(code + "Bfooter");
 		
