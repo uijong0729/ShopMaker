@@ -376,7 +376,27 @@ public class BproductController {
 	}
 	
 	@RequestMapping(value = "Bheader", method = RequestMethod.GET)
-	public String Bheader() {
+	public String Bheader(Model model) {
+		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
+		ArrayList<String> kindset = new ArrayList<String>();
+		boolean insert=true;
+		Bproducttable=Bpdao.selectallbproducttable();
+		
+		for (int i = 0; i < Bproducttable.size(); i++) {
+			
+			for(int j=0; j< kindset.size(); j++) {
+				if(kindset.get(j).equals(Bproducttable.get(i).getProductkind())) {
+					insert=false;
+				}
+			}
+			if(insert==true) {
+				kindset.add(Bproducttable.get(i).getProductkind());
+			}
+			insert=true;
+		}
+		System.out.println("사이즈"+kindset.size());
+		
+		model.addAttribute("productkindlist", kindset);
 		return "Bviews/Bmain/Bheader";
 	}
 	
