@@ -121,6 +121,15 @@ margin-bottom: 5px;
 	height: 80px;
 }
 
+.deleteBt-euj{
+	cursor: pointer;
+}
+			
+.deleteBt-euj:hover{
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+	opacity: 0.1;
+}
+
 </style>				
 <script>
 	var StringBuffer = function() {
@@ -252,9 +261,13 @@ function cartList(){
 						innerText.append('<span class="ol c4">' + result[i].productsize + '</span>');
 						innerText.append('<span class="ol c5">' + result[i].productquantity + '</span>');
 						innerText.append('<span class="ol c6">' + result[i].productprice + '</span>');
-						innerText.append('<span class="ol2 c6"><img src="/bigstar/resources/img/Xsign.jpg"></span>');
-						
+						innerText.append('<span class="ol2 c6"><img num="' + result[i].productcode + '" class="deleteBt-euj deleteCart" src="/bigstar/resources/img/Xsign.jpg"></span>');
 					}
+					
+						$('.deleteCart').on('click', function(){
+							var productcode = $(this).attr('num');
+							alert(productcode);
+						});
 					
 					innerText.append('</li><hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
@@ -282,17 +295,6 @@ function cartList(){
 	
 }
 
-//텍스트 추가		
-/* function addRowMp(){
-			$('#addrowMp').append('<ul style="list-style: none;"><li><span>텍스트</span></li><li><input> <input class="rowsButton" type="button" value="삭제"></li></ul>');
-			$('.rowsButton').on("click", removeRow);
-			
-}
-		
-function removeRow(){
-			 $(this).parent().parent().remove();
-}
- */
  
 $(document).mousedown(function(ev) {
 			if (ev.which == 3) {
