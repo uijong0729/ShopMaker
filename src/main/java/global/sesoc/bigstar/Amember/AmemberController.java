@@ -43,7 +43,7 @@ public class AmemberController {
 
 		session.removeAttribute("Amember");
 
-		return "Aviews/Amember/AwellcomePage";
+		return "home";
 	}
 
 	@RequestMapping(value = "AsignupReq", method = RequestMethod.GET)

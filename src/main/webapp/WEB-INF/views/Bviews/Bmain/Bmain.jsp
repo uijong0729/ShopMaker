@@ -1118,6 +1118,7 @@
 			}
 			function Bsm() {
 				var str = '<ul>';
+				str += '<li class="side" onclick="javascript:Bnoticelist()" style="cursor: pointer; user-select: none;">공지사항</li>';
 				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
 				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
 				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
@@ -1168,8 +1169,12 @@
 			
 			function Bfooter(){
 				$('#pagename').val('Bfooter');
-				$('#pagename').val('Bfooter');
 				$('#Bcenter').load('Bfooter');
+			}
+			
+			function Bnoticelist(){
+				$('#pagename').val('Bnoticelist');
+				$('#Bcenter').load('Bnoticelist');
 			}
 			
 			function Bmain(){
