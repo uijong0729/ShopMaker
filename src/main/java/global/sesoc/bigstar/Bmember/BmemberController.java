@@ -178,31 +178,68 @@ public class BmemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="getCartlist", method=RequestMethod.POST)
-	public List<Bproducttable> getCartlist(String customercode) {
+	public HashMap<String, Object> getCartlist(String customercode) {
 		
 		List<Bcarttable> clist = null;
 		List<Bproducttable> cart = new ArrayList<Bproducttable>();
+		HashMap<String, Object> purchaseList = new HashMap<String, Object>();
+		
 		
 		try 
 		{
 			clist = cdao.selectbcarttable(Integer.parseInt(customercode));
+			
 			System.out.println(clist);
 		}
 		catch(Exception e)
 		{
 			//e.printStackTrace();
-			cart = null;
-			return cart;
+			return null;
 		}
 		
-		for (Bcarttable bcarttable : clist) {
-			String pCode = bcarttable.getProductcode();
+		for(int i = 0 ; i < clist.size() ; i++)
+		{
+			String pCode = clist.get(i).getProductcode();
+			//String pQty = bcarttable.getProductQty();
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("customercode", customercode);
 			map.put("productcode", pCode);
+			
+			//map.put("productQty", pQty);
+			Bproducttable pro = pdao.getCart(map);
+			try 
+			{
+				int qty = Integer.parseInt(clist.get(i).getProductQty());
+				pro.setProductquantity(qty);
+			}
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
+				
 			cart.add(pdao.getCart(map));
 		}
-		return cart;
+		
+		/*for (Bcarttable bcarttable : clist) {
+			String pCode = bcarttable.getProductcode();
+			//String pQty = bcarttable.getProductQty();
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("customercode", customercode);
+			map.put("productcode", pCode);
+			//map.put("productQty", pQty);
+			cart.add(pdao.getCart(map));
+		}*/
+		
+		
+		//cart
+		purchaseList.put("clist", clist);
+		purchaseList.put("cart", cart);
+
+		/*		
+		JSONArray cListJson = JSONArray.fromObject(clist);
+		JSONArray cartJson = JSONArray.fromObject(cart);*/
+		
+		return purchaseList;
 	}
 	
 	@RequestMapping(value = "Btracking", method = RequestMethod.GET)

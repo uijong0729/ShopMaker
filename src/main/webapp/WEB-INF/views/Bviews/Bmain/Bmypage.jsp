@@ -77,7 +77,7 @@ margin-bottom: 5px;
 .w6{width: 120px;}
 
 .c1{width: 120px; height: 40px;}
-.c2{width: 150px; height: 40px;}
+.c2{width: 250px; height: 40px;}
 .c3{width: 70px; height: 40px;}
 .c4{width: 70px; height: 40px;}
 .c5{width: 70px; height: 40px;}
@@ -236,13 +236,18 @@ function cartList(){
 		data: {customercode: customercode},
 		dataType: 'json',
 		success: function(result){
+			
+			/* var arr = new Array();
+			for (var i in result.cart) {
+				arr[i] = result.cart[i] 
+			} */
+			
 			if(result == null)
 			{
 				$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
 			}
 			else
 			{
-				console.log(result);
 				 var innerText = new StringBuffer();
 			        innerText.append('<li>');
 					innerText.append('<span class="ol c1">이미지</span>');
@@ -251,25 +256,24 @@ function cartList(){
 					innerText.append('<span class="ol c4">사이즈</span>');
 					innerText.append('<span class="ol c5">수량</span>');
 					innerText.append('<span class="ol c6">가격</span>');
-					innerText.append('<span class="ol2 c6"></span>');
 					innerText.append('</li>');
 					
-					for (let i of result) {
-						if (i != null) {
-							
-							console.log(i.productimage);
-							console.log(i.productname);
-							console.log(i.productcolor);
+					
+					for (var i in result.cart)
+					{
+						if(result.cart[i] != null)
+						{
 							innerText.append('<li>');
-							innerText.append('<span class="ol c1">' + i.productimage + '</span>');
-							innerText.append('<span class="ol c2">' + i.productname+ '</span>');
-							innerText.append('<span class="ol c3">' + i.productcolor + '</span>');
-							innerText.append('<span class="ol c4">' + i.productsize + '</span>');
-							innerText.append('<span class="ol c5">' + i.productquantity + '</span>');
-							innerText.append('<span class="ol c6">' + i.productprice + '</span>');
-							innerText.append('<span class="ol2 c6"><img src="/bigstar/resources/img/Xsign.jpg"></span></li>');
+							innerText.append('<span class="ol c1"><img src="./bigstar/resources/image/' + result.cart[i].productimage + '"></span>');
+							innerText.append('<span class="ol c2">' + result.cart[i].productname+ '</span>');
+							innerText.append('<span class="ol c3">' + result.cart[i].productcolor + '</span>');
+							innerText.append('<span class="ol c4">' + result.cart[i].productsize + '</span>');
+							innerText.append('<span class="ol c5">' + result.cart[i].productquantity + '</span>');
+							innerText.append('<span class="ol c6">' + result.cart[i].productprice + '</span></li>');
 						}
 					}
+				
+					//innerText.append('</li>');
 				
 					
 						$('.deleteCart').on('click', function(){
@@ -298,9 +302,12 @@ function cartList(){
 			             form.submit();
 					});
 			}
+		},
+		error: function(msg){
+			alert('3초만 기다려주세요');
 		}
 		
-	});
+	});//ajax
 	
 }
 
