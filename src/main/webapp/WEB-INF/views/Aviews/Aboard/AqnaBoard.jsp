@@ -52,7 +52,7 @@ function openContent(){
         var str = new StringBuffer();
         var sbAns = new StringBuffer();
         
-        str.append('<table border="1"><tr>');
+        str.append('<table style="margin: 0px; padding:0px;" border="1"><tr>');
         	str.append('<th style="width: 20%;">글 제목</th>');
         	str.append('<td style="width: 48%;">' + result.qtitle +'</td>');
         str.append('</tr><tr>');
@@ -155,7 +155,8 @@ function qnaPage(page){
 		
 		.borderIb{
 		display: inline-block;
-		margin: 4px;
+		margin: 0px;
+		padding: 0px;
 		background: rgb(38, 48, 52);
  		border-radius: 1em;
   		border-collapse: collapse;
@@ -258,13 +259,12 @@ function qnaPage(page){
 	</header>
 	
 	
-		<article class="borderIb" style="width: 55%;">
+		<article class="borderIb" style="width: 40%;">
 			<table class="borderIb">
 				<tr>
-					<th class="th10">글 번호</th>
-					<th class="title th40">제목</th>
+					<th style="width: 9%;">글 번호</th>
+					<th class="title th10">제목</th>
 					<th class="th10">작성자</th>
-					<th class="th20">문의날짜</th>
 					<!-- 내용, 감추기/보이기, 답글, 답변날짜-->
 				</tr>
 			
@@ -276,19 +276,19 @@ function qnaPage(page){
 				
 				<c:forEach items="${qnaList }" var="ql">
 					<tr id="AQnAcontent" style="text-align: center;">
-						<td style="width: 10%; text-align: center;">${ql.qtablecode }</td>
+						<td style="width: 9%; text-align: center;">${ql.qtablecode }</td>
 						
 						<c:if test="${ql.qvisible == 1 }">
 							<!-- 로그인 당사자일 경우 비밀글 접근-->
 							<c:if test="${ql.membercode == Amember.membercode}">
-								<td value="${ql.qtablecode}" class="click clickQna" style="width: 50%; text-align: center;">${ql.qtitle } 
+								<td value="${ql.qtablecode}" class="click clickQna" style="cursor: pointer; width: 30%; text-align: center;">${ql.qtitle } 
 									<span style="color: red;">(비밀글)</span>
 								</td>
 							</c:if>
 							
 							<!-- 로그인 당사자가 아닌 경우의 비밀글 접근 -->
 							<c:if test="${ql.membercode != Amember.membercode}">
-								<td value="${ql.qtablecode}" style="width: 50%; text-align: center;">${ql.qtitle } 
+								<td value="${ql.qtablecode}" style="cursor: pointer; width: 30%; text-align: center;">${ql.qtitle } 
 									<span style="color: red;">(비밀글)</span>
 								</td>
 							</c:if>
@@ -296,11 +296,10 @@ function qnaPage(page){
 						
 						<!-- 일반글 접근 -->
 						<c:if test="${ql.qvisible == 0 }">
-							<td value="${ql.qtablecode}" class="click clickQna" style="width: 50%; text-align: center;">${ql.qtitle } </td>
+							<td value="${ql.qtablecode}" class="click clickQna" style="cursor: pointer; width: 30%; text-align: center;">${ql.qtitle } </td>
 						</c:if>	
 						
 						<td style="width: 10%; text-align: center;">${ql.membercode }</td>
-						<td style="width: 10%; text-align: center;">${ql.qpushdate }</td>									
 					
 				</c:forEach>
 			</table>
