@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import global.sesoc.bigstar.dao.AtemplateDAO;
 import global.sesoc.bigstar.dao.BproducttableDAO;
 import global.sesoc.bigstar.dao.BreviewtableDAO;
+import global.sesoc.bigstar.vo.Amember;
 import global.sesoc.bigstar.vo.Atemplate;
 import global.sesoc.bigstar.vo.Bproducttable;
 import global.sesoc.bigstar.vo.Breviewtable;
@@ -184,6 +185,12 @@ public class BproductController {
 	
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
 	public String goMyShop(String page, String code, String category, String productname, String productcode, Model model, HttpSession session) {
+		Amember am = (Amember) session.getAttribute("Amember");
+		if (am == null) {
+			am = new Amember();
+			am.setMembercode(code);
+		}
+		session.setAttribute("Amember", am);
 		String link = code + page;
 		Atemplate at = new Atemplate();
 		at = adao.getPage(link);
