@@ -126,7 +126,7 @@ var membercode = ${Amember.membercode};
     	        
     	        //차트1
     	        var Bpurchase =
-    	        {'title':'VIP고객 현황 (내림차순)',
+    	        {'title':'Best3 고객 (내림차순)',
     	                       'is3D':true,
     	                       'width':800,
     	                       'height':400
