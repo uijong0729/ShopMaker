@@ -51,9 +51,10 @@
 		
 	</head>
 	<body>
-		<header>
-		<%@ include file="../header.jsp" %>
-	</header>
+		<header style="margin-bottom: 150px;">
+			<%@ include file="../../Aheader.jsp" %>
+		</header>
+		
 		<div style="width: 100%; height: 100%; text-align: center;">
 			
 			<div style="text-align: center; font: 20pt bold;">${Amember.id}님 환영합니다</div>

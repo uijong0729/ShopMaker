@@ -186,10 +186,12 @@ public class BproductController {
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
 	public String goMyShop(String page, String code, String category, String productname, String productcode, Model model, HttpSession session) {
 		Amember am = (Amember) session.getAttribute("Amember");
+		
 		if (am == null) {
 			am = new Amember();
 			am.setMembercode(code);
 		}
+		
 		session.setAttribute("Amember", am);
 		String link = code + page;
 		Atemplate at = new Atemplate();
@@ -272,13 +274,6 @@ public class BproductController {
 			session.setAttribute("productcode", productcode);
 			session.setAttribute("productname", productname);
 		}
-		
-		
-	
-		
-		
-		
-		
 		
 		String bodyContent = "";
 		if (at.getBody0() != null && at.getBody0() != "") {

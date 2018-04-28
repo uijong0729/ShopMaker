@@ -1,6 +1,9 @@
 <%@page import="org.apache.taglibs.standard.tag.common.xml.IfTag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html oncontextmenu="return false">
 	<head>
@@ -1303,10 +1306,9 @@
 	<body>
 		
 		<!-- 헤더 -->
-		<header>
-			<%@ include file="../header.jsp" %>
-		</header>
-
+			<header style="margin-bottom: 150px;">
+				<%@ include file="../../Bheader.jsp" %>
+			</header>
 		
 		
 		

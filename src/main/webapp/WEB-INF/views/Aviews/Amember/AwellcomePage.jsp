@@ -24,8 +24,8 @@ $(document).ready(function(){
 </head>
 <body>
 
-	<header>
-		<%@ include file="../header.jsp" %>
+	<header style="margin-bottom: 150px;">
+		<%@ include file="../../Aheader.jsp" %>
 	</header>
 	
 		<article>
