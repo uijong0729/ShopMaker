@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./resources/css/headerfooter.css">
-<link rel="stylesheet" href="./resources/css/templatepay.css?ver=1">
+<link rel="stylesheet" href="./resources/css/templatepay.css?ver=2">
 <script src="./resources/js/jquery-3.2.1.min.js"></script>
-<script>
 
+<script>
 /* 버려진 코드 : 버튼 클릭 시  배경 변경 관련 코드
 $(document).ready(function(){
 	
@@ -229,10 +229,17 @@ function payment4(date) {
 </head>
 <body>
 
-<header class="w3-top">
+<header class="w3-top" style="margin-bottom: 100px;">
 	<%@ include file="../../Aheader.jsp" %>
 </header>
 <br><br><br><br>
+
+<div style="text-align: center; margin-bottom: 40px;">
+	<h2><span style="color: blue;"><b>빅스타</b></span> 웹 EC 서비스</h2>
+		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다</h6>
+	</div>
+	<hr>
+
 <div class="services">
 <section class="pricecol">
 <div class="icon">
@@ -240,7 +247,7 @@ function payment4(date) {
 <img src="./resources/image/shirt2.png">
 </div>
 
-<h3><Span>Template1</span></h3>
+<h3><Span>세련된 디자인</span></h3>
 <p>
 <a class="button" id="template1" href="javascript:template1()"><span>Pick</span></a>
 </p>
@@ -251,7 +258,7 @@ function payment4(date) {
 <i class="icon-leaf"></i>
 <img src="./resources/image/shoes.png">
 </div>
-<h3><Span>Template2</span></h3>
+<h3><Span>강렬한 디자인</span></h3>
 <p>
 <a class="button" id="template2" href="javascript:template2()"><span>Pick</span></a>
 </p>
@@ -262,7 +269,7 @@ function payment4(date) {
 <i class="icon-link"></i>
 <img src="./resources/image/hat.png">
 </div>
-<h3><Span>Template3</span></h3>
+<h3><Span>퇴폐적 디자인</span></h3>
 <p>
 <a class="button" id="template3" href="javascript:template3()"><span>Pick</span></a>
 </p>

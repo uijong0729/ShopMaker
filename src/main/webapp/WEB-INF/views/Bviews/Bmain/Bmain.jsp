@@ -9,7 +9,7 @@
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=4"/>
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=0"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -1262,18 +1262,7 @@
 				text-align: center;
 				z-index: 1000;
 			} */
-			#popup_slide {
-				position:fixed;
-				left:35%;
-				top:30%;
-				visibility:hidden;
-				width: 30%;
-				height: 40%;
-				background: #ffffff;
-				border-radius: 10px;
-				text-align: center;
-				z-index: 1000;
-			}
+			
 			.editTextBtn {
 				width: 70px;
 				height: auto;
@@ -1548,13 +1537,29 @@
 				<div id="bgDiv"></div>
 		</div>
 		
-		<div id="popup_slide" class="popup BGheight">
-			1번 이미지 &emsp;: <input type="text" id="slide_first"><br>
-			2번 이미지 &emsp;: <input type="text" id="slide_second"><br>
-			3번 이미지 &emsp;: <input type="text" id="slide_third"><br>
-			4번 이미지 &emsp;: <input type="text" id="slide_fourth"><br>
-			<button onclick="javascript:changeSlide()" class="changeB editBtn">변경</button> 
-			<button class="changeB editBtn" onclick="javascript:closemap_slide()">취소</button>
+		<div id="popup_slide" class="popup Slheight">
+		<h5 class="editHeader">슬라이드 이미지 삽입</h5>
+				<table style="margin-left: 20px;">
+					<tr>
+						<th class="mp">1번 이미지 </th>
+						<td class="mp"> <input type="text" id="slide_first"></td>
+					</tr>
+					<tr>
+						<th class="mp">2번 이미지 </th>
+						<td class="mp"> <input type="text" id="slide_second"></td>
+					</tr>
+					<tr>
+						<th class="mp">3번 이미지 </th>
+						<td class="mp"> <input type="text" id="slide_third"></td>
+					</tr>
+					<tr>
+						<th class="mp">4번 이미지 </th>
+						<td class="mp"> <input type="text" id="slide_fourth"></td>
+					</tr>
+				</table>
+				<hr>
+			<button onclick="javascript:changeSlide()" class="editBtn">변경</button> 
+			<button class="editBtn" onclick="javascript:closemap_slide()">취소</button>
 		</div>
 		
 		<form id="savepagefrm" action="savepage" method="post">

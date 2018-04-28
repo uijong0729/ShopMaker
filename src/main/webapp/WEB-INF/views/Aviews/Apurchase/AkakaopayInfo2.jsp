@@ -31,6 +31,9 @@
 
 </head>
 <body>
+		<div style="margin-bottom: 100px;">
+			<%@ include file="../../Aheader.jsp" %>
+		</div>
 
 <div id="payPopupDiv" class="pay_popup hide">
     <div class="inner_terms_layer">

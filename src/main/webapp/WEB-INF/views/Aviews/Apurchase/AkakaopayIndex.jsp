@@ -154,7 +154,6 @@
         font-size: 0;
         line-height: 0;
         text-indent: -9999px;
-        background: url(/assets/img/docs/ico_pay_320.png) no-repeat 0 0
     }
 
     .wrap_demo .tit_demo {
@@ -196,11 +195,6 @@
         opacity: .5
     }
 
-    @media only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
-        .wrap_demo .tit_kakaopay {
-            background-image: url(resources/image/payment_icon_medium.png);
-            background-size: 67px 22px
-        }
     }
   /* ]]> */
 </style>
@@ -218,16 +212,19 @@
 <hr class="hide"/>
 <main id="kakaoContent">
 <article id="mArticle">
+
+		<div>
+			<%@ include file="../../Aheader.jsp" %>
+		</div>
+
+
 <h2 id="kakaoBody" class="tit_demo">
-<img src="resources/image/payment_icon_medium.png">
+	<img src="resources/image/payment_icon_medium.png">
 <br>
-<img src="resources/image/payment_text_large.png">
-<!-- Payment Demo -->
+	<img src="resources/image/payment_text_large.png">
 </h2>
-<!-- <p class="txt_demo">
-API를 활용한 카카오페이 결제를 체험해보세요. -->
+
 <br/>
-(실제 결제는 일어나지 않습니다)
 <div class="pay_btn">
 <button type="button" class="btn_pay btn_pay_hover" id="web" onclick="payment('web');">
 PC 결제

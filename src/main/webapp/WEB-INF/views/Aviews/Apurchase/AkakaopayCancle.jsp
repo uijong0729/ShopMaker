@@ -13,6 +13,11 @@
 </strong>.
 </div>
 <div class="body">
+
+		<div>
+			<%@ include file="../../Aheader.jsp" %>
+		</div>
+
 <div class="content">
 <p>결제가 취소되었습니다.</p>
 <p>결제상태: QUIT_PAYMENT</p>
