@@ -90,7 +90,7 @@
 					    str +='</div>';
 					    
 					$('#forAppend').append(str);
-					$('.footer_wrapper').css('top', $(document).height() + 'px');
+					
 				}
 				if(${param.page == 'Blogin'}) {
 					$('#text_login').removeAttr('onclick');
