@@ -296,7 +296,7 @@ function selectEmail(){
 			</div>
 			</form>
 			
-			<form id="AsignupForm" action="AsignupReq">
+			<form id="AsignupForm" action="AsignupReq" method="post">
 				<div class="form" id="signUpForm">
 				<div class="text">Sign Up For Free!</div>
 				<div class="fields">
