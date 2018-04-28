@@ -6,7 +6,7 @@
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=3"/>
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=4"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.js"></script>
 		<script src="/bigstar/resources/js/jscolor.js"></script>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -751,7 +751,7 @@
 					if (btnUrl.startsWith("http") || btnUrl.startsWith("www")) {
 						$("#" + btnName).attr("onclick", "location.href='" + btnUrl + "'");
 					} else {
-						$("#" + btnName).attr("onclick",movePage(btnUrl));
+						$("#" + btnName).attr("onclick","movePage('"+btnUrl+"')");
 					}
 					
 				}
@@ -764,6 +764,7 @@
 			}
 			
 			function movePage(url) {
+				
 				$('#Bcenter').load(url);
 			}
 			
@@ -1259,7 +1260,7 @@
 				z-index: 1000;
 			} */
 			#popup_slide {
-				position:absolute;
+				position:fixed;
 				left:35%;
 				top:30%;
 				visibility:hidden;
@@ -1285,7 +1286,7 @@
 				width: 100%;
 			}
 			#mask {
-	            position:absolute;
+	            position:fixed;
 	            left:0;
 	            top:0;
 	            width: 100%;
@@ -1406,7 +1407,20 @@
 				</tr>
 				<tr>
 					<th class="mp">URL</th>
-					<td class="mp"><input type="text" id="btnUrl"></td>
+				<!-- 	<td class="mp"><input type="text" id="btnUrl"></td> -->
+				<td class="mp"><select id="btnUrl">
+									<option id="selecturl" value="">선택</option>
+									<option value="goMyShop?code=37&page=BpageMain">메인 페이지</option>
+									<option value="goMyShop?code=37&page=Bregist">회원가입 페이지</option>
+									<option value="goMyShop?code=37&page=Blogin">로그인 페이지</option>
+									<option value="mypage">마이 페이지</option>
+									<option value="notice">공지사항 페이지</option>
+									<option value="productdetail">상품상세 페이지</option>
+									<option value="order">주문 페이지</option>
+									<option value="cart">장바구니 페이지</option>
+									<option value="insreview">후기등록 페이지</option>
+				
+							</select></td>
 				</tr>
 			</table>
 			
