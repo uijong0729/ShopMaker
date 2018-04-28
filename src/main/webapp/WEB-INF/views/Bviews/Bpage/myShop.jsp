@@ -100,7 +100,7 @@
 		<div>
 			${headerContent}
 		</div>
-		<div style="height: auto;">
+		<div style="height: auto; text-align: center">
 			${body}
 		</div>
 		<div class="forVerticalAlign">

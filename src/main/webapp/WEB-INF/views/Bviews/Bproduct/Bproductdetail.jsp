@@ -57,7 +57,7 @@
 			var productcode = document.getElementById('productcode').value;
 			var customercode = document.getElementById('customercode').value;
 			var productQty = document.getElementById('productQty').value;
-			alert("productQty:"+productQty );
+			//alert("productQty:"+productQty );
 			//alert(productcode + '//' + customercode)
 			
 			$.ajax({
@@ -117,7 +117,7 @@ function gopurchaseform() {
             </diV><!-- 이미지 프리뷰 -->
             
             <div class="half_detail_Info_Text">
-                <form action="detailaddOrder.do">
+                <form action="goBpurchaseform">
                     <div class="info_box1">
                         <p class="product_name">
                             <h3><%-- ${productDetailList[0].productname} --%></h3>
@@ -140,7 +140,7 @@ function gopurchaseform() {
                         <tr>
                             <td>선택사항</td>
                             <td style="size: 5px;">색상 및 사이즈를 선택해 주세요 <br> 
-                            	<select class="option_selecter" id="color_selecter" onchange="color_select(this.value)">
+                            	<select class="option_selecter" name="productcode" id="productcode">
                                       <c:forEach var="product" items="${productDetailList }" varStatus="loopStat">
 									 	<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>
 									 </c:forEach>      

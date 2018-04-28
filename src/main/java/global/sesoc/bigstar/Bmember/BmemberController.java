@@ -180,34 +180,23 @@ public class BmemberController {
 	@RequestMapping(value="getCartlist", method=RequestMethod.POST)
 	public List<Bproducttable> getCartlist(String customercode) {
 		
-		List<Bcarttable> clist = null;
-		List<Bproducttable> cart = new ArrayList<Bproducttable>();
+		List<Bproducttable> cart = pdao.getCart(customercode);
 		
-		try 
-		{
-			clist = cdao.selectbcarttable(Integer.parseInt(customercode));
-			System.out.println(clist);
-		}
-		catch(Exception e)
-		{
-			//e.printStackTrace();
-			cart = null;
-			return cart;
-		}
+		System.out.println("cart = " + cart);
+	
 		
-		for (Bcarttable bcarttable : clist) {
-			String pCode = bcarttable.getProductcode();
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("customercode", customercode);
-			map.put("productcode", pCode);
-			cart.add(pdao.getCart(map));
-		}
 		return cart;
 	}
 	
 	@RequestMapping(value = "Btracking", method = RequestMethod.GET)
 	public String btracking(String t_code, String t_invoice) {
 		return "Bviews/Bproduct/tracking";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="cancleCart", method = RequestMethod.POST)
+	public void cancleCart(String customercode) {
+		System.out.println("삭제 건 수 : "+ cdao.deleteBcart(customercode));
 	}
 	
 	@RequestMapping(value = "updateBcustomer", method = RequestMethod.POST)

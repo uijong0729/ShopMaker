@@ -14,5 +14,5 @@ public interface BproducttableMapper {
 	public ArrayList<Bproducttable> selectkind();
 	public ArrayList<Bproducttable> selectkindproduct(String productkind);
 	public int delProduct(String pc);
-	public Bproducttable getCart(HashMap<String, String> map); 
+	public ArrayList<Bproducttable> getCart(String customercode); 
 }
