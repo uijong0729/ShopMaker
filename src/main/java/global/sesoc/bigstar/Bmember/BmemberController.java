@@ -106,7 +106,7 @@ public class BmemberController {
 		else
 		{
 			model.addAttribute("isThereId", 0);
-			return "redirect:goBmain";
+			return "redirect:/goMyShop?code=" + membercode + "&page=BpageMain";
 			
 		}
 		
@@ -225,6 +225,9 @@ public class BmemberController {
 		
 		return "Bviews/Bmain/Bmain";
 	}
+	
+	
+
 
 	
 	
