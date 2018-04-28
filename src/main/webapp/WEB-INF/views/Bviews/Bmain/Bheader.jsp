@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 	<div class="header_wrapper">
 
 		<div id="header_header">
@@ -129,9 +128,6 @@
 			<li class="sub_Shoes"><a id="forLink15">AndSoOn</a></li>
 		</ul>
 	</div> -->
-
-
-
 	<script src="./resources/js/subMenu.js?ver=3"></script>
 </body>
 </html>
