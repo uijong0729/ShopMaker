@@ -150,8 +150,7 @@ margin-bottom: 5px;
 	};
 
 $(document).ready(function(){
-	/* $('#addComponentMp').on('click', addRowMp);
-	$('.rowsButton').on("click", removeRow); */
+	
 	$('.li').on('click', changeColor);
 	$('#tableLayer').css('background', "white");
 	$('#tableLayer').css('border', '1px solid black');
@@ -171,7 +170,9 @@ $(document).ready(function(){
 				$('.ib5').css('width', '205px');
 				
 	});
+	
 	$('.ui-dialog').remove();
+	
 	//오른쪽에 요소추가 창 
 	start();
 	
@@ -179,6 +180,8 @@ $(document).ready(function(){
 	$('#orderList').on('click', orderList);
 	//카트 리스트 이벤트
 	$('#cartList').on('click', cartList);
+	//배송정보 이벤트
+	$('#deList').on('click', deList);
 	
 	$('#updateBcustomer').on('click', function(){
 		document.getElementById('updateForm').submit();
@@ -188,6 +191,11 @@ $(document).ready(function(){
 
 //주문내역
 function orderList(){
+	if($('#dialog').dialog() != null)
+	{
+		$('#dialog').dialog( "close" );
+	}
+	
 	var customercode = $('#customercode').val();
 	var membercode = $('#membercode').val();
 	$.ajax({
@@ -225,6 +233,14 @@ function orderList(){
 						{
 							innerText.append('<span class="ol w6">주문완료</span>');
 						}
+						else if(result[i].orderpaymentstatus == '1')
+						{
+							innerText.append('<span class="ol w6">배송 중</span>');
+						}
+						else
+						{
+							innerText.append('<span class="ol w6">배송완료</span>');
+						}
 						innerText.append('</li>');
 					}
 					$('#addRowTab2').html(innerText.toString());
@@ -235,9 +251,22 @@ function orderList(){
 	
 }
 
+//배송정보
+function deList(){
+	if($('#dialog').dialog() != null)
+	{
+		$('#dialog').dialog( "close" );
+	}
+	
+}
 
 //장바구니
 function cartList(){
+	if($('#dialog').dialog() != null)
+	{
+		$('#dialog').dialog( "close" );
+	}
+	
 	var customercode = $('#customercode').val();
 	
 	$.ajax({
@@ -246,11 +275,6 @@ function cartList(){
 		data: {customercode: customercode},
 		dataType: 'json',
 		success: function(result){
-			
-			/* var arr = new Array();
-			for (var i in result.cart) {
-				arr[i] = result.cart[i] 
-			} */
 			
 			if(result == null)
 			{
@@ -285,31 +309,24 @@ function cartList(){
 					}
 					innerText.append('<hr><li> <div>총 가격 : ' +  total + '</div></li>');
 					
-				
-					//innerText.append('</li>');
-				
-					
 						$('.deleteCart').on('click', function(){
 							var productcode = $(this).attr('num');
 							alert(productcode);
 						});
 					
 					innerText.append('<hr><div style="display: inline-block; text-align: center; margin-top: 4px;"><div class="orderBt" id="goBorder" style="display: inline-block;">주문하기</div> &nbsp <div id="cancleCart" class="orderBt" style="display: inline-block;">비우기</div><div>');
-					//innerText.append('<div class="orderBt" style="display: inline-block; text-align: center; margin-top: 4px;"><div id="cancleCart" style="display: inline-block;">비우기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
-					//document.getElementById('addrowTab3').innerHTML = innerText.toString();
 					$('#goBorder').on('click', function(){
 						
 						//주문 액션
 						var form = document.createElement('form');
-			             form.action = "goBpurchaseformFromCart";
+			             form.action = "goBpurchaseform";
 			             form.method = "post";
 			              
 			            var inputTag = document.createElement('input');
 			             inputTag.name = "customercode";
 			             inputTag.value = customercode;
 			             inputTag.type = "hidden";
-			              
 			             form.appendChild(inputTag);
 			             document.body.appendChild(form);
 			              
@@ -333,7 +350,7 @@ function cartList(){
 			}
 		},
 		error: function(msg){
-			alert('3초만 기다려주세요');
+			alert('로그인이 필요한 서비스입니다.');
 		}
 		
 	});//ajax
@@ -490,10 +507,10 @@ function changeColor(){
 				
 				  <!-- 탭 리스트 -->
 				  <ul>
-				    <li><a href="#tabs-1" style="width: 220px;">계정정보</a></li>
+				    <li><a id="confirmMyInfo" href="#tabs-1" style="width: 220px;">계정정보</a></li>
 				    <li><a id="orderList" href="#tabs-2" style="width: 220px;">주문내역</a></li>
 				    <li><a id="cartList" href="#tabs-3" style="width: 220px;">장바구니</a></li>
-				    <li><a href="#tabs-4" style="width: 220px;">배송정보</a></li>
+				    <li><a id="deList" href="#tabs-4" style="width: 220px;">배송정보</a></li>
 				  </ul>
 				  
 				  <!-- 제 1탭 -->
@@ -558,7 +575,7 @@ function changeColor(){
 						</div>
 								
 				<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
-				<div id="forHover" style="background: white; height: 400px; width: 60px; position: absolute; left: 5px; top: 100px;">
+				<div id="forHover" style="background: white; height: 400px; width: 80px; position: absolute; left: 5px; top: 100px;">
 				</div>
 		</c:if>
 	</body>
