@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,21 +13,21 @@
 <body>
    <div class="wraper">
       <br> <br> <br> <br>
-      <form>
+      <form action="BpurchaseIndex" method="post">
          <div class="orderDiv">
             <div class="orderer_info">
                <p class="title">주문자 정보</p>
                <table class="orderer InfoTable">
                   <tr>
                      <td>주문자 이름 <b style="color: red">*</b></td>
-                     <td><input style="height: 100%;"></td>
+                     <td><input type="text" name="str_name" style="height: 100%; width: 170px;"></td>
                   </tr>
                   <tr>
                      <td>이메일 <b style="color: red">*</b></td>
                      <td>
-                        <input type="text" id="str_email01" style="width: 100px"> 
+                        <input type="text" name="str_email01" id="str_email01" style="width: 100px"> 
                         @ 
-                        <input type="text" id="str_email02" style="width: 100px;"> 
+                        <input type="text" name="str_email02" id="str_email02" style="width: 100px;"> 
                         <select style="width: 100px; margin-right: 10px" name="selectEmail" id="selectEmail">
                            <option value="1" selected>직접입력</option>
                            <option value="naver.com">naver.com</option>
@@ -36,7 +38,7 @@
                   </tr>
                   <tr>
                      <td>연락처 <b style="color: red">*</b></td>
-                     <td><input type="text" id="orderer_name"></td>
+                     <td><input type="text" name="str_phonenum" id="str_phonenum"></td>
                   </tr>
                </table>
             </div>
@@ -47,8 +49,8 @@
                   <tr>
                      <td>수령자 주소 <b style="color: red">*</b></td>
                      <td>
-                        <input type="text" style="width: 300px" class="addressInput" id="baseAddress"> <sub>(기본 주소)</sub> <br> 
-                        <input type="text" style="width: 300px" class="addressInput"> <sub>(상세 주소)</sub><br>
+                        <input type="text" style="width: 300px" class="addressInput" name="baseAddress" id="baseAddress"> <sub>(기본 주소)</sub> <br> 
+                        <input type="text" style="width: 300px" class="addressInput" name="detailAddress" id="detailAddress"> <sub>(상세 주소)</sub><br>
                      </td>
                   </tr>
                   <tr>
@@ -72,33 +74,44 @@
                <p class="title">주문 품목 확인</p>
                <table class="product_table">
                   <tr>
+                     <td>상품이미지</td>
                      <td colspan="2">주문상품</td>
                      <td>수량</td>
                      <td>상품 금액</td>
-                     <td>적립금</td>
+                     <td>비고</td>
                   </tr>
                   
-                  <c:forEach items="" var="basket">
+		<%--            
+       <c:forEach items="${histories}" var="history" varStatus="loopStat">
+				<c:set var="prevYear" value="${histories[loopStat.index-1].year}"/>
+				<c:set var="nextYear" value="${histories[loopStat.index].year}"/>
+
+				<tr>
+					<td>
+						<c:if test="${prevYear != nextYear}">
+							<c:out value="${histories[loopStat.index].year}" />
+						</c:if>
+					</td>
+					<td><c:out value="${histories[loopStat.index].activity}" /><td>
+				</tr>
+			</c:forEach>
+			 --%>
+                  	<%-- <c:forEach items="${purchaseList}" var="cart"></c:forEach> --%>
                      <tr>
-                        <td><img src="#" width="100%"></td>
-                        <td>
-                           <div class="product_name" style="width: 60%; float: left;"></div>
+                        <td><img src="./resources/image/${purchaseProduct.productimage }" width="100%"></td>
+                        <td colspan="2">
+                           <div class="product_name" >${purchaseProduct.productname }</div>
                         </td>
-                        <td class="product_amount"></td>
-                        <td class="product_price"></td>
-                        <fmt:parseNumber var="Amount_accumulated" integerOnly="true"/>
+                        <td class="product_amount">${order.orderquantity }</td>
+                        <td class="product_price"><fmt:formatNumber value="${purchaseProduct.productprice }" type="currency"/></td>
                         <td></td>
                      </tr>
-                  </c:forEach>   
-                  
-                  
-                  
                   <tr>
-                     <td colspan="7" style="text-align: center; font-size: 20px; border-bottom: none;"> 배송비 :  원 </td>
+                     <td colspan="7" style="text-align: center; font-size: 20px; border-bottom: none;"> 배송비 : 무료 </td>
                   </tr>
                   
                   <tr>
-                     <td colspan="7" class="payment_amount" style="text-align: center; font-size: 20px;">총 결제 금액 : 원 </td>
+                     <td colspan="7" class="payment_amount" style="text-align: center; font-size: 20px;">총 결제 금액 : <fmt:formatNumber value="${totalPrice}" type="currency"/></td>
                   </tr>
                </table>
             </div>

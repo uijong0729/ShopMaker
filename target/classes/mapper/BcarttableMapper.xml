@@ -20,7 +20,7 @@
 	<!-- 장바구니 추가 -->
 	<insert id="insertBcart" parameterType="map">
 		insert into BcartTable
-		values(#{customercode}, #{productcode})
+		values(#{customercode}, #{productcode}, #{productQty})
 	</insert>
 
 

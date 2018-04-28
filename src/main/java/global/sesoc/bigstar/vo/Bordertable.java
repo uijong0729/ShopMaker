@@ -15,6 +15,7 @@ public class Bordertable {
 	String customercode;
 	String productcode;
 	String membercode;
+	
 	public Bordertable(String ordercode, int orderpaymentstatus, String orderdate, String orderdepositdate,
 			String orderpaydecidedate, String orderreturndate, String orderdeliverylocation, String orderbankaccount,
 			String orderdeliverynum, int orderquantity, String customercode, String productcode, String membercode) {
@@ -33,6 +34,7 @@ public class Bordertable {
 		this.productcode = productcode;
 		this.membercode = membercode;
 	}
+	
 	public Bordertable() {
 		super();
 	}
@@ -123,6 +125,5 @@ public class Bordertable {
 				+ ", orderquantity=" + orderquantity + ", customercode=" + customercode + ", productcode=" + productcode
 				+ ", membercode=" + membercode + "]";
 	}
-	
 
 }

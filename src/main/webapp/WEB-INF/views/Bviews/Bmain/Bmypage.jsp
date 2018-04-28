@@ -77,7 +77,7 @@ margin-bottom: 5px;
 .w6{width: 120px;}
 
 .c1{width: 120px; height: 40px;}
-.c2{width: 150px; height: 40px;}
+.c2{width: 250px; height: 40px;}
 .c3{width: 70px; height: 40px;}
 .c4{width: 70px; height: 40px;}
 .c5{width: 70px; height: 40px;}
@@ -236,6 +236,12 @@ function cartList(){
 		data: {customercode: customercode},
 		dataType: 'json',
 		success: function(result){
+			
+			/* var arr = new Array();
+			for (var i in result.cart) {
+				arr[i] = result.cart[i] 
+			} */
+			
 			if(result == null)
 			{
 				$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
@@ -244,33 +250,40 @@ function cartList(){
 			{
 				 var innerText = new StringBuffer();
 			        innerText.append('<li>');
-					innerText.append('<span class="label-euj c1">이미지</span>');
-					innerText.append('<span class="label-euj c2">상품명</span>');
-					innerText.append('<span class="label-euj c3">색깔</span>');
-					innerText.append('<span class="label-euj c4">사이즈</span>');
-					innerText.append('<span class="label-euj c5">수량</span>');
-					innerText.append('<span class="label-euj c6">가격</span>');
-					innerText.append('<span class="ol2 c6"></span>');
-					innerText.append('</li><hr>');
-		              
-					for (var i in result) {
-						innerText.append('<li>');
-						innerText.append('<span class="ol c1"><img class="imagesize" src="' + result[i].productimage + '"></span>');
-						innerText.append('<span class="ol c2">' + result[i].productname+ '</span>');
-						innerText.append('<span class="ol c3">' + result[i].productcolor + '</span>');
-						innerText.append('<span class="ol c4">' + result[i].productsize + '</span>');
-						innerText.append('<span class="ol c5">' + result[i].productquantity + '</span>');
-						innerText.append('<span class="ol c6">' + result[i].productprice + '</span>');
-						innerText.append('<span class="ol2 c6"><img num="' + result[i].productcode + '" class="deleteBt-euj deleteCart" src="/bigstar/resources/img/Xsign.jpg"></span>');
+					innerText.append('<span class="ol c1">이미지</span>');
+					innerText.append('<span class="ol c2">상품명</span>');
+					innerText.append('<span class="ol c3">색깔</span>');
+					innerText.append('<span class="ol c4">사이즈</span>');
+					innerText.append('<span class="ol c5">수량</span>');
+					innerText.append('<span class="ol c6">가격</span>');
+					innerText.append('</li>');
+					
+					
+					for (var i in result.cart)
+					{
+						if(result.cart[i] != null)
+						{
+							innerText.append('<li>');
+							innerText.append('<span class="ol c1"><img src="./bigstar/resources/image/' + result.cart[i].productimage + '"></span>');
+							innerText.append('<span class="ol c2">' + result.cart[i].productname+ '</span>');
+							innerText.append('<span class="ol c3">' + result.cart[i].productcolor + '</span>');
+							innerText.append('<span class="ol c4">' + result.cart[i].productsize + '</span>');
+							innerText.append('<span class="ol c5">' + result.cart[i].productquantity + '</span>');
+							innerText.append('<span class="ol c6">' + result.cart[i].productprice + '</span></li>');
+						}
 					}
+				
+					//innerText.append('</li>');
+				
 					
 						$('.deleteCart').on('click', function(){
 							var productcode = $(this).attr('num');
 							alert(productcode);
 						});
 					
-					innerText.append('</li><hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
+					innerText.append('<hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
+					//document.getElementById('addrowTab3').innerHTML = innerText.toString();
 					$('#goBorder').on('click', function(){
 						
 						//주문 액션
@@ -289,9 +302,12 @@ function cartList(){
 			             form.submit();
 					});
 			}
+		},
+		error: function(msg){
+			alert('3초만 기다려주세요');
 		}
 		
-	});
+	});//ajax
 	
 }
 

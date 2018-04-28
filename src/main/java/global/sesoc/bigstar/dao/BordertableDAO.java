@@ -21,5 +21,12 @@ public class BordertableDAO implements BordertableMapper {
 	
 
 	}
+	
+	@Override
+	public int insertBordertable(Bordertable order) {
+		// TODO Auto-generated method stub
+		
+		return session.getMapper(BordertableMapper.class).insertBordertable(order);
+	}
 
 }
