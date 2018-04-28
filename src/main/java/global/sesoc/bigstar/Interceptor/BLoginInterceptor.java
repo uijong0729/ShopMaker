@@ -16,10 +16,19 @@ public class BLoginInterceptor extends HandlerInterceptorAdapter {
 	try {
 		HttpSession session = request.getSession();
 		String loginCode = (String) session.getAttribute("Blogin");
+		String Amembercode = (String) session.getAttribute("loginCode");
+		
 		if(loginCode == null || loginCode == "")
 		{
-			response.sendRedirect("Blogin");
-			return false;
+			if(Amembercode == null || Amembercode == "")
+			{
+				response.sendRedirect("Blogin");
+				return false;
+			}
+			else
+			{
+				return super.preHandle(request, response, handler);
+			}
 		}
 		else
 		{

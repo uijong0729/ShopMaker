@@ -50,6 +50,7 @@ $(document).ready(function() {
 	$('.ui-dialog').remove();
 	$('.reg').on('click', reg);	
 	$('.goLogin').on('click', login);
+	
 });
 
 //회원가입 이동
