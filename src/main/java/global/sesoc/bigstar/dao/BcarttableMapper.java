@@ -17,4 +17,5 @@ public interface BcarttableMapper {
 	
 	public int insertBcart(Map<String, String> map);
 	
+	public int deleteBcart(String customercode);
 }

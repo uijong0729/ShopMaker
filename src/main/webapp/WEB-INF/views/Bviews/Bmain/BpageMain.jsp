@@ -27,45 +27,50 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 	<header>
+	<%-- 	<header>
 		<%@ include file="Bheader.jsp" %>
 	</header> --%>
 
-	<div id=slide_container>
-		<div id="slide" class="slides" tabindex="0">
-			<img id="img1" src="./resources/img/slide1.jpg" />
+	<c:if test="${slidedelete==null}">
+
+		<div id=slide_container>
+			<div id="slide" class="slides" tabindex="0">
+				<img id="img1" src="./resources/img/slide1.jpg" />
+			</div>
+			<div class="slides">
+				<img id="img2" src="./resources/img/slide2.jpg" />
+			</div>
+			<div class="slides">
+				<img id="img3" src="./resources/img/slide3.jpg" />
+			</div>
+			<div class="slides">
+				<img id="img4" src="./resources/img/slide4.jpg" />
+			</div>
 		</div>
-		<div class="slides">
-			<img id="img2" src="./resources/img/slide2.jpg" />
+		<div id="dot_group" style="text-align: center">
+			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+			<span class="dot"></span>
 		</div>
-		<div class="slides">
-			<img id="img3" src="./resources/img/slide3.jpg" />
-		</div>
-		<div class="slides">
-			<img id="img4" src="./resources/img/slide4.jpg" />
-		</div>
-	</div>
+	</c:if>
+	<br>
+
 
 	<br>
 
-	<div id="dot_group" style="text-align: center">
-		<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
-		<span class="dot"></span>
-	</div>
-	<br>
-	
-<c:set var="count" value="0" />
+	<c:set var="count" value="0" />
 	<div id="product">
 		<c:forEach items="${nameset}" var="n" varStatus="vars">
-			<c:set var="done" value="false" /> 
+			<c:set var="done" value="false" />
 			<c:forEach items="${Bproducttable}" var="b" varStatus="varss">
-				<c:if test="${nameset[vars.index] == Bproducttable[varss.index].productname}">
+				<c:if
+					test="${nameset[vars.index] == Bproducttable[varss.index].productname}">
 					<c:if test="${done == false}">
-					
-					<c:if test="${count%4==0}">
-					<ul>
-					</c:if>
-						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
+
+						<c:if test="${count%4==0}">
+							<ul>
+						</c:if>
+						<a
+							href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
 							<li>
 								<div id="outer">
 									<img src="./resources/image/${b.productimage }">
@@ -73,14 +78,13 @@
 										<dd>상품명 : ${b.productname}</dd>
 										<dd>가격 : ${b.productprice}</dd>
 									</dl>
-								</div>
-								<c:set var="count" value="${count+1}" />
-								
+								</div> <c:set var="count" value="${count+1}" />
+
 						</li>
 						</a>
 						<c:if test="${count%4==0}">
-					</ul>
-					</c:if>
+							</ul>
+						</c:if>
 						<c:set var="done" value="true" />
 					</c:if>
 				</c:if>
@@ -93,8 +97,8 @@
 	<%-- <footer>
 		<%@ include file="Bfooter.jsp" %>
 	</footer> --%>
-		
-		
+
+
 	<script type="text/javascript" src="./resources/js/slideshow.js"></script>
 </body>
 </html>

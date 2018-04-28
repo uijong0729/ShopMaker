@@ -1313,7 +1313,7 @@
 		
 		<!-- 중앙 화면 -->
 		<div id="BcenterOuter">
-			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%;">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; margin-top: 100px; margin-bottom: 100px; overflow-y: auto;">
 				<c:if test="${result != ''}">
 					${result}
 				</c:if>
@@ -1322,6 +1322,9 @@
 				</c:if>
 			</div>
 		</div>
+	
+	<!-- 로그인 안하면 컴포넌트가 안뜹니다  -->
+	<c:if test="${Amember != null }">
 	
 	<br><br><br><br><br>
 		<div class="sidebarsonomono" id="sidebar" style="margin-top: 30px; border-radius: 10px;">
@@ -1363,7 +1366,7 @@
 			<input type="hidden" id="selected">
 		</div>
 		
-		
+		</c:if>
 		
 		
 		
