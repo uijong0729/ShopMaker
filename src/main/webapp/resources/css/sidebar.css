@@ -139,6 +139,20 @@ li{
 .Theight{height: 52%;}
 .Iheight{height: 44%;}
 .BGheight{height: 40%;}
+.Slheight{height: 55%;}
+
+#popup_slide {
+				position:fixed;
+				left:35%;
+				top:30%;
+				visibility:hidden;
+				width: 30%;
+				height: 52%;
+				background: #ffffff;
+				border-radius: 10px;
+				text-align: center;
+				z-index: 1000;
+			}
 
 .mp
 {

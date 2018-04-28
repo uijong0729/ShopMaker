@@ -20,7 +20,12 @@ function finish(){
 </strong>
 </div>
 <div class="body">
-<div class="content"></div>
+<div class="content">
+		<div style="margin-bottom: 100px;">
+			<%@ include file="../../Aheader.jsp" %>
+		</div>
+
+</div>
 <img src="resources/image/payment_icon_small.png">
 <br>
 <p>카카오페이 결제가 정상적으로 완료되었습니다.</p>
