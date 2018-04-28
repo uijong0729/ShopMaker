@@ -38,7 +38,9 @@ th:hover
 
 <script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 <script>
-
+$(document).ready(function(){
+	$('.ui-dialog').remove();
+});
 </script>
 
 </head>
