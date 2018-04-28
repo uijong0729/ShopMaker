@@ -237,8 +237,6 @@ public class BproductController {
 			
 			int count=0;
 			Bproducttable=Bpdao.selectkindproduct(category);
-			System.out.println("aa : " + Bproducttable);
-			
 			
 			for (Bproducttable b : Bproducttable) {
 				imageset.add(b.getProductname());
