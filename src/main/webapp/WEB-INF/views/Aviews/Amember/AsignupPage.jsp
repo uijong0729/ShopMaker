@@ -19,9 +19,6 @@ $(document).ready(function(){
 	//비밀번호 재입력이 유효한지 체크합니다.
 	$('#inputPasswordConfirm').on('input', checkPw);
 	
-	//회원가입 양식을 올바르게 입력했는지 유효성을 검사합니다.
-	$('#AsignupReq').on('click', checkForm);
-	
 	//홈으로 돌아갑니다.
 	$('#goHome').on('click', function(){
 		location.href="/bigstar/";
@@ -78,7 +75,7 @@ function checkForm(){
 	var addressB = document.getElementById('addressB').value;
 	var bisNumber = document.getElementById('bisNumber').value;
 	
-	//아이디 체크
+	/* //아이디 체크
 	if(inputId.length >= 1)
 	{
 		//비밀번호체크
@@ -101,43 +98,51 @@ function checkForm(){
 							{
 								if(bisNumber.length >= 1)
 								{
-									if(idOk == true){
+									if(idOk == true){ */
 									document.getElementById('AsignupForm').submit();
-									}
+									/* }
 								}
 								else
 								{
 									alert('사업자 등록번호를 입력하세요');	
+									return;
 								}
 							}//주소체크
 							else
 							{
 								alert('주소를 입력하세요');	
+								return;
 							}
 						}//이름체크
 						else{
-						alert('이름을 입력하세요');
+							alert('이름을 입력하세요');
+							return;
 						}
 					}
 					else{
 						alert('이메일 형식을 확인하세요');
+						return;
 					}
 				}//이메일체크
 				else{
 					alert('이메일 입력하세요');
+					return;
 				}
 			}//비밀번호확인체크
 			else{
 				alert('위와 동일한 비밀번호');	
+				return;
 			}
 		}//비밀번호 체크
 		else{
 			alert('비밀번호 입력하세요');
+			return;
 		}
 	}//아이디체크
 	else{
 		alert('아이디 입력하세요');
-	}
+		return;
+	} */
 }
 
 //input이벤트마다 함수가 실행되어 유효성을 검사합니다.
@@ -208,12 +213,12 @@ margin: 4px;
 </head>
 <body>
 
-	<header>
-		<%@ include file="../header.jsp" %>
+	<header style="margin-bottom: 150px;">
+		<%@ include file="../../Aheader.jsp" %>
 	</header>
 	
 		<article class="borderI" style="margin: 8px;">
-			<form id="AsignupForm" action="AsignupReq">
+			<form id="AsignupForm" action="AsignupReq" method="post"> 
 				<table border="1" style="border-collapse: collapse;">
 					<tr>
 					  <th>아이디</th>
@@ -268,7 +273,7 @@ margin: 4px;
 				
 				<!-- div로 버튼모양 내서 만들었습니다.  -->
 				<div style="margin: 10px; margin-left: 10%; ">
-					<div id="AsignupReq" class="borderIb button">가입하기</div>
+					<div id="AsignupReq" onclick="javascript:checkForm()" class="borderIb button">가입하기</div>
 					<div id="goHome" class="borderIb button">취소</div>
 				</div>
 			</form>

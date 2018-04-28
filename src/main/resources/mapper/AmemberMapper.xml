@@ -38,8 +38,7 @@
 	 		BIZNUMBER, 
 	 		ADDRESS, 
 	 		MAILADDRESS, 
-	 		REGISTRATIONDATE, 
-	 		TEMPLATECODE)
+	 		REGISTRATIONDATE)
  		values 
  			(Amember_seq.NEXTVAL
  			, #{id}
@@ -49,8 +48,7 @@
  			, #{biznumber}
  			, #{address}
  			, #{mailaddress}
- 			, sysdate
- 			, '0')
+ 			, sysdate)
  	
  	</insert>
  	
