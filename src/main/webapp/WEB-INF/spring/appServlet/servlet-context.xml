@@ -26,6 +26,7 @@
 	
 	<!-- 로그인 인터셉터 정의 -->
 	<beans:bean id="loginInterceptor" class="global.sesoc.bigstar.Interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="BloginInterceptor" class="global.sesoc.bigstar.Interceptor.BLoginInterceptor"></beans:bean>
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -49,7 +50,15 @@
 			<mvc:mapping path="/loadpage" />
 			<mvc:mapping path="/deleteShop" />
 			<mvc:mapping path="/BcustomerChart" />
+			
 			<beans:ref bean="loginInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<!-- B로그인 인터셉터 -->
+			<mvc:mapping path="/Bmypage" />
+			
+			<beans:ref bean="BloginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans:beans>

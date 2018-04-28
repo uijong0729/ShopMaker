@@ -33,6 +33,12 @@ public class BcarttableDAO implements BcarttableMapper {
 		// TODO Auto-generated method stub
 		return session.getMapper(BcarttableMapper.class).insertBcart(map);
 	}
+
+	@Override
+	public int deleteBcart(String customercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BcarttableMapper.class).deleteBcart(customercode);
+	}
 	
 	
 
