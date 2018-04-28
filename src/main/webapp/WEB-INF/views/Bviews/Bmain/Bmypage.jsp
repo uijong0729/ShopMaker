@@ -258,20 +258,21 @@ function cartList(){
 					innerText.append('<span class="ol c6">가격</span>');
 					innerText.append('</li>');
 					
+					console.log(result);
 					
-					for (var i in result.cart)
-					{
-						if(result.cart[i] != null)
+					for (let i of result) {
+						if(i != null && i.productquantity != 0)
 						{
 							innerText.append('<li>');
-							innerText.append('<span class="ol c1"><img src="./bigstar/resources/image/' + result.cart[i].productimage + '"></span>');
-							innerText.append('<span class="ol c2">' + result.cart[i].productname+ '</span>');
-							innerText.append('<span class="ol c3">' + result.cart[i].productcolor + '</span>');
-							innerText.append('<span class="ol c4">' + result.cart[i].productsize + '</span>');
-							innerText.append('<span class="ol c5">' + result.cart[i].productquantity + '</span>');
-							innerText.append('<span class="ol c6">' + result.cart[i].productprice + '</span></li>');
+							innerText.append('<span class="ol c1"><img src="./bigstar/resources/image/' + i.productimage + '"></span>');
+							innerText.append('<span class="ol c2">' + i.productname+ '</span>');
+							innerText.append('<span class="ol c3">' + i.productcolor + '</span>');
+							innerText.append('<span class="ol c4">' + i.productsize + '</span>');
+							innerText.append('<span class="ol c5">' + i.productquantity + '</span>');
+							innerText.append('<span class="ol c6">' + i.productprice + '</span></li>');
 						}
 					}
+					
 				
 					//innerText.append('</li>');
 				
@@ -281,7 +282,8 @@ function cartList(){
 							alert(productcode);
 						});
 					
-					innerText.append('<hr><div class="orderBt" style="text-align: center; margin-top: 4px;"><div id="goBorder" style="display: inline-block;">주문하기</div></div>');
+					innerText.append('<hr><div style="display: inline-block; text-align: center; margin-top: 4px;"><div class="orderBt" id="goBorder" style="display: inline-block;">주문하기</div><div id="cancleCart" class="orderBt" style="display: inline-block;">비우기</div><div>');
+					//innerText.append('<div class="orderBt" style="display: inline-block; text-align: center; margin-top: 4px;"><div id="cancleCart" style="display: inline-block;">비우기</div></div>');
 					$('#addRowTab3').html(innerText.toString());
 					//document.getElementById('addrowTab3').innerHTML = innerText.toString();
 					$('#goBorder').on('click', function(){
@@ -300,6 +302,21 @@ function cartList(){
 			             document.body.appendChild(form);
 			              
 			             form.submit();
+					});
+					
+					//장바구니 비우기
+					$('#cancleCart').on('click', function(){
+						
+						$.ajax({
+							url:'cancleCart',
+							type: 'post',
+							data: {customercode: customercode},
+							success:function(){
+								alert('장바구니가 삭제되었습니다');
+								$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
+							}
+						});
+						
 					});
 			}
 		},
