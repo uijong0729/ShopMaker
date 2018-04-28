@@ -123,7 +123,6 @@ function openContent(){
 			        sb.append('</tr><tr>');
 			        sb.append('<td colspan="2"><textarea cols="50" rows="10" readonly="readonly">' + result.qcontent +'</textarea></td></tr>');
 			        sb.append('<tr><td colspan="2"><textarea rows="4" cols="50" id="AqnaReply"></textarea></td></tr>');
-			        //sb.append('<tr><td colspan="2"><input id="AqnaReplySubmit" type="button" value="확인"><input id="AqnaReplyDelete" type="button" value="삭제"><td></tr>');
 	    			sbAnswer.append('<input id="AqnaReplySubmit" type="button" class="button" value="확인"> <input id="AqnaReplyDelete" class="button" type="button" value="삭제">');
 				  
 	    			$('#readQna').html(sb.toString());
@@ -254,8 +253,8 @@ function qnaPage(page){
 </head>
 <body>
 	
-	<header>
-		<%@ include file="../header.jsp" %>
+	<header style="margin-bottom: 150px;">
+		<%@ include file="../../Aheader.jsp" %>
 	</header>
 	
 	
@@ -271,7 +270,7 @@ function qnaPage(page){
 			
 			
 			<!-- //0 : 공개글
-			//1 : 비밀글		 -->	
+				 //1 : 비밀글		 -->	
 				
 				<!-- 반복출력 -->
 				

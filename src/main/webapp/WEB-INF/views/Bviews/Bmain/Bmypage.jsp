@@ -175,7 +175,13 @@ $(document).ready(function(){
 	
 	//오른쪽에 요소추가 창 
 	start();
-	
+	//마이페이지 이벤트
+	$('#confirmMyInfo').on('click', function(){
+		if($('#dialog').dialog() == null)
+		{
+			start();
+		}
+	});
 	//주문 내역 탭 이벤트
 	$('#orderList').on('click', orderList);
 	//카트 리스트 이벤트
@@ -191,10 +197,6 @@ $(document).ready(function(){
 
 //주문내역
 function orderList(){
-	if($('#dialog').dialog() != null)
-	{
-		$('#dialog').dialog( "close" );
-	}
 	
 	var customercode = $('#customercode').val();
 	var membercode = $('#membercode').val();
@@ -253,19 +255,11 @@ function orderList(){
 
 //배송정보
 function deList(){
-	if($('#dialog').dialog() != null)
-	{
-		$('#dialog').dialog( "close" );
-	}
 	
 }
 
 //장바구니
 function cartList(){
-	if($('#dialog').dialog() != null)
-	{
-		$('#dialog').dialog( "close" );
-	}
 	
 	var customercode = $('#customercode').val();
 	
@@ -379,19 +373,14 @@ $(document).mousedown(function(ev) {
 
 //탭
 $( function() {
-    var tabs = $( "#tabs" ).tabs();
-    tabs.find( ".ui-tabs-nav" ).sortable({
-        axis: "x",
-        stop: function() {
-          tabs.tabs( "refresh" );
-        }
-      });
+    var tabs = $( "#tabs" ).tabs({
+    	show: { effect: "blind", duration: 300 }		
+    });
   } );
 
 //다이얼로그
 function start(){
-	$( function() { 		
-				$( "#dialog" ).dialog({
+	$( "#dialog" ).dialog({
 				    autoOpen: true,
 				    position:{
 				        my:"center",
@@ -409,15 +398,10 @@ function start(){
 				});
 				$('#forHover').mouseleave(function(){
 					$('#dialog').dialog( "close" );
-				});
 	});
+	
 }		
-//다이얼로그 위치 조정		
-$( "#dialog" ).position({
-			  my: "right center",
-			  at: "right center",
-			  of: "document"
-});
+
 
 //색깔 변화
 function changeColor(){
@@ -430,17 +414,7 @@ function changeColor(){
 		$(this).css('background', "white");
 		$(this).css('border', '1px solid black');
 	
-				if(id == "id")
-				{						
-					$('#addRowTab1').append('<li class="formli" id="Bid"><div id="text_id" tabindex="0" class="ib5 formcol" style="width: 205px;">아이디</div>'
-					+ '<div class="ib"><input class="forminput" value="${Blogin.customerid}" readonly="readonly" id="BInId" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
-				}
-				else if(id == "pw")
-				{
-					$('#addRowTab1').append('<li class="formli" class="formli" id="Bpw"><div id="text_pw" tabindex="0" class="ib5 formcol" style="width: 205px;">비밀번호</div>'
-							+ '<div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerpw" required="required"></div></li>');
-				}
-				else if(id == "address")
+				if(id == "address")
 				{						
 					$('#addRowTab1').append('<li class="formli" class="formli" id="Baddress"><div id="text_address" tabindex="0" class="ib5 formcol" style="width: 205px;">주소</div>'
 					+ '<div class="ib"><input class="forminput" value="${Blogin.customeraddress}" id="BInAddress" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>');
@@ -462,15 +436,7 @@ function changeColor(){
 		$(this).css('background', "black");
 		$(this).css('border', '1px solid white');
 		
-		if(id == "id")
-		{
-			$("#Bid").remove();
-		}
-		else if(id == "pw")
-		{
-			$("#Bpw").remove();
-		}
-		else if(id == "address")
+		if(id == "address")
 		{
 			$("#Baddress").remove();
 		}
@@ -516,20 +482,20 @@ function changeColor(){
 				  
 				  <!-- 제 1탭 -->
 				  <div id="tabs-1">
-				  	<div class="Bform" style="display: inline-block;">
-				  		<form id="updateForm" action="updateBcustomer" method="post">	
-				  			<input name="customercode" type="hidden" value="${Blogin.customercode}">	
-					  		<ul style="list-style: none;" id="addRowTab1">
-								
-							</ul>
-						</form>
-					
-					</div>
-					<div>	  
-						<div id="updateBcustomer" class="submit">수정사항 반영</div>
-					</div>
-				  </div>
-				  
+					  	<div class="Bform" style="display: inline-block;">
+					  		<form id="updateForm" action="updateBcustomer" method="post">	
+					  			<input name="customercode" type="hidden" value="${Blogin.customercode}">	
+						  		<ul style="list-style: none;" id="addRowTab1">
+									<li class="formli" id="Bid"><div id="text_id" tabindex="0" class="ib5 formcol" style="width: 205px;">아이디</div>	<div class="ib"><input class="forminput" value="${Blogin.customerid}" readonly="readonly" id="BInId" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>
+									<li class="formli" class="formli" id="Bpw"><div id="text_pw" tabindex="0" class="ib5 formcol" style="width: 205px;">비밀번호</div><div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerpw" required="required"></div></li>
+								</ul>
+							</form>
+						
+						</div>
+						<div>	  
+							<div id="updateBcustomer" class="submit">수정사항 반영</div>
+						</div>
+					  </div>
 				  <!-- 제 2탭 -->
 				  <div id="tabs-2">
 				  	<ul style="list-style: none;" id="addRowTab2">
@@ -561,8 +527,6 @@ function changeColor(){
 						<div id="dialog" title="내 계정 편집 메뉴">
 							<h6>요소 추가하기</h6>
 						    <ul style="list-style: none; display:inline;">
-						    	<li class="li" id="id" color="black"><span>아이디</span></li>
-						    	<li class="li" id="pw" color="black"><span>비밀번호</span></li>
 						    	<li class="li" id="address" color="black"><span>주소</span></li>
 						    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
 						    	<li class="li" id="name" color="black"><span>이름</span></li>

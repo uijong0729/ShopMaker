@@ -46,7 +46,7 @@ public class AmemberController {
 		return "home";
 	}
 
-	@RequestMapping(value = "AsignupReq", method = RequestMethod.GET)
+	@RequestMapping(value = "AsignupReq", method = RequestMethod.POST)
 	public String AsignupReq(String id, String password, String emailA, String emailB, String name, String hpnumber,
 			String addressA, String addressB, String biznumber) {
 
@@ -65,10 +65,8 @@ public class AmemberController {
 		member.setAddress(address);
 		member.setBiznumber(biznumber);
 
-		System.out.println(member);
-		System.out.println(AMdao.AsignupCustomer(member));
 
-		return "Aviews/Amember/AwellcomePage";
+		return "Aviews/Amember/Login";
 	}
 
 	@ResponseBody
