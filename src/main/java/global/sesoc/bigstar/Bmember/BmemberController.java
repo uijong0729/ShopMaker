@@ -101,7 +101,7 @@ public class BmemberController {
 		else
 		{
 			model.addAttribute("isThereId", 0);
-			return "redirect:goMyShop?code=" + code + "&page=BpageMain";
+			return "redirect:/goMyShop?code=" + membercode + "&page=BpageMain";
 			
 		}
 		
@@ -128,23 +128,25 @@ public class BmemberController {
 	
 	@RequestMapping(value="Bwellcome", method=RequestMethod.POST)
 	public String Bwellcome(Bcustomer bcustomer, Model model, HttpSession hs, String membercode) {
-		if(bcustomer.getCustomeraddress() == null)
+		if(bcustomer.getCustomeraddress() == null || bcustomer.getCustomeraddress() == "")
 		{
 			bcustomer.setCustomeraddress("미입력");
 		}
 		
-		if(bcustomer.getCustomerhp() == null)
+		if(bcustomer.getCustomerhp() == null || bcustomer.getCustomerhp() == "")
 		{
 			bcustomer.setCustomerhp("미입력");
 		}
 		
-		if(bcustomer.getCustomername() == null)
+		if(bcustomer.getCustomername() == null || bcustomer.getCustomername() == "")
 		{
 			bcustomer.setCustomername("미입력");
 		}
 		
 		model.addAttribute("Bcustomer", bcustomer);
 		System.out.println(membercode);
+		
+		System.out.println(dao.insertBcustomer(bcustomer));
 		
 		return "redirect:/goMyShop?code=" + membercode + "&page=BpageMain";
 	}
@@ -220,6 +222,9 @@ public class BmemberController {
 		
 		return "Bviews/Bmain/Bmain";
 	}
+	
+	
+
 
 	
 	

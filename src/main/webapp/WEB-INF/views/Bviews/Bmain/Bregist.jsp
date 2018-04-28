@@ -182,8 +182,8 @@ function goReg(){
 				success: function(getResult){
 					if(getResult == '0')
 					{
-						alert('가입신청이 완료되었습니다.');
 						document.getElementById('Bform').submit();	
+						alert('가입신청이 완료되었습니다.');
 					}
 					else
 					{

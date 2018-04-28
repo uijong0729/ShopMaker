@@ -18,10 +18,10 @@
          $(document).ready(function() {
             
             for (var i = 1; i <= ${Bproducttable.size()}; i++) {
-               var x = (i - 1) % ${param.rows};
-               var y = (i - 1) / ${param.rows};
+               var x = (i - 1) % 4;
+               var y = (i - 1) / 4;
                y = Math.floor(y);
-               $('#div' + i).css("width", ((100/${param.rows})-1) + "%");
+               $('#div' + i).css("width", ((100/$4)-1) + "%");
                $('#div' + i).css("height", "200px");
                $('#div' + i).css("margin-left", ((x * 25) - 1) + "%");
                $('#div' + i).css("margin-top", (y * 300) + "px");
@@ -38,9 +38,9 @@
       </script>
    </head>
    <body>
-   <div class="forDeleteDiv">
+   <!-- <div class="forDeleteDiv">
       	한줄 표시개수 : <input type="text" id="rows"><button onclick="javascript:check();">적용</button>
-   </div><br><br>
+   </div> --><br><br>
 	<div id="forAppend">
 		<c:forEach items="${nameset}" var="n" varStatus="vars">
 			<c:set var="done" value="false" />

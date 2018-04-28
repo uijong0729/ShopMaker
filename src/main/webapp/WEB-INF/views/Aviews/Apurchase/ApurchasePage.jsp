@@ -230,7 +230,7 @@ function payment4(date) {
 <body>
 
 <header class="w3-top">
-	<%@ include file="../header.jsp" %>
+	<%@ include file="../../Aheader.jsp" %>
 </header>
 <br><br><br><br>
 <div class="services">
@@ -331,7 +331,7 @@ Days: <p id="days"></p>
 
 <br><br><br>
 
-	<footer>
+	<footer style="margin-top: 150px;">
 		<%@ include file="../footer.jsp" %>
 	</footer>
 	<form action="ApurchaseIndex" method="post" id="ApurchaseInfo">  <!-- id="tem1" -->

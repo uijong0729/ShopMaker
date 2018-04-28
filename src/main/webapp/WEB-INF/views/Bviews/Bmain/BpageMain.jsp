@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/Bpage/Bpagemain.css?ver=3">
+<link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bpagemain.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {

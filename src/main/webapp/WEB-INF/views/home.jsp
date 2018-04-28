@@ -58,7 +58,7 @@
 
 	<!-- 헤더 -->
 		<header>
-			<%@ include file="Bviews/Bheader.jsp" %>
+			<%@ include file="Aheader.jsp" %>
 		</header>
 
 <!-- banner -->
