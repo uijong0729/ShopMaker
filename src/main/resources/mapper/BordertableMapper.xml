@@ -15,11 +15,11 @@
 		,ORDERPAYMENTSTATUS
 		,ORDERDATE
 		,ORDERDEPOSITDATE
-		,ORDERPAYDECIDEDATE
-		,ORDERRETURNDATE
+<!--	,ORDERPAYDECIDEDATE
+		,ORDERRETURNDATE -->
 		,ORDERDELIVERYLOCATION
-		,ORDERBANKACCOUNT
-		,ORDERDELIVERYNUM
+<!-- 	,ORDERBANKACCOUNT 
+		,ORDERDELIVERYNUM -->
 		,ORDERQUANTITY
 		,CUSTOMERCODE
 		,PRODUCTCODE
@@ -27,13 +27,13 @@
 		) values (
 		BORDERTABLE_seq.NEXTVAL
 		,0
-		,to_date('18/04/19','RR/MM/DD')
-		,null
-		,null
-		,null
+		,to_date(SYSDATE,'RR/MM/DD')
+		,SYSDATE
+<!-- 	,null
+		,null -->
 		,#{orderdeliverylocation}
-		,'계좌'
-		,'05_412078273935'
+<!-- 	,'계좌'
+		,'05_412078273935' -->
 		,#{orderquantity}
 		,#{customercode}
 		,#{productcode}

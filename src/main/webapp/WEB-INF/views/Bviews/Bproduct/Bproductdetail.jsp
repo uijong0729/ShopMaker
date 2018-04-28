@@ -140,7 +140,7 @@ function gopurchaseform() {
                         <tr>
                             <td>선택사항</td>
                             <td style="size: 5px;">색상 및 사이즈를 선택해 주세요 <br> 
-                            	<select class="option_selecter" name="productcode" id="productcode">
+                            	<select class="option_selecter" name="productcode" id="option_selecter">
                                       <c:forEach var="product" items="${productDetailList }" varStatus="loopStat">
 									 	<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>
 									 </c:forEach>      

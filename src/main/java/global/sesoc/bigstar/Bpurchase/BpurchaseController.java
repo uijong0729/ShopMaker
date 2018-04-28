@@ -47,15 +47,30 @@ public class BpurchaseController {
 	 * 
 	 * */
 	@RequestMapping(value = "goBpurchaseform", method = RequestMethod.GET) 
-	public String BpurchasePage(Model model, HttpSession session, String productcode, int productQty) {
+	public String BpurchasePage(Model model, HttpSession session, String customercode, String productcode, int productQty) {
+		/*
+		//TODO: 카트 구매 알고리즘 구현 필요
+		if (customercode == null) {
+			
+			logger.debug("초기화하지 않은 productQty: "+ productQty);
+			logger.debug("초기화하지 않은 productcode: "+ productcode);
+			
+			
+			return "Bviews/Bpurchase/Bpurchaseform";
+		}
+		*/
 		
+		/*
+		 * 단품 구매 알고리즘
+		 * 
+		 * 원용수
+		 * */
 		Bcustomer bCustomer = (Bcustomer) session.getAttribute("Blogin");
 		Amember aMember = (Amember) session.getAttribute("Amember");
 		
 		Bordertable order = new Bordertable();
-		//order.setCustomercode(bCustomer.getCustomercode());
-		//customercode 임시값 설정 해뒀음!!!!
-		String customercode = "37";
+		//실제 구동시에는 이 코드 사용(73줄 삭제 필요) : customercode = bCustomer.getCustomercode();
+		customercode = "23";
 		order.setCustomercode(customercode);
 		//order.setMembercode(aMember.getMembercode());
 		order.setMembercode("37");
@@ -66,8 +81,9 @@ public class BpurchaseController {
 		Bproducttable purchaseProduct = purchaseList.get(0);
 		System.out.println(purchaseProduct);
 		int totalPrice = 0;
-		for (Bproducttable b : purchaseList) {
-			totalPrice += b.getProductprice();
+		
+		for (int a = 0; a < purchaseList.size(); a++) {
+			totalPrice += purchaseList.get(a).getProductprice() * order.getOrderquantity();
 		}
 		
 		session.setAttribute("order", order);
@@ -86,6 +102,7 @@ public class BpurchaseController {
 	 * 원용수
 	 * 
 	 * */
+	
 	@RequestMapping(value="goBpurchaseformFromCart", method=RequestMethod.GET)
 	public String goBpurchaseformFromCart(HttpSession session){
 		
@@ -145,8 +162,8 @@ public class BpurchaseController {
 		logger.debug(order.toString());
 		
 		//TODO: Bordertable order 데이터베이스에 INSERT 하기.
-//		int result = 0;
-//		result = BOdao.insertBordertable(order);
+		int result = 0;
+		result = BOdao.insertBordertable(order);
 		
 		return "Bviews/Bpurchase/BkakaopaySuccess"; 
 	}
