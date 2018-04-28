@@ -8,6 +8,14 @@
 <link rel="stylesheet" type="text/css"
 	href="./resources/css/Bpage/Bheader.css?=ver1">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
+<script type="text/javascript">
+
+	function goproductkind(kind){
+		location.href="productkind1?kind="+kind;	
+	}
+	
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -90,7 +98,7 @@
 			<c:if test="${count%4==0}">
 				<ul style="margin: 0; padding: 0">
 			</c:if>
-			<li class="${kind}"><a id="forLink${count}"> ${n} 
+			<li class="${kind}"><a id="forLink${count}" onclick="goproductkind('${n}')"> ${n} 
 			</a></li>
 
 			<c:if test="${count%4==0}">
