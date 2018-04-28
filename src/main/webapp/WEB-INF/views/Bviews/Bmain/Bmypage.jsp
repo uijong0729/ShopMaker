@@ -320,7 +320,7 @@ function cartList(){
 						
 						//주문 액션
 						var form = document.createElement('form');
-			             form.action = "goBpurchaseform";
+			             form.action = "goBpurchaseformFromCart";
 			             form.method = "post";
 			              
 			            var inputTag = document.createElement('input');
