@@ -12,12 +12,21 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript">
 			$(document).ready(function() {
-				
+				if (${Blogin != null}) {
+					$('#header_small_navbar').html('');
+					var temp = '<ul>';
+					temp += '<li><a id="temp4" tabindex="0" href="#" class="header_member">로그아웃</a></li>';
+					temp += '<li><a id="temp5" tabindex="0" href="#" class="header_member">관리메뉴</a></li>';
+					temp += '<li><a id="temp3" href="#" class="header_member" tabindex="0">공지사항</a></li>';
+					$('#header_small_navbar').html(temp);
+				}
 				
 				$('#image_header').parent().attr('href', 'goMyShop?code=${Amember.membercode}&page=BpageMain');
 				$('#temp1').attr('href','goMyShop?code=${Amember.membercode}&page=Bregist');
 				$('#temp2').attr('href','goMyShop?code=${Amember.membercode}&page=Blogin');
 				$('#temp3').attr('href','goMyShop?code=${Amember.membercode}&page=Bnoticelist');
+				$('#temp4').attr('href','goLogout?code=${Amember.membercode}&page=Blogin');
+				$('#temp5').attr('href','goBmain');
 				$('#forLink0').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink0').text().trim());
 				$('#forLink1').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink1').text().trim());
 				$('#forLink2').attr('href', 'goMyShop?code=${Amember.membercode}&page=Bmainlist&category=' + $('#forLink2').text().trim());
@@ -84,7 +93,10 @@
 					
 				}
 				if(${param.page == 'Blogin'}) {
+					$('#text_login').removeAttr('onclick');
 					$('#text_login').attr('onclick', 'location.href="goMyShop?code=${Amember.membercode}&page=Blogin"');
+					$('#text_register').removeAttr('onclick');
+					$('#text_register').attr('onclick','location.href="goMyShop?code=${Amember.membercode}&page=Bregist"'); 
 				}
 				if(${param.page == 'Bregist'}) {
 					$('#text_main').attr('onclick', 'location.href="goMyShop?code=${Amember.membercode}&page=BpageMain"');
@@ -97,7 +109,7 @@
 		</style>
 	</head>
 	<body id="body">
-		<div>
+		<div id="headerDiv">
 			${headerContent}
 		</div>
 		<div style="height: auto; text-align: center">

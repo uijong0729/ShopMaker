@@ -194,6 +194,7 @@ public class BproductController {
 		
 		session.setAttribute("Amember", am);
 		String link = code + page;
+		System.out.println(link);
 		Atemplate at = new Atemplate();
 		at = adao.getPage(link);
 		Atemplate header = adao.getPage(code + "Bheader");
@@ -375,6 +376,12 @@ public class BproductController {
 		model.addAttribute("headerContent", headerContent);
 		model.addAttribute("footer", footerContent);
 		return "Bviews/Bpage/myShop";
+	}
+	
+	@RequestMapping(value = "goLogout", method = RequestMethod.GET)
+	public String goLogout(HttpSession hs, String code) {
+		hs.removeAttribute("Blogin");
+		return "redirect:/goMyShop?code=" + code + "&page=Blogin";
 	}
 	
 	@RequestMapping(value = "Bheader", method = RequestMethod.GET)

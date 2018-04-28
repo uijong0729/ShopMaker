@@ -1,17 +1,12 @@
 package global.sesoc.bigstar.Bmember;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import global.sesoc.bigstar.HomeController;
 import global.sesoc.bigstar.dao.BcarttableDAO;
 import global.sesoc.bigstar.dao.BcustomerDAO;
 import global.sesoc.bigstar.dao.BproducttableDAO;
-import global.sesoc.bigstar.dao.BreviewtableDAO;
-import global.sesoc.bigstar.vo.Bcarttable;
+import global.sesoc.bigstar.vo.Amember;
 import global.sesoc.bigstar.vo.Bcustomer;
 import global.sesoc.bigstar.vo.Bordertable;
 import global.sesoc.bigstar.vo.Bproducttable;
@@ -89,6 +82,8 @@ public class BmemberController {
 	public String BcustomerLogin(Model model, String customerid, String customerpw, String membercode, HttpSession session) {
 		
 		HashMap<String, String> map = new HashMap<String, String>();
+		Amember am = (Amember) session.getAttribute("Amember");
+		String code = am.getMembercode();
 		map.put("customerid", customerid);
 		map.put("customerpw", customerpw);
 		map.put("membercode", membercode);
