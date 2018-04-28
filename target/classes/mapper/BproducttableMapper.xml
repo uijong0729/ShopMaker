@@ -12,13 +12,14 @@
 	</select>
 
 	<!-- 장바구니 -->
-	<select id="getCart" resultType="Bproducttable">
-		select p.productname,
-		p.productprice, p.productquantity, p.productimage, p.productcolor,
-		p.productsize
-		from Bproducttable p, Bcustomer c
-		where p.productcode =
-		#{productcode} AND c.customercode = #{customercode}
+	<select id="getCart" resultType="Bproducttable" parameterType="string">
+		select unique p.productname,
+		      p.productprice, c.PURCHASEQTY as productquantity, p.productimage, p.productcolor,
+		      p.productsize from 
+		Bproducttable p join Bcarttable c
+		on p.productcode = c.productcode
+		INNER JOIN bcustomer m
+		ON c.customercode = #{customercode}
 	</select>
 
 	<select id="selectallbproducttable" resultType="Bproducttable">

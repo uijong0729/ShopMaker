@@ -63,9 +63,9 @@ public class BproducttableDAO implements BproducttableMapper {
 
 
 	@Override
-	public Bproducttable getCart(HashMap<String, String> map) {
+	public ArrayList<Bproducttable> getCart(String customercode) {
 		// TODO Auto-generated method stub
-		return session.getMapper(BproducttableMapper.class).getCart(map);
+		return session.getMapper(BproducttableMapper.class).getCart(customercode);
 	}
 
 }

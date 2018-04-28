@@ -22,6 +22,12 @@
 		insert into BcartTable
 		values(#{customercode}, #{productcode}, #{productQty})
 	</insert>
+	
+	<delete id="deleteBcart" parameterType="string">
+		delete BcartTable
+		where customercode = #{customercode}
+	
+	</delete>
 
 
 </mapper>
