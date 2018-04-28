@@ -64,6 +64,8 @@ public class AmemberController {
 
 		member.setAddress(address);
 		member.setBiznumber(biznumber);
+		
+		AMdao.AsignupCustomer(member);
 
 
 		return "Aviews/Amember/Login";
