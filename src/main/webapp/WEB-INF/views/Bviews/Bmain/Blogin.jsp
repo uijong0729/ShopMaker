@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 //회원가입 이동
 function reg(){
-	location.href = "Bregist";
+	location.href = "goMyShop?code=${Amember.membercode}&page=Bregist";
 }
 
 //로그인
@@ -114,7 +114,7 @@ function enterkey(){
 						<br>
 						
 						<!-- 멤버코드 임시로 37 -->
-						<input type="hidden" name="membercode" value="37">
+						<input type="hidden" name="membercode" value=${param.code}>
 				</form>
 				
 				<div style="text-align: center;">
