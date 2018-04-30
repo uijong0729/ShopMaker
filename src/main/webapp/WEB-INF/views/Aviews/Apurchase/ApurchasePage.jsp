@@ -38,7 +38,7 @@ var payConfirm;
 var endday="";
 
 function template1() {
-	template = document.getElementById("template").innerHTML="template1";
+	template = document.getElementById("template").innerHTML="가구";
 	$('#template1').css("background", "#afafaf");
 	$('#template2').css("background", "#00000000");
 	$('#template3').css("background", "#00000000");
@@ -48,7 +48,7 @@ function template1() {
 }
 
 function template2() {
-	template = document.getElementById("template").innerHTML="template2";
+	template = document.getElementById("template").innerHTML="옷";
 	$('#template1').css("background", "#00000000");
 	$('#template2').css("background", "#afafaf");
 	$('#template3').css("background", "#00000000");
@@ -56,7 +56,7 @@ function template2() {
 }
 
 function template3() {
-	template = document.getElementById("template").innerHTML="template3";
+	template = document.getElementById("template").innerHTML="음식";
 	$('#template1').css("background", "#00000000");
 	$('#template2').css("background", "#00000000");
 	$('#template3').css("background", "#afafaf");
@@ -236,7 +236,7 @@ function payment4(date) {
 
 <div style="text-align: center; margin-bottom: 40px;">
 	<h2 style="font-family: tmon;"><span style="color: #77a7f4;"><b style="font-family: tmon;">Bigstar</b></span> WEB EC 서비스</h2>
-		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다</h6>
+		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다.</h6>
 	</div>
 	<hr>
 
