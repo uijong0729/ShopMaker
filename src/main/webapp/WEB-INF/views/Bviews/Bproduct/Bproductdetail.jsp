@@ -16,7 +16,7 @@
 			$('.showingImg').attr("src", $(this).attr("src"));
 		});
 		$('.wating_Img').mouseleave(function(){
-			$('.showingImg').attr("src", "${productDetailList[1].productimage}");
+			$('.showingImg').attr("src", "./resources/image/${productDetailList[1].productimage}");
 		});
 		/* $('.showingImg').css("z-index", 99999);
 		$('.showingImg').mouseenter(function() {
@@ -105,12 +105,12 @@ function gopurchaseform() {
         <div class="a">
             <diV class="half_detail_Info_Img">
                 <div class="show_Img">
-                    <img class="showingImg" src="${productDetailList[1].productimage}">
+                    <img class="showingImg" src="./resources/image/${productDetailList[1].productimage}">
                 </div>
                 <div class="wating_Img_place">
                     <!-- <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg"> -->
-                    <img id="img_1" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[0].productimage}">
-                	<img id="img_2" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
+                    <img id="img_1" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage}">
+                	<img id="img_2" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[1].productimage}">
                 </div>
             </diV><!-- 이미지 프리뷰 -->
             
