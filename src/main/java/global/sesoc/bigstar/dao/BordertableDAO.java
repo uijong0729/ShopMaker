@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import global.sesoc.bigstar.vo.Bordertable;
 import global.sesoc.bigstar.vo.SalesVolumeByName;
+import global.sesoc.bigstar.vo.SalesVolumeByOrderdate;
 @Repository
 public class BordertableDAO implements BordertableMapper {
 	
@@ -31,9 +32,14 @@ public class BordertableDAO implements BordertableMapper {
 	}
 	
 	@Override
-	public ArrayList<SalesVolumeByName> getSalesVolumeByName() {
+	public ArrayList<SalesVolumeByName> getSalesVolumeByName(String membercode) {
 		// TODO Auto-generated method stub
-		return session.getMapper(BordertableMapper.class).getSalesVolumeByName();
+		return session.getMapper(BordertableMapper.class).getSalesVolumeByName(membercode);
+	}
+
+	public ArrayList<SalesVolumeByOrderdate> getSalesVolumeByOrderdate(String membercode) {
+		// TODO Auto-generated method stub
+		return session.getMapper(BordertableMapper.class).getSalesVolumeByOrderdate(membercode);
 	}
 	
 

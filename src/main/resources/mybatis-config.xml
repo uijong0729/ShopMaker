@@ -24,6 +24,8 @@
 			alias="Breviewtable" />
 		<typeAlias type="global.sesoc.bigstar.vo.SalesVolumeByName"
 			alias="SalesVolumeByName"/>
+			<typeAlias type="global.sesoc.bigstar.vo.SalesVolumeByOrderdate"
+			alias="SalesVolumeByOrderdate"/>
 			
 	</typeAliases>
 

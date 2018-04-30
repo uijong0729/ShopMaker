@@ -42,14 +42,27 @@
 	
 	</insert>
 	
-	<select id="getSalesVolumeByName" resultType="SalesVolumeByName" >
+	<select id="getSalesVolumeByName" resultType="SalesVolumeByName" parameterType="string">
 	
 	SELECT DISTINCT
 	p.PRODUCTNAME
-	,sum(p.PRODUCTPRICE * o.ORDERQUANTITY) AS totalprice 
+	,sum(p.PRODUCTPRICE * o.ORDERQUANTITY) AS totalSales
 	FROM BPRODUCTTABLE p, BORDERTABLE o
-	GROUP BY p.PRODUCTNAME
+	where o.membercode = #{membercode}
+	group by p.PRODUCTNAME
+	order by totalSales desc
 	
 	</select>
+	
+	<select id="getSalesVolumeByOrderdate" resultType="SalesVolumeByOrderdate" parameterType="string">
+	
+	SELECT orderdate, sum(o.ORDERQUANTITY * p.PRODUCTPRICE) AS totalSales
+	from BORDERTABLE o, BPRODUCTTABLE p
+	where o.membercode = #{membercode}
+	group by ORDERDATE
+	order by orderdate desc
+	
+	</select>
+	
 
 </mapper>

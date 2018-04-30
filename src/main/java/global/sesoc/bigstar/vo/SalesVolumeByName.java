@@ -2,8 +2,8 @@ package global.sesoc.bigstar.vo;
 
 public class SalesVolumeByName {
 	
-	public String productName;
-	public int totalSales;
+	String productName;
+	int totalSales;
 
 	public SalesVolumeByName(String productName, int totalSales) {
 		super();
@@ -29,6 +29,11 @@ public class SalesVolumeByName {
 	
 	public void setTotalSales(int totalSales) {
 		this.totalSales = totalSales;
+	}
+
+	@Override
+	public String toString() {
+		return "SalesVolumeByName [productName=" + productName + ", totalSales=" + totalSales + "]";
 	}
 	
 }
