@@ -204,6 +204,11 @@
     }
   /* ]]> */
 </style>
+
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
 <div id="kakaoIndex">
 <a href="#kakaoBody">
 본문 바로가기
@@ -243,6 +248,11 @@ PC 결제
 </main>
 </header>
 </div>
+
+	<div style="margin-top: 200px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
+
 <script type='text/javascript'>
   //<![CDATA[
    /*  $(document).ready(function() {

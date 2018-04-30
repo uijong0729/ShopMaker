@@ -13,29 +13,91 @@ function finish(){
 }
 
 </script>
+
+<style>
+.btn_submit2{
+    width: 90%;
+    height: 54px;
+    font-size: 18px;
+    color: #222;
+    background-color: #ffeb00;
+    cursor: pointer;
+}
+
+.btn_submit2:hover{
+	color: white;
+	background-color: black;
+}
+
+.euj-tr
+{
+	padding: 15px;
+}
+
+.euj-td
+{
+	padding: 15px;
+}
+
+.column-euj
+{
+	text-align: center;
+}
+
+
+.kakao-main-euj
+{
+	border: 1px thin #fdd835;
+}
+
+</style>
+
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
 <div id="payment">
 <div class="header">
-<strong>
-<kakaopay></kakaopay>
-</strong>
+	<strong>
+	<kakaopay></kakaopay>
+	</strong>
 </div>
-<div class="body">
-<div class="content"></div>
-<img src="resources/image/payment_icon_small.png">
-<br>
-<p>카카오페이 결제가 정상적으로 완료되었습니다.</p>
-<p>결제일시: ${serverTime }</p>
-<p>결제금액: ${totalPrice }원</p>
-<div class="alert alert-warning">
-<!-- 해당 페이지는 카카오페이에서 제공하는 페이지가 아닙니다. -->
+
+<div style="text-align: center;">
+	<div class="body" style="text-align: center; display: inline-block;">
+			<div class="content" style="display: inline-block;"></div>
+			<img width="200px" src="resources/image/payment_icon_small.png">
+		
+			<h4 style="color: gray;">카카오페이 결제가 정상적으로 완료되었습니다.</h4>
+			<hr>
+				<table style="display: inline-block;">
+					<tr class="euj-tr">
+						<td class="euj-td column-euj">주문자명</td>
+						<td class="euj-td" style="border-bottom: 1px solid gray;">${Blogin.customername }</td>
+					</tr>
+					<tr class="euj-tr">
+						<td class="euj-td column-euj">결제일시</td>
+						<td class="euj-td" style="border-bottom: 1px solid gray;">${serverTime }</td>
+					</tr>
+					<tr class="euj-tr">
+						<td class="euj-td column-euj">결제금액</td>
+						<td class="euj-td" style="border-bottom: 1px solid gray;">${totalPrice }원</td>
+					</tr>
+				
+				</table>
+			
+			<div class="footer" style="margin-top: 80px;">
+				<button class="btn-wrap btn_submit2" onclick="finish()">
+					<span id="closeBtn">메인 페이지로 돌아갑니다</span>
+				</button>
+			</div>
+		</div>		
+	</div>
 </div>
-</div>
-<div class="footer">
-<button class="btn-wrap" onclick="finish()">
-<span id="closeBtn">메인 페이지로 돌아갑니다</span>
-</button>
-</div>
-</div>
+	<div style="margin-top: 200px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
+
 <script type='text/javascript'>
   //<![CDATA[
     $(document).ready(function() {
