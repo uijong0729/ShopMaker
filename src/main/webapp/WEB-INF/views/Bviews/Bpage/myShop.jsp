@@ -8,10 +8,79 @@
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bfooter.css?ver=7"/>
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bheader.css"/>
 		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/Bpage/Bpagemain.css"/>
+		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=0"/>
 		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var midDivOfs = $('#middleDiv').offset().top;
+				var ftrDivOfs = $('#footerDiv').offset().top;
+				
+				var btn = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#button' + i + 'Bmiddle').css('top')) == 'undefined' || $('#button' + i + 'Bmiddle').css('top') == null) {
+						break;
+					}
+					var btnSubstring = $('#button' + i + 'Bmiddle').css('top').length - 2;
+					btn[i] = $('#button' + i + 'Bmiddle').css('top').substring(0, btnSubstring);
+					btn[i] *= 1;
+					$('#button' + i + 'Bmiddle').css('top', btn[i] + midDivOfs + 'px');
+				}
+				var btn = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#button' + i + 'Bfooter').css('top')) == 'undefined' || $('#button' + i + 'Bfooter').css('top') == null) {
+						break;
+					}
+					var btnSubstring = $('#button' + i + 'Bfooter').css('top').length - 2;
+					btn[i] = $('#button' + i + 'Bfooter').css('top').substring(0, btnSubstring);
+					btn[i] *= 1;
+					$('#button' + i + 'Bfooter').css('top', btn[i] + ftrDivOfs + 'px');
+				}
+				
+				var text = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#text' + i + 'Bmiddle').css('top')) == 'undefined' || $('#text' + i + 'Bmiddle').css('top') == null) {
+						break;
+					}
+					var textSubstring = $('#text' + i + 'Bmiddle').css('top').length - 2;
+					text[i] = $('#text' + i + 'Bmiddle').css('top').substring(0, textSubstring);
+					text[i] *= 1;
+					$('#text' + i + 'Bmiddle').css('top', text[i] + midDivOfs + 'px');
+				}
+				var text = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#text' + i + 'Bfooter').css('top')) == 'undefined' || $('#text' + i + 'Bfooter').css('top') == null) {
+						break;
+					}
+					var textSubstring = $('#text' + i + 'Bfooter').css('top').length - 2;
+					text[i] = $('#text' + i + 'Bfooter').css('top').substring(0, textSubstring);
+					text[i] *= 1;
+					$('#text' + i + 'Bfooter').css('top', text[i] + ftrDivOfs + 'px');
+				}
+				
+				var image = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#image' + i + 'Bmiddle').css('top')) == 'undefined' || $('#image' + i + 'Bmiddle').css('top') == null) {
+						break;
+					}
+					var imageSubstring = $('#image' + i + 'Bmiddle').css('top').length - 2;
+					image[i] = $('#image' + i + 'Bmiddle').css('top').substring(0, imageSubstring);
+					image[i] *= 1;
+					$('#image' + i + 'Bmiddle').css('top', image[i] + midDivOfs + 'px');
+				}
+				var image = new Array();
+				for (var i = 0; i < 10; i++) {
+					if (typeof($('#image' + i + 'Bfooter').css('top')) == 'undefined' || $('#image' + i + 'Bfooter').css('top') == null) {
+						break;
+					}
+					var imageSubstring = $('#image' + i + 'Bfooter').css('top').length - 2;
+					image[i] = $('#image' + i + 'Bfooter').css('top').substring(0, imageSubstring);
+					image[i] *= 1;
+					$('#image' + i + 'Bfooter').css('top', image[i] + ftrDivOfs + 'px');
+				}
+				
+				
+				
 				if (${Blogin != null}) {
 					$('#header_small_navbar').html('');
 					var temp = '<ul>';
@@ -20,6 +89,8 @@
 					temp += '<li><a id="temp3" href="#" class="header_member" tabindex="0">공지사항</a></li>';
 					$('#header_small_navbar').html(temp);
 				}
+				
+				
 				
 				$('#image_header').parent().attr('href', 'goMyShop?code=${Amember.membercode}&page=BpageMain');
 				$('#temp1').attr('href','goMyShop?code=${Amember.membercode}&page=Bregist');
@@ -113,10 +184,10 @@
 		<div id="headerDiv">
 			${headerContent}
 		</div>
-		<div style="height: auto; text-align: center">
+		<div style="height: auto; text-align: center" id="middleDiv">
 			${body}
 		</div>
-		<div class="forVerticalAlign">
+		<div id="footerDiv" class="forVerticalAlign">
 			${footer}
 		</div>
 	</body>
