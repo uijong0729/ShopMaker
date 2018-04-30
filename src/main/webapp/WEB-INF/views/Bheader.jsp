@@ -42,7 +42,7 @@
 			}
 			
 			.bt-euj{
-				background-color: #eaffff;
+				background-color: #f2f7ff;
 				border-radius: 4px;
 				border: 2px solid gray;
 			 	box-shadow: 1px 3px 2px black;

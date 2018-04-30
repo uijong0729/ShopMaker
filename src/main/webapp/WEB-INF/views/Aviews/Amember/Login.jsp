@@ -291,7 +291,7 @@ function selectEmail(){
 
 <article style="text-align: center;">
 
-<h2 style="text-shadow: 4px 4px 4px #ccc;">로그인이 필요한 서비스입니다</h2>
+<h2 style="text-shadow: 4px 4px 4px #ccc; font-family: tmon">로그인이 필요한 서비스입니다</h2>
 
 <div class="main" style="text-align: center; display: inline-block;">
 	
@@ -303,7 +303,7 @@ function selectEmail(){
 		
 			<form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm"> 
 			<div class="form" id="logInForm">
-			<div class="text">어서오세요</div>
+			<div class="text" style="font-family: tmon">어서오세요</div>
 			<div class="fields">
 				<input type="text" name="id" id="logininputId" placeholder="아이디를 입력하세요" class="field">
 				<input type="password" name="pw" id="logininputPassword" placeholder="비밀번호를 입력하세요" class="field">
@@ -314,7 +314,7 @@ function selectEmail(){
 			
 			<form id="AsignupForm" action="AsignupReq" method="post">
 				<div class="form" id="signUpForm">
-				<div class="text">함께하세요</div>
+				<div class="text"  style="font-family: tmon">함께하세요</div>
 				<div class="fields">
 					<input type="text" name="id" id="inputId" placeholder="아이디를 입력하세요" required="required" autofocus="autofocus" class="field">
 					<div id="AIdCheckMsg" style="color:white"></div>
