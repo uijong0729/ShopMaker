@@ -5,6 +5,7 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bpagemain.css">
       <title>Insert title here</title>
       <style type="text/css">
          .div {
@@ -15,46 +16,56 @@
       <script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
       <script type="text/javascript">
       
-         $(document).ready(function() {
-            
-            for (var i = 1; i <= ${Bproducttable.size()}; i++) {
-               var x = (i - 1) % 4;
-               var y = (i - 1) / 4;
-               y = Math.floor(y);
-               $('#div' + i).css("width", ((100/$4)-1) + "%");
-               $('#div' + i).css("height", "200px");
-               $('#div' + i).css("margin-left", ((x * 25) - 1) + "%");
-               $('#div' + i).css("margin-top", (y * 300) + "px");
-            }
-         });
+      $(document).ready(function() {
+  		for (var i = 1; i <= ${Bproducttable.size()}; i++) {
+              var x = (i - 1) % 4;
+              var y = (i - 1) / 4;
+              y = Math.floor(y);
+              $('#div' + i).css("width", "300px");
+              $('#div' + i).css("height", "450px");
+             /*  $('#div' + i).css("margin-left", ((x * 25) - 1) + "%");
+              $('#div' + i).css("margin-top", (y * 315) + "px"); */
+           }
+  	});
          
-         function check() {
+      /*    function check() {
             var rows = document.getElementById('rows').value;
             $('#Bcenter').load("Bmainlist?rows=" + rows);
-         }
+         } */
          
          
            
       </script>
    </head>
    <body>
-   <!-- <div class="forDeleteDiv">
-      	한줄 표시개수 : <input type="text" id="rows"><button onclick="javascript:check();">적용</button>
-   </div> --><br><br>
+	<c:set var="count" value="0" />
 	<div id="forAppend">
 		<c:forEach items="${nameset}" var="n" varStatus="vars">
 			<c:set var="done" value="false" />
 			<c:forEach items="${Bproducttable}" var="b" varStatus="varss">
-				<c:if test="${nameset[vars.index] == Bproducttable[varss.index].productname}">
+				<c:if
+					test="${nameset[vars.index] == Bproducttable[varss.index].productname}">
 					<c:if test="${done == false}">
-						<a href="goBproductdetail?productname=${b.productname}&productcode=${b.productcode }">
-							<div id="div${vars.index + 1}" class="div">
-								<img src="./resources/image/${b.productimage }" style="width: 200px; height: 200px;"><br>
-								
-								상품명 : ${b.productname}<br>가격 : ${b.productprice}
-							</div>
+
+						<c:if test="${count%4==0}">
+							<ul>
+						</c:if>
+						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
+							<li>
+								<div id="outer" style>
+									<img src="./resources/image/${b.productimage }" style="width: 200px; height: 200px;">
+									<dl>
+										<dd>상품명 : ${b.productname}</dd>
+										<dd>가격 : ${b.productprice}</dd>
+									</dl>
+								</div> <c:set var="count" value="${count+1}" />
+
+						</li>
 						</a>
-						<c:set var="done" value="true"/>
+						<c:if test="${count%4==0}">
+							</ul>
+						</c:if>
+						<c:set var="done" value="true" />
 					</c:if>
 				</c:if>
 			</c:forEach>

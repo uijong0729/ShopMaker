@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.bigstar.vo.Bordertable;
+import global.sesoc.bigstar.vo.SalesVolumeByName;
 @Repository
 public class BordertableDAO implements BordertableMapper {
 	
@@ -28,5 +29,12 @@ public class BordertableDAO implements BordertableMapper {
 		
 		return session.getMapper(BordertableMapper.class).insertBordertable(order);
 	}
+	
+	@Override
+	public ArrayList<SalesVolumeByName> getSalesVolumeByName() {
+		// TODO Auto-generated method stub
+		return session.getMapper(BordertableMapper.class).getSalesVolumeByName();
+	}
+	
 
 }

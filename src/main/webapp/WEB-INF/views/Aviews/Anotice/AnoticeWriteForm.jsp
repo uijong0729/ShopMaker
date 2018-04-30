@@ -42,11 +42,7 @@
 		<input type="submit" value="저장하기">
 	</form>
 	<br>
-	<br>
 
-	<footer>
-		<%@ include file="../footer.jsp"%>
-	</footer>
 
 </body>
 </html>

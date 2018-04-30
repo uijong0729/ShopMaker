@@ -34,7 +34,7 @@ public class AmemberController {
 	@RequestMapping(value = "AsignupPage", method = RequestMethod.GET)
 	public String signupPage() {
 
-		return "Aviews/Amember/AsignupPage";
+		return "Aviews/Amember/Login";
 
 	}
 
@@ -66,7 +66,6 @@ public class AmemberController {
 		member.setBiznumber(biznumber);
 		
 		AMdao.AsignupCustomer(member);
-
 
 		return "Aviews/Amember/Login";
 	}

@@ -23,7 +23,6 @@ $(document).ready(function(){
 				type: 'post',
 				dataType: 'text',
 				success: function(result){
-					alert(result);
 					document.getElementById('footer').innerHTML = result;
 				}
 			});

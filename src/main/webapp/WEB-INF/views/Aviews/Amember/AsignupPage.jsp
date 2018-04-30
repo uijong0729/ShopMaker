@@ -61,7 +61,7 @@ function checkId(){
 	
 }
 
-//회원가입양식 순차검사합니다. 차후 바뀔 수 있는 부분이라 일단 가볍게 작성.
+//회원가입양식 순차검사합니다. 
 function checkForm(){
 	
 	var inputId = document.getElementById('inputId').value;
@@ -75,7 +75,7 @@ function checkForm(){
 	var addressB = document.getElementById('addressB').value;
 	var bisNumber = document.getElementById('bisNumber').value;
 	
-	/* //아이디 체크
+	//아이디 체크
 	if(inputId.length >= 1)
 	{
 		//비밀번호체크
@@ -96,53 +96,49 @@ function checkForm(){
 							//주소체크
 							if(addressA.length >= 1 && addressB.length >=1)
 							{
+								//사업자 번호 입력여부
 								if(bisNumber.length >= 1)
 								{
-									if(idOk == true){ */
-									document.getElementById('AsignupForm').submit();
-									/* }
+									//아이디 여부
+									if(idOk == true)
+									{
+										alert('회원가입이 완료되었습니다.');
+										document.getElementById('AsignupForm').submit();
+									}
 								}
 								else
 								{
 									alert('사업자 등록번호를 입력하세요');	
-									return;
 								}
 							}//주소체크
 							else
 							{
 								alert('주소를 입력하세요');	
-								return;
 							}
 						}//이름체크
 						else{
 							alert('이름을 입력하세요');
-							return;
 						}
 					}
 					else{
 						alert('이메일 형식을 확인하세요');
-						return;
 					}
 				}//이메일체크
 				else{
 					alert('이메일 입력하세요');
-					return;
 				}
 			}//비밀번호확인체크
 			else{
-				alert('위와 동일한 비밀번호');	
-				return;
+				alert('비밀번호는 동일한 번호로 입력하세요');	
 			}
 		}//비밀번호 체크
 		else{
-			alert('비밀번호 입력하세요');
-			return;
+			alert('비밀번호를 입력하세요');
 		}
 	}//아이디체크
 	else{
-		alert('아이디 입력하세요');
-		return;
-	} */
+		alert('아이디를 입력하세요');
+	} 
 }
 
 //input이벤트마다 함수가 실행되어 유효성을 검사합니다.
@@ -279,10 +275,6 @@ margin: 4px;
 			</form>
 		</article>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
-
 
 </body>
 </html>

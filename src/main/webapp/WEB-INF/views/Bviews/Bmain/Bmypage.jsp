@@ -1,66 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-	<head>
-	
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>마이페이지</title>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		 <link rel="stylesheet" type="text/css" href="/bigstar/resources/css/sidebar.css?ver=1"/>
-		<link rel="stylesheet" type="text/css" href="/bigstar/resources/css/showlist.css?ver=3"/>
-		<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
-		<script src="/bigstar/resources/js/jquery-ui.js"></script>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>마이페이지</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css"
+	href="/bigstar/resources/css/sidebar.css?ver=1" />
+<link rel="stylesheet" type="text/css"
+	href="/bigstar/resources/css/showlist.css?ver=3" />
+<script src="/bigstar/resources/js/jquery-3.2.1.min.js"></script>
+<script src="/bigstar/resources/js/jquery-ui.js"></script>
 
 <style type="text/css">
-.li
-{
- background-color: #000000; 
- color: #ffffff; 
- font: bold;"
- margin: 3px;
- border-bottom: 1px solid white;
- padding: 9px;
- cursor: pointer;
-}
-li{
-margin-bottom: 5px;
+.li {
+	background-color: #000000;
+	color: #ffffff;
+	font: bold; "
+	margin: 3px;
+	border-bottom: 1px solid white;
+	padding: 9px;
+	cursor: pointer;
 }
 
-.layer-li
-{
- background-color: #000000; 
- color: #ffffff; 
- font: bold;"
- margin: 3px;
- border-bottom: 1px solid white;
- padding: 9px;
- cursor: pointer;
+li {
+	margin-bottom: 5px;
 }
 
-.th-euj{
+.layer-li {
+	background-color: #000000;
+	color: #ffffff;
+	font: bold; "
+	margin: 3px;
+	border-bottom: 1px solid white;
+	padding: 9px;
+	cursor: pointer;
+}
+
+.th-euj {
 	border-bottom: 1px double blue;
 	box-shadow: 1px 1px 3px black;
 }
 
-.ib{
- display: inline-block;
+.ib {
+	display: inline-block;
 }
 
-.ib5{
- border: 1px solid gray;
- border-radius: 10px;
- display: inline-block;
+.ib5 {
+	border: 1px solid gray;
+	border-radius: 10px;
+	display: inline-block;
 }
 
-.ol{
+.ol {
 	display: inline-block;
 	margin: 2px;
 	padding: 3px;
 }
 
-.label-euj{
+.label-euj {
 	display: inline-block;
 	margin: 2px;
 	padding: 3px;
@@ -68,74 +70,110 @@ margin-bottom: 5px;
 	box-shadow: 0px 3px 3px gray;
 }
 
-.ol2{
+.ol2 {
 	display: inline-block;
 	margin: 2px;
 	padding: 3px;
 }
 
-.w1{width: 120px;}
-.w2{width: 120px;}
-.w3{width: 120px;}
-.w4{width: 200px;}
-.w5{width: 120px;}
-.w6{width: 120px;}
-
-.c1{width: 120px; height: 40px;}
-.c2{width: 250px; height: 40px;}
-.c3{width: 70px; height: 40px;}
-.c4{width: 70px; height: 40px;}
-.c5{width: 70px; height: 40px;}
-.c6{width: 100px; height: 40px;}
-
-.submit
-{
-  box-shadow:1px 1px 1px 1px black;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 42px;
-  width: 150px;
-  height: 46px;
-  cursor: pointer;
-  vertical-align: middle;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #263238;
-  border: 1px solid #263238;
-  background: transparent;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  float : center;
+.w1 {
+	width: 120px;
 }
 
-.submit:hover
-{
-  display: inline-block;
-  background-color: #263238;
-  color: #ffffff;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+.w2 {
+	width: 120px;
 }
 
-.imagesize
-{
+.w3 {
+	width: 120px;
+}
+
+.w4 {
+	width: 200px;
+}
+
+.w5 {
+	width: 120px;
+}
+
+.w6 {
+	width: 120px;
+}
+
+.c1 {
+	width: 120px;
+	height: 40px;
+}
+
+.c2 {
+	width: 250px;
+	height: 40px;
+}
+
+.c3 {
+	width: 70px;
+	height: 40px;
+}
+
+.c4 {
+	width: 70px;
+	height: 40px;
+}
+
+.c5 {
+	width: 70px;
+	height: 40px;
+}
+
+.c6 {
+	width: 100px;
+	height: 40px;
+}
+
+.submit {
+	box-shadow: 1px 1px 1px 1px black;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 42px;
+	width: 150px;
+	height: 46px;
+	cursor: pointer;
+	vertical-align: middle;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #263238;
+	border: 1px solid #263238;
+	background: transparent;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	float: center;
+}
+
+.submit:hover {
+	display: inline-block;
+	background-color: #263238;
+	color: #ffffff;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.imagesize {
 	width: 100px;
 	height: 80px;
 }
 
-.deleteBt-euj{
+.deleteBt-euj {
 	cursor: pointer;
 }
-			
-.deleteBt-euj:hover{
+
+.deleteBt-euj:hover {
 	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 	opacity: 0.1;
 }
-
-</style>				
+</style>
 <script>
 	var StringBuffer = function() {
 	    this.buffer = new Array();
@@ -272,7 +310,6 @@ function cartList(){
 			
 			if(result == null)
 			{
-				alert('옴?');
 				$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
 			}
 			else
@@ -452,96 +489,113 @@ function changeColor(){
 }
 
 </script>
-		
-	</head>
-	<body>
 
-<!-- 로그인 정보 -->
-<input id="id" type="hidden" value="${Blogin.customerid}">
-<input id="pw" type="hidden" value="${Blogin.customerpw}">
-<input id="address" type="hidden" value="${Blogin.customeraddress}">
-<input id="hp" type="hidden" value="${Blogin.customerhp}">
-<input id="name" type="hidden" value="${Blogin.customername}">
-<input id="customercode" type="hidden" value="${Blogin.customercode}">
-<input id="membercode" name="membercode" type="hidden" value="${Blogin.membercode}">	
+</head>
+<body>
 
-		<div style="text-align: center;">
-			<div style="display: inline-block;">
-				<h1 id="text_mypageTitle" tabindex="0">마이페이지</h1>
-				
-				<!-- 탭 부분 -->
-				<div id="tabs">
-				
-				  <!-- 탭 리스트 -->
-				  <ul>
-				    <li><a id="confirmMyInfo" href="#tabs-1" style="width: 220px;">계정정보</a></li>
-				    <li><a id="orderList" href="#tabs-2" style="width: 220px;">주문내역</a></li>
-				    <li><a id="cartList" href="#tabs-3" style="width: 220px;">장바구니</a></li>
-				    <li><a id="deList" href="#tabs-4" style="width: 220px;">배송정보</a></li>
-				  </ul>
-				  
-				  <!-- 제 1탭 -->
-				  <div id="tabs-1">
-					  	<div class="Bform" style="display: inline-block;">
-					  		<form id="updateForm" action="updateBcustomer" method="post">	
-					  			<input name="customercode" type="hidden" value="${Blogin.customercode}">	
-						  		<ul style="list-style: none;" id="addRowTab1">
-									<li class="formli" id="Bid"><div id="text_id" tabindex="0" class="ib5 formcol" style="width: 205px;">아이디</div>	<div class="ib"><input class="forminput" value="${Blogin.customerid}" readonly="readonly" id="BInId" style="border: none; width: 200px; text-align: center;" name="customeraddress" required="required"></div></li>
-									<li class="formli" class="formli" id="Bpw"><div id="text_pw" tabindex="0" class="ib5 formcol" style="width: 205px;">비밀번호</div><div class="ib"><input class="forminput" placeholder="비밀번호 변경하기" id="BInPw" style="border: none; width: 200px; text-align: center;" name="customerpw" required="required"></div></li>
-								</ul>
-							</form>
-						
-						</div>
-						<div>	  
-							<div id="updateBcustomer" class="submit">수정사항 반영</div>
-						</div>
-					  </div>
-				  <!-- 제 2탭 -->
-				  <div id="tabs-2">
-				  	<ul style="list-style: none;" id="addRowTab2">
-						<li>주문 내역이 없습니다</li>
-					</ul>	
-				  </div>
-				  
-				  <!-- 제 3탭 -->
-				  <div id="tabs-3">
-				  	<ul style="list-style: none;" id="addRowTab3">
-						<li>장바구니가 없습니다.</li>		
-					</ul>	
-				  </div>
-				  
-				  <!-- 제 4탭 -->
-				  <div id="tabs-4">
-				  	<ul style="list-style: none;" id="addRowTab4">
-				  		<li>배송정보가 없습니다.</li>
-				  	</ul>
-				  </div>
-				
+	<!-- 로그인 정보 -->
+	<input id="id" type="hidden" value="${Blogin.customerid}">
+	<input id="pw" type="hidden" value="${Blogin.customerpw}">
+	<input id="address" type="hidden" value="${Blogin.customeraddress}">
+	<input id="hp" type="hidden" value="${Blogin.customerhp}">
+	<input id="name" type="hidden" value="${Blogin.customername}">
+	<input id="customercode" type="hidden" value="${Blogin.customercode}">
+	<input id="membercode" name="membercode" type="hidden"
+		value="${Blogin.membercode}">
+
+	<div style="text-align: center;">
+		<div style="display: inline-block;">
+			<h1 id="text_mypageTitle" tabindex="0">마이페이지</h1>
+
+			<!-- 탭 부분 -->
+			<div id="tabs">
+
+				<!-- 탭 리스트 -->
+				<ul>
+					<li><a id="confirmMyInfo" href="#tabs-1" style="width: 220px;">계정정보</a></li>
+					<li><a id="orderList" href="#tabs-2" style="width: 220px;">주문내역</a></li>
+					<li><a id="cartList" href="#tabs-3" style="width: 220px;">장바구니</a></li>
+					<li><a id="deList" href="#tabs-4" style="width: 220px;">배송정보</a></li>
+				</ul>
+
+				<!-- 제 1탭 -->
+				<div id="tabs-1">
+					<div class="Bform" style="display: inline-block;">
+						<form id="updateForm" action="updateBcustomer" method="post">
+							<input name="customercode" type="hidden"
+								value="${Blogin.customercode}">
+							<ul style="list-style: none;" id="addRowTab1">
+								<li class="formli" id="Bid"><div id="text_id" tabindex="0"
+										class="ib5 formcol" style="width: 205px;">아이디</div>
+									<div class="ib">
+										<input class="forminput" value="${Blogin.customerid}"
+											readonly="readonly" id="BInId"
+											style="border: none; width: 200px; text-align: center;"
+											name="customeraddress" required="required">
+									</div></li>
+								<li class="formli" class="formli" id="Bpw"><div
+										id="text_pw" tabindex="0" class="ib5 formcol"
+										style="width: 205px;">비밀번호</div>
+									<div class="ib">
+										<input class="forminput" placeholder="비밀번호 변경하기" id="BInPw"
+											style="border: none; width: 200px; text-align: center;"
+											name="customerpw" required="required">
+									</div></li>
+							</ul>
+						</form>
+
+					</div>
+					<div style="margin-top: 20px;">
+						<div id="updateBcustomer" class="submit">수정사항 반영</div>
+					</div>
 				</div>
+				<!-- 제 2탭 -->
+				<div id="tabs-2">
+					<ul style="list-style: none;" id="addRowTab2">
+						<li>주문 내역이 없습니다</li>
+					</ul>
+				</div>
+
+				<!-- 제 3탭 -->
+				<div id="tabs-3">
+					<ul style="list-style: none;" id="addRowTab3">
+						<li>장바구니가 없습니다.</li>
+					</ul>
+				</div>
+
+				<!-- 제 4탭 -->
+				<div id="tabs-4">
+					<ul style="list-style: none;" id="addRowTab4">
+						<li>배송정보가 없습니다.</li>
+					</ul>
+				</div>
+
 			</div>
 		</div>
-		
-		
-		<c:if test="${Amember.id != null }">
-			<%-- dialog 부분 --%>
-						<div id="dialog" title="내 계정 편집 메뉴">
-							<h6>요소 추가하기</h6>
-						    <ul style="list-style: none; display:inline;">
-						    	<li class="li" id="address" color="black"><span>주소</span></li>
-						    	<li class="li" id="phone" color="black"><span>전화번호</span></li>
-						    	<li class="li" id="name" color="black"><span>이름</span></li>
-						    </ul>
-						    
-						    <h6>배치 수정하기</h6>
-						    <ul style="list-style: none; display:inline;">
-						    	<li id="tableLayer" class="layer-li">테이블형 배치</li>
-						    	<li id="verticalLayer" class="layer-li">수직형 배치</li>
-						    </ul>
-						</div>
-								
-				<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
-				<div id="forHover" style="background: white; height: 400px; width: 80px; position: absolute; left: 5px; top: 100px;">
-				</div>
-		</c:if>
-	</body>
+	</div>
+
+
+	<c:if test="${Amember.id != null }">
+		<%-- dialog 부분 --%>
+		<div id="dialog" title="내 계정 편집 메뉴">
+			<h6>요소 추가하기</h6>
+			<ul style="list-style: none; display: inline;">
+				<li class="li" id="address" color="black"><span>주소</span></li>
+				<li class="li" id="phone" color="black"><span>전화번호</span></li>
+				<li class="li" id="name" color="black"><span>이름</span></li>
+			</ul>
+
+			<h6>배치 수정하기</h6>
+			<ul style="list-style: none; display: inline;">
+				<li id="tableLayer" class="layer-li">테이블형 배치</li>
+				<li id="verticalLayer" class="layer-li">수직형 배치</li>
+			</ul>
+		</div>
+
+		<!-- 이부분을 통과하면 다이얼로그가 파괴됩니다. -->
+		<div id="forHover"
+			style="background: white; height: 400px; width: 80px; position: absolute; left: 5px; top: 100px;">
+		</div>
+	</c:if>
+</body>
 </html>
