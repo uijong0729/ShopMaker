@@ -12,6 +12,11 @@
 	    		font-family: nanum;
 	    		src: url(../font/NanumGothicBold.ttf);
 			}		
+			
+			@font-face {
+			    font-family: tmon;
+			    src: url(../font/TmonMonsori.ttf.ttf);
+			}	
 		
 			*{
 				font-family: nanum;
@@ -65,13 +70,13 @@
 		
 		<div style="width: 100%; height: 100%; text-align: center;">
 			
-			<div style="text-align: center; font: 20pt bold;">${Amember.id}님 환영합니다.</div>
+			<div style="text-align: center; font: 20pt bold; font-family: tmon">${Amember.id}님 환영합니다.</div>
 			
 			<hr style="border: 1px solid gray;">
 			
-			<div id="newShop" class="imgdiv-euj"><h5 style="font-size: 18pt;">쇼핑몰 생성</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/AlterPage.png"></div>
-			<div id="manageShop" class="imgdiv-euj"><h5 style="font-size: 18pt;">쇼핑몰 관리</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/CreatePage.png"></div>
-			<div id="removeShop" class="imgdiv-euj"><h5 style="font-size: 18pt;">쇼핑몰 삭제</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/DeletePage.png"></div>
+			<div id="newShop" class="imgdiv-euj"><h5 style="font-size: 18pt; font-family: tmon">쇼핑몰 생성</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/AlterPage.png"></div>
+			<div id="manageShop" class="imgdiv-euj"><h5 style="font-size: 18pt; font-family: tmon">쇼핑몰 관리</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/CreatePage.png"></div>
+			<div id="removeShop" class="imgdiv-euj"><h5 style="font-size: 18pt; font-family: tmon">쇼핑몰 삭제</h5><img class="img-euj" alt="쇼핑몰 생성" src="./resources/img/Page/DeletePage.png"></div>
 		</div>
 		
 		<input id="membercode" type="hidden" value="${Amember.membercode}">
