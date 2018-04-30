@@ -98,7 +98,7 @@ function enterkey(){
 	
 		<div style="text-align: center; margin-top: 200px; margin-bottom: 200px;">
 			<div style="display: inline-block;" class="content">
-			<h1 class="login_header" id="login_title" tabindex="0">로그인</h1>
+			<h1 class="login_header" id="text_title" tabindex="0">로그인</h1>
 			<hr>
 				<form id="BloginForm" action="BcustomerLogin" method="post" class="signin-cont cont">
 						<table>
@@ -114,7 +114,7 @@ function enterkey(){
 						<br>
 						
 						<!-- 멤버코드 임시로 37 -->
-						<input type="hidden" name="membercode" value=${param.code}>
+						<input type="hidden" name="membercode" value='${param.code}'>
 				</form>
 				
 				<div style="text-align: center;">
