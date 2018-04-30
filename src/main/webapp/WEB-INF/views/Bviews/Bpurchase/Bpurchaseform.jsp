@@ -11,6 +11,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
    <div class="wraper">
       <br> <br> <br> <br>
       <form action="BpurchaseIndex" method="post">
@@ -121,6 +126,10 @@
                </div>
       </form>
       </div>
+      
+      	<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
       
       <script type="text/javascript">
          function pre_order_check() {

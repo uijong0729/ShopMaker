@@ -10,8 +10,13 @@
 <div class="header">
 <strong>
 <kakaopay></kakaopay>
-</strong>.
+</strong>
 </div>
+
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
 <div class="body">
 <div class="content">
 <p>결제가 취소되었습니다.</p>
@@ -29,6 +34,11 @@
 </button>
 </div>
 </div>
+
+	<div style="margin-top: 200px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
+
 <script type='text/javascript'>
   //<![CDATA[
     $(document).ready(function() {
