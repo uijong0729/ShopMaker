@@ -59,10 +59,7 @@
 	</div><!-- /container -->
 	</article>
 
-<!-- Footer -->
-<footer>
-	<%@ include file="./Aviews/footer.jsp" %>
-</footer>
+
 
 <script type="text/javascript">
 	function template1(){

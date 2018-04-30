@@ -364,9 +364,6 @@ function qnaPage(page){
 				</div>
 			</c:if>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
 
 </body>
 
