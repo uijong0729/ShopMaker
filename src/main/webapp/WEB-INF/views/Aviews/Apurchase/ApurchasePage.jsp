@@ -38,7 +38,7 @@ var payConfirm;
 var endday="";
 
 function template1() {
-	template = document.getElementById("template").innerHTML="template1";
+	template = document.getElementById("template").innerHTML="가구";
 	$('#template1').css("background", "#afafaf");
 	$('#template2').css("background", "#00000000");
 	$('#template3').css("background", "#00000000");
@@ -48,7 +48,7 @@ function template1() {
 }
 
 function template2() {
-	template = document.getElementById("template").innerHTML="template2";
+	template = document.getElementById("template").innerHTML="옷";
 	$('#template1').css("background", "#00000000");
 	$('#template2').css("background", "#afafaf");
 	$('#template3').css("background", "#00000000");
@@ -56,7 +56,7 @@ function template2() {
 }
 
 function template3() {
-	template = document.getElementById("template").innerHTML="template3";
+	template = document.getElementById("template").innerHTML="음식";
 	$('#template1').css("background", "#00000000");
 	$('#template2').css("background", "#00000000");
 	$('#template3').css("background", "#afafaf");

@@ -219,9 +219,9 @@
 
 
 <h2 id="kakaoBody" class="tit_demo">
-	<img src="resources/image/payment_icon_medium.png">
+	<img style="width: 250px;"  src="resources/image/payment_icon_medium.png">
 <br>
-	<img src="resources/image/payment_text_large.png">
+	<!-- <img src="resources/image/payment_text_large.png"> -->
 </h2>
 
 <br/>
