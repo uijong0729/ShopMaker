@@ -80,7 +80,7 @@ margin: 4px;
 </head>
 <body>
 
-	<header style="margin-bottom: 150px;">
+	<header>
 		<%@ include file="../../Aheader.jsp" %>
 	</header>
 	

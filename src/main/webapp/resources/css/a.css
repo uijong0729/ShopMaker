@@ -1,0 +1,128 @@
+@font-face {
+	    font-family: NanumGothicBold;
+	    src: url(BMHANNA_11yrs_ttf.ttf);
+	}
+
+header{
+	width: 100%;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.header_box{
+	width: 1400px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: Raleway;
+}
+.header_box>ul{
+	overflow: hidden;
+}
+.header_box>ul>li:nth-child(1){
+	float: left;
+}
+.header_box>ul>li:nth-child(2){
+	float: right;
+}
+.header_box>ul>li:nth-child(2) li{
+	float: left;
+}
+.header_box h1, .header_box nav {
+	padding: 24px;
+}
+.link-2 {
+	transition: 0.6s;
+	color: #ffffff;
+	font-size: 20px;
+	text-decoration: none;
+	border-right: 2px dotted transparent;
+	padding: 30px 8px 0 10px;
+	margin: 0 10px;
+}
+.link-2:hover {
+	padding-bottom: 24px;
+}
+
+
+/* 버튼 효과*/
+.grid__item {
+	position: relative;
+	display: block;
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+	align-items: center;
+	justify-items: center;
+	overflow: hidden;
+}
+
+.grid__item-title {
+	font-size: 0.85rem;
+	color: var(--color-item-title);
+	align-self: flex-start;
+	margin: 0;
+}
+.action {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: none;
+	margin: 2rem;
+	color: var(--color-action);
+	border: 0;
+	padding: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.action:focus {
+	outline: none;
+}
+
+
+.particles {
+	position: relative;
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+.particles-canvas {
+	position: absolute;
+	pointer-events: none;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%,0);
+}
+
+.particles-wrapper {
+	position: relative;
+	display: inline-block;
+    overflow: hidden;
+}
+
+.particles-button {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border-radius: 5px;
+	background: var(--color-button-bg);
+	color: var(--color-button-text);
+	border: 0;
+	border: var(--border-button);
+	margin: 0;
+	padding: 1.5rem 3rem;
+}
+
+.particles-button:focus {
+	outline: none;
+}
+
+
+.theme-8 {
+	--color-item-bg: linear-gradient(120deg, #84fab0, #8fd3f4);
+	--color-action: blue;
+	--color-button-bg: linear-gradient(to top, #22b9d2 0%, #5389ec 100%);
+	--color-button-text: #fff;
+	--button-padding: 2rem 4rem;
+	--radius-button: 10px;
+	--border-button: 0;
+}
