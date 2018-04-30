@@ -50,8 +50,7 @@
 						<c:if test="${count%4==0}">
 							<ul>
 						</c:if>
-						<a
-							href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
+						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
 							<li>
 								<div id="outer" style>
 									<img src="./resources/image/${b.productimage }" style="width: 200px; height: 200px;">

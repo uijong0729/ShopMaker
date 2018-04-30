@@ -236,7 +236,7 @@ function payment4(date) {
 
 <div style="text-align: center; margin-bottom: 40px;">
 	<h2 style="font-family: tmon;"><span style="color: #77a7f4;"><b style="font-family: tmon;">Bigstar</b></span> WEB EC 서비스</h2>
-		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다</h6>
+		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다.</h6>
 	</div>
 	<hr>
 
