@@ -34,7 +34,7 @@ public class AmemberController {
 	@RequestMapping(value = "AsignupPage", method = RequestMethod.GET)
 	public String signupPage() {
 
-		return "Aviews/Amember/AsignupPage";
+		return "Aviews/Amember/Login";
 
 	}
 
