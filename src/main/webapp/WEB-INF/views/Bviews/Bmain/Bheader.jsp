@@ -41,6 +41,7 @@
 				<c:if test="${Blogin != null}">
 					<li><a id="temp4" tabindex="0" href="#" class="header_member">로그아웃</a></li>
 					<li><a id="temp5" tabindex="0" href="#" class="header_member">관리페이지</a></li>
+					<li><a id="temp6" tabindex="0" href="Bmypage" class="header_member">마이페이지</a></li>
 				</c:if>
 				<li><a id="temp3" href="#" class="header_member" tabindex="0">공지사항</a></li>
 			</ul>
