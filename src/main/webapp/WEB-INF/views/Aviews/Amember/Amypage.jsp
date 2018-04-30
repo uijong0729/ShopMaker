@@ -8,6 +8,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>마이페이지</title>
 		<style type="text/css">
+			@font-face {
+	    		font-family: nanum;
+	    		src: url(../font/NanumGothicBold.ttf);
+			}		
+		
+			*{
+				font-family: nanum;
+			}
 			.img-euj{
 				border: 1px solid black;
 				width: 300px;
@@ -67,6 +75,8 @@
 		</div>
 		
 		<input id="membercode" type="hidden" value="${Amember.membercode}">
+		
+		<br><br><br>
 		
 	<footer>
 		<%@ include file="../footer.jsp" %>

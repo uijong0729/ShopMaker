@@ -39,9 +39,7 @@ margin: 4px;
 
 </head>
 <body>
-<br>
-<br>
-<footer class="w3-center w3-black w3-padding-16" style="bottom: 0; margin-top: 110px;">
+<footer class="w3-center w3-black w3-padding-16">
   <p>Footer</p>
   
   <a href="goBmain">[임시] Bmain 페이지</a>

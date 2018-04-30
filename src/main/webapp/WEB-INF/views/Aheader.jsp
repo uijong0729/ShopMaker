@@ -16,6 +16,12 @@ function myShop(code) {
 }
 </script>
 <style type="text/css">
+*{
+
+font-family: nanum;
+
+}
+
 .button{
 
 cursor: pointer;
@@ -32,13 +38,9 @@ width: 100%;
 margin: 4px;
 
 }
-.dotted-euj
-			{
-			}
-			.bt2-euj
-			{
-				box-shadow: 1px 3px 2px gray;
-			}
+.dotted-euj{
+}
+
 			
 			.saveload-euj{
 				border: 1px solid black;
@@ -55,6 +57,7 @@ margin: 4px;
 				margin-top: 4px;
 				display: inline-block;
 				margin: 2px;
+				
 			}
 			.abt{
 			margin-top: 14px;
@@ -68,7 +71,7 @@ margin: 4px;
 <header>
 
 <div style="height: 80px;" class="w3-bar w3-white w3-wide w3-padding w3-card w3-top">
-	<a href="/bigstar" class="w3-bar-item"><img height="65px" alt="logo" src="/bigstar/resources/img/logo.jpg"></a>
+	<a href="/bigstar" class="w3-bar-item"><h1 style="font-family: tmon; color:#77a7f4; margin-left: 60px; text-shadow: -4px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Shop Maker</h1></a>
 		<!--추가 페이지 업로드시 바뀔 부분-->
 	<div class="w3-right w3-hide-small dotted-euj">
 					<a href="AqnaPage" class="abt w3-bar-item w3-button bt2-euj">문의하기</a>
