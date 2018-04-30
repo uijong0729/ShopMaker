@@ -9,7 +9,7 @@
 <script>
 
 function finish(){
-	location.href="./";
+	location.href="goMyShop?code=${Amember.membercode}&page=BpageMain";  
 }
 
 </script>

@@ -12,14 +12,14 @@
 </head>
 <body>
 
-<div style="margin-bottom: 100px;">
+<div>
 			<%@ include file="../Bmain/Bheader.jsp" %>
 </div>
-
+	
    <div class="wraper">
-      <br> <br> <br> <br>
       <form action="BpurchaseIndex" method="post">
          <div class="orderDiv">
+         <h1 style="text-align: center;">주문하기</h1><br><br>
             <div class="orderer_info">
                <p class="title">주문자 정보</p>
                <table class="orderer InfoTable">
@@ -126,10 +126,6 @@
                </div>
       </form>
       </div>
-      
-      	<div style="margin-bottom: 100px;">
-			<%@ include file="../Bmain/Bfooter.jsp" %>
-	</div>
       
       <script type="text/javascript">
          function pre_order_check() {
