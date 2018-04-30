@@ -32,7 +32,7 @@ public class BproductController {
 	BreviewtableDAO RTdao;
 	@Autowired
 	BproducttableDAO PTdao;
-	
+
 	private String pathD = "☆";
 
 	@RequestMapping(value = "Bmainlist", method = RequestMethod.GET)
@@ -42,12 +42,12 @@ public class BproductController {
 		ArrayList<String> nameset = new ArrayList<String>();
 		ArrayList<String> imageset = new ArrayList<String>();
 		ArrayList<String[]> imageset2 = new ArrayList<String[]>();
-		
+
 		JSONArray jsonArray = JSONArray.fromObject(Bproducttable2);
-		
-		int count=0;
-		Bproducttable=Bpdao.selectallbproducttable();
-		
+
+		int count = 0;
+		Bproducttable = Bpdao.selectallbproducttable();
+
 		for (Bproducttable b : Bproducttable) {
 			imageset.add(b.getProductname());
 		}
@@ -57,9 +57,9 @@ public class BproductController {
 			}
 		}
 		imageset.clear();
-		
-		Map<String, String> arrMap = new HashMap<String, String>(); 
-		
+
+		Map<String, String> arrMap = new HashMap<String, String>();
+
 		for (int i = 0; i < Bproducttable.size(); i++) {
 			if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
 				String str = arrMap.get(Bproducttable.get(i).getProductname());
@@ -67,33 +67,29 @@ public class BproductController {
 				arrMap.put(Bproducttable.get(i).getProductname(), str);
 			}
 			arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
-			
-		}
-		
-		
 
-		
+		}
+
 		model.addAttribute("map", arrMap);
 		model.addAttribute("nameset", nameset);
 		model.addAttribute("Bproducttable", Bproducttable);
 		model.addAttribute("count", count);
-		
+
 		model.addAttribute("rows", 4);
 		return "Bviews/Bmainlist/Bmainlist";
 	}
-	
+
 	@RequestMapping(value = "BpageMain", method = RequestMethod.GET)
 	public String BpageMain(Model model) {
-		
-		
+
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 		ArrayList<String> nameset = new ArrayList<String>();
 		ArrayList<String> imageset = new ArrayList<String>();
 		ArrayList<String[]> imageset2 = new ArrayList<String[]>();
-		
-		int count=0;
-		Bproducttable=Bpdao.selectallbproducttable();
-		
+
+		int count = 0;
+		Bproducttable = Bpdao.selectallbproducttable();
+
 		for (Bproducttable b : Bproducttable) {
 			imageset.add(b.getProductname());
 		}
@@ -103,9 +99,9 @@ public class BproductController {
 			}
 		}
 		imageset.clear();
-		
-		Map<String, String> arrMap = new HashMap<String, String>(); 
-		
+
+		Map<String, String> arrMap = new HashMap<String, String>();
+
 		for (int i = 0; i < Bproducttable.size(); i++) {
 			if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
 				String str = arrMap.get(Bproducttable.get(i).getProductname());
@@ -113,15 +109,15 @@ public class BproductController {
 				arrMap.put(Bproducttable.get(i).getProductname(), str);
 			}
 			arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
-			
+
 		}
-		
+
 		JSONArray jsonArray = JSONArray.fromObject(Bproducttable);
-		
+
 		System.out.println(arrMap.get("key"));
 
 		System.out.println(count);
-		
+
 		model.addAttribute("map", arrMap);
 		model.addAttribute("nameset", nameset);
 		model.addAttribute("Bproducttable", Bproducttable);
@@ -130,17 +126,17 @@ public class BproductController {
 		model.addAttribute("rows", 4);
 		return "Bviews/Bmain/BpageMain";
 	}
-	
-	@RequestMapping(value="goBmain", method=RequestMethod.GET)
+
+	@RequestMapping(value = "goBmain", method = RequestMethod.GET)
 	public String goBmain(Model model) {
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 		ArrayList<String> nameset = new ArrayList<String>();
 		ArrayList<String> imageset = new ArrayList<String>();
 		ArrayList<String[]> imageset2 = new ArrayList<String[]>();
-		
-		int count=0;
-		Bproducttable=Bpdao.selectallbproducttable();
-		
+
+		int count = 0;
+		Bproducttable = Bpdao.selectallbproducttable();
+
 		for (Bproducttable b : Bproducttable) {
 			imageset.add(b.getProductname());
 		}
@@ -150,9 +146,9 @@ public class BproductController {
 			}
 		}
 		imageset.clear();
-		
-		Map<String, String> arrMap = new HashMap<String, String>(); 
-		
+
+		Map<String, String> arrMap = new HashMap<String, String>();
+
 		for (int i = 0; i < Bproducttable.size(); i++) {
 			if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
 				String str = arrMap.get(Bproducttable.get(i).getProductname());
@@ -160,15 +156,15 @@ public class BproductController {
 				arrMap.put(Bproducttable.get(i).getProductname(), str);
 			}
 			arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
-			
+
 		}
-		
+
 		JSONArray jsonArray = JSONArray.fromObject(Bproducttable);
-		
+
 		System.out.println(arrMap.get("key"));
 
 		System.out.println(count);
-		
+
 		model.addAttribute("map", arrMap);
 		model.addAttribute("nameset", nameset);
 		model.addAttribute("Bproducttable", Bproducttable);
@@ -177,21 +173,22 @@ public class BproductController {
 		model.addAttribute("rows", 4);
 		return "Bviews/Bmain/Bmain";
 	}
-	
+
 	@RequestMapping(value = "myShop", method = RequestMethod.GET)
 	public String myShop() {
 		return "Bviews/Bpage/myShop";
 	}
-	
+
 	@RequestMapping(value = "goMyShop", method = RequestMethod.GET)
-	public String goMyShop(String page, String code, String category, String productname, String productcode, Model model, HttpSession session) {
+	public String goMyShop(String page, String code, String category, String productname, String productcode,
+			Model model, HttpSession session) {
 		Amember am = (Amember) session.getAttribute("Amember");
-		
+
 		if (am == null) {
 			am = new Amember();
 			am.setMembercode(code);
 		}
-		
+
 		session.setAttribute("Amember", am);
 		String link = code + page;
 		System.out.println(link);
@@ -199,45 +196,45 @@ public class BproductController {
 		at = adao.getPage(link);
 		Atemplate header = adao.getPage(code + "Bheader");
 		Atemplate footer = adao.getPage(code + "Bfooter");
-		
+
 		if (page.equals("Bproductdetail")) {
 			ArrayList<Breviewtable> reviewtableList = RTdao.getReviewtableByName(productname);
-			
+
 			for (Breviewtable breviewtable : reviewtableList) {
-				if (breviewtable.getReviewimage()==null || breviewtable.getReviewimage().equals("null☆")) {
+				if (breviewtable.getReviewimage() == null || breviewtable.getReviewimage().equals("null☆")) {
 					breviewtable.setReviewimage("noimg.jpg");
 				}
 			}
-			
+
 			for (Breviewtable breviewtable2 : reviewtableList) {
-				/*System.out.println(breviewtable2);
-				if (breviewtable2.getReviewimage().endsWith(pathD) == true) {
-					breviewtable2.setReviewimage(breviewtable2.getReviewimage().substring(0, breviewtable2.getReviewimage().length() - 1));
-				}*/
+				/*
+				 * System.out.println(breviewtable2); if
+				 * (breviewtable2.getReviewimage().endsWith(pathD) == true) {
+				 * breviewtable2.setReviewimage(breviewtable2.getReviewimage().substring(0,
+				 * breviewtable2.getReviewimage().length() - 1)); }
+				 */
 				breviewtable2.setReviewimage(breviewtable2.getReviewimage(), pathD);
 			}
-			
+
 			ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
-			
+
 			model.addAttribute("productDetailList", productDetailList);
 			session.setAttribute("reviewtableList", reviewtableList);
 			model.addAttribute("productname", productname);
 			model.addAttribute("productcode", productcode);
-			
+
 			session.setAttribute("productcode", productcode);
 			session.setAttribute("productname", productname);
 		}
-		
-		
-		
+
 		if (page.equals("Bmainlist")) {
 			ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 			ArrayList<String> nameset = new ArrayList<String>();
 			ArrayList<String> imageset = new ArrayList<String>();
-			
-			int count=0;
-			Bproducttable=Bpdao.selectkindproduct(category);
-			
+
+			int count = 0;
+			Bproducttable = Bpdao.selectkindproduct(category);
+
 			for (Bproducttable b : Bproducttable) {
 				imageset.add(b.getProductname());
 			}
@@ -247,9 +244,9 @@ public class BproductController {
 				}
 			}
 			imageset.clear();
-			
-			Map<String, String> arrMap = new HashMap<String, String>(); 
-			
+
+			Map<String, String> arrMap = new HashMap<String, String>();
+
 			for (int i = 0; i < Bproducttable.size(); i++) {
 				if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
 					String str = arrMap.get(Bproducttable.get(i).getProductname());
@@ -257,23 +254,20 @@ public class BproductController {
 					arrMap.put(Bproducttable.get(i).getProductname(), str);
 				}
 				arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
-				
+
 			}
-			
-			
-			
-			
+
 			model.addAttribute("map", arrMap);
 			model.addAttribute("nameset", nameset);
 			model.addAttribute("Bproducttable", Bproducttable);
 			model.addAttribute("count", count);
-			
+
 			model.addAttribute("rows", 4);
-			
+
 			session.setAttribute("productcode", productcode);
 			session.setAttribute("productname", productname);
 		}
-		
+
 		String bodyContent = "";
 		if (at.getBody0() != null && at.getBody0() != "") {
 			bodyContent += at.getBody0();
@@ -305,7 +299,7 @@ public class BproductController {
 		if (at.getBody9() != null && at.getBody9() != "") {
 			bodyContent += at.getBody9();
 		}
-		
+
 		String headerContent = "";
 		if (header.getBody0() != null && header.getBody0() != "") {
 			headerContent += header.getBody0();
@@ -337,7 +331,7 @@ public class BproductController {
 		if (header.getBody9() != null && header.getBody9() != "") {
 			headerContent += header.getBody9();
 		}
-		
+
 		String footerContent = "";
 		if (footer.getBody0() != null && footer.getBody0() != "") {
 			footerContent += footer.getBody0();
@@ -369,66 +363,65 @@ public class BproductController {
 		if (footer.getBody9() != null && footer.getBody9() != "") {
 			footerContent += footer.getBody9();
 		}
-		
+
 		model.addAttribute("body", bodyContent);
 		model.addAttribute("headerContent", headerContent);
 		model.addAttribute("footer", footerContent);
 		return "Bviews/Bpage/myShop";
 	}
-	
+
 	@RequestMapping(value = "goLogout", method = RequestMethod.GET)
 	public String goLogout(HttpSession hs, String code) {
 		hs.removeAttribute("Blogin");
 		return "redirect:/goMyShop?code=" + code + "&page=Blogin";
 	}
-	
+
 	@RequestMapping(value = "Bheader", method = RequestMethod.GET)
 	public String Bheader(Model model) {
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 		ArrayList<String> kindset = new ArrayList<String>();
-		boolean insert=true;
-		Bproducttable=Bpdao.selectallbproducttable();
-		
+		boolean insert = true;
+		Bproducttable = Bpdao.selectallbproducttable();
+
 		for (int i = 0; i < Bproducttable.size(); i++) {
-			
-			for(int j=0; j< kindset.size(); j++) {
-				if(kindset.get(j).equals(Bproducttable.get(i).getProductkind())) {
-					insert=false;
+
+			for (int j = 0; j < kindset.size(); j++) {
+				if (kindset.get(j).equals(Bproducttable.get(i).getProductkind())) {
+					insert = false;
 				}
 			}
-			if(insert==true) {
+			if (insert == true) {
 				kindset.add(Bproducttable.get(i).getProductkind());
 			}
-			insert=true;
+			insert = true;
 		}
-		
+
 		model.addAttribute("productkindlist", kindset);
-		
+
 		return "Bviews/Bmain/Bheader";
 	}
-	
+
 	@RequestMapping(value = "Bfooter", method = RequestMethod.GET)
 	public String Bfooter() {
 		return "Bviews/Bmain/Bfooter";
 	}
-	
+
 	@RequestMapping(value = "ProductReview", method = RequestMethod.GET)
 	public String ProductReview() {
 		return "Bviews/Bproduct/ProductReview";
 	}
-	
+
 	@RequestMapping(value = "productkind1", method = RequestMethod.GET)
 	public String BpageMain(String kind, Model model) {
-		
-		
+
 		ArrayList<Bproducttable> Bproducttable = new ArrayList<Bproducttable>();
 		ArrayList<String> nameset = new ArrayList<String>();
 		ArrayList<String> imageset = new ArrayList<String>();
 		ArrayList<String[]> imageset2 = new ArrayList<String[]>();
-		
-		int count=0;
-		Bproducttable=Bpdao.selectkindproduct(kind);
-		
+
+		int count = 0;
+		Bproducttable = Bpdao.selectkindproduct(kind);
+
 		for (Bproducttable b : Bproducttable) {
 			imageset.add(b.getProductname());
 		}
@@ -438,9 +431,9 @@ public class BproductController {
 			}
 		}
 		imageset.clear();
-		
-		Map<String, String> arrMap = new HashMap<String, String>(); 
-		
+
+		Map<String, String> arrMap = new HashMap<String, String>();
+
 		for (int i = 0; i < Bproducttable.size(); i++) {
 			if (arrMap.containsKey(Bproducttable.get(i).getProductname())) {
 				String str = arrMap.get(Bproducttable.get(i).getProductname());
@@ -448,11 +441,11 @@ public class BproductController {
 				arrMap.put(Bproducttable.get(i).getProductname(), str);
 			}
 			arrMap.put(Bproducttable.get(i).getProductname(), Bproducttable.get(i).getProductimage());
-			
+
 		}
-		
+
 		JSONArray jsonArray = JSONArray.fromObject(Bproducttable);
-		
+
 		System.out.println(arrMap.get("key"));
 
 		System.out.println(count);
@@ -465,7 +458,5 @@ public class BproductController {
 		model.addAttribute("rows", 4);
 		return "Bviews/Bmain/BpageMain";
 	}
-	
-	
-	
+
 }

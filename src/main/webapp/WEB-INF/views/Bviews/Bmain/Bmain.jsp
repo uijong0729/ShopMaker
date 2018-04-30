@@ -1410,7 +1410,7 @@ body {
 	<div id="mask"></div>
 
 	<div id="popup" class="popup Bheight"
-		style="visibility: visible; height: 432px;">
+		style="height: 432px;">
 		<h5 class="mp editHeader" style="font: bold;">버튼 편집</h5>
 		<table class="mp" style="margin-left: 70px">
 			<tr>
@@ -1599,7 +1599,7 @@ body {
 	</div>
 
 	<div id="popup_slide" class="popup Slheight"
-		style="visibility: visible; padding-left: 55px;">
+		style="padding-left: 55px;">
 		<h5 class="editHeader" style="margin-right: 45px;">슬라이드 이미지 삽입</h5>
 		<table style="margin-left: 20px;">
 			<tr>
