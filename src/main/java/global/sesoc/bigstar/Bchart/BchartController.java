@@ -1,25 +1,20 @@
 package global.sesoc.bigstar.Bchart;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.bigstar.dao.AmemberDAO;
 import global.sesoc.bigstar.dao.BcustomerDAO;
-import global.sesoc.bigstar.vo.Amember;
+import global.sesoc.bigstar.dao.BordertableDAO;
 import global.sesoc.bigstar.vo.Avip;
-import global.sesoc.bigstar.vo.Bcustomer;
+import global.sesoc.bigstar.vo.SalesVolumeByName;
 
 @Controller
 public class BchartController {
@@ -32,6 +27,9 @@ public class BchartController {
 	
 	@Autowired
 	BcustomerDAO bdao;
+	
+	@Autowired
+	BordertableDAO BOdao;
 	
 	@RequestMapping(value="BcustomerChart", method={RequestMethod.GET, RequestMethod.POST})
 	public String BcustomerChart() {
@@ -89,10 +87,12 @@ public class BchartController {
 		return vList;
 	}
 	
-	@RequestMapping(value="BsaleChart", method= {RequestMethod.GET, RequestMethod.POST})
-	public String BsaleChart() {
+	@RequestMapping(value="getSalesVolumeByName", method= {RequestMethod.GET, RequestMethod.POST})
+	public ArrayList<SalesVolumeByName> getSalesVolumeByName() {
 		
-		return "Bviews/Bchart/BsaleChart";
+		ArrayList<SalesVolumeByName> svbn = BOdao.getSalesVolumeByName();
+		
+		return svbn;
 	}
 	
 	

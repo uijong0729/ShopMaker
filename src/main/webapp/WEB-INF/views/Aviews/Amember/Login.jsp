@@ -74,7 +74,7 @@ $(document).ready(function(){
 	
 	$('#Asignup').on('click', function(){
 		//회원가입
-		location.href = "AsignupPage";
+		//location.href = "AsignupPage";
 	}); 
 	
 });
@@ -185,42 +185,58 @@ function checkForm(){
 							//주소체크
 							if(addressA.length >= 1 && addressB.length >=1)
 							{
+								//사업자번호 체크
 								if(bisNumber.length >= 1)
 								{
+									alert('회원가입 신청이 완료되었습니다.');
 									document.getElementById('AsignupForm').submit();
 								}
 								else
 								{
 									alert('사업자 등록번호를 입력하세요');	
+									return false;
 								}
 							}//주소체크
 							else
 							{
-								alert('주소를 입력하세요');	
+								alert('주소를 제대로 입력하세요');	
+								return false;
 							}
 						}//이름체크
-						else{
-						alert('이름을 입력하세요');
+						else
+						{
+							alert('이름을 입력하세요');
+							return false;
 						}
 					}
-					else{
+					else
+					{
 						alert('이메일 형식을 확인하세요');
+						return false;
 					}
 				}//이메일체크
-				else{
+				else
+				{
 					alert('이메일 입력하세요');
+					return false;
 				}
 			}//비밀번호확인체크
-			else{
-				alert('위와 동일한 비밀번호');	
+			else
+			{
+				alert('위와 동일한 비밀번호를 입력하세요');	
+				return false;
 			}
 		}//비밀번호 체크
-		else{
+		else
+		{
 			alert('비밀번호 입력하세요');
+			return false;
 		}
 	}//아이디체크
-	else{
-		alert('아이디 입력하세요');
+	else
+	{
+		alert('아이디를 입력하세요');
+		return false;
 	}
 }
 
@@ -287,7 +303,7 @@ function selectEmail(){
 		
 			<form id="AgoLogin" action="AgoLogin" method="post" id="AsubmitLoginForm"> 
 			<div class="form" id="logInForm">
-			<div class="text">Welcome Back!</div>
+			<div class="text">어서오세요!</div>
 			<div class="fields">
 				<input type="text" name="id" id="logininputId" placeholder="아이디를 입력하세요" class="field">
 				<input type="password" name="pw" id="logininputPassword" placeholder="비밀번호를 입력하세요" class="field">
@@ -298,7 +314,7 @@ function selectEmail(){
 			
 			<form id="AsignupForm" action="AsignupReq" method="post">
 				<div class="form" id="signUpForm">
-				<div class="text">Sign Up For Free!</div>
+				<div class="text">무료 회원가입!</div>
 				<div class="fields">
 					<input type="text" name="id" id="inputId" placeholder="아이디를 입력하세요" required="required" autofocus="autofocus" class="field">
 					<div id="AIdCheckMsg" style="color:white"></div>
@@ -324,8 +340,8 @@ function selectEmail(){
 				</div>
 				
 				<div>
-					<button id="AsignupReq">Sign Up</button>
-					<button id="goHome">Cancel</button>
+					<button id="AsignupReq">가입하기</button>
+					<button id="goHome">취소</button>
 				</div>
 			
 				</div>

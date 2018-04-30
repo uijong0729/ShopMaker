@@ -16,18 +16,18 @@
     float: left;
 }
 .show_Img{
-    width:380px;
-    height:373px;
-    margin-top:80px;
-    margin-left:auto;
-    margin-right:auto;
+    width: 50%;
+    height: 325px;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .wating_Img_place{
-    width:380px;
-    height:70px;
-    margin-top:30px;
-    margin-left : auto;
-    margin-right : auto;
+    width: 380px;
+    height: 70px;
+    margin-top: -45px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .half_detail_Info_Text{
     width:535px;

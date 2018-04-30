@@ -272,7 +272,6 @@ function cartList(){
 			
 			if(result == null)
 			{
-				alert('옴?');
 				$('#addRowTab3').html('<li>장바구니가 없습니다.</li>');
 			}
 			else

@@ -15,9 +15,9 @@
 		$('.wating_Img').mouseenter(function() {
 			$('.showingImg').attr("src", $(this).attr("src"));
 		});
-		$('.wating_Img').mouseleave(function(){
-			$('.showingImg').attr("src", "${productDetailList[1].productimage}");
-		});
+		/* $('.wating_Img').mouseleave(function(){
+			$('.showingImg').attr("src", "${productDetailList[0].productimage}");
+		}); */
 		/* $('.showingImg').css("z-index", 99999);
 		$('.showingImg').mouseenter(function() {
 			var width = $(this).css("width");
@@ -57,9 +57,7 @@
 			var productcode = document.getElementById('productcode').value;
 			var customercode = document.getElementById('customercode').value;
 			var productQty = document.getElementById('productQty').value;
-			//alert("productQty:"+productQty );
-			//alert(productcode + '//' + customercode)
-			
+	
 			$.ajax({
 				url: 'insertCart',
 				type: 'get',
@@ -107,12 +105,14 @@ function gopurchaseform() {
         <div class="a">
             <diV class="half_detail_Info_Img">
                 <div class="show_Img">
-                    <img class="showingImg" src="${productDetailList[1].productimage}">
+                    <img class="showingImg" src="./resources/image/${productDetailList[0].productimage}">
                 </div>
                 <div class="wating_Img_place">
-                    <!-- <img class="wating_Img img1" onclick="switchImg(this.src)" src="./resources/img/c1.jpg"> -->
-                    <img id="img_1" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[0].productimage}">
-                	<img id="img_2" class="wating_Img img2" onclick="switchImg(this.src)" src="${productDetailList[1].productimage}">
+                    <img id="img_1" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage1}">
+                	<img id="img_2" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage2}">
+                	<%-- <img id="img_3" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage3}">
+                	<img id="img_4" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage4}">
+                	<img id="img_5" class="wating_Img img2" onclick="switchImg(this.src)" src="./resources/image/${productDetailList[0].productimage5}"> --%>
                 </div>
             </diV><!-- 이미지 프리뷰 -->
             
@@ -164,14 +164,19 @@ function gopurchaseform() {
                 <br>
 			</div>
            </div><!-- 주문 디테일 -->
+	        <div class="product_img_place" style="display :block; width: 100%;">
+	            <!-- 상세 이미지 -->
+	            <img id="img_1" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage1}">
+	           	<img id="img_2" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage2}">
+	           	<img id="img_3" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage3}">
+	           	<img id="img_4" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage4}">
+	           	<img id="img_5" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage5}">
+	        </div>
         </div>
+      
         <div id="Bproductreview" style="margin: auto;">
 			<%@include file="ProductReview.jsp" %>
 		</div>
-        <div class="product_img_place">
-            <!-- 상세 이미지 -->
-        </div>
-      
         
         <script type="text/javascript">
         function switchImg(src) {
