@@ -1305,7 +1305,7 @@
 		
 		<!-- 중앙 화면 -->
 		<div id="BcenterOuter">
-			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; margin-top: 100px; margin-bottom: 100px; overflow-y: auto;">
+			<div id="Bcenter" class="Bcenter" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; margin-top: 100px; overflow-y: auto;">
 				<c:if test="${result != ''}">
 					${result}
 				</c:if>
