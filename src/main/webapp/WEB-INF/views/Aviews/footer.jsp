@@ -41,7 +41,7 @@ margin: 4px;
 <body>
 <footer class="w3-center w3-black w3-padding-16">
   <p>Footer</p>
-  <a href="BsaleChart">[임시] BsaleChart 페이지</a>
+  
   <a href="goBmain">[임시] Bmain 페이지</a>
   <a href="goBproductdetail">[임시] Bproductdetail 페이지</a>
   <a href="BpurchasePage">[임시] BpurchasePage 페이지</a>

@@ -46,7 +46,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-	<h2 style="display: inline-block; box-shadow: 2px 2px 1px 1px gray;">회원 리스트</h2>
+	<h2 style="display: inline-block;box-shadow: 2px 2px 1px 1px gray;padding-right: 10px;padding-left: 10px;">회원 리스트</h2>
 	
 	<div style="text-align: center;">
 		<div style="display: inline-block; border: 1px solid silver; border-radius: 5px; border-bottom-width: thin; box-shadow: 4px 4px 2px 2px gray;">

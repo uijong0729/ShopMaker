@@ -11,6 +11,10 @@
 			function myShop(code) {
 				location.href="goMyShop?code=" + code + "&page=BpageMain";
 			}
+			
+			function gohome() {
+				location.href="/bigstar";
+			}
 		</script>
 		<style type="text/css">
 			*{
@@ -60,7 +64,7 @@
 		
 		<header>
 			<div style="height: 80px;"  class="w3-bar w3-white w3-wide w3-padding w3-card w3-top">
-				<a href="/bigstar" class="mt0-euj w3-bar-item" style="text-decoration: none;"><h1 style="font-family: tmon; margin-left: 60px;">Shop Maker</h1></a>
+				<h1 onclick="gohome()" style="cursor:pointer; display:inline; font-family: tmon; color:#77a7f4; margin-left: 60px; text-shadow: -4px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Shop Maker</h1>
 				<!--추가 페이지 업로드시 바뀔 부분-->
 				<div class="w3-right w3-hide-small dotted-euj">
 					<a href="AqnaPage" class="abt w3-bar-item w3-button">문의하기</a>

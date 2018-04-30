@@ -167,50 +167,63 @@
 			}
 			
 			function newBtn() {
-				var count = document.getElementById('btnCount').value;
-				count *= 1;
-				if ( $("#button" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
-					document.getElementById('btnCount').value = count + 1;
-					return;
-				} else {
-					count = document.getElementById('btnCount').value;
-					count *= 1;
-					var str = '<button id="button' + count + '" class="button forDisableDrag" draggable="true" ondragstart="drag(this, event)" tabindex="0" user-select="none" >버튼' + count + '</button>';
-					
-					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
-					document.getElementById('btnCount').value = count + 1;
-				}
+		var count = document.getElementById('btnCount').value;
+		count *= 1;
+		if ( $("#button" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
+			document.getElementById('btnCount').value = count + 1;
+			return;
+		} else {
+			count = document.getElementById('btnCount').value;
+			count *= 1;
+			if ($('#pagename').val() == 'Bheader' || $('#pagename').val() == 'Bfooter') {
+				var str = '<button id="button' + count + $('#pagename').val() + '" class="button forDisableDrag customButton" draggable="true" ondragstart="drag(this, event)" tabindex="0" user-select="none" >버튼' + count + '</button>';
+			} else {
+				var str = '<button id="button' + count + 'Bmiddle" class="button forDisableDrag customButton" draggable="true" ondragstart="drag(this, event)" tabindex="0" user-select="none" >버튼' + count + '</button>';
 			}
 			
-			function newText() {
-				var count = document.getElementById('textCount').value;
-				count *= 1;
-				if ( $("#text" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
-					document.getElementById('textCount').value = count + 1;
-					return;
-				} else {
-					count = document.getElementById('textCount').value;
-					count *= 1;
-					var str = '<div id="text' + count + '" class="text forDisableDrag" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
-					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
-					document.getElementById('textCount').value = count + 1;
-				}
+			document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+			document.getElementById('btnCount').value = count + 1;
+		}
+	}
+			
+	function newText() {
+		var count = document.getElementById('textCount').value;
+		count *= 1;
+		if ( $("#text" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
+			document.getElementById('textCount').value = count + 1;
+			return;
+		} else {
+			count = document.getElementById('textCount').value;
+			count *= 1;
+			if ($('#pagename').val() == 'Bheader' || $('#pagename').val() == Bfooter) {
+				var str = '<div id="text' + count + $('#pagename').val() + '" class="text forDisableDrag customText" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+			} else {
+				var str = '<div id="text' + count + 'Bmiddle" class="text forDisableDrag customText" rows="2" cols="20" draggable="true" ondragstart="drag(this, event)" style="left: 200px; top:200px; position: absolute; width: 200px; height: 60px; background: rgbs(f,f,f,1); resize: both; overflow: hidden;" tabindex="0" contenteditable="true">텍스트' + count + '</div>';
+			}
+			document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+			document.getElementById('textCount').value = count + 1;
+		}
+	} 
+			
+	function newImage() {
+		var count = document.getElementById('imageCount').value;
+		count *= 1;
+		if ( $("#image" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
+			document.getElementById('imageCount').value = count + 1;
+			return;
+		} else {
+			count = document.getElementById('imageCount').value;
+			count *= 1;
+			if ($('#pagename').val() == 'Bheader' || $('#pagename').val() == 'Bfooter') {
+				var str = '<img id="image' + count + $('#pagename').val() + '" src="resources/img/preview.png" class="image forDisableDrag customImage" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
+			} else {
+				var str = '<img id="image' + count + 'Bmiddle" src="resources/img/preview.png" class="image forDisableDrag customImage" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
 			}
 			
-			function newImage() {
-				var count = document.getElementById('imageCount').value;
-				count *= 1;
-				if ( $("#image" + count).parent().attr('id') == $('#Bcenter').attr('id') ) {
-					document.getElementById('imageCount').value = count + 1;
-					return;
-				} else {
-					count = document.getElementById('imageCount').value;
-					count *= 1;
-					var str = '<img id="image' + count + '" src="resources/img/preview.png" class="image forDisableDrag" draggable="true" ondragstart="drag(this, event)" style="left:200px; top:200px; width: 60px; height: 60px; position: absolute; resize: both; overflow: hidden;" tabindex="0"></img>';
-					document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
-					document.getElementById('imageCount').value = count + 1;
-				}
-			}
+			document.getElementById('Bcenter').innerHTML = document.getElementById('Bcenter').innerHTML + str;
+			document.getElementById('imageCount').value = count + 1;
+		}
+	}
 			
 			/* function newSelect() {
 				var count = document.getElementById('selectCount').value;

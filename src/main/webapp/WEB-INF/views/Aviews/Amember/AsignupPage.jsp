@@ -275,10 +275,6 @@ margin: 4px;
 			</form>
 		</article>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
-
 
 </body>
 </html>

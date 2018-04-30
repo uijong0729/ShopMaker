@@ -96,7 +96,7 @@ function enterkey(){
 	</head>
 	<body>
 	
-		<div style="text-align: center; margin-top: 200px; margin-bottom: 200px;">
+		<div style="text-align: center; margin-top: 50px; margin-bottom: 200px;">
 			<div style="display: inline-block;" class="content">
 			<h1 class="login_header" id="text_title" tabindex="0">로그인</h1>
 			<hr>

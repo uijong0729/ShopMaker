@@ -116,7 +116,10 @@ public class BmemberController {
 			int countList = list.size();
 			model.addAttribute("bCustomerList", list);
 			model.addAttribute("bCountList", countList);
-			model.addAttribute("BcustomerModel", list.get(0));
+			if(list.size() != 0)
+			{
+				model.addAttribute("BcustomerModel", list.get(0));
+			}
 		}
 		catch(NullPointerException e)
 		{

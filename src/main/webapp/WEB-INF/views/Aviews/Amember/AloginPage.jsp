@@ -114,9 +114,6 @@ margin: 4px;
 			</div>
 		</article>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
 
 
 </body>
