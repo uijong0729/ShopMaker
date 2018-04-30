@@ -57,6 +57,8 @@
 		<mvc:interceptor>
 			<!-- B로그인 인터셉터 -->
 			<mvc:mapping path="/Bmypage" />
+			<mvc:mapping path="/goBpurchaseform" />
+			<mvc:mapping path="/goMyShop" />
 			
 			<beans:ref bean="BloginInterceptor" />
 		</mvc:interceptor>

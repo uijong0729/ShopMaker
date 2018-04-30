@@ -11,10 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<div>
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+	
    <div class="wraper">
-      <br> <br> <br> <br>
       <form action="BpurchaseIndex" method="post">
          <div class="orderDiv">
+         <h1 style="text-align: center;">주문하기</h1><br><br>
             <div class="orderer_info">
                <p class="title">주문자 정보</p>
                <table class="orderer InfoTable">

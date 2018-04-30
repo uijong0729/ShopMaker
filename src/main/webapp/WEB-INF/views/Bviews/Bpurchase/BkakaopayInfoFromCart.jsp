@@ -29,6 +29,10 @@
 </head>
 <body>
 
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
 <div id="payPopupDiv" class="pay_popup hide">
     <div class="inner_terms_layer">
         <div class="layer_head">
@@ -71,6 +75,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script>
 
@@ -234,6 +240,8 @@
 		<form id="actionPost" action="approval" method="post">
 		</form>
 	</div>
-
+		<div style="margin-top: 200px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
 </body>
 </html>

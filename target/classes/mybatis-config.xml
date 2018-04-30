@@ -22,9 +22,6 @@
 			alias="Bquestiontable" />
 		<typeAlias type="global.sesoc.bigstar.vo.Breviewtable"
 			alias="Breviewtable" />
-		<typeAlias type="global.sesoc.bigstar.vo.SalesVolumeByName"
-			alias="SalesVolumeByName"/>
-			
 	</typeAliases>
 
 	<mappers>

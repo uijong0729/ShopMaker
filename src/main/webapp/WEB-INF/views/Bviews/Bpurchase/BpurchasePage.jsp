@@ -147,6 +147,10 @@ function payment4() {
 </head>
 <body>
 
+<div style="margin-bottom: 100px;">
+			<%@ include file="../Bmain/Bheader.jsp" %>
+</div>
+
 <%-- <header class="w3-top">
 	<%@ include file="../header.jsp" %>
 </header> --%>
@@ -258,5 +262,9 @@ Days: <p id="days"></p>
 		<input type="hidden" name="paymentforValue" id="paymentforValue">
 		<input type="hidden" name="daysforValue" id="daysforValue">
 	</form>
+	
+	<div style="margin-top: 200px;">
+			<%@ include file="../Bmain/Bfooter.jsp" %>
+	</div>
 </body>
 </html>
