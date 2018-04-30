@@ -59,7 +59,7 @@
 					var str = '<c:forEach var="product" items="${productDetailList }" varStatus="loopStat">';
 					str += '<option value="${product.productcode}">${product.productcolor}, ${product.productsize}</option>';
 					str += '</c:forEach>';
-					$('#color_selecter').append(str);
+					$('#option_selecter').append(str);
 					$('#Bproductreview').load('ProductReview');
 				}
 				if(${param.page == 'Bmainlist'}) {
