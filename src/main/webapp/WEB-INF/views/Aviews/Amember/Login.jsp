@@ -335,10 +335,7 @@ function selectEmail(){
 
 
 </article>
-<!-- Footer -->
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
+
 
 <script>
 function switchLogIn() {

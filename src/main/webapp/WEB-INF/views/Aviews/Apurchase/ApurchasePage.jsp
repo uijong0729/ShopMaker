@@ -336,11 +336,7 @@ Days: <p id="days"></p>
 <br>
 </div>
 
-<br><br><br>
-
-	<footer style="margin-top: 150px;">
-		<%@ include file="../footer.jsp" %>
-	</footer>
+<br>
 	<form action="ApurchaseIndex" method="post" id="ApurchaseInfo">  <!-- id="tem1" -->
 		<input type="hidden" name="templateforValue" id="templateforValue">
 		<input type="hidden" name="paymentforValue" id="paymentforValue">

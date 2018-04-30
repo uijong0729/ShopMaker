@@ -76,11 +76,8 @@
 		
 		<input id="membercode" type="hidden" value="${Amember.membercode}">
 		
-		<br><br><br>
+		<br><br>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
 	
 <%-- 				<button onclick="location.href='goBmain'">쇼핑몰 생성</button> 
 			<button onclick="location.href='goBmain'">쇼핑몰 관리</button> 
