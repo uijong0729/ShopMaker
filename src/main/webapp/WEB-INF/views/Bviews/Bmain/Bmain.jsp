@@ -1220,7 +1220,7 @@
 			}
 			
 			function Bloadpage() {
-				alert("로드");
+				alert("네트워크 환경이 좋지 않습니다.");
 				location.href="loadpage?pageinfo=" + ${Amember.membercode} + $('#pagename').val();
 				
 			}
@@ -1288,6 +1288,12 @@
 				visibility: hidden;
 				opacity: 0.7;
 			}
+			
+			.th-euj2
+			{
+				color: blue;
+				text-shadow: 1px 1px 1px aqua;
+			}
 		</style>
 		<title>Shop Maker</title>
 	
@@ -1351,7 +1357,6 @@
 					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
 					<li class="side" style="cursor: pointer; user-select: none;">배송 및 세금</li>
 					<li class="side" style="cursor: pointer; user-select: none;">주문관리</li>
-					<li class="side" style="cursor: pointer; user-select: none;">결제관리</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bpm()">페이지관리</li>
 				</ul>
 			</div>
@@ -1373,31 +1378,31 @@
 		<h5 class="mp editHeader" style="font: bold;">버튼 편집</h5>
 			<table class="mp">
 				<tr>
-					<th class="mp">버튼 텍스트</th>
+					<th class="mp th-euj2">버튼 텍스트</th>
 					<td class="mp"><input type="text" id="btnText"></td>
 				</tr>
 				<tr>
-					<th class="mp th">버튼 색상</th>
+					<th class="mp th th-euj2">버튼 색상</th>
 					<td class="mp"><input id="foo" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 				<tr>
-					<th class="mp th">테두리 두께</th>
+					<th class="mp th th-euj2">테두리 두께</th>
 					<td class="mp"><input type="text" id="btnBorder"></td>
 				</tr>
 				<tr>
-					<th class="mp th">테두리 색상</th>
+					<th class="mp th th-euj2">테두리 색상</th>
 					<td class="mp"><input id="btnBorderColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 				<tr>
-					<th class="mp th">글자 크기</th>
+					<th class="mp th th-euj2">글자 크기</th>
 					<td class="mp"><input type="text" id="fontsize"></td>
 				</tr>
 				<tr>
-					<th class="mp th">글자 색상</th>
+					<th class="mp th th-euj2">글자 색상</th>
 					<td class="mp"><input id="btnTextColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 				<tr>
-					<th class="mp">URL</th>
+					<th class="mp th-euj2">URL</th>
 				<!-- 	<td class="mp"><input type="text" id="btnUrl"></td> -->
 				<td class="mp"><select id="btnUrl">
 									<option id="selecturl" value="">선택</option>
@@ -1427,23 +1432,23 @@
 			<h5 class="mp editHeader" style="font: bold;">텍스트 편집</h5>
 			<table class="mp" class="popup">
 				<tr>
-					<th class="mp">텍스트</th>
+					<th class="mp th-euj2">텍스트</th>
 					<td class="mp"><input type="text" id="text_text"></td>
 				</tr>
 				<tr>
-					<th class="mp">글자 크기</th>
+					<th class="mp th-euj2">글자 크기</th>
 					<td class="mp"><input type="text" id="text_fontsize"></td>
 				</tr>
 				<tr>
-					<th class="mp">글자 색상</th>
+					<th class="mp th-euj2">글자 색상</th>
 					<td class="mp"><input id="text_textColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 				<tr>
-					<th class="mp">배경 색상</th>
+					<th class="mp th-euj2">배경 색상</th>
 					<td class="mp"><input id="text_bgColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 				<tr>
-					<th class="mp">테두리 색상</th>
+					<th class="mp th-euj2">테두리 색상</th>
 					<td class="mp"><input id="text_bdColor" class="jscolor jscolor-active" autocomplete="off" style="background-image: none; background-color: rgb(204, 68, 153); color: rgb(255, 255, 255);"></td>
 				</tr>
 			</table>
@@ -1461,19 +1466,19 @@
 			<h5 class="mp editHeader">이미지 편집</h5>
 			<table>
 				<tr>
-					<th class="mp">가로 크기</th>
+					<th class="mp th-euj2">가로 크기</th>
 					<td class="mp"><input type="text" id="image_width"></td>
 				</tr>
 				<tr>
-					<th class="mp">세로 크기</th>
+					<th class="mp th-euj2">세로 크기</th>
 					<td class="mp"><input type="text" id="image_height"></td>
 				</tr>
 				<tr>
-					<th class="mp">투명도</th>
+					<th class="mp th-euj2">투명도</th>
 					<td class="mp"><input type="text" id="image_opacity"></td>
 				</tr>
 				<tr>
-					<th class="mp">이미지 주소</th>
+					<th class="mp th-euj2">이미지 주소</th>
 					<td class="mp"><input type="text" id="image_url"></td>
 				</tr>
 			</table>
@@ -1541,19 +1546,19 @@
 		<h5 class="editHeader">슬라이드 이미지 삽입</h5>
 				<table style="margin-left: 20px;">
 					<tr>
-						<th class="mp">1번 이미지 </th>
+						<th class="mp th-euj2">1번 이미지 </th>
 						<td class="mp"> <input type="text" id="slide_first"></td>
 					</tr>
 					<tr>
-						<th class="mp">2번 이미지 </th>
+						<th class="mp th-euj2">2번 이미지 </th>
 						<td class="mp"> <input type="text" id="slide_second"></td>
 					</tr>
 					<tr>
-						<th class="mp">3번 이미지 </th>
+						<th class="mp th-euj2">3번 이미지 </th>
 						<td class="mp"> <input type="text" id="slide_third"></td>
 					</tr>
 					<tr>
-						<th class="mp">4번 이미지 </th>
+						<th class="mp th-euj2">4번 이미지 </th>
 						<td class="mp"> <input type="text" id="slide_fourth"></td>
 					</tr>
 				</table>

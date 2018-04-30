@@ -57,9 +57,7 @@
 			var productcode = document.getElementById('productcode').value;
 			var customercode = document.getElementById('customercode').value;
 			var productQty = document.getElementById('productQty').value;
-			//alert("productQty:"+productQty );
-			//alert(productcode + '//' + customercode)
-			
+	
 			$.ajax({
 				url: 'insertCart',
 				type: 'get',

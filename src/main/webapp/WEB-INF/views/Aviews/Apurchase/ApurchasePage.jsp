@@ -235,7 +235,7 @@ function payment4(date) {
 <br><br><br><br>
 
 <div style="text-align: center; margin-bottom: 40px;">
-	<h2><span style="color: blue;"><b>빅스타</b></span> 웹 EC 서비스</h2>
+	<h2 style="font-family: tmon;"><span style="color: #77a7f4;"><b style="font-family: tmon;">Bigstar</b></span> WEB EC 서비스</h2>
 		<h6 style="color: gray;">빅스타는 여러분의 온라인 창업을 지원합니다</h6>
 	</div>
 	<hr>
@@ -244,10 +244,10 @@ function payment4(date) {
 <section class="pricecol">
 <div class="icon">
 <i class="icon-magic"></i>
-<img src="./resources/image/shirt2.png">
+<img src="./resources/image/sofa1.png">
 </div>
 
-<h3><Span>세련된 디자인</span></h3>
+<h3><Span>가구</span></h3>
 <p>
 <a class="button" id="template1" href="javascript:template1()"><span>Pick</span></a>
 </p>
@@ -256,9 +256,9 @@ function payment4(date) {
 <section class="pricecol">
 <div class="icon">
 <i class="icon-leaf"></i>
-<img src="./resources/image/shoes.png">
+<img src="./resources/image/shirt11.png">
 </div>
-<h3><Span>강렬한 디자인</span></h3>
+<h3><Span>옷</span></h3>
 <p>
 <a class="button" id="template2" href="javascript:template2()"><span>Pick</span></a>
 </p>
@@ -267,9 +267,9 @@ function payment4(date) {
 <section class="pricecol">
 <div class="icon">
 <i class="icon-link"></i>
-<img src="./resources/image/hat.png">
+<img src="./resources/image/tomato1.png">
 </div>
-<h3><Span>퇴폐적 디자인</span></h3>
+<h3><Span>음식</span></h3>
 <p>
 <a class="button" id="template3" href="javascript:template3()"><span>Pick</span></a>
 </p>
