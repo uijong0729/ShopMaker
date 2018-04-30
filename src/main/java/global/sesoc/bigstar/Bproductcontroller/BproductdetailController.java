@@ -87,10 +87,10 @@ public class BproductdetailController {
 		
 		ArrayList<Bproducttable> productDetailList = PTdao.getProductdetailListByName(productname);
 		
-//		System.out.println("BproductDetailList 리스트");
-//		for (Bproducttable temp : productDetailList) {
-//			System.out.println(temp);
-//		}
+		System.out.println("BproductDetailList 리스트");
+		for (Bproducttable temp : productDetailList) {
+			logger.debug(temp.toString());
+		}
 		
 		model.addAttribute("productDetailList", productDetailList);
 		model.addAttribute("reviewtableList", reviewtableList);

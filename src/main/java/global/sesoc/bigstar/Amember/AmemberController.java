@@ -67,7 +67,6 @@ public class AmemberController {
 		
 		AMdao.AsignupCustomer(member);
 
-
 		return "Aviews/Amember/Login";
 	}
 

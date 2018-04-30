@@ -15,8 +15,6 @@
             y = Math.floor(y);
             $('#div' + i).css("width", "300px");
             $('#div' + i).css("height", "450px");
-           /*  $('#div' + i).css("margin-left", ((x * 25) - 1) + "%");
-            $('#div' + i).css("margin-top", (y * 315) + "px"); */
          }
 		var height = $(document).height();
 		$('#footer_footer').css("top", height + "px");

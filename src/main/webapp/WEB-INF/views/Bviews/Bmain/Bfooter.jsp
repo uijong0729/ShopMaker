@@ -6,17 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bfooter.css?ver=2">
 <title>Insert title here</title>
-<style type="text/css">
-	p {
-		background: #2E2E2E;
-	}
-	div {
-		background: #2E2E2E;
-	}
-	pre {
-		background: #2E2E2E;
-	}
-</style>
+
 </head>
 <body>
 <div class="footer_wrapper"> 

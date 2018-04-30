@@ -1220,7 +1220,7 @@
 			}
 			
 			function Bloadpage() {
-				alert("로드");
+				alert("네트워크 환경이 좋지 않습니다.");
 				location.href="loadpage?pageinfo=" + ${Amember.membercode} + $('#pagename').val();
 				
 			}

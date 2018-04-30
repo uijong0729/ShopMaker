@@ -87,6 +87,7 @@ public class BproductinsertController {
 	@RequestMapping(value = "uploadproduct", method = RequestMethod.POST)
 	public String upload(MultipartHttpServletRequest mhsq, HttpServletRequest hsreq, HttpSession session) {
 		String imagesPath = hsreq.getSession().getServletContext().getRealPath("./resources/image");
+		System.out.println(imagesPath);
 		String reviewImgPath = "";
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)mhsq;
 

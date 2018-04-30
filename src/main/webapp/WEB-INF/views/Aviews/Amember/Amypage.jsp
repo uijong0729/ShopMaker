@@ -65,7 +65,7 @@
 		
 		<div style="width: 100%; height: 100%; text-align: center;">
 			
-			<div style="text-align: center; font: 20pt bold;">${Amember.id}님 환영합니다</div>
+			<div style="text-align: center; font: 20pt bold;">${Amember.id}님 환영합니다.</div>
 			
 			<hr style="border: 1px solid gray;">
 			
@@ -76,11 +76,8 @@
 		
 		<input id="membercode" type="hidden" value="${Amember.membercode}">
 		
-		<br><br><br>
+		<br><br>
 		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
 	
 <%-- 				<button onclick="location.href='goBmain'">쇼핑몰 생성</button> 
 			<button onclick="location.href='goBmain'">쇼핑몰 관리</button> 

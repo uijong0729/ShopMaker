@@ -26,7 +26,7 @@
 				<li class="current">
 					<div class="description">
 						<h2 class="h2" style="font-family: tmon;">고급스러운 홈페이지</h2>
-						<p>전문적인 디자이너가 제작한 다양한 템플릿으로 내 홈페이지를 만들어보세요.</p>
+						<p>전문적인 디자이너가 제작한 다양한 템플릿으로</p> <br><p>내 홈페이지를 만들어보세요.</p>
 					</div>
 					<div class="tiltview col">
 						<a href="http://grovemade.com/"><img src="./resources/img/7_withyoon.jpg"/></a>
@@ -36,7 +36,7 @@
 				<li>
 					<div class="description">
 						<h2 class="h2" style="font-family: tmon">전문적인 온라인 몰</h2>
-						<p>내 비즈니스의 제품 또는 서비스를 판매할 전문적인 온라인 쇼핑몰을 제작 및 관리하세요</p>
+						<p>내 비즈니스의 제품 또는 서비스를 판매할</p> <br><p>전문적인 온라인 쇼핑몰을 제작 및 관리하세요.</p>
 					</div>
 					<div class="tiltview col">
 						<a href="http://minimalmonkey.com/"><img src="./resources/img/9_ikea.jpg"/></a>
@@ -46,7 +46,7 @@
 				<li>
 					<div class="description">
 						<h2 class="h2" style="font-family: tmon">쉽고 확실한 홈페이지</h2>
-						<p style="font-family: nanum">코딩 걱정없이 쉽고 간편한 사용자 친화적인 드래그-앤-드롭 방식의 에디터로 내 홈페이지를 완성하세요</p>
+						<p style="font-family: nanum">코딩 걱정없이 쉽고 간편한 사용자 친화적인</p><br><p>드래그-앤-드롭 방식의 에디터로</p> <br><p>내 홈페이지를 완성하세요.</p>
 					</div>
 					<div class="tiltview col">
 						<a href="http://pexcil.com/"><img src="./resources/img/14_food.jpg"/></a>
@@ -59,10 +59,7 @@
 	</div><!-- /container -->
 	</article>
 
-<!-- Footer -->
-<footer>
-	<%@ include file="./Aviews/footer.jsp" %>
-</footer>
+
 
 <script type="text/javascript">
 	function template1(){

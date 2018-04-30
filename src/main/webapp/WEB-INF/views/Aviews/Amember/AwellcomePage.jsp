@@ -36,10 +36,7 @@ $(document).ready(function(){
 			
 			
 		</article>
-		
-	<footer>
-		<%@ include file="../footer.jsp" %>
-	</footer>
+
 
 
 </body>
