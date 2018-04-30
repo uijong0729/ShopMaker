@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
-
+@font-face {
+	    font-family: tmon;
+	    src: url(../font/TmonMonsori.ttf.ttf);
+	}	
+@font-face {
+	    font-family: nanum;
+	    src: url(../font/NanumGothicBold.ttf);
+	}
+*{
+	font-family: nanum;
+}
 .services
 {
 width:1000px;
