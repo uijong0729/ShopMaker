@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,8 +73,8 @@
 								<div id="outer">
 									<img src="./resources/image/${b.productimage }">
 									<dl>
-										<dd>상품명 : ${b.productname}</dd>
-										<dd>가격 : ${b.productprice}</dd>
+										<dd>${b.productname}</dd>
+										<dd><fmt:formatNumber value="${b.productprice}" type="currency"></fmt:formatNumber>  </dd>
 									</dl>
 								</div> <c:set var="count" value="${count+1}" />
 

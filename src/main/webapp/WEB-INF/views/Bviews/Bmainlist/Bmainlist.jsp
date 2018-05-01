@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="./resources/css/Bpage/Bpagemain.css">
-      <title>Insert title here</title>
-      <style type="text/css">
-         .div {
-            position: absolute;
-            text-align: center;
-         }
-      </style>
-      <script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
-      <script type="text/javascript">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/Bpage/Bpagemain.css">
+<title>Insert title here</title>
+<style type="text/css">
+.div {
+	position: absolute;
+	text-align: center;
+}
+</style>
+<script src='<c:url value="resources/js/jquery-3.2.1.js" />'></script>
+<script type="text/javascript">
       
       $(document).ready(function() {
   		for (var i = 1; i <= ${Bproducttable.size()}; i++) {
@@ -36,8 +38,8 @@
          
            
       </script>
-   </head>
-   <body>
+</head>
+<body>
 	<c:set var="count" value="0" />
 	<div id="forAppend">
 		<c:forEach items="${nameset}" var="n" varStatus="vars">
@@ -50,13 +52,18 @@
 						<c:if test="${count%4==0}">
 							<ul>
 						</c:if>
-						<a href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
+						<a
+							href="goMyShop?code=${Amember.membercode}&page=Bproductdetail&productname=${b.productname}&productcode=${b.productcode}">
 							<li>
 								<div id="outer" style>
-									<img src="./resources/image/${b.productimage }" style="width: 200px; height: 200px;">
+									<img src="./resources/image/${b.productimage }"
+										style="width: 200px; height: 200px;">
 									<dl>
-										<dd>상품명 : ${b.productname}</dd>
-										<dd>가격 : ${b.productprice}</dd>
+										<dd>${b.productname}</dd>
+										<dd>
+											<fmt:formatNumber value="${b.productprice}" type="currency"></fmt:formatNumber>
+										</dd>
+
 									</dl>
 								</div> <c:set var="count" value="${count+1}" />
 
@@ -71,5 +78,5 @@
 			</c:forEach>
 		</c:forEach>
 	</div>
-   </body>
+</body>
 </html>
