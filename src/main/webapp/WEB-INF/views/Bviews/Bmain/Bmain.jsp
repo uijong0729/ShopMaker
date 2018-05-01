@@ -1047,11 +1047,17 @@
 			}
 			function changeSubmit() {
 				var bgcolor = '#' + $('#backgroundColor').val();
-				$('#Bcenter').css("background", bgcolor);
+				if ($('#pagename').val() != 'Bfooter') {
+					$('#Bcenter').css("background", bgcolor);
+				}
 				$('#changeBg').css("visibility", "hidden");
 				$('#mask').css('visibility', 'hidden');
 				$('.changeA').css("visibility", "hidden");
 				$('.changeB').css("visibility", "hidden");
+				if ($('#pagename').val() == 'Bfooter') {
+					alert('aa');
+					$('.forBg').css('background', bgcolor);
+				}
 			}
 			function changeImageSubmit() {
 				var uri = 'url("' + $('#bgUrl').val() + '")';
