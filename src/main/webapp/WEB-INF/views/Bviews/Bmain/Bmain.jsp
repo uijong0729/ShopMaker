@@ -1129,22 +1129,24 @@
 			}
 			function Bmmback() {
 				var str = '<ul>';
+				str += '<li class="side" style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
 				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>';
 				str += '<li class="side" style="cursor: pointer; user-select: none;" onclick="javasdcript:Bsm()">사이트 관리</li>';
+				str += '<li class="side" onclick="javascript:Bnoticelist()" style="cursor: pointer; user-select: none;">공지사항</li>';
+				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
 				str += '<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>';
-				str += '<li class="side">배송 및 세금</li>';
+				/* str += '<li class="side">배송 및 세금</li>';
 				str += '<li class="side">주문관리</li>';
-				str += '<li class="side">결제관리</li>';
-				str += '<li class="side" style="cursor: pointer;" onclick="javascript:Bpm()">페이지관리</li>';
+				str += '<li class="side">결제관리</li>'; */
 				str += '</ul>';
 				$('#page_tool').html(str);
 			}
 			function Bsm() {
 				var str = '<ul>';
-				str += '<li class="side" onclick="javascript:Bnoticelist()" style="cursor: pointer; user-select: none;">공지사항</li>';
+				
 				str += '<li class="side" onclick="javascript:Bmainlist()" style="cursor: pointer; user-select: none;">상품리스트</li>';
 				str += '<li class="side" onclick="javascript:goBproductdetail()" style="cursor: pointer; user-select: none;">상품상세</li>';
-				str += '<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>';
+				
 				str += '<li class="side back" onclick="javascript:Bmmback()" style="cursor: pointer; user-select: none;">뒤로가기</li>';
 				str +='</ul>';
 				$('#page_tool').html(str);
@@ -1371,12 +1373,14 @@
 				
 			<div class="toolbody" id="page_tool">
 				<ul>
+					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bpm()">페이지관리</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bmm()">회원관리</li>
 					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bsm()">사이트 관리</li>
+					<li class="side" onclick="javascript:Bnoticelist()" style="cursor: pointer; user-select: none;">공지사항</li>
+					<li class="side" onclick="javascript:goBproductinsert()" style="cursor: pointer; user-select: none;">상품추가삭제</li>
 					<li class="side" style="curosr: pointer; user-select: none;" onclick="javascript:Bsa()">경영통계</li>
-					<li class="side" style="cursor: pointer; user-select: none;">배송 및 세금</li>
-					<li class="side" style="cursor: pointer; user-select: none;">주문관리</li>
-					<li class="side" style="cursor: pointer; user-select: none;" onclick="javascript:Bpm()">페이지관리</li>
+					<!-- <li class="side" style="cursor: pointer; user-select: none;">배송 및 세금</li>
+					<li class="side" style="cursor: pointer; user-select: none;">주문관리</li> -->
 				</ul>
 			</div>
 			<input type="hidden" id="selected">
