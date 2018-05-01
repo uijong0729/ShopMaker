@@ -1,3 +1,4 @@
+0.
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -166,11 +167,11 @@ function gopurchaseform() {
            </div><!-- 주문 디테일 -->
 	        <div class="product_img_place" style="display :block; width: 100%;">
 	            <!-- 상세 이미지 -->
-	            <img id="img_1" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage1}">
-	           	<img id="img_2" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage2}">
-	           	<img id="img_3" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage3}">
-	           	<img id="img_4" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage4}">
-	           	<img id="img_5" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage5}">
+	            <img id="img_de_1" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage1}">
+	           	<img id="img_de_2" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage2}">
+	           	<img id="img_de_3" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage3}">
+	           	<img id="img_de_4" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage4}">
+	           	<img id="img_de_5" style="display :block; width: 100%; margin-bottom: 30px; margin-top: 20px;" src="./resources/image/${productDetailList[0].productimage5}">
 	        </div>
         </div>
       

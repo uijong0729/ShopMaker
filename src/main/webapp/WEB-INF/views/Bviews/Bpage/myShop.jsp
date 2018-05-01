@@ -129,11 +129,17 @@
 				if (${param.page == 'Bproductdetail'}) {
 			    	$('#productcode').val('${productDetailList[0].productcode}');
 			    	$('#customercode').val('${sessionScope.Blogin.customercode}');
-					$('.showingImg').attr("src", '${productDetailList[0].productimage}');
-					$('.showingImg').css('width', '400px');
+					$('.showingImg').attr("src", './resources/image/' + '${productDetailList[0].productimage}');
+					$('.showingImg').css('width', '250px');
 					$('.showingImg').css('height', 'auto');
-					$('#img_1').attr("src", '${productDetailList[0].productimage}');
-					$('#img_2').attr("src", '${productDetailList[1].productimage}');
+					$('.showingImg').css('top', '0px');
+					$('#img_1').attr("src", './resources/image/' + '${productDetailList[0].productimage1}');
+					$('#img_2').attr("src", './resources/image/' + '${productDetailList[0].productimage2}');
+					$('#img_de_1').attr("src", './resources/image/' + '${productDetailList[0].productimage1}');
+					$('#img_de_2').attr("src", './resources/image/' + '${productDetailList[0].productimage2}');
+					$('#img_de_3').attr("src", './resources/image/' + '${productDetailList[0].productimage3}');
+					$('#img_de_4').attr("src", './resources/image/' + '${productDetailList[0].productimage4}');
+					$('#img_de_5').attr("src", './resources/image/' + '${productDetailList[0].productimage5}');
 					$('#Bproductname').text('${productDetailList[0].productname}');
 					$('#Bproductprice').text('${productDetailList[0].productprice}');
 					$('#product_iframe').attr("href", 'getInqueryList.do?r_no=${ProductOne.r_no }');
@@ -175,7 +181,7 @@
 				}
 				if(${param.page == 'Blogin'}) {
 					$('#text_login').removeAttr('onclick');
-					$('#text_login').attr('onclick', 'location.href="goMyShop?code=${Amember.membercode}&page=Blogin"');
+					$('#text_login').attr('onclick', );
 					$('#text_register').removeAttr('onclick');
 					$('#text_register').attr('onclick','location.href="goMyShop?code=${Amember.membercode}&page=Bregist"'); 
 				}

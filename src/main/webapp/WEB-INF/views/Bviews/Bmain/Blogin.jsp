@@ -114,7 +114,7 @@ function enterkey(){
 						<br>
 						
 						<!-- 멤버코드 임시로 37 -->
-						<input type="hidden" name="membercode" value='${param.code}'>
+						<input type="hidden" name="membercode" value='${Amember.membercode}'>
 				</form>
 				
 				<div style="text-align: center;">
