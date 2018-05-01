@@ -13,6 +13,16 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript">
 			$(document).ready(function() {
+				$('#middleDiv').children('#Bcenter').css('margin-top', '0px');
+				$('#footerDiv').children('#Bcenter').css('margin-top', '0px');
+				if ($('#middleDiv').children('#Bcenter').css('background-image') != 'undefined' || $('#middleDiv').children('#Bcenter').css('background-image') != '' || $('#middleDiv').children('#Bcenter').css('background-image') != null) {
+					var img = $('#middleDiv').children('#Bcenter').css('background-image');
+					$(body).css('background-image', img);
+					$('#headerDiv').children('#Bcenter').css('background-image', '');
+					$('#middleDiv').children('#Bcenter').css('background-image', '');
+					$('#footerDiv').children('#Bcenter').css('background-image', '');
+				}
+				
 				var midDivOfs = $('#middleDiv').offset().top;
 				var ftrDivOfs = $('#footerDiv').offset().top;
 				
@@ -177,14 +187,13 @@
 			
 		</script>
 		<style type="text/css">
-		
 		</style>
 	</head>
 	<body id="body">
 		<div id="headerDiv">
 			${headerContent}
 		</div>
-		<div style="height: auto; text-align: center" id="middleDiv">
+		<div style="height: auto; text-align: center;" id="middleDiv">
 			${body}
 		</div>
 		<div id="footerDiv" class="forVerticalAlign">
