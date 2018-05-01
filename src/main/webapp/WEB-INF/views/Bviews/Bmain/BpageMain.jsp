@@ -33,16 +33,16 @@
 
 		<div id=slide_container>
 			<div id="slide" class="slides" tabindex="0">
-				<img id="img1" src="./resources/img/slide1.jpg" />
+				<img id="img1" src="https://c.wallhere.com/photos/ca/4c/1920x1080_px_Archviz_Unreal_Engine_4-1285871.jpg!d" />
 			</div>
 			<div class="slides">
-				<img id="img2" src="./resources/img/slide2.jpg" />
+				<img id="img2" src="https://c.wallhere.com/photos/bf/45/Unreal_Engine_4_Archviz-89948.png!d" />
 			</div>
 			<div class="slides">
-				<img id="img3" src="./resources/img/slide3.jpg" />
+				<img id="img3" src="https://c.wallhere.com/photos/cb/c0/1920x1080_px_Archviz_Unreal_Engine_4-1205933.jpg!d" />
 			</div>
 			<div class="slides">
-				<img id="img4" src="./resources/img/slide4.jpg" />
+				<img id="img4" src="https://evermotion.org/files/publications_images/HighresScreenshot00074_1_2.jpg" />
 			</div>
 		</div>
 		<div id="dot_group" style="text-align: center">

@@ -33,7 +33,7 @@ function formUpload(){
 				return;
 			}
 			alert("이미지 업로드가 완료되었습니다.");
-			location.href="Bmainlist?rows=4";
+			location.href="goMyShop?code=${Amember.membercode}&page=Bmainlist?rows=4";
 		},
 		error : function(e){
 			alert(JSON.stringify(e));

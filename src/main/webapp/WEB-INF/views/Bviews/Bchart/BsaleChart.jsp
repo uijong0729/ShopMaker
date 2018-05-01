@@ -83,7 +83,7 @@
   			dataType:'json',
   			success: function(result){
 			
-  				alert(result);
+  				//alert(result);
   				var orderDate = new Array(7);
     			var totalSales = new Array(7);
   			  
@@ -91,7 +91,7 @@
   			$.each(result, function(index, item){
   				orderdate[index] = item.productName;
   				totalSales[index] = item.totalSales;
-  				alert(orderdate[index] + "/"+ totalSales[index]);
+  				//alert(orderdate[index] + "/"+ totalSales[index]);
   			});
   			
   			},

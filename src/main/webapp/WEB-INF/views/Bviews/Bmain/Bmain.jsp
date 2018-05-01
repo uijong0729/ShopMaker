@@ -1055,7 +1055,6 @@
 				$('.changeA').css("visibility", "hidden");
 				$('.changeB').css("visibility", "hidden");
 				if ($('#pagename').val() == 'Bfooter') {
-					alert('aa');
 					$('.forBg').css('background', bgcolor);
 				}
 			}
