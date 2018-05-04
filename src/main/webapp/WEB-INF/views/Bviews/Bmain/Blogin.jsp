@@ -104,7 +104,7 @@ function enterkey(){
 						<table>
 							<tr>
 								<!-- <td id="login_id" tabindex="0">아이디</td> -->
-								<td><input onkeyup="enterkey()" style="padding: 10px; margin: 4px;" placeholder="Your ID" name="customerid"></td>
+								<td><input autofocus="autofocus" onkeyup="enterkey()" style="padding: 10px; margin: 4px;" placeholder="Your ID" name="customerid"></td>
 							</tr>
 							<tr>
 								<!-- <td id="login_pw" tabindex="0">비밀번호</td> -->
