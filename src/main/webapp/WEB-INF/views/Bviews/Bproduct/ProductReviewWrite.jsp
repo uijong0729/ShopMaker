@@ -79,7 +79,7 @@ function goreviewlist() {
 					<td>작성자</td>
 					<td>
 						<!-- 세션에서 Bcustomer 객체를 불러와서 심어주고 있기 때문에 로그인을 하지 않을 경우 에러가 발생하니 주의! -->
-						<input type="text" name="customername" class="writerbox" value="$bCustomer.customername" readOnly>
+						<input type="text" name="customername" class="writerbox" value="Bigstar" readOnly>
 						<%-- <input type="hidden" name="customercode" value="${bCustomer.customercode}">  --%>
 					</td>
 				</tr>

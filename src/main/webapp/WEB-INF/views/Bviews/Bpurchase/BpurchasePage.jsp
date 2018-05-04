@@ -254,17 +254,11 @@ Days: <p id="days"></p>
 
 <br><br><br>
 
-	<%-- <footer>
-		<%@ include file="../footer.jsp" %>
-	</footer> --%>
 	<form action="BpurchaseIndex" method="post" id="BpurchaseInfo">  <!-- id="tem1" -->
 		<input type="hidden" name="templateforValue" id="templateforValue">
 		<input type="hidden" name="paymentforValue" id="paymentforValue">
 		<input type="hidden" name="daysforValue" id="daysforValue">
 	</form>
-	
-	<div style="margin-top: 200px;">
-			<%@ include file="../Bmain/Bfooter.jsp" %>
-	</div>
+
 </body>
 </html>

@@ -94,16 +94,13 @@ function finish(){
 		</div>		
 	</div>
 </div>
-	<div style="margin-top: 200px;">
-			<%@ include file="../Bmain/Bfooter.jsp" %>
-	</div>
 
 <script type='text/javascript'>
   //<![CDATA[
-    $(document).ready(function() {
+ /*    $(document).ready(function() {
         $(".btn-wrap").click(function() {
             self.close();
         });
-    });
+    }); */
   //]]>
 </script>

@@ -330,7 +330,7 @@ function cartList(){
 						if(i != null && i.productquantity != 0)
 						{
 							innerText.append('<li>');
-							innerText.append('<span class="ol c1"><img src="./bigstar/resources/image/' + i.productimage + '"></span>');
+							innerText.append('<span class="ol c1"><img style="width: 100px; height: auto;" src="/bigstar/resources/image/' + i.productimage + '"></span>');
 							innerText.append('<span class="ol c2">' + i.productname+ '</span>');
 							innerText.append('<span class="ol c3">' + i.productcolor + '</span>');
 							innerText.append('<span class="ol c4">' + i.productsize + '</span>');

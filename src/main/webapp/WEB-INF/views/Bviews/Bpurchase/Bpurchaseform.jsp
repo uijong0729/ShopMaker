@@ -103,7 +103,7 @@
 			 --%>
                   	<%-- <c:forEach items="${purchaseList}" var="cart"></c:forEach> --%>
                      <tr>
-                        <td><img src="./resources/image/${purchaseProduct.productimage }" width="100%"></td>
+                        <td><img src="./resources/image/${purchaseProduct.productimage }" style="width: 100px; height: auto;"></td>
                         <td colspan="2">
                            <div class="product_name" >${purchaseProduct.productname }</div>
                         </td>

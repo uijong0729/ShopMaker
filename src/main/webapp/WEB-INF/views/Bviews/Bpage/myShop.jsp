@@ -18,9 +18,13 @@
 				if ($('#middleDiv').children('#Bcenter').css('background-image') != 'undefined' || $('#middleDiv').children('#Bcenter').css('background-image') != '' || $('#middleDiv').children('#Bcenter').css('background-image') != null) {
 					var img = $('#middleDiv').children('#Bcenter').css('background-image');
 					$(body).css('background-image', img);
+					var width = $(document).width();
+					var height = $(document).height();
+					$(body).css("background-size", width + "px " + height + "px");
 					$('#headerDiv').children('#Bcenter').css('background-image', '');
 					$('#middleDiv').children('#Bcenter').css('background-image', '');
 					$('#footerDiv').children('#Bcenter').css('background-image', '');
+					$(body).css("background-repeat", "no-repeat");
 				}
 				
 				var midDivOfs = $('#middleDiv').offset().top;

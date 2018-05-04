@@ -53,41 +53,41 @@
 					<div id="header_outer" class="header_menu">
 						<div tabindex="0" id="text_temp0"
 							style="background: #f9f9f9; border: none;">
-							<b>Outer</b>
+							<b>Livingroom</b>
 						</div>
 						---<br>
 						<div tabindex="0" id="text_temp1"
-							style="background: #f9f9f9; border: none;">Coat&amp;Jacket</div>
+							style="background: #f9f9f9; border: none;">Sofa&amp;Rug</div>
 					</div>
 				</a>
 				<div id="header_top" class="header_menu">
 					<div tabindex="0" id="text_temp2"
 						style="background: #f9f9f9; border: none;">
-						<b>Top</b>
+						<b>Kitchen</b>
 					</div>
 					---<br>
 					<div tabindex="0" id="text_temp3"
-						style="background: #f9f9f9; border: none;">Shirt&amp;Hoodie</div>
+						style="background: #f9f9f9; border: none;">Table&amp;Chair</div>
 				</div>
 				</a> <a href="#">
 					<div id="header_bottom" class="header_menu">
 						<div tabindex="0" id="text_temp4"
 							style="background: #f9f9f9; border: none;">
-							<b>Bottom</b>
+							<b>Bedroom</b>
 						</div>
 						---<br>
 						<div tabindex="0" id="text_temp5"
-							style="background: #f9f9f9; border: none;">Jean&amp;Slacks</div>
+							style="background: #f9f9f9; border: none;">Bed&amp;Desk</div>
 					</div>
 				</a> <a href="#">
 					<div id="header_shoes" class="header_menu">
 						<div tabindex="0" id="text_temp6"
 							style="background: #f9f9f9; border: none;">
-							<b>Shoes</b>
+							<b>Baby</b>
 						</div>
 						---<br>
 						<div tabindex="0" id="text_temp7"
-							style="background: #f9f9f9; border: none;">Dress&amp;Running</div>
+							style="background: #f9f9f9; border: none;">Bed&amp;Desk</div>
 					</div>
 				</a>
 			</center>

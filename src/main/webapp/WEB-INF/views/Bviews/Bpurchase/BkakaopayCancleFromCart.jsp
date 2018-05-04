@@ -35,9 +35,7 @@
 </div>
 </div>
 
-	<div style="margin-top: 200px;">
-			<%@ include file="../Bmain/Bfooter.jsp" %>
-	</div>
+
 
 <script type='text/javascript'>
   //<![CDATA[
