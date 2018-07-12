@@ -1,19 +1,19 @@
 # ShopMaker
 Big Star team project
 
-[본인 담당분야 : 풀 스택 ]
+[uijong0729 담당분야 : 백엔드 ]
 
- - 언어
+ - 언어 : 
     java
     javascript(Jquery), HTML5, CSS
 
- - API
+ - API : 
     GoogleChart
 
- - DataBase
+ - DataBase : 
     Oracle
     
- - ORM
+ - ORM : 
     Mybatis
     
  
